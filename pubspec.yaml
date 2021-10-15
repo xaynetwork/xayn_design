@@ -15,26 +15,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
+  test: ^1.17.0
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
-  fonts:
-    - family: NotoSans
-      fonts:
-        # This is in sync with the unused_fonts folder and the xstyles.dart
-        # If you want to use another font move it from the unsed folder to fonts
-        - asset: fonts/NotoSans-Regular.ttf
-          weight: 400
-        - asset: fonts/NotoSans-Bold.ttf
-          weight: 700
-    - family: Roboto
-      fonts:
-        - asset: fonts/KFOmCnqEu92Fr1Me5WZLCzYlKw.ttf
-          weight: 400
-
-  assets:
-    - assets/
-    - assets/icons/

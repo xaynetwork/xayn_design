@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 /// The name is used to make imports easier and not to be in conflict with the material colors
 /// TODO rename to Colors when all colors are converted to use this class
 class XColors {
-  final _brightness;
+  final Brightness _brightness;
   XColors(this._brightness);
 
   // Private Colors never use directly

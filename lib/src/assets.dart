@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'r.dart';
+import 'xayn.dart';
+
+const packagePath = 'packages/xayn_design/';
 
 class Assets {
-  final _brightness;
+  final Brightness _brightness;
 
   Assets(this._brightness);
 
@@ -11,13 +13,11 @@ class Assets {
   String get alertIcon => _theme(brightAsset: 'assets/icons/icon_alert.svg');
 
   /// Avatar
-  String avatarJson(Brightness brightness) {
-    return _theme(
-      brightAsset: 'assets/lottie/avatar.json',
-      darkAsset: 'assets/lottie/avatar_dark.json',
-      forceBrightness: brightness,
-    );
-  }
+  String avatarJson(Brightness brightness) => _theme(
+        brightAsset: 'assets/lottie/avatar.json',
+        darkAsset: 'assets/lottie/avatar_dark.json',
+        forceBrightness: brightness,
+      );
 
   String get avatarEnabledIcon => _theme(
         brightAsset: 'assets/icons/avatar_enabled.svg',
@@ -231,7 +231,7 @@ class Assets {
     required String iOSAsset,
     required String androidAsset,
   }) {
-    return R.isAndroid ? androidAsset : iOSAsset;
+    return Xayn.isAndroid ? androidAsset : iOSAsset;
   }
 
   String _theme({
@@ -240,7 +240,7 @@ class Assets {
     Brightness? forceBrightness,
   }) {
     return (forceBrightness ?? _brightness) == Brightness.dark
-        ? darkAsset ?? brightAsset
-        : brightAsset;
+        ? packagePath + (darkAsset ?? brightAsset)
+        : packagePath + brightAsset;
   }
 }

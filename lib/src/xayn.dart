@@ -6,8 +6,8 @@ import 'xcolors.dart';
 import 'xsizes.dart';
 import 'xstyles.dart';
 
-class R {
-  const R._();
+class Xayn {
+  const Xayn._();
 
   static void setBaseTextTheme(TextTheme textTheme) {
     _baseTextTheme = textTheme;
@@ -57,7 +57,7 @@ class R {
   static Animations? _animations;
   static final XColors _defaultColors = XColors(Brightness.light);
   static final XSizes _defaultSizes = XSizes(
-      screenSize: Size(800, 600), deviceOrientation: Orientation.portrait);
+      screenSize: const Size(800, 600), deviceOrientation: Orientation.portrait);
   static final Assets _defaultAssets = Assets(Brightness.light);
   static final Animations _defaultAnimations = Animations();
 

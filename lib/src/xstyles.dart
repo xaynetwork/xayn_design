@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'r.dart';
+import 'xayn.dart';
 
 ///   We are currently using:
 ///   FontWeight.w400: 'Regular',
@@ -17,7 +17,7 @@ class XStyles {
   /// Defined by design
 
   TextStyle? get appScreenHeadline => _baseTextTheme.headline1?.copyWith(
-        color: R.colors.primaryText,
+        color: Xayn.colors.primaryText,
         fontWeight: _weightBold,
         fontSize: 24.0,
         // height = 32
@@ -25,7 +25,7 @@ class XStyles {
       );
 
   TextStyle? get appHeadlineText => _baseTextTheme.headline1?.copyWith(
-        color: R.colors.primaryText,
+        color: Xayn.colors.primaryText,
         fontWeight: _weightBold,
         fontSize: 17.0,
         // height = 24
@@ -33,14 +33,14 @@ class XStyles {
       );
 
   TextStyle? get appSmallHeadlineText => _baseTextTheme.headline1?.copyWith(
-        color: R.colors.primaryText,
+        color: Xayn.colors.primaryText,
         fontWeight: _weightBold,
         fontSize: 15,
         height: 1.3,
       );
 
   TextStyle? get appHighlightText => _baseTextTheme.headline1?.copyWith(
-        color: R.colors.primaryText,
+        color: Xayn.colors.primaryText,
         fontWeight: _weightRegular,
         fontSize: 17.0,
         // height = 24
@@ -48,7 +48,7 @@ class XStyles {
       );
 
   TextStyle? get appBodyText => _baseTextTheme.bodyText1?.copyWith(
-        color: R.colors.primaryText,
+        color: Xayn.colors.primaryText,
         fontWeight: _weightRegular,
         fontSize: 13.0,
         // height = 20
@@ -68,42 +68,42 @@ class XStyles {
 
   TextStyle? get appButtonTextOnboardingInverse =>
       appButtonTextOnboarding?.copyWith(
-        color: R.colors.primaryTextInverse,
+        color: Xayn.colors.primaryTextInverse,
       );
 
   TextStyle? get appButtonTextInverse => appButtonText?.copyWith(
-        color: R.colors.primaryTextInverse,
+        color: Xayn.colors.primaryTextInverse,
       );
 
   TextStyle? get appSecondaryButtonText => appBodyText?.copyWith(
         fontWeight: _weightBold,
-        color: R.colors.secondaryActionText,
+        color: Xayn.colors.secondaryActionText,
         height: 1,
       );
 
   TextStyle? get appThumbnailText => appBodyText?.copyWith(
         fontWeight: _weightBold,
-        color: R.colors.secondaryText,
+        color: Xayn.colors.secondaryText,
         fontSize: 10,
         // height = 12
         height: 1.2,
       );
 
   TextStyle? get settingsLayoutSectionText => appThumbnailText?.copyWith(
-        color: R.colors.primaryText,
+        color: Xayn.colors.primaryText,
         height: 1.3,
       );
 
   TextStyle? get settingsLayoutSectionTextSelected =>
       settingsLayoutSectionText?.copyWith(
-        color: R.colors.primaryTextInverse,
+        color: Xayn.colors.primaryTextInverse,
       );
 
   TextStyle? get appThumbnailTextDisabled => appBodyText?.copyWith(
         fontWeight: _weightBold,
         height: 1,
         fontSize: 10,
-        color: R.colors.tertiaryText,
+        color: Xayn.colors.tertiaryText,
       );
 
   TextStyle? get appThumbnailTextLight => appBodyText?.copyWith(
@@ -114,14 +114,14 @@ class XStyles {
       );
 
   TextStyle? get linkText => appBodyText?.copyWith(
-        color: R.colors.primaryAction,
+        color: Xayn.colors.primaryAction,
         decoration: TextDecoration.underline,
       );
 
   TextStyle? get textInputText => appBodyText?.copyWith(
         fontSize: 15.0,
         fontWeight: _weightRegular,
-        color: R.colors.searchInputText,
+        color: Xayn.colors.searchInputText,
       );
 
   TextStyle? get textInputTextSmall =>
@@ -129,7 +129,7 @@ class XStyles {
 
   TextStyle? get textInputError => appBodyText?.copyWith(
         fontSize: 13.0,
-        color: R.colors.inputErrorText,
+        color: Xayn.colors.inputErrorText,
       );
 
   TextStyle? get textInputErrorSmall =>
@@ -146,18 +146,18 @@ class XStyles {
       );
 
   TextStyle get marketButtonStyle => TextStyle(
-        color: R.colors.primaryTextInverse,
+        color: Xayn.colors.primaryTextInverse,
         fontSize: 14.0,
       );
 
   BoxShadow get suggestionContainerShadow => BoxShadow(
-        color: R.colors.searchSuggetsionShadow,
+        color: Xayn.colors.searchSuggetsionShadow,
         blurRadius: 4,
         offset: const Offset(0, 2),
       );
 
   BoxShadow get webviewShadow => BoxShadow(
-        color: R.colors.shadowTransparent,
+        color: Xayn.colors.shadowTransparent,
         blurRadius: 25,
         spreadRadius: 0,
       );
@@ -169,7 +169,7 @@ class XStyles {
       );
 
   TextStyle? get searchInfoExplicitTerm => appBodyText?.copyWith(
-        color: R.colors.primaryAction,
+        color: Xayn.colors.primaryAction,
       );
 
   TextStyle? get dialogTitleText => appHighlightText;
@@ -180,11 +180,11 @@ class XStyles {
 
   TextStyle? get dialogErrorBody => appBodyText?.copyWith(
         fontStyle: FontStyle.italic,
-        color: R.colors.primaryText,
+        color: Xayn.colors.primaryText,
       );
 
   TextStyle? get dialogBody => appBodyText?.copyWith(
-        color: R.colors.primaryText,
+        color: Xayn.colors.primaryText,
       );
 
   TextStyle? get dialogBodySmall => dialogBody?.copyWith(
@@ -192,53 +192,53 @@ class XStyles {
       );
 
   TextStyle? get versionText => appHighlightText?.copyWith(
-        color: R.colors.secondaryText,
+        color: Xayn.colors.secondaryText,
       );
 
   TextStyle? get cardSubtitleText => appThumbnailText?.copyWith(
-        color: R.colors.tertiaryText,
+        color: Xayn.colors.tertiaryText,
       );
 
   TextStyle? get onboardingTitle => appBodyText?.copyWith(
-        color: R.colors.primaryText,
+        color: Xayn.colors.primaryText,
         fontSize: 40,
         fontWeight: _weightBold,
       );
 
   TextStyle? get snackBarBrightText => appHighlightText?.copyWith(
-        color: R.colors.brightText,
+        color: Xayn.colors.brightText,
       );
 
   TextStyle? get placeholderText => appHighlightText?.copyWith(
-        color: R.colors.tertiaryText,
+        color: Xayn.colors.tertiaryText,
       );
 
   TextStyle? get placeholderTextSmall => appBodyText?.copyWith(
-        color: R.colors.tertiaryText,
+        color: Xayn.colors.tertiaryText,
       );
 
   TextStyle? get historyButtonText => appBodyText?.copyWith(
-        color: R.colors.primaryText,
+        color: Xayn.colors.primaryText,
       );
 
   /// text styles that are independent of the dark mode
 
   /// Bright text - used for text within colored boxes like the pixel info in image view
   TextStyle? get infoTextBright => appThumbnailTextLight?.copyWith(
-        color: R.colors.brightText,
+        color: Xayn.colors.brightText,
       );
 
   TextStyle? get smallButtonTextBright => appButtonText?.copyWith(
-        color: R.colors.brightText,
+        color: Xayn.colors.brightText,
         fontSize: 10,
       );
 
   TextStyle? get buttonTextBright => appButtonText?.copyWith(
-        color: R.colors.brightText,
+        color: Xayn.colors.brightText,
       );
 
   TextStyle? get appBodyTextBright => appBodyText?.copyWith(
-        color: R.colors.brightText,
+        color: Xayn.colors.brightText,
       );
 
   TextStyle? get webViewBottomMenuTitleText => appBodyText?.copyWith(
@@ -251,7 +251,7 @@ class XStyles {
       );
 
   TextStyle? get tooltipText => appBodyText?.copyWith(
-        color: R.colors.tooltipText,
+        color: Xayn.colors.tooltipText,
         fontSize: 13,
         fontWeight: _weightBold,
       );
@@ -264,15 +264,15 @@ class XStyles {
   /// Other styles
 
   /// Borders generic
-  static double get _unit0_5 => R.dimen.unit0_5;
+  static double get _unit0_5 => Xayn.dimen.unit0_5;
 
-  static double get _unit => R.dimen.unit;
+  static double get _unit => Xayn.dimen.unit;
 
-  static double get _unit1_5 => R.dimen.unit1_5;
+  static double get _unit1_5 => Xayn.dimen.unit1_5;
 
-  static double get _unit2 => R.dimen.unit2;
+  static double get _unit2 => Xayn.dimen.unit2;
 
-  static double get _unit2_5 => R.dimen.unit2_5;
+  static double get _unit2_5 => Xayn.dimen.unit2_5;
   final roundBorder = BorderRadius.circular(_unit);
   final roundBorder0_5 = BorderRadius.circular(_unit0_5);
   final roundBorder1_5 = BorderRadius.all(Radius.circular(_unit1_5));
@@ -299,8 +299,8 @@ class XStyles {
   );
 
   final roundBorderWebView = BorderRadius.only(
-    bottomLeft: Radius.circular(R.dimen.unit1_5),
-    bottomRight: Radius.circular(R.dimen.unit1_5),
+    bottomLeft: Radius.circular(Xayn.dimen.unit1_5),
+    bottomRight: Radius.circular(Xayn.dimen.unit1_5),
   );
 
   final roundBorderBottomBarMenuSection = BorderRadius.all(
@@ -323,15 +323,15 @@ class XStyles {
   ButtonStyle? get historyElevatedButtonStyle => ElevatedButton.styleFrom(
         elevation: 5,
         shape: RoundedRectangleBorder(
-          borderRadius: R.styles.roundBorder2_5,
+          borderRadius: Xayn.styles.roundBorder2_5,
         ),
-        primary: R.colors.cardBackground,
+        primary: Xayn.colors.cardBackground,
       );
 
   /// Hint text style
   InputDecorationTheme get hintTextDecoration => InputDecorationTheme(
         hintStyle: TextStyle(
-          color: R.colors.hintTextStyle,
+          color: Xayn.colors.hintTextStyle,
         ),
       );
 }
