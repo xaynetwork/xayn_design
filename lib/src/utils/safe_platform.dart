@@ -5,6 +5,8 @@ import 'package:flutter/foundation.dart';
 /// Abstraction over [Platform], because calling [Platform] from
 /// compiled web code, will throw a RTE.
 class SafePlatform {
+  SafePlatform._();
+
   static bool get isWeb => kIsWeb;
 
   static bool get isAndroid => kIsWeb ? false : Platform.isAndroid;

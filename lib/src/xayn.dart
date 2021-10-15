@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'utils/safe_platform.dart';
 import 'animations.dart';
 import 'assets.dart';
 import 'xcolors.dart';
@@ -15,10 +14,12 @@ class Xayn {
     _styles = XStyles(_textTheme);
   }
 
-  static void setScreenInfo(
-      {required Size screenSize,
-      required Orientation deviceOrientation,
-      double notchPaddingLandscapeMode = 0.0}) {
+  static void setScreenInfo({
+    required Size screenSize,
+    required Orientation deviceOrientation,
+    required Function(String) logger,
+    double notchPaddingLandscapeMode = 0.0,
+  }) {
     if (screenSize != _screenSize ||
         deviceOrientation != _deviceOrientation ||
         notchPaddingLandscapeMode != _notchPaddingLandscapeMode) {
@@ -30,9 +31,6 @@ class Xayn {
         deviceOrientation: _deviceOrientation!,
         notchPaddingLandscapeMode: _notchPaddingLandscapeMode,
       );
-
-      // logger.i(
-      //     'screenSize $_screenSize, orientation: $deviceOrientation, notchPaddingLandscapeMode: $_notchPaddingLandscapeMode');
     }
   }
 
@@ -49,7 +47,6 @@ class Xayn {
   static Orientation? _deviceOrientation;
   static late double _notchPaddingLandscapeMode;
   static Brightness? _brightness;
-
   static Brightness get brightness => _brightness ?? Brightness.light;
   static XStyles? _styles;
   static XSizes? _sizes;
@@ -58,7 +55,8 @@ class Xayn {
   static Animations? _animations;
   static final XColors _defaultColors = XColors(Brightness.light);
   static final XSizes _defaultSizes = XSizes(
-      screenSize: const Size(800, 600), deviceOrientation: Orientation.portrait);
+      screenSize: const Size(800, 600),
+      deviceOrientation: Orientation.portrait);
   static final Assets _defaultAssets = Assets(Brightness.light);
   static final Animations _defaultAnimations = Animations();
 
@@ -75,17 +73,45 @@ class Xayn {
 
   static Animations get animations => _animations ?? _defaultAnimations;
 
-  static bool get isWeb => SafePlatform.isWeb;
+  /// This generates the default material or cupertino themes, but we don't want to use
+  /// Theme.of to access those styles because they don't correspond with the R.styles
+  /// design system
+  static ThemeData createAppTheme({required Function onUpdateResources}) {
+    var themeData = ThemeData(
+      fontFamily: 'NotoSans',
+      brightness: Xayn.colors.brightness,
+      primaryColor: Xayn.colors.primary,
+      // ignore: deprecated_member_use
+      accentColor: Xayn.colors.accent,
+      // ignore: deprecated_member_use
+      buttonColor: Xayn.colors.primaryAction,
+      appBarTheme: AppBarTheme(
+        color: Xayn.colors.accent,
+      ),
+      dividerColor: Xayn.colors.divider,
+      scaffoldBackgroundColor: Xayn.colors.pageBackground,
+      inputDecorationTheme: Xayn.styles.hintTextDecoration,
+      unselectedWidgetColor: Xayn.colors.iconDisabled,
+    );
 
-  static bool get isAndroid => SafePlatform.isAndroid;
+    // the base theme for all texts is then the generated material or cupertino
+    // text theme.
+    Xayn.setBaseTextTheme(themeData.textTheme);
 
-  static bool get isIOS => SafePlatform.isIOS;
+    /// We use [MediaQueryData] to get the proper window's metrics that Flutter uses
+    /// where size is calculated like:
+    /// ```
+    /// Size size = window.physicalSize / window.devicePixelRatio;
+    /// ```
 
-  static bool get isFuchsia => SafePlatform.isFuchsia;
+    onUpdateResources();
 
-  static bool get isLinux => SafePlatform.isLinux;
-
-  static bool get isMacOS => SafePlatform.isMacOS;
-
-  static bool get isWindows => SafePlatform.isWindows;
+    // Override all default themes with [R.styles] themes at this point
+    themeData = themeData.copyWith(
+        textTheme: themeData.textTheme.copyWith(
+      subtitle1: Xayn.styles.appHighlightText,
+      bodyText1: Xayn.styles.appBodyText,
+    ));
+    return themeData;
+  }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'xayn.dart';
+import 'package:xayn_design/xayn_design.dart';
 
 const packagePath = 'packages/xayn_design/';
 
@@ -231,7 +230,7 @@ class Assets {
     required String iOSAsset,
     required String androidAsset,
   }) {
-    return Xayn.isAndroid ? androidAsset : iOSAsset;
+    return SafePlatform.isAndroid ? androidAsset : iOSAsset;
   }
 
   String _theme({
