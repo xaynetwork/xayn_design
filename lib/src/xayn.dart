@@ -6,6 +6,7 @@ import 'xcolors.dart';
 import 'xsizes.dart';
 import 'xstyles.dart';
 
+@immutable
 class Xayn {
   const Xayn._();
 
