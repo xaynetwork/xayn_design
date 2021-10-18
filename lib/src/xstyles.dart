@@ -14,7 +14,7 @@ class XStyles {
   XStyles(
     this._baseTextTheme, {
     Brightness? brightness,
-  }) : colors = XColors(brightness);
+  }) : colors = XColors(brightness: brightness);
 
   FontWeight get _weightBold => FontWeight.w700;
 
@@ -270,7 +270,7 @@ class XStyles {
   /// Other styles
 
   /// Borders generic
-  static XSizes get _dimen => const XSizes.byDefault();
+  static XSizes get _dimen => const XSizes();
   static double get _unit0_5 => _dimen.unit0_5;
 
   static double get _unit => _dimen.unit;

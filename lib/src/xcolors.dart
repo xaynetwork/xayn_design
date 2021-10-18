@@ -6,10 +6,8 @@ import 'package:flutter/material.dart';
 @immutable
 class XColors {
   final Brightness _brightness;
-  const XColors(Brightness? brightness)
+  const XColors({Brightness? brightness})
       : _brightness = brightness ?? Brightness.light;
-
-  const XColors.byDefault() : _brightness = Brightness.light;
 
   // Private Colors never use directly
 

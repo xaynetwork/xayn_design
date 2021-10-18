@@ -14,12 +14,12 @@ class Xayn {
     this.notchPaddingLandscapeMode = 0,
     this.brightness = Brightness.light,
     XStyles? styles,
-    this.dimen = const XSizes.byDefault(),
+    this.dimen = const XSizes(),
     this.animations = const Animations(),
     XColors? colors,
     Assets? assets,
-  })  : assets = assets ?? Assets(brightness),
-        colors = colors ?? XColors(brightness),
+  })  : assets = assets ?? Assets(brightness: brightness),
+        colors = colors ?? XColors(brightness: brightness),
         textTheme = textTheme ?? Typography.material2018().white,
         styles = styles ??
             XStyles(
@@ -108,26 +108,26 @@ class Xayn {
   Xayn updateBrightness(Brightness brightness) {
     return copyWith(
       brightness: brightness,
-      colors: XColors(brightness),
-      assets: Assets(brightness),
+      colors: XColors(brightness: brightness),
+      assets: Assets(brightness: brightness),
       styles: XStyles(textTheme, brightness: brightness),
     );
   }
 
   static final ThemeData defaultTheme = ThemeData(
     fontFamily: 'NotoSans',
-    brightness: const XColors.byDefault().brightness,
-    primaryColor: const XColors.byDefault().primary,
+    brightness: const XColors().brightness,
+    primaryColor: const XColors().primary,
     // ignore: deprecated_member_use
-    accentColor: const XColors.byDefault().accent,
+    accentColor: const XColors().accent,
     // ignore: deprecated_member_use
-    buttonColor: const XColors.byDefault().primaryAction,
+    buttonColor: const XColors().primaryAction,
     appBarTheme: AppBarTheme(
-      color: const XColors.byDefault().accent,
+      color: const XColors().accent,
     ),
-    dividerColor: const XColors.byDefault().divider,
-    scaffoldBackgroundColor: const XColors.byDefault().pageBackground,
-    unselectedWidgetColor: const XColors.byDefault().iconDisabled,
+    dividerColor: const XColors().divider,
+    scaffoldBackgroundColor: const XColors().pageBackground,
+    unselectedWidgetColor: const XColors().iconDisabled,
   );
 
   /// This generates the default material or cupertino themes, but we don't want to use

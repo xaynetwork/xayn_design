@@ -7,10 +7,8 @@ const packagePath = 'packages/xayn_design/';
 class Assets {
   final Brightness _brightness;
 
-  const Assets(Brightness? brightness)
+  const Assets({Brightness? brightness})
       : _brightness = brightness ?? Brightness.light;
-
-  const Assets.byDefault() : _brightness = Brightness.light;
 
   // Alert
   String get alertIcon => _theme(brightAsset: 'assets/icons/icon_alert.svg');
