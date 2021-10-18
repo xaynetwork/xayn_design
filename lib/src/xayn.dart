@@ -7,107 +7,139 @@ import 'xstyles.dart';
 
 @immutable
 class Xayn {
-  const Xayn._();
+  Xayn({
+    TextTheme? textTheme,
+    this.screenSize,
+    this.deviceOrientation = Orientation.portrait,
+    this.notchPaddingLandscapeMode = 0,
+    this.brightness = Brightness.light,
+    XStyles? styles,
+    this.dimen = const XSizes.byDefault(),
+    this.animations = const Animations(),
+    XColors? colors,
+    Assets? assets,
+  })  : assets = assets ?? Assets(brightness),
+        colors = colors ?? XColors(brightness),
+        textTheme = textTheme ?? Typography.material2018().white,
+        styles = styles ??
+            XStyles(
+              defaultTheme.textTheme,
+              brightness: brightness,
+            );
 
-  static void setBaseTextTheme(TextTheme textTheme) {
-    _baseTextTheme = textTheme;
-    _styles = XStyles(_textTheme);
+  final TextTheme textTheme;
+  final Size? screenSize;
+  final Orientation deviceOrientation;
+  final double notchPaddingLandscapeMode;
+  final Brightness brightness;
+  final XStyles styles;
+  final XSizes dimen;
+  final XColors colors;
+  final Assets assets;
+  final Animations animations;
+
+  bool get isDarkMode => brightness == Brightness.dark;
+
+  Xayn copyWith({
+    TextTheme? textTheme,
+    Size? screenSize,
+    Orientation? deviceOrientation,
+    double? notchPaddingLandscapeMode,
+    Brightness? brightness,
+    XStyles? styles,
+    XSizes? dimen,
+    XColors? colors,
+    Assets? assets,
+    Animations? animations,
+  }) =>
+      Xayn(
+        textTheme: textTheme ?? this.textTheme,
+        screenSize: screenSize ?? this.screenSize,
+        deviceOrientation: deviceOrientation ?? this.deviceOrientation,
+        notchPaddingLandscapeMode:
+            notchPaddingLandscapeMode ?? this.notchPaddingLandscapeMode,
+        brightness: brightness ?? this.brightness,
+        styles: styles ?? this.styles,
+        dimen: dimen ?? this.dimen,
+        colors: colors ?? this.colors,
+        assets: assets ?? this.assets,
+        animations: animations ?? this.animations,
+      );
+
+  Xayn updateBaseTextTheme(TextTheme textTheme) {
+    return copyWith(
+      textTheme: textTheme,
+      styles: XStyles(
+        textTheme,
+        brightness: brightness,
+      ),
+    );
   }
 
-  static void setScreenInfo({
+  Xayn updateScreenInfo({
     required Size screenSize,
     required Orientation deviceOrientation,
-    required Function(String) logger,
+    Function(String)? logger,
     double notchPaddingLandscapeMode = 0.0,
   }) {
-    if (screenSize != _screenSize ||
-        deviceOrientation != _deviceOrientation ||
-        notchPaddingLandscapeMode != _notchPaddingLandscapeMode) {
-      _screenSize = screenSize;
-      _deviceOrientation = deviceOrientation;
-      _notchPaddingLandscapeMode = notchPaddingLandscapeMode;
-      _sizes = XSizes(
-        screenSize: _screenSize!,
-        deviceOrientation: _deviceOrientation!,
-        notchPaddingLandscapeMode: _notchPaddingLandscapeMode,
+    if (screenSize != this.screenSize ||
+        deviceOrientation != this.deviceOrientation ||
+        notchPaddingLandscapeMode != this.notchPaddingLandscapeMode) {
+      final newXayn = copyWith(
+        screenSize: screenSize,
+        deviceOrientation: deviceOrientation,
+        notchPaddingLandscapeMode: notchPaddingLandscapeMode,
+        dimen: XSizes(
+          screenSize: screenSize,
+          deviceOrientation: deviceOrientation,
+          notchPaddingLandscapeMode: notchPaddingLandscapeMode,
+        ),
       );
+      if (logger != null) {
+        logger(
+          'screenSize ${newXayn.screenSize}, orientation: ${newXayn.deviceOrientation}, notchPaddingLandscapeMode: ${newXayn.notchPaddingLandscapeMode}',
+        );
+      }
+      return newXayn;
     }
+    return this;
   }
 
-  static void setBrightness(Brightness brightness) {
-    _brightness = brightness;
-    _colors = XColors(brightness);
-    _assets = Assets(brightness);
+  Xayn updateBrightness(Brightness brightness) {
+    return copyWith(
+      brightness: brightness,
+      colors: XColors(brightness),
+      assets: Assets(brightness),
+      styles: XStyles(textTheme, brightness: brightness),
+    );
   }
 
-  static bool get isDarkMode => _brightness == Brightness.dark;
-
-  static TextTheme? _baseTextTheme;
-  static Size? _screenSize;
-  static Orientation? _deviceOrientation;
-  static late double _notchPaddingLandscapeMode;
-  static Brightness? _brightness;
-
-  static Brightness get brightness => _brightness ?? Brightness.light;
-
-  static XStyles? _styles;
-  static XSizes? _sizes;
-  static XColors? _colors;
-  static Assets? _assets;
-  static Animations? _animations;
-
-  static TextTheme get _textTheme =>
-      _baseTextTheme ?? Typography.material2018().white;
-
-  static XStyles get styles => _styles ??= XStyles(_textTheme);
-
-  // TODO need to change classes to non static access
-  static XSizes get dimen => _sizes ?? const XSizes.byDefault();
-
-  static XColors get colors => _colors ?? const XColors.byDefault();
-
-  static Assets get assets => _assets ?? const Assets.byDefault();
-
-  static Animations get animations => _animations ?? const Animations();
+  static final ThemeData defaultTheme = ThemeData(
+    fontFamily: 'NotoSans',
+    brightness: const XColors.byDefault().brightness,
+    primaryColor: const XColors.byDefault().primary,
+    // ignore: deprecated_member_use
+    accentColor: const XColors.byDefault().accent,
+    // ignore: deprecated_member_use
+    buttonColor: const XColors.byDefault().primaryAction,
+    appBarTheme: AppBarTheme(
+      color: const XColors.byDefault().accent,
+    ),
+    dividerColor: const XColors.byDefault().divider,
+    scaffoldBackgroundColor: const XColors.byDefault().pageBackground,
+    unselectedWidgetColor: const XColors.byDefault().iconDisabled,
+  );
 
   /// This generates the default material or cupertino themes, but we don't want to use
   /// Theme.of to access those styles because they don't correspond with the R.styles
   /// design system
-  static ThemeData getTheme({required Function onUpdateResources}) {
-    var themeData = ThemeData(
-      fontFamily: 'NotoSans',
-      brightness: Xayn.colors.brightness,
-      primaryColor: Xayn.colors.primary,
-      // ignore: deprecated_member_use
-      accentColor: Xayn.colors.accent,
-      // ignore: deprecated_member_use
-      buttonColor: Xayn.colors.primaryAction,
-      appBarTheme: AppBarTheme(
-        color: Xayn.colors.accent,
-      ),
-      dividerColor: Xayn.colors.divider,
-      scaffoldBackgroundColor: Xayn.colors.pageBackground,
-      inputDecorationTheme: Xayn.styles.hintTextDecoration,
-      unselectedWidgetColor: Xayn.colors.iconDisabled,
-    );
-
-    // the base theme for all texts is then the generated material or cupertino
-    // text theme.
-    Xayn.setBaseTextTheme(themeData.textTheme);
-
-    /// We use [MediaQueryData] to get the proper window's metrics that Flutter uses
-    /// where size is calculated like:
-    /// ```
-    /// Size size = window.physicalSize / window.devicePixelRatio;
-    /// ```
-    onUpdateResources();
-
+  ThemeData getTheme(XStyles styles) {
     // Override all default themes with [R.styles] themes at this point
-    themeData = themeData.copyWith(
-        textTheme: themeData.textTheme.copyWith(
-      subtitle1: Xayn.styles.appHighlightText,
-      bodyText1: Xayn.styles.appBodyText,
-    ));
-    return themeData;
+    return defaultTheme.copyWith(
+        inputDecorationTheme: styles.hintTextDecoration,
+        textTheme: defaultTheme.textTheme.copyWith(
+          subtitle1: styles.appHighlightText,
+          bodyText1: styles.appBodyText,
+        ));
   }
 }
