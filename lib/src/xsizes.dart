@@ -60,17 +60,12 @@ class XSizes {
   final double onboardingCardAverageHeight = 300;
 
   const XSizes(
-      {required Size screenSize,
-      required Orientation deviceOrientation,
+      {Size? screenSize,
+      Orientation? deviceOrientation,
       double notchPaddingLandscapeMode = 0.0})
-      : _screenSize = screenSize,
-        _deviceOrientation = deviceOrientation,
+      : _screenSize = screenSize ?? const Size(800, 600),
+        _deviceOrientation = deviceOrientation ?? Orientation.portrait,
         _notchPaddingLandscapeMode = notchPaddingLandscapeMode;
-
-  const XSizes.byDefault()
-      : _screenSize = const Size(800, 600),
-        _deviceOrientation = Orientation.portrait,
-        _notchPaddingLandscapeMode = 0;
 
   double get screenWidth => _screenSize.width;
 
