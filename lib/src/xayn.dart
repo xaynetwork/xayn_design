@@ -47,36 +47,33 @@ class Xayn {
   static Orientation? _deviceOrientation;
   static late double _notchPaddingLandscapeMode;
   static Brightness? _brightness;
+
   static Brightness get brightness => _brightness ?? Brightness.light;
+
   static XStyles? _styles;
   static XSizes? _sizes;
   static XColors? _colors;
   static Assets? _assets;
   static Animations? _animations;
-  static final XColors _defaultColors = XColors(Brightness.light);
-  static final XSizes _defaultSizes = XSizes(
-      screenSize: const Size(800, 600),
-      deviceOrientation: Orientation.portrait);
-  static final Assets _defaultAssets = Assets(Brightness.light);
-  static final Animations _defaultAnimations = Animations();
 
   static TextTheme get _textTheme =>
       _baseTextTheme ?? Typography.material2018().white;
+
   static XStyles get styles => _styles ??= XStyles(_textTheme);
 
   // TODO need to change classes to non static access
-  static XSizes get dimen => _sizes ?? _defaultSizes;
+  static XSizes get dimen => _sizes ?? const XSizes.byDefault();
 
-  static XColors get colors => _colors ?? _defaultColors;
+  static XColors get colors => _colors ?? const XColors.byDefault();
 
-  static Assets get assets => _assets ?? _defaultAssets;
+  static Assets get assets => _assets ?? const Assets.byDefault();
 
-  static Animations get animations => _animations ?? _defaultAnimations;
+  static Animations get animations => _animations ?? const Animations();
 
   /// This generates the default material or cupertino themes, but we don't want to use
   /// Theme.of to access those styles because they don't correspond with the R.styles
   /// design system
-  static ThemeData createAppTheme({required Function onUpdateResources}) {
+  static ThemeData getTheme({required Function onUpdateResources}) {
     var themeData = ThemeData(
       fontFamily: 'NotoSans',
       brightness: Xayn.colors.brightness,
@@ -103,7 +100,6 @@ class Xayn {
     /// ```
     /// Size size = window.physicalSize / window.devicePixelRatio;
     /// ```
-
     onUpdateResources();
 
     // Override all default themes with [R.styles] themes at this point

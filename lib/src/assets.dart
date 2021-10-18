@@ -3,10 +3,13 @@ import 'package:xayn_design/xayn_design.dart';
 
 const packagePath = 'packages/xayn_design/';
 
+@immutable
 class Assets {
   final Brightness _brightness;
 
-  Assets(this._brightness);
+  const Assets(this._brightness);
+
+  const Assets.byDefault() : _brightness = Brightness.light;
 
   // Alert
   String get alertIcon => _theme(brightAsset: 'assets/icons/icon_alert.svg');

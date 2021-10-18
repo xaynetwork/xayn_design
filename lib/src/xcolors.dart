@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 /// This colors are named based on the color palate created by design
 /// The name is used to make imports easier and not to be in conflict with the material colors
 /// TODO rename to Colors when all colors are converted to use this class
+@immutable
 class XColors {
   final Brightness _brightness;
-  XColors(this._brightness);
+  const XColors(this._brightness);
+
+  const XColors.byDefault(): _brightness = Brightness.light;
 
   // Private Colors never use directly
 
