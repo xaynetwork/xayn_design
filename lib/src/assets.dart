@@ -7,7 +7,8 @@ const packagePath = 'packages/xayn_design/';
 class Assets {
   final Brightness _brightness;
 
-  const Assets(this._brightness);
+  const Assets(Brightness? brightness)
+      : _brightness = brightness ?? Brightness.light;
 
   const Assets.byDefault() : _brightness = Brightness.light;
 
