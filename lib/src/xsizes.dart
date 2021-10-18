@@ -11,6 +11,7 @@ const int kNumberOfSecondaryImagesMobile = 4;
 const int kNumberOfSecondaryImagesTabletPortraitMode = 6;
 const int kNumberOfSecondaryImagesTabletLandscapeMode = 8;
 
+@immutable
 class XSizes {
   final double _notchPaddingLandscapeMode;
   final Size _screenSize;
@@ -58,13 +59,18 @@ class XSizes {
   final double onboardingCardWidth = 370;
   final double onboardingCardAverageHeight = 300;
 
-  XSizes(
+  const XSizes(
       {required Size screenSize,
       required Orientation deviceOrientation,
       double notchPaddingLandscapeMode = 0.0})
       : _screenSize = screenSize,
         _deviceOrientation = deviceOrientation,
         _notchPaddingLandscapeMode = notchPaddingLandscapeMode;
+
+  const XSizes.byDefault()
+      : _screenSize = const Size(800, 600),
+        _deviceOrientation = Orientation.portrait,
+        _notchPaddingLandscapeMode = 0;
 
   double get screenWidth => _screenSize.width;
 

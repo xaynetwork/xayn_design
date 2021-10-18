@@ -5,6 +5,7 @@ import 'xayn.dart';
 ///   We are currently using:
 ///   FontWeight.w400: 'Regular',
 ///   FontWeight.w700: 'Bold',
+@immutable
 class XStyles {
   final TextTheme _baseTextTheme;
 
