@@ -230,7 +230,8 @@ class Assets {
     required String iOSAsset,
     required String androidAsset,
   }) {
-    return SafePlatform.isAndroid ? androidAsset : iOSAsset;
+    final asset = SafePlatform.isAndroid ? androidAsset : iOSAsset;
+    return packagePath + asset;
   }
 
   String _theme({
@@ -238,8 +239,8 @@ class Assets {
     String? darkAsset,
     Brightness? forceBrightness,
   }) {
-    return (forceBrightness ?? _brightness) == Brightness.dark
-        ? packagePath + (darkAsset ?? brightAsset)
-        : packagePath + brightAsset;
+    final isDark = (forceBrightness ?? _brightness) == Brightness.dark;
+    final asset = isDark ? (darkAsset ?? brightAsset) : brightAsset;
+    return packagePath + asset;
   }
 }
