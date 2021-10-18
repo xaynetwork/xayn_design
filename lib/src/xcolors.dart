@@ -74,6 +74,8 @@ class XColors {
   Color get transparent => _transparent;
   Color get searchInputFill => _theme(bright: _lightGrey, dark: _black33);
   Color get searchInputText => _theme(bright: _black, dark: _lightGrey);
+  Color get searchInputTextDisabled =>
+      _theme(bright: _mediumGrey, dark: _darkGrey);
   Color get searchPuller => _theme(bright: _mediumGrey);
   Color get searchResultSkeletonBase => _theme(bright: _mediumGrey);
   Color get searchResultSkeletonHighlight => _theme(bright: _lightGrey);
