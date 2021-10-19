@@ -18,6 +18,7 @@ class XColors {
   static const _black29 = Color(0xff292929);
   static const _black33 = Color(0xff333333);
   static const _green = Color(0xff22A186);
+
   // Secondary Colors
   static const _lightGreen = Color(0xff79cec0);
   static const _lightGrey = Color(0xfff0f0f0);

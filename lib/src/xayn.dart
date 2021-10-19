@@ -79,7 +79,6 @@ class Xayn {
   Xayn updateScreenInfo({
     required Size screenSize,
     required Orientation deviceOrientation,
-    Function(String)? logger,
     double notchPaddingLandscapeMode = 0.0,
   }) {
     if (screenSize != this.screenSize ||
@@ -95,11 +94,6 @@ class Xayn {
           notchPaddingLandscapeMode: notchPaddingLandscapeMode,
         ),
       );
-      if (logger != null) {
-        logger(
-          'screenSize ${newXayn.screenSize}, orientation: ${newXayn.deviceOrientation}, notchPaddingLandscapeMode: ${newXayn.notchPaddingLandscapeMode}',
-        );
-      }
       return newXayn;
     }
     return this;
