@@ -125,6 +125,7 @@ class XColors {
   Color get speedDialButtonSelected => _pink;
   Color get speedDialButtonUnSelected => _lightGrey;
 
+  Color get qrCodeBackground => _white;
   //
   // Color helper constants
   //
