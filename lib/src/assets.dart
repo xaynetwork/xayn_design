@@ -162,6 +162,21 @@ class Assets {
   String get darkModeIcon =>
       _theme(brightAsset: 'assets/icons/icon_mode_dark.svg');
 
+  String get syncDevicesIcon =>
+      _theme(brightAsset: 'assets/icons/icon_sync_devices.svg');
+
+  String get qrScanIcon =>
+      _theme(brightAsset: 'assets/icons/icon_qr_scanner.svg');
+
+  String get enableCameraIllustration =>
+      _theme(brightAsset: 'assets/icons/illustration_enable_camera.svg');
+
+  String get qrCodeIcon => _theme(brightAsset: 'assets/icons/icon_qr_code.svg');
+
+  String get minusIcon => _theme(brightAsset: 'assets/icons/icon_minus.svg');
+
+  String get cancelIcon => _theme(brightAsset: 'assets/icons/icon_cancel.svg');
+
   /// NewsFeed Screen Layout
   String get layoutSearchNewsSelected =>
       _theme(brightAsset: 'assets/icons/layout_search_news_selected.svg');
