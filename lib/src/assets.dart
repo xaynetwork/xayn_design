@@ -10,254 +10,233 @@ class Assets {
   const Assets({Brightness? brightness})
       : _brightness = brightness ?? Brightness.light;
 
-  // Alert
-  String get alertIcon => _theme(brightAsset: 'assets/icons/icon_alert.svg');
+  _Lottie get lottie => _Lottie(_brightness);
+  _Icons get icons => _Icons(_brightness);
+  _Illustrations get illustrations => _Illustrations();
+  _Graphics get graphics => _Graphics();
+  _Logo get logo => _Logo();
+}
 
-  /// Avatar
-  String avatarJson(Brightness brightness) => _theme(
-        brightAsset: 'assets/lottie/avatar.json',
-        darkAsset: 'assets/lottie/avatar_dark.json',
-        forceBrightness: brightness,
+class _Lottie {
+  final Brightness _brightness;
+  const _Lottie(this._brightness);
+
+  String brainyJson(Brightness brightness) => _theme(
+        brightAsset: 'assets/lottie/brainy.json',
+        darkAsset: 'assets/lottie/brainy_dark.json',
+        brightness: brightness,
       );
 
-  String get avatarEnabledIcon => _theme(
-        brightAsset: 'assets/icons/avatar_enabled.svg',
-        darkAsset: 'assets/icons/avatar_enabled_dark.svg',
+  String _theme({
+    required String brightAsset,
+    String? darkAsset,
+    Brightness? brightness,
+  }) {
+    final isDark = (brightness ?? _brightness) == Brightness.dark;
+    final asset = isDark ? (darkAsset ?? brightAsset) : brightAsset;
+    return packagePath + asset;
+  }
+}
+
+class _Logo {
+  String get xayn => packagePath + 'assets/logo/xayn_logo.svg';
+  String get xaynIcon => packagePath + 'assets/logo/icon_logo.svg';
+}
+
+class _Illustrations {
+  String get enableCamera =>
+      packagePath + 'assets/illustration/illustration_enable_camera.svg';
+}
+
+class _Graphics {
+  String get searchNewsSelected =>
+      packagePath + 'assets/graphics/graphic_search_news_selected.svg';
+
+  String get searchNews =>
+      packagePath + 'assets/graphics/graphic_search_news.svg';
+
+  String get searchOnlySelected =>
+      packagePath + 'assets/graphics/graphic_search_only_selected.svg';
+
+  String get searchOnly =>
+      packagePath + 'assets/graphics/graphic_search_only.svg';
+
+  String get newsOnlySelected =>
+      packagePath + 'assets/graphics/graphic_news_only_selected.svg';
+
+  String get newsOnly =>
+      packagePath + 'assets/graphics/graphic_news_only.svg';
+
+  String get gridView => packagePath + 'assets/graphics/graphic_grid_view.svg';
+
+  String get gridViewSelected =>
+      packagePath + 'assets/graphics/graphic_grid_view_selected.svg';
+
+  String get listView => packagePath + 'assets/graphics/graphic_list_view.svg';
+
+  String get listViewSelected =>
+      packagePath + 'assets/graphics/graphic_list_view_selected.svg';
+}
+
+class _Icons {
+  final Brightness _brightness;
+  const _Icons(this._brightness);
+
+  String get alert => _theme(brightAsset: 'assets/icons/icon_alert.svg');
+
+  String get brainyEnabled => _theme(
+        brightAsset: 'assets/icons/brainy_enabled.svg',
+        darkAsset: 'assets/icons/brainy_enabled_dark.svg',
       );
 
-  String get avatarDisabledIcon => _theme(
-        brightAsset: 'assets/icons/avatar_disabled.svg',
-        darkAsset: 'assets/icons/avatar_disabled_dark.svg',
+  String get brainyDisabled => _theme(
+        brightAsset: 'assets/icons/brainy_disabled.svg',
+        darkAsset: 'assets/icons/brainy_disabled_dark.svg',
       );
 
-  /// SearchScreenResultList
-  String get checkIcon => _theme(brightAsset: 'assets/icons/icon_check.svg');
+  String get check => _theme(brightAsset: 'assets/icons/icon_check.svg');
 
-  String get neutralIcon =>
+  String get neutral =>
       _theme(brightAsset: 'assets/icons/icon_neutral.svg');
 
-  String get xIcon => _theme(brightAsset: 'assets/icons/icon_x.svg');
+  String get cross => _theme(brightAsset: 'assets/icons/icon_cross.svg');
 
-  String get plusIcon => _theme(brightAsset: 'assets/icons/icon_plus.svg');
+  String get plus => _theme(brightAsset: 'assets/icons/icon_plus.svg');
 
-  String get newTabIcon => _theme(brightAsset: 'assets/icons/icon_new_tab.svg');
+  String get newTab => _theme(brightAsset: 'assets/icons/icon_new_tab.svg');
 
-  String get binocularsIcon =>
+  String get binoculars =>
       _theme(brightAsset: 'assets/icons/icon_binoculars.svg');
 
   /// AppBottomNavigationBar
-  String get homeIcon => _theme(brightAsset: 'assets/icons/icon_home.svg');
+  String get home => _theme(brightAsset: 'assets/icons/icon_home.svg');
 
-  String get searchIcon => _theme(brightAsset: 'assets/icons/icon_search.svg');
+  String get search => _theme(brightAsset: 'assets/icons/icon_search.svg');
 
-  String get largeSearchIcon =>
-      _theme(brightAsset: 'assets/icons/icon_search_large.svg');
+  String get book =>
+      _theme(brightAsset: 'assets/icons/icon_book.svg');
 
-  ///Not used
-  String get bookIcon => _theme(brightAsset: 'assets/icons/icon_book.svg');
-
-  String get collectionsIcon =>
-      _theme(brightAsset: 'assets/icons/icon_collections.svg');
-
-  String get readerModeIcon =>
+  String get readerMode =>
       _theme(brightAsset: 'assets/icons/icon_reader_mode.svg');
 
-  String get tabsIcon => _theme(brightAsset: 'assets/icons/icon_tabs.svg');
+  String get tabs => _theme(brightAsset: 'assets/icons/icon_tabs.svg');
 
-  String get historyIcon =>
-      _theme(brightAsset: 'assets/icons/icon_history.svg');
+  String get clock => _theme(brightAsset: 'assets/icons/icon_clock.svg');
 
-  String get settingsIcon =>
-      _theme(brightAsset: 'assets/icons/icon_settings.svg');
+  String get gear => _theme(brightAsset: 'assets/icons/icon_gear.svg');
 
-  String get forwardIcon =>
+  String get forward =>
       _theme(brightAsset: 'assets/icons/icon_forward.svg');
 
-  String get backIcon => _theme(brightAsset: 'assets/icons/icon_back.svg');
+  String get back => _theme(brightAsset: 'assets/icons/icon_back.svg');
 
-  String get upIcon => _theme(brightAsset: 'assets/icons/icon_up.svg');
+  String get up => _theme(brightAsset: 'assets/icons/icon_up.svg');
 
-  String get downIcon => _theme(brightAsset: 'assets/icons/icon_down.svg');
+  String get down => _theme(brightAsset: 'assets/icons/icon_down.svg');
 
-  String get iconXayn => _theme(brightAsset: 'assets/icons/icon_logo.svg');
+  String get icon => _theme(brightAsset: 'assets/icons/icon_menu.svg');
 
-  String get iconMenu => _theme(brightAsset: 'assets/icons/icon_menu.svg');
+  String get person => _theme(brightAsset: 'assets/icons/icon_person.svg');
 
-  /// AppLogo
-  String get xaynLogo => _theme(brightAsset: 'assets/xayn_logo.svg');
+  String get globe => _theme(brightAsset: 'assets/icons/icon_globe.svg');
 
-  /// PersonalisationToggle
-  String get personIcon => _theme(brightAsset: 'assets/icons/icon_person.svg');
+  String get image => _theme(brightAsset: 'assets/icons/icon_image.svg');
 
-  String get hintArrow => _theme(brightAsset: 'assets/icons/hint_arrow.svg');
+  String get video => _theme(brightAsset: 'assets/icons/icon_video.svg');
 
-  /// SearchTypeButton
-  String get webIcon => _theme(brightAsset: 'assets/icons/icon_web.svg');
+  String get news => _theme(brightAsset: 'assets/icons/icon_news.svg');
 
-  String get webThreeDotsIcon =>
-      _theme(brightAsset: 'assets/icons/icon_web_three_dots.svg');
+  String get trash => _theme(brightAsset: 'assets/icons/icon_trash.svg');
 
-  String get imageIcon => _theme(brightAsset: 'assets/icons/icon_image.svg');
-
-  String get videoIcon => _theme(brightAsset: 'assets/icons/icon_video.svg');
-
-  String get imageThreeDotsIcon =>
-      _theme(brightAsset: 'assets/icons/icon_image_three_dots.svg');
-
-  String get videoThreeDotsIcon =>
-      _theme(brightAsset: 'assets/icons/icon_video_three_dots.svg');
-
-  String get newsIcon => _theme(brightAsset: 'assets/icons/icon_news.svg');
-
-  String get newsThreeDotsIcon =>
-      _theme(brightAsset: 'assets/icons/icon_news_three_dots.svg');
-
-  /// HistoryScreenButtons
-  String get trashIcon => _theme(brightAsset: 'assets/icons/icon_trash.svg');
-
-  String get filtersIcon =>
+  String get filters =>
       _theme(brightAsset: 'assets/icons/icon_filters.svg');
 
+  //todo: remove me and reuse filters with a white background
   String get filtersIconRound =>
       _theme(brightAsset: 'assets/icons/icon_filters_round.svg');
 
-  /// Swipeable
-  String get bookmarkIcon =>
+  String get bookmark =>
       _theme(brightAsset: 'assets/icons/icon_bookmark.svg');
 
-  String get bookmarkActiveIcon =>
+  String get bookmarkActive =>
       _theme(brightAsset: 'assets/icons/icon_bookmark_active.svg');
 
-  String get shareIcon => _platformDepended(
-        iOSAsset: 'assets/icons/icon_share.svg',
+  String get share => _platformDepended(
+        iOSAsset: 'assets/icons/icon_share_ios.svg',
         androidAsset: 'assets/icons/icon_share_android.svg',
       );
 
-  String get editIcon => _theme(brightAsset: 'assets/icons/icon_edit.svg');
+  String get edit => _theme(brightAsset: 'assets/icons/icon_edit.svg');
 
-  String get undoIcon => _theme(brightAsset: 'assets/icons/icon_undo.svg');
+  String get undo => _theme(brightAsset: 'assets/icons/icon_undo.svg');
 
-  String get downloadIcon =>
+  String get download =>
       _theme(brightAsset: 'assets/icons/icon_download.svg');
 
-  /// SettingsScreen
-  String get marketChangeIcon =>
-      _theme(brightAsset: 'assets/icons/icon_market_change.svg');
+  String get speechBubbles =>
+      _theme(brightAsset: 'assets/icons/icon_speech_bubbles.svg');
 
-  String get infoIcon => _theme(brightAsset: 'assets/icons/icon_info.svg');
+  String get info => _theme(brightAsset: 'assets/icons/icon_info.svg');
 
-  String get legalIcon => _theme(brightAsset: 'assets/icons/icon_legal.svg');
+  String get legal => _theme(brightAsset: 'assets/icons/icon_legal.svg');
 
-  String get bugIcon => _theme(brightAsset: 'assets/icons/icon_bug.svg');
+  String get bug => _theme(brightAsset: 'assets/icons/icon_bug.svg');
 
-  String get shieldIcon => _theme(brightAsset: 'assets/icons/icon_shield.svg');
+  String get shield => _theme(brightAsset: 'assets/icons/icon_shield.svg');
 
-  String get boltIcon => _theme(brightAsset: 'assets/icons/icon_bolt.svg');
+  String get lightening =>
+      _theme(brightAsset: 'assets/icons/icon_lightening.svg');
 
-  String get rocketIcon => _theme(brightAsset: 'assets/icons/icon_rocket.svg');
+  String get rocket => _theme(brightAsset: 'assets/icons/icon_rocket.svg');
 
-  String get osModeIcon => _theme(brightAsset: 'assets/icons/icon_mode_os.svg');
+  String get moonAndSun =>
+      _theme(brightAsset: 'assets/icons/icon_moon_and_sun.svg');
 
-  String get lightModeIcon =>
-      _theme(brightAsset: 'assets/icons/icon_mode_light.svg');
+  String get sun => _theme(brightAsset: 'assets/icons/icon_sun.svg');
 
-  String get darkModeIcon =>
-      _theme(brightAsset: 'assets/icons/icon_mode_dark.svg');
+  String get moon => _theme(brightAsset: 'assets/icons/icon_moon.svg');
 
-  String get syncDevicesIcon =>
-      _theme(brightAsset: 'assets/icons/icon_sync_devices.svg');
+  String get devices =>
+      _theme(brightAsset: 'assets/icons/icon_devices.svg');
 
-  String get qrScanIcon =>
+  String get qrScan =>
       _theme(brightAsset: 'assets/icons/icon_qr_scanner.svg');
 
-  String get enableCameraIllustration =>
-      _theme(brightAsset: 'assets/icons/illustration_enable_camera.svg');
+  String get qrCode => _theme(brightAsset: 'assets/icons/icon_qr_code.svg');
 
-  String get qrCodeIcon => _theme(brightAsset: 'assets/icons/icon_qr_code.svg');
+  String get minus => _theme(brightAsset: 'assets/icons/icon_minus.svg');
 
-  String get minusIcon => _theme(brightAsset: 'assets/icons/icon_minus.svg');
+  String get cancel => _theme(brightAsset: 'assets/icons/icon_cancel.svg');
 
-  String get cancelIcon => _theme(brightAsset: 'assets/icons/icon_cancel.svg');
-
-  /// NewsFeed Screen Layout
-  String get layoutSearchNewsSelected =>
-      _theme(brightAsset: 'assets/icons/layout_search_news_selected.svg');
-
-  String get layoutSearchNews =>
-      _theme(brightAsset: 'assets/icons/layout_search_news.svg');
-
-  String get layoutSearchOnlySelected =>
-      _theme(brightAsset: 'assets/icons/layout_search_only_selected.svg');
-
-  String get layoutSearchOnly =>
-      _theme(brightAsset: 'assets/icons/layout_search_only.svg');
-
-  String get layoutNewsOnlySelected =>
-      _theme(brightAsset: 'assets/icons/layout_news_only_selected.svg');
-
-  String get layoutNewsOnly =>
-      _theme(brightAsset: 'assets/icons/layout_news_only.svg');
-
-  /// Grid Setup Layout
-  String get gridView =>
-      _theme(brightAsset: 'assets/icons/layout_grid_view_option.svg');
-
-  String get gridViewSelected =>
-      _theme(brightAsset: 'assets/icons/layout_grid_view_option_selected.svg');
-
-  String get listView =>
-      _theme(brightAsset: 'assets/icons/layout_list_view_option.svg');
-
-  String get listViewSelected =>
-      _theme(brightAsset: 'assets/icons/layout_list_view_option_selected.svg');
-
-  /// WebView
-  String get webDial => _theme(brightAsset: 'assets/icons/icon_web_dial.svg');
-
-  String get webShareExternally =>
-      _theme(brightAsset: 'assets/icons/icon_web_share_externally.svg');
-
-  String get webShare => _platformDepended(
-        iOSAsset: 'assets/icons/icon_web_share.svg',
-        androidAsset: 'assets/icons/icon_share_android.svg',
-      );
-
-  String get webBookmark =>
-      _theme(brightAsset: 'assets/icons/icon_web_bookmark.svg');
-
-  String get webBookmarkActive =>
-      _theme(brightAsset: 'assets/icons/icon_web_bookmark_active.svg');
+  String get reload => _theme(brightAsset: 'assets/icons/icon_reload.svg');
 
   String get thumbsUp => _theme(brightAsset: 'assets/icons/icon_thumbs_up.svg');
 
   String get thumbsDown =>
       _theme(brightAsset: 'assets/icons/icon_thumbs_down.svg');
 
-  /// Video tab
-  String get videoPlay =>
-      _theme(brightAsset: 'assets/icons/icon_video_play.svg');
+  String get play => _theme(brightAsset: 'assets/icons/icon_play.svg');
 
-  ///NewsFeed screen
-  String get saluteIcon => _theme(brightAsset: 'assets/icons/icon_salute.svg');
+  String get confetti =>
+      _theme(brightAsset: 'assets/icons/icon_confetti.svg');
 
-  // Webview
-  String get reload => _theme(brightAsset: 'assets/icons/icon_reload.svg');
-
-  String _platformDepended({
-    required String iOSAsset,
-    required String androidAsset,
-  }) {
-    final asset = SafePlatform.isAndroid ? androidAsset : iOSAsset;
-    return packagePath + asset;
-  }
+  //todo: add heart icon and use it in xayn_search
 
   String _theme({
     required String brightAsset,
     String? darkAsset,
-    Brightness? forceBrightness,
+    Brightness? brightness,
   }) {
-    final isDark = (forceBrightness ?? _brightness) == Brightness.dark;
+    final isDark = (brightness ?? _brightness) == Brightness.dark;
     final asset = isDark ? (darkAsset ?? brightAsset) : brightAsset;
     return packagePath + asset;
   }
+}
+
+String _platformDepended({
+  required String iOSAsset,
+  required String androidAsset,
+}) {
+  final asset = SafePlatform.isAndroid ? androidAsset : iOSAsset;
+  return packagePath + asset;
 }
