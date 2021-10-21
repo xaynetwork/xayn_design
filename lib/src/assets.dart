@@ -134,7 +134,7 @@ class _Icons {
 
   String get down => _theme(brightAsset: 'assets/icons/icon_down.svg');
 
-  String get icon => _theme(brightAsset: 'assets/icons/icon_menu.svg');
+  String get menu => _theme(brightAsset: 'assets/icons/icon_menu.svg');
 
   String get person => _theme(brightAsset: 'assets/icons/icon_person.svg');
 
