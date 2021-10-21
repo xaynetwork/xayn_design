@@ -64,8 +64,7 @@ class _Graphics {
   String get newsOnlySelected =>
       packagePath + 'assets/graphics/graphic_news_only_selected.svg';
 
-  String get newsOnly =>
-      packagePath + 'assets/graphics/graphic_news_only.svg';
+  String get newsOnly => packagePath + 'assets/graphics/graphic_news_only.svg';
 
   String get gridView => packagePath + 'assets/graphics/graphic_grid_view.svg';
 
@@ -96,8 +95,7 @@ class _Icons {
 
   String get check => _theme(brightAsset: 'assets/icons/icon_check.svg');
 
-  String get neutral =>
-      _theme(brightAsset: 'assets/icons/icon_neutral.svg');
+  String get neutral => _theme(brightAsset: 'assets/icons/icon_neutral.svg');
 
   String get cross => _theme(brightAsset: 'assets/icons/icon_cross.svg');
 
@@ -113,8 +111,7 @@ class _Icons {
 
   String get search => _theme(brightAsset: 'assets/icons/icon_search.svg');
 
-  String get book =>
-      _theme(brightAsset: 'assets/icons/icon_book.svg');
+  String get book => _theme(brightAsset: 'assets/icons/icon_book.svg');
 
   String get readerMode =>
       _theme(brightAsset: 'assets/icons/icon_reader_mode.svg');
@@ -125,8 +122,7 @@ class _Icons {
 
   String get gear => _theme(brightAsset: 'assets/icons/icon_gear.svg');
 
-  String get forward =>
-      _theme(brightAsset: 'assets/icons/icon_forward.svg');
+  String get forward => _theme(brightAsset: 'assets/icons/icon_forward.svg');
 
   String get back => _theme(brightAsset: 'assets/icons/icon_back.svg');
 
@@ -148,15 +144,13 @@ class _Icons {
 
   String get trash => _theme(brightAsset: 'assets/icons/icon_trash.svg');
 
-  String get filters =>
-      _theme(brightAsset: 'assets/icons/icon_filters.svg');
+  String get filters => _theme(brightAsset: 'assets/icons/icon_filters.svg');
 
   //todo: remove me and reuse filters with a white background
   String get filtersIconRound =>
       _theme(brightAsset: 'assets/icons/icon_filters_round.svg');
 
-  String get bookmark =>
-      _theme(brightAsset: 'assets/icons/icon_bookmark.svg');
+  String get bookmark => _theme(brightAsset: 'assets/icons/icon_bookmark.svg');
 
   String get bookmarkActive =>
       _theme(brightAsset: 'assets/icons/icon_bookmark_active.svg');
@@ -170,8 +164,7 @@ class _Icons {
 
   String get undo => _theme(brightAsset: 'assets/icons/icon_undo.svg');
 
-  String get download =>
-      _theme(brightAsset: 'assets/icons/icon_download.svg');
+  String get download => _theme(brightAsset: 'assets/icons/icon_download.svg');
 
   String get speechBubbles =>
       _theme(brightAsset: 'assets/icons/icon_speech_bubbles.svg');
@@ -196,11 +189,9 @@ class _Icons {
 
   String get moon => _theme(brightAsset: 'assets/icons/icon_moon.svg');
 
-  String get devices =>
-      _theme(brightAsset: 'assets/icons/icon_devices.svg');
+  String get devices => _theme(brightAsset: 'assets/icons/icon_devices.svg');
 
-  String get qrScan =>
-      _theme(brightAsset: 'assets/icons/icon_qr_scanner.svg');
+  String get qrScan => _theme(brightAsset: 'assets/icons/icon_qr_scanner.svg');
 
   String get qrCode => _theme(brightAsset: 'assets/icons/icon_qr_code.svg');
 
@@ -217,10 +208,9 @@ class _Icons {
 
   String get play => _theme(brightAsset: 'assets/icons/icon_play.svg');
 
-  String get confetti =>
-      _theme(brightAsset: 'assets/icons/icon_confetti.svg');
+  String get confetti => _theme(brightAsset: 'assets/icons/icon_confetti.svg');
 
-  //todo: add heart icon and use it in xayn_search
+  String get heart => _theme(brightAsset: 'assets/icons/icon_heart.svg');
 
   String _theme({
     required String brightAsset,
