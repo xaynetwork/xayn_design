@@ -23,7 +23,7 @@ class Xayn {
         textTheme = textTheme ?? Typography.material2018().white,
         styles = styles ??
             XStyles(
-              defaultTheme.textTheme,
+              defaultTheme(brightness).textTheme,
               brightness: brightness,
             );
 
@@ -108,32 +108,37 @@ class Xayn {
     );
   }
 
-  static final ThemeData defaultTheme = ThemeData(
-    fontFamily: 'NotoSans',
-    brightness: const XColors().brightness,
-    primaryColor: const XColors().primary,
-    // ignore: deprecated_member_use
-    accentColor: const XColors().accent,
-    // ignore: deprecated_member_use
-    buttonColor: const XColors().primaryAction,
-    appBarTheme: AppBarTheme(
-      color: const XColors().accent,
-    ),
-    dividerColor: const XColors().divider,
-    scaffoldBackgroundColor: const XColors().pageBackground,
-    unselectedWidgetColor: const XColors().iconDisabled,
-  );
+  static ThemeData defaultTheme(Brightness brightness) {
+    final colors = XColors(brightness: brightness);
+    return ThemeData(
+      fontFamily: 'NotoSans',
+      brightness: brightness,
+      primaryColor: colors.primary,
+      // ignore: deprecated_member_use
+      accentColor: colors.accent,
+      // ignore: deprecated_member_use
+      buttonColor: colors.primaryAction,
+      appBarTheme: AppBarTheme(
+        color: colors.accent,
+      ),
+      dialogBackgroundColor: colors.pageBackground,
+      dividerColor: colors.divider,
+      scaffoldBackgroundColor: colors.pageBackground,
+      unselectedWidgetColor: colors.iconDisabled,
+    );
+  }
 
   /// This generates the default material or cupertino themes, but we don't want to use
   /// Theme.of to access those styles because they don't correspond with the R.styles
   /// design system
   ThemeData getTheme(XStyles styles) {
     // Override all default themes with [R.styles] themes at this point
-    return defaultTheme.copyWith(
-        inputDecorationTheme: styles.hintTextDecoration,
-        textTheme: defaultTheme.textTheme.copyWith(
-          subtitle1: styles.appHighlightText,
-          bodyText1: styles.appBodyText,
-        ));
+    return defaultTheme(brightness).copyWith(
+      inputDecorationTheme: styles.hintTextDecoration,
+      textTheme: defaultTheme(brightness).textTheme.copyWith(
+            subtitle1: styles.appHighlightText,
+            bodyText1: styles.appBodyText,
+          ),
+    );
   }
 }
