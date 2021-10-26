@@ -22,10 +22,10 @@ class _Lottie {
   const _Lottie(this._brightness);
 
   String brainyJson(Brightness brightness) => _theme(
-        brightAsset: 'assets/lottie/brainy.json',
-        darkAsset: 'assets/lottie/brainy_dark.json',
-        brightness: brightness,
-      );
+    brightAsset: 'assets/lottie/brainy.json',
+    darkAsset: 'assets/lottie/brainy_dark.json',
+    brightness: brightness,
+  );
 
   String _theme({
     required String brightAsset,
@@ -49,32 +49,17 @@ class _Illustrations {
 }
 
 class _Graphics {
-  String get searchNewsSelected =>
-      packagePath + 'assets/graphics/graphic_search_news_selected.svg';
-
   String get searchNews =>
       packagePath + 'assets/graphics/graphic_search_news.svg';
 
-  String get searchOnlySelected =>
-      packagePath + 'assets/graphics/graphic_search_only_selected.svg';
-
   String get searchOnly =>
       packagePath + 'assets/graphics/graphic_search_only.svg';
-
-  String get newsOnlySelected =>
-      packagePath + 'assets/graphics/graphic_news_only_selected.svg';
 
   String get newsOnly => packagePath + 'assets/graphics/graphic_news_only.svg';
 
   String get gridView => packagePath + 'assets/graphics/graphic_grid_view.svg';
 
-  String get gridViewSelected =>
-      packagePath + 'assets/graphics/graphic_grid_view_selected.svg';
-
   String get listView => packagePath + 'assets/graphics/graphic_list_view.svg';
-
-  String get listViewSelected =>
-      packagePath + 'assets/graphics/graphic_list_view_selected.svg';
 }
 
 class _Icons {
@@ -84,14 +69,14 @@ class _Icons {
   String get alert => _theme(brightAsset: 'assets/icons/icon_alert.svg');
 
   String get brainyEnabled => _theme(
-        brightAsset: 'assets/icons/brainy_enabled.svg',
-        darkAsset: 'assets/icons/brainy_enabled_dark.svg',
-      );
+    brightAsset: 'assets/icons/brainy_enabled.svg',
+    darkAsset: 'assets/icons/brainy_enabled_dark.svg',
+  );
 
   String get brainyDisabled => _theme(
-        brightAsset: 'assets/icons/brainy_disabled.svg',
-        darkAsset: 'assets/icons/brainy_disabled_dark.svg',
-      );
+    brightAsset: 'assets/icons/brainy_disabled.svg',
+    darkAsset: 'assets/icons/brainy_disabled_dark.svg',
+  );
 
   String get check => _theme(brightAsset: 'assets/icons/icon_check.svg');
 
@@ -156,9 +141,9 @@ class _Icons {
       _theme(brightAsset: 'assets/icons/icon_bookmark_active.svg');
 
   String get share => _platformDepended(
-        iOSAsset: 'assets/icons/icon_share_ios.svg',
-        androidAsset: 'assets/icons/icon_share_android.svg',
-      );
+    iOSAsset: 'assets/icons/icon_share_ios.svg',
+    androidAsset: 'assets/icons/icon_share_android.svg',
+  );
 
   String get edit => _theme(brightAsset: 'assets/icons/icon_edit.svg');
 

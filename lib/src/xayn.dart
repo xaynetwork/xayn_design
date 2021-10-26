@@ -14,6 +14,7 @@ class Xayn {
     this.notchPaddingLandscapeMode = 0,
     this.brightness = Brightness.light,
     XStyles? styles,
+    ThemeData? themeData,
     this.dimen = const XSizes(),
     this.animations = const Animations(),
     XColors? colors,
@@ -21,11 +22,11 @@ class Xayn {
   })  : assets = assets ?? Assets(brightness: brightness),
         colors = colors ?? XColors(brightness: brightness),
         textTheme = textTheme ?? Typography.material2018().white,
-        styles = styles ??
-            XStyles(
-              defaultTheme(brightness).textTheme,
-              brightness: brightness,
-            );
+        styles = styles ??= XStyles(
+          defaultTheme(brightness).textTheme,
+          brightness: brightness,
+        ),
+        themeData = themeData ?? defaultTheme(brightness, styles: styles);
 
   final TextTheme textTheme;
   final Size? screenSize;
@@ -33,6 +34,7 @@ class Xayn {
   final double notchPaddingLandscapeMode;
   final Brightness brightness;
   final XStyles styles;
+  final ThemeData themeData;
   final XSizes dimen;
   final XColors colors;
   final Assets assets;
@@ -47,6 +49,7 @@ class Xayn {
     double? notchPaddingLandscapeMode,
     Brightness? brightness,
     XStyles? styles,
+    ThemeData? themeData,
     XSizes? dimen,
     XColors? colors,
     Assets? assets,
@@ -60,6 +63,7 @@ class Xayn {
             notchPaddingLandscapeMode ?? this.notchPaddingLandscapeMode,
         brightness: brightness ?? this.brightness,
         styles: styles ?? this.styles,
+        themeData: themeData ?? this.themeData,
         dimen: dimen ?? this.dimen,
         colors: colors ?? this.colors,
         assets: assets ?? this.assets,
@@ -67,12 +71,14 @@ class Xayn {
       );
 
   Xayn updateBaseTextTheme(TextTheme textTheme) {
+    final styles = XStyles(
+      textTheme,
+      brightness: brightness,
+    );
     return copyWith(
       textTheme: textTheme,
-      styles: XStyles(
-        textTheme,
-        brightness: brightness,
-      ),
+      styles: styles,
+      themeData: defaultTheme(brightness, styles: styles),
     );
   }
 
@@ -105,10 +111,11 @@ class Xayn {
       colors: XColors(brightness: brightness),
       assets: Assets(brightness: brightness),
       styles: XStyles(textTheme, brightness: brightness),
+      themeData: defaultTheme(brightness, styles: styles),
     );
   }
 
-  static ThemeData defaultTheme(Brightness brightness) {
+  static ThemeData defaultTheme(Brightness brightness, {XStyles? styles}) {
     final colors = XColors(brightness: brightness);
     return ThemeData(
       fontFamily: 'NotoSans',
@@ -125,20 +132,16 @@ class Xayn {
       dividerColor: colors.divider,
       scaffoldBackgroundColor: colors.pageBackground,
       unselectedWidgetColor: colors.iconDisabled,
+      inputDecorationTheme: styles?.hintTextDecoration,
+      textTheme: styles == null
+          ? null
+          : defaultTheme(brightness).textTheme.copyWith(
+                subtitle1: styles.appHighlightText,
+                bodyText1: styles.appBodyText,
+              ),
     );
   }
 
-  /// This generates the default material or cupertino themes, but we don't want to use
-  /// Theme.of to access those styles because they don't correspond with the R.styles
-  /// design system
-  ThemeData getTheme(XStyles styles) {
-    // Override all default themes with [R.styles] themes at this point
-    return defaultTheme(brightness).copyWith(
-      inputDecorationTheme: styles.hintTextDecoration,
-      textTheme: defaultTheme(brightness).textTheme.copyWith(
-            subtitle1: styles.appHighlightText,
-            bodyText1: styles.appBodyText,
-          ),
-    );
-  }
+  static TextTheme defaultTextTheme(Brightness brightness) =>
+      defaultTheme(brightness).textTheme;
 }

@@ -1,22 +1,14 @@
 <svg fill="none" height="93" viewBox="0 0 149 93" width="149" xmlns="http://www.w3.org/2000/svg">
-    <g clip-path="url(#clip0)">
-        <rect fill="#C4C4C4" height="103" width="157" x="-4" y="-3" />
-        <rect fill="#F8F8F8" height="28" rx="3" width="83" x="33" y="11" />
-        <rect fill="#C4C4C4" height="10" rx="3" width="12" x="37" y="23" />
-        <rect fill="#C4C4C4" height="3" rx="1.5" width="39" x="38" y="16" />
-        <rect fill="#C4C4C4" height="3" rx="1.5" width="54" x="53" y="23" />
-        <rect fill="#C4C4C4" height="3" rx="1.5" width="54" x="53" y="30" />
-        <rect fill="#F8F8F8" height="28" rx="3" width="83" x="33" y="47" />
-        <rect fill="#C4C4C4" height="10" rx="3" width="12" x="37" y="59" />
-        <rect fill="#C4C4C4" height="3" rx="1.5" width="39" x="38" y="52" />
-        <rect fill="#C4C4C4" height="3" rx="1.5" width="54" x="53" y="59" />
-        <rect fill="#C4C4C4" height="3" rx="1.5" width="54" x="53" y="66" />
-        <rect fill="#F8F8F8" height="28" rx="3" width="83" x="33" y="83" />
-        <rect fill="#C4C4C4" height="3" rx="1.5" width="39" x="38" y="88" />
-    </g>
-    <defs>
-        <clipPath id="clip0">
-            <rect fill="white" height="93" rx="5" width="149" />
-        </clipPath>
-    </defs>
+    <rect fill="#F8F8F8" height="28" rx="3" width="83" x="33" y="11" />
+    <rect fill="#C4C4C4" height="10" rx="3" width="12" x="37" y="23" />
+    <rect fill="#C4C4C4" height="3" rx="1.5" width="39" x="38" y="16" />
+    <rect fill="#C4C4C4" height="3" rx="1.5" width="54" x="53" y="23" />
+    <rect fill="#C4C4C4" height="3" rx="1.5" width="54" x="53" y="30" />
+    <rect fill="#F8F8F8" height="28" rx="3" width="83" x="33" y="47" />
+    <rect fill="#C4C4C4" height="10" rx="3" width="12" x="37" y="59" />
+    <rect fill="#C4C4C4" height="3" rx="1.5" width="39" x="38" y="52" />
+    <rect fill="#C4C4C4" height="3" rx="1.5" width="54" x="53" y="59" />
+    <rect fill="#C4C4C4" height="3" rx="1.5" width="54" x="53" y="66" />
+    <rect fill="#F8F8F8" height="28" rx="3" width="83" x="33" y="83" />
+    <rect fill="#C4C4C4" height="3" rx="1.5" width="39" x="38" y="88" />
 </svg>
