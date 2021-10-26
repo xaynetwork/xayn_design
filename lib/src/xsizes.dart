@@ -203,4 +203,9 @@ class XSizes {
   final double searchBarScrollThreshold = 150.0;
 
   final double headerMaxExtent = 65.0;
+
+  //graphics
+  final double graphicsGridViewWidth = 149;
+  final double graphicsNewsFeedLayoutWidth = 57;
+  final double graphicsHeight = 93;
 }

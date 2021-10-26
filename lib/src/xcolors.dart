@@ -129,6 +129,10 @@ class XColors {
   Color get speedDialButtonUnSelected => _lightGrey;
 
   Color get qrCodeBackground => _white;
+
+  Color get graphicDisabled => _theme(bright: _mediumGrey);
+  Color get graphicSelected => _theme(bright: _green);
+
   //
   // Color helper constants
   //
