@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'animations.dart';
-import 'assets.dart';
+import 'xanimations.dart';
+import 'xassets.dart';
 import 'xcolors.dart';
 import 'xsizes.dart';
 import 'xstyles.dart';
 
 @immutable
-class Xayn {
-  Xayn({
+class Linden {
+  Linden({
     TextTheme? textTheme,
     this.screenSize,
     this.deviceOrientation = Orientation.portrait,
@@ -16,17 +16,17 @@ class Xayn {
     XStyles? styles,
     ThemeData? themeData,
     this.dimen = const XSizes(),
-    this.animations = const Animations(),
+    this.animations = const XAnimations(),
     XColors? colors,
-    Assets? assets,
-  })  : assets = assets ?? Assets(brightness: brightness),
+    XAssets? assets,
+  })  : assets = assets ?? XAssets(brightness: brightness),
         colors = colors ?? XColors(brightness: brightness),
         textTheme = textTheme ?? Typography.material2018().white,
         styles = styles ??= XStyles(
-          defaultTheme(brightness).textTheme,
+          _defaultTheme(brightness).textTheme,
           brightness: brightness,
         ),
-        themeData = themeData ?? defaultTheme(brightness, styles: styles);
+        themeData = themeData ?? _defaultTheme(brightness, styles: styles);
 
   final TextTheme textTheme;
   final Size? screenSize;
@@ -37,12 +37,10 @@ class Xayn {
   final ThemeData themeData;
   final XSizes dimen;
   final XColors colors;
-  final Assets assets;
-  final Animations animations;
+  final XAssets assets;
+  final XAnimations animations;
 
-  bool get isDarkMode => brightness == Brightness.dark;
-
-  Xayn copyWith({
+  Linden copyWith({
     TextTheme? textTheme,
     Size? screenSize,
     Orientation? deviceOrientation,
@@ -52,10 +50,10 @@ class Xayn {
     ThemeData? themeData,
     XSizes? dimen,
     XColors? colors,
-    Assets? assets,
-    Animations? animations,
+    XAssets? assets,
+    XAnimations? animations,
   }) =>
-      Xayn(
+      Linden(
         textTheme: textTheme ?? this.textTheme,
         screenSize: screenSize ?? this.screenSize,
         deviceOrientation: deviceOrientation ?? this.deviceOrientation,
@@ -70,7 +68,7 @@ class Xayn {
         animations: animations ?? this.animations,
       );
 
-  Xayn updateBaseTextTheme(TextTheme textTheme) {
+  Linden updateBaseTextTheme(TextTheme textTheme) {
     final styles = XStyles(
       textTheme,
       brightness: brightness,
@@ -78,11 +76,11 @@ class Xayn {
     return copyWith(
       textTheme: textTheme,
       styles: styles,
-      themeData: defaultTheme(brightness, styles: styles),
+      themeData: _defaultTheme(brightness, styles: styles),
     );
   }
 
-  Xayn updateScreenInfo({
+  Linden updateScreenInfo({
     required Size screenSize,
     required Orientation deviceOrientation,
     double notchPaddingLandscapeMode = 0.0,
@@ -90,7 +88,7 @@ class Xayn {
     if (screenSize != this.screenSize ||
         deviceOrientation != this.deviceOrientation ||
         notchPaddingLandscapeMode != this.notchPaddingLandscapeMode) {
-      final newXayn = copyWith(
+      return copyWith(
         screenSize: screenSize,
         deviceOrientation: deviceOrientation,
         notchPaddingLandscapeMode: notchPaddingLandscapeMode,
@@ -100,31 +98,31 @@ class Xayn {
           notchPaddingLandscapeMode: notchPaddingLandscapeMode,
         ),
       );
-      return newXayn;
     }
     return this;
   }
 
-  Xayn updateBrightness(Brightness brightness) {
-    return copyWith(
-      brightness: brightness,
-      colors: XColors(brightness: brightness),
-      assets: Assets(brightness: brightness),
-      styles: XStyles(textTheme, brightness: brightness),
-      themeData: defaultTheme(brightness, styles: styles),
-    );
-  }
+  Linden updateBrightness(Brightness brightness) => copyWith(
+        brightness: brightness,
+        colors: XColors(brightness: brightness),
+        assets: XAssets(brightness: brightness),
+        styles: XStyles(textTheme, brightness: brightness),
+        themeData: _defaultTheme(brightness, styles: styles),
+      );
 
-  static ThemeData defaultTheme(Brightness brightness, {XStyles? styles}) {
+  static ThemeData _defaultTheme(Brightness brightness, {XStyles? styles}) {
     final colors = XColors(brightness: brightness);
+    final colorScheme = brightness == Brightness.light
+        ? const ColorScheme.light()
+        : const ColorScheme.dark().copyWith(
+            onSurface: colors.background,
+            onBackground: colors.background,
+          );
     return ThemeData(
       fontFamily: 'NotoSans',
       brightness: brightness,
       primaryColor: colors.primary,
-      // ignore: deprecated_member_use
-      accentColor: colors.accent,
-      // ignore: deprecated_member_use
-      buttonColor: colors.primaryAction,
+      colorScheme: colorScheme.copyWith(secondary: colors.accent),
       appBarTheme: AppBarTheme(
         color: colors.accent,
       ),
@@ -135,7 +133,7 @@ class Xayn {
       inputDecorationTheme: styles?.hintTextDecoration,
       textTheme: styles == null
           ? null
-          : defaultTheme(brightness).textTheme.copyWith(
+          : _defaultTheme(brightness).textTheme.copyWith(
                 subtitle1: styles.appHighlightText,
                 bodyText1: styles.appBodyText,
               ),
@@ -143,5 +141,5 @@ class Xayn {
   }
 
   static TextTheme defaultTextTheme(Brightness brightness) =>
-      defaultTheme(brightness).textTheme;
+      _defaultTheme(brightness).textTheme;
 }

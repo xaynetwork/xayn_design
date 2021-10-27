@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 @immutable
-class Animations {
+class XAnimations {
   final Duration _unit;
-  const Animations() : _unit = const Duration(milliseconds: 200);
+  const XAnimations() : _unit = const Duration(milliseconds: 200);
 
   Duration get unit => _unit;
 
