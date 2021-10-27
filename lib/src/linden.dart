@@ -8,30 +8,33 @@ import 'xstyles.dart';
 @immutable
 class Linden {
   Linden({
-    TextTheme? textTheme,
     this.screenSize,
     this.deviceOrientation = Orientation.portrait,
     this.notchPaddingLandscapeMode = 0,
     this.brightness = Brightness.light,
-    XStyles? styles,
-    ThemeData? themeData,
     this.dimen = const XSizes(),
     this.animations = const XAnimations(),
+    XStyles? styles,
+    ThemeData? themeData,
     XColors? colors,
     XAssets? assets,
   })  : assets = assets ?? XAssets(brightness: brightness),
         colors = colors ?? XColors(brightness: brightness),
-        textTheme = textTheme ?? Typography.material2018().white,
         styles = styles ??= XStyles(
           _defaultTheme(brightness).textTheme,
           brightness: brightness,
         ),
         themeData = themeData ?? _defaultTheme(brightness, styles: styles);
 
-  final TextTheme textTheme;
   final Size? screenSize;
   final Orientation deviceOrientation;
+
+  /// When in landscape mode, regardless the orientation (left or right)
+  /// if there is a notch both padding.right and padding.left return
+  /// the notch padding value
+  /// If there is no notch the padding value is 0.0
   final double notchPaddingLandscapeMode;
+
   final Brightness brightness;
   final XStyles styles;
   final ThemeData themeData;
@@ -41,7 +44,6 @@ class Linden {
   final XAnimations animations;
 
   Linden copyWith({
-    TextTheme? textTheme,
     Size? screenSize,
     Orientation? deviceOrientation,
     double? notchPaddingLandscapeMode,
@@ -54,7 +56,6 @@ class Linden {
     XAnimations? animations,
   }) =>
       Linden(
-        textTheme: textTheme ?? this.textTheme,
         screenSize: screenSize ?? this.screenSize,
         deviceOrientation: deviceOrientation ?? this.deviceOrientation,
         notchPaddingLandscapeMode:
@@ -67,18 +68,6 @@ class Linden {
         assets: assets ?? this.assets,
         animations: animations ?? this.animations,
       );
-
-  Linden updateBaseTextTheme(TextTheme textTheme) {
-    final styles = XStyles(
-      textTheme,
-      brightness: brightness,
-    );
-    return copyWith(
-      textTheme: textTheme,
-      styles: styles,
-      themeData: _defaultTheme(brightness, styles: styles),
-    );
-  }
 
   Linden updateScreenInfo({
     required Size screenSize,
@@ -106,40 +95,40 @@ class Linden {
         brightness: brightness,
         colors: XColors(brightness: brightness),
         assets: XAssets(brightness: brightness),
-        styles: XStyles(textTheme, brightness: brightness),
+        styles: XStyles(
+          _defaultTheme(brightness).textTheme,
+          brightness: brightness,
+        ),
         themeData: _defaultTheme(brightness, styles: styles),
       );
+}
 
-  static ThemeData _defaultTheme(Brightness brightness, {XStyles? styles}) {
-    final colors = XColors(brightness: brightness);
-    final colorScheme = brightness == Brightness.light
-        ? const ColorScheme.light()
-        : const ColorScheme.dark().copyWith(
-            onSurface: colors.background,
-            onBackground: colors.background,
-          );
-    return ThemeData(
-      fontFamily: 'NotoSans',
-      brightness: brightness,
-      primaryColor: colors.primary,
-      colorScheme: colorScheme.copyWith(secondary: colors.accent),
-      appBarTheme: AppBarTheme(
-        color: colors.accent,
-      ),
-      dialogBackgroundColor: colors.pageBackground,
-      dividerColor: colors.divider,
-      scaffoldBackgroundColor: colors.pageBackground,
-      unselectedWidgetColor: colors.iconDisabled,
-      inputDecorationTheme: styles?.hintTextDecoration,
-      textTheme: styles == null
-          ? null
-          : _defaultTheme(brightness).textTheme.copyWith(
-                subtitle1: styles.appHighlightText,
-                bodyText1: styles.appBodyText,
-              ),
-    );
-  }
-
-  static TextTheme defaultTextTheme(Brightness brightness) =>
-      _defaultTheme(brightness).textTheme;
+ThemeData _defaultTheme(Brightness brightness, {XStyles? styles}) {
+  final colors = XColors(brightness: brightness);
+  final colorScheme = brightness == Brightness.light
+      ? const ColorScheme.light()
+      : const ColorScheme.dark().copyWith(
+          onSurface: colors.background,
+          onBackground: colors.background,
+        );
+  return ThemeData(
+    fontFamily: 'NotoSans',
+    brightness: brightness,
+    primaryColor: colors.primary,
+    colorScheme: colorScheme.copyWith(secondary: colors.accent),
+    appBarTheme: AppBarTheme(
+      color: colors.accent,
+    ),
+    dialogBackgroundColor: colors.pageBackground,
+    dividerColor: colors.divider,
+    scaffoldBackgroundColor: colors.pageBackground,
+    unselectedWidgetColor: colors.iconDisabled,
+    inputDecorationTheme: styles?.hintTextDecoration,
+    textTheme: styles == null
+        ? null
+        : _defaultTheme(brightness).textTheme.copyWith(
+              subtitle1: styles.appHighlightText,
+              bodyText1: styles.appBodyText,
+            ),
+  );
 }

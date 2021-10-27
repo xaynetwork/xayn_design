@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'models/experiences.dart';
-
 const int kTwoColumnsGrid = 2;
 const int kThreeColumnsGrid = 3;
 const int kFourColumnsGrid = 4;
@@ -11,6 +9,9 @@ const int kNumberOfSecondaryImagesMobile = 4;
 const int kNumberOfSecondaryImagesTabletPortraitMode = 6;
 const int kNumberOfSecondaryImagesTabletLandscapeMode = 8;
 
+/// The [XSizes] describes dimensions
+///
+/// Accessed through [Linden].
 @immutable
 class XSizes {
   final double _notchPaddingLandscapeMode;
@@ -208,4 +209,15 @@ class XSizes {
   final double graphicsGridViewWidth = 149;
   final double graphicsNewsFeedLayoutWidth = 57;
   final double graphicsHeight = 93;
+}
+
+/// Describes which configuration for certain [XSizes] attributes to use
+enum Experiences {
+  notSpecified,
+  mainScreen,
+  newsScreen,
+  collectionsScreen,
+  tabsScreen,
+  bookmarksScreen,
+  imagesScreen,
 }
