@@ -14,6 +14,14 @@ const int kNumberOfSecondaryImagesTabletLandscapeMode = 8;
 /// Accessed through [Linden].
 @immutable
 class XSizes {
+  const XSizes({
+    Size? screenSize,
+    Orientation? deviceOrientation,
+    double notchPaddingLandscapeMode = 0.0,
+  })  : _screenSize = screenSize ?? const Size(800, 600),
+        _deviceOrientation = deviceOrientation ?? Orientation.portrait,
+        _notchPaddingLandscapeMode = notchPaddingLandscapeMode;
+
   final double _notchPaddingLandscapeMode;
   final Size _screenSize;
   final Orientation _deviceOrientation;
@@ -46,27 +54,26 @@ class XSizes {
   final double unit48 = _unit * 48;
   final double unit52 = _unit * 52;
 
-  // breakpoints
+  /// breakpoints
   final double smallScreenWidth = 375;
   final double mobileTabletWidthBreakpoint = 600;
   final double maxContainerWidth = 1204; // 1140 + 32 * 2
 
-  // Material elevation values
+  /// Material elevation values
   final double elevationHigh = 24;
   final double elevationLow = 10;
 
-  // Onboarding breakpoints & sizes
+  /// On-boarding breakpoints & sizes
   final double onboardingScreenHeight = 900;
   final double onboardingCardWidth = 370;
   final double onboardingCardAverageHeight = 300;
-
-  const XSizes({
-    Size? screenSize,
-    Orientation? deviceOrientation,
-    double notchPaddingLandscapeMode = 0.0,
-  })  : _screenSize = screenSize ?? const Size(800, 600),
-        _deviceOrientation = deviceOrientation ?? Orientation.portrait,
-        _notchPaddingLandscapeMode = notchPaddingLandscapeMode;
+  double get breakpoint320 => 320;
+  double get breakpoint375 => 375;
+  double get breakpoint621 => 621;
+  double get breakpoint656 => 656;
+  double get breakpoint768 => 768;
+  double get breakpoint1024 => 1024;
+  double get breakpoint1440 => 1440;
 
   double get screenWidth => _screenSize.width;
 
@@ -93,15 +100,6 @@ class XSizes {
 
   bool get isTabletLandscapeMode =>
       isTablet && _deviceOrientation == Orientation.landscape;
-
-  // Onboarding breakpoints
-  double get breakpoint320 => 320;
-  double get breakpoint375 => 375;
-  double get breakpoint621 => 621;
-  double get breakpoint656 => 656;
-  double get breakpoint768 => 768;
-  double get breakpoint1024 => 1024;
-  double get breakpoint1440 => 1440;
 
   /// Return the number of columns to show in a grid view depending on
   /// the screen the user is experiencing (Experience) and the device and
@@ -185,7 +183,7 @@ class XSizes {
 
   double get iconButtonSize => unit6;
 
-  // Bottom Bar
+  /// Bottom Bar
   double get bottomBarVerticalPadding => unit1_5;
 
   double get bottomBarDockedHeight => unit9;
@@ -205,7 +203,7 @@ class XSizes {
 
   final double headerMaxExtent = 65.0;
 
-  //graphics
+  ///graphics
   final double graphicsGridViewWidth = 149;
   final double graphicsNewsFeedLayoutWidth = 57;
   final double graphicsHeight = 93;

@@ -135,7 +135,6 @@ class _Icons {
 
   String get filters => _theme(brightAsset: 'assets/icons/icon_filters.svg');
 
-  //todo: remove me and reuse filters with a white background
   String get filtersIconRound =>
       _theme(brightAsset: 'assets/icons/icon_filters_round.svg');
 

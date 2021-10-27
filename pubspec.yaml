@@ -1,7 +1,7 @@
 name: xayn_design
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
+homepage: https://github.com/xaynetwork/xayn_design
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
