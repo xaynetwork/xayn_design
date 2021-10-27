@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:xayn_design/xayn_design.dart';
+import 'utils/safe_platform.dart';
 
 const packagePath = 'packages/xayn_design/';
 
 @immutable
-class Assets {
+class XAssets {
   final Brightness _brightness;
 
-  const Assets({Brightness? brightness})
+  const XAssets({Brightness? brightness})
       : _brightness = brightness ?? Brightness.light;
 
   _Lottie get lottie => _Lottie(_brightness);
@@ -22,10 +22,10 @@ class _Lottie {
   const _Lottie(this._brightness);
 
   String brainyJson(Brightness brightness) => _theme(
-    brightAsset: 'assets/lottie/brainy.json',
-    darkAsset: 'assets/lottie/brainy_dark.json',
-    brightness: brightness,
-  );
+        brightAsset: 'assets/lottie/brainy.json',
+        darkAsset: 'assets/lottie/brainy_dark.json',
+        brightness: brightness,
+      );
 
   String _theme({
     required String brightAsset,
@@ -69,14 +69,14 @@ class _Icons {
   String get alert => _theme(brightAsset: 'assets/icons/icon_alert.svg');
 
   String get brainyEnabled => _theme(
-    brightAsset: 'assets/icons/brainy_enabled.svg',
-    darkAsset: 'assets/icons/brainy_enabled_dark.svg',
-  );
+        brightAsset: 'assets/icons/brainy_enabled.svg',
+        darkAsset: 'assets/icons/brainy_enabled_dark.svg',
+      );
 
   String get brainyDisabled => _theme(
-    brightAsset: 'assets/icons/brainy_disabled.svg',
-    darkAsset: 'assets/icons/brainy_disabled_dark.svg',
-  );
+        brightAsset: 'assets/icons/brainy_disabled.svg',
+        darkAsset: 'assets/icons/brainy_disabled_dark.svg',
+      );
 
   String get check => _theme(brightAsset: 'assets/icons/icon_check.svg');
 
@@ -141,9 +141,9 @@ class _Icons {
       _theme(brightAsset: 'assets/icons/icon_bookmark_active.svg');
 
   String get share => _platformDepended(
-    iOSAsset: 'assets/icons/icon_share_ios.svg',
-    androidAsset: 'assets/icons/icon_share_android.svg',
-  );
+        iOSAsset: 'assets/icons/icon_share_ios.svg',
+        androidAsset: 'assets/icons/icon_share_android.svg',
+      );
 
   String get edit => _theme(brightAsset: 'assets/icons/icon_edit.svg');
 

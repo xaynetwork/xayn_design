@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'experiences.dart';
+import 'models/experiences.dart';
 
 const int kTwoColumnsGrid = 2;
 const int kThreeColumnsGrid = 3;

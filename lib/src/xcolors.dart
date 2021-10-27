@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 
-/// This colors are named based on the color palate created by design
-/// The name is used to make imports easier and not to be in conflict with the material colors
-/// TODO rename to Colors when all colors are converted to use this class
 @immutable
 class XColors {
   final Brightness _brightness;
   const XColors({Brightness? brightness})
       : _brightness = brightness ?? Brightness.light;
 
-  // Private Colors never use directly
-
+  /// Private Colors never use directly
   // Primary colors
   static const _blue = Color(0xff233564);
   static const _black = Color(0xff131313);
@@ -129,9 +125,6 @@ class XColors {
   Color get speedDialButtonUnSelected => _lightGrey;
 
   Color get qrCodeBackground => _white;
-
-  Color get graphicDisabled => _theme(bright: _mediumGrey);
-  Color get graphicSelected => _theme(bright: _green);
 
   //
   // Color helper constants

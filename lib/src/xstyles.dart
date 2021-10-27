@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:xayn_design/src/xcolors.dart';
-import 'package:xayn_design/src/xsizes.dart';
+import 'xcolors.dart';
+import 'xsizes.dart';
 
 ///   We are currently using:
 ///   FontWeight.w400: 'Regular',
