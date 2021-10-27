@@ -63,9 +63,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Linden Example App'),
+        title: const Text('Xayn Design Library (Linden)'),
       ),
-      body: ListView(
+      body: _buildListView(),
+      floatingActionButton: _buildThemeTogglerButton(),
+    );
+  }
+
+  ListView _buildListView() => ListView(
         children: [
           _buildHeadline('Icons'),
           _buildAssetsGrid(
@@ -85,10 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
           _buildHeadline('Illustrations'),
           _buildAssetsGrid(getIllustrationsAssets(linden)),
         ],
-      ),
-      floatingActionButton: _buildThemeTogglerButton(),
-    );
-  }
+      );
 
   Padding _buildHeadline(String str) => Padding(
         child: Text(str, style: linden.styles.appScreenHeadline),

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// The [XColors] holds different Material `Color`s
+///
+/// Accessed through [Linden].
 @immutable
 class XColors {
   final Brightness _brightness;

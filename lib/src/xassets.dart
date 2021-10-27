@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'utils/safe_platform.dart';
 
+/// All the assets' strings should be preceded by [packagePath]
 const packagePath = 'packages/xayn_design/';
 
+/// The [XStyles] exposes `String`s of shared assets
+///
+/// Accessed through [Linden].
 @immutable
 class XAssets {
   final Brightness _brightness;

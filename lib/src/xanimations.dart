@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+/// The [XAnimations] holds different `Duration` units that are used in
+/// animations
+///
+/// Accessed through [Linden].
 @immutable
 class XAnimations {
   final Duration _unit;

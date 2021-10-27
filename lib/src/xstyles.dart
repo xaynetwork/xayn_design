@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'xcolors.dart';
 import 'xsizes.dart';
 
-///   We are currently using:
-///   FontWeight.w400: 'Regular',
-///   FontWeight.w700: 'Bold',
+/// The [XStyles] holds `TextStyle`s and other Material themed styles
+///
+/// Accessed through [Linden].
 @immutable
 class XStyles {
   final TextTheme _baseTextTheme;
@@ -16,7 +16,6 @@ class XStyles {
   }) : colors = XColors(brightness: brightness);
 
   FontWeight get _weightBold => FontWeight.w700;
-
   FontWeight get _weightRegular => FontWeight.w400;
 
   /// Defined by design
