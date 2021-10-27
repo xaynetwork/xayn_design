@@ -19,7 +19,6 @@ class XStyles {
   FontWeight get _weightRegular => FontWeight.w400;
 
   /// Defined by design
-
   TextStyle? get appScreenHeadline => _baseTextTheme.headline1?.copyWith(
         color: colors.primaryText,
         fontWeight: _weightBold,

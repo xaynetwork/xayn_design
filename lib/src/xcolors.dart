@@ -32,10 +32,10 @@ class XColors {
   static const _transparent = Color(0x00000000);
 
   /// Public color aliases
-  /// Introduce general colors here,
-  /// create a new one if you are unable to find a semantically matching name
-  /// for your use case.
-  /// Try to keep naming as general as possible
+  // Introduce general colors here,
+  // create a new one if you are unable to find a semantically matching name
+  // for your use case.
+  // Try to keep naming as general as possible
   Color get primary => _theme(bright: _blue, dark: _white);
   Color get accent => _theme(bright: _green);
   Color get secondaryAccent => _theme(bright: _orange);
@@ -104,7 +104,6 @@ class XColors {
   Color? get logo => _themeDarkModeColorOrNull(dark: _white);
 
   /// Colors that are independent of the dark mode
-
   Color get onboardingBackground => _white;
   Color get onboardingTextSelected => _green;
   Color get onboardingTextInverse => _white;
@@ -129,9 +128,7 @@ class XColors {
 
   Color get qrCodeBackground => _white;
 
-  //
-  // Color helper constants
-  //
+  /// Color helper constants
   final alpha50 = 0x7f;
   Color _theme({
     required Color bright,
