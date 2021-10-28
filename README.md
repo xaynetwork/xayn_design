@@ -3,7 +3,7 @@
 [![codecov](https://codecov.io/gh/xaynetwork/xayn_design/branch/main/graph/badge.svg)](https://codecov.io/gh/xaynetwork/xayn_design)
 [![Build Status](https://github.com/xaynetwork/xayn_design/actions/workflows/flutter_post_merge.yaml/badge.svg)](https://github.com/xaynetwork/xayn_design/actions)
 
-`xayn_design` library is a shared plugin that provides xayn-styled shared design elements like icons, colors, styles, and themes. We expose one design object with the name of `Linden` that exposes all the shared design elements.
+`xayn_design` library is a plugin that provides xayn-styled shared design elements like icons, colors, styles, and themes. We expose one design object with the name of `Linden` that contains all the shared design elements.
 
 ----------
 
@@ -88,7 +88,7 @@ linden = linden.updateScreenInfo(
     );
 ```
 
- - please also give a try to the [example app](../main/example/) 
+Give a try to the [example app](../main/example/)
 
 [top :arrow_heading_up:](#xayn_design)
 

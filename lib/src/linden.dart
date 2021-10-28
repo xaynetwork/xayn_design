@@ -171,16 +171,19 @@ class Linden {
 
   /// Update theme to light/dark mode
   ///
-  Linden updateBrightness(Brightness brightness) => copyWith(
-        brightness: brightness,
-        colors: XColors(brightness: brightness),
-        assets: XAssets(brightness: brightness),
-        styles: XStyles(
-          _defaultTheme(brightness).textTheme,
-          brightness: brightness,
-        ),
-        themeData: _defaultTheme(brightness, styles: styles),
-      );
+  Linden updateBrightness(Brightness brightness) {
+    final styles = XStyles(
+      _defaultTheme(brightness).textTheme,
+      brightness: brightness,
+    );
+    return copyWith(
+      brightness: brightness,
+      colors: XColors(brightness: brightness),
+      assets: XAssets(brightness: brightness),
+      styles: styles,
+      themeData: _defaultTheme(brightness, styles: styles),
+    );
+  }
 }
 
 /// Default private configuration of [ThemeData]
@@ -193,24 +196,29 @@ ThemeData _defaultTheme(Brightness brightness, {XStyles? styles}) {
           onSurface: colors.background,
           onBackground: colors.background,
         );
-  return ThemeData(
+  final themeData = ThemeData(
     fontFamily: 'NotoSans',
     brightness: brightness,
     primaryColor: colors.primary,
-    colorScheme: colorScheme.copyWith(secondary: colors.accent),
-    appBarTheme: AppBarTheme(
-      color: colors.accent,
+    secondaryHeaderColor: colors.accent,
+    colorScheme: colorScheme.copyWith(
+      secondary: colors.accent,
+      secondaryVariant: colors.primaryAction,
     ),
+    appBarTheme: AppBarTheme(color: colors.accent),
     dialogBackgroundColor: colors.pageBackground,
     dividerColor: colors.divider,
     scaffoldBackgroundColor: colors.pageBackground,
     unselectedWidgetColor: colors.iconDisabled,
-    inputDecorationTheme: styles?.hintTextDecoration,
-    textTheme: styles == null
-        ? null
-        : _defaultTheme(brightness).textTheme.copyWith(
-              subtitle1: styles.appHighlightText,
-              bodyText1: styles.appBodyText,
-            ),
   );
+  if (styles != null) {
+    return themeData.copyWith(
+      inputDecorationTheme: styles.hintTextDecoration,
+      textTheme: _defaultTheme(brightness).textTheme.copyWith(
+            subtitle1: styles.appHighlightText,
+            bodyText1: styles.appBodyText,
+          ),
+    );
+  }
+  return themeData;
 }
