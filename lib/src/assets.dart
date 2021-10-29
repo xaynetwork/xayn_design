@@ -45,7 +45,7 @@ class _Logo {
 
 class _Illustrations {
   String get enableCamera =>
-      packagePath + 'assets/illustration/illustration_enable_camera.svg';
+      packagePath + 'assets/illustrations/illustration_enable_camera.svg';
 }
 
 class _Graphics {
