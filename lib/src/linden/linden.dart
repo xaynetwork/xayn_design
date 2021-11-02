@@ -202,6 +202,7 @@ ThemeData _defaultTheme(Brightness brightness, {XStyles? styles}) {
     primaryColor: colors.primary,
     secondaryHeaderColor: colors.accent,
     colorScheme: colorScheme.copyWith(
+      primary: colors.primary,
       secondary: colors.accent,
       secondaryVariant: colors.primaryAction,
     ),
