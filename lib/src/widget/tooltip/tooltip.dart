@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:xayn_design/src/widget/unter_den_linden/unter_den_linden_mixin.dart';
 import 'package:xayn_design/xayn_design.dart';
 
 const Duration kFadeInDuration = Duration(milliseconds: 150);
@@ -21,7 +22,6 @@ class Tooltip extends StatefulWidget {
   final TooltipController? controller;
   final ContextProvider? contextProvider;
   final MessageFactory messageFactory;
-  final Linden linden;
   final double? height;
   final double? verticalOffset;
   final Widget? child;
@@ -35,7 +35,6 @@ class Tooltip extends StatefulWidget {
   const Tooltip({
     Key? key,
     required this.messageFactory,
-    required this.linden,
     this.height,
     this.verticalOffset,
     this.child,
@@ -52,7 +51,6 @@ class Tooltip extends StatefulWidget {
   Tooltip.contextDeferred({
     Key? key,
     required this.messageFactory,
-    required this.linden,
     this.contextProvider,
     this.height,
     this.verticalOffset,
@@ -203,7 +201,8 @@ class _TooltipPositionDelegate extends SingleChildLayoutDelegate {
   }
 }
 
-class _TooltipState extends State<Tooltip> with SingleTickerProviderStateMixin {
+class _TooltipState extends State<Tooltip>
+    with SingleTickerProviderStateMixin, UnterDenLindenMixin {
   late double height;
   late double verticalOffset;
   late AnimationController animationController;
@@ -216,7 +215,7 @@ class _TooltipState extends State<Tooltip> with SingleTickerProviderStateMixin {
     assert(Overlay.of(context, debugRequiredFor: widget) != null);
 
     height = widget.height ?? _getDefaultTooltipHeight();
-    verticalOffset = widget.verticalOffset ?? widget.linden.dimen.unit4;
+    verticalOffset = widget.verticalOffset ?? linden.dimen.unit4;
 
     return ChangeNotifierProvider<TooltipController>.value(
       value: tooltipController,
@@ -262,7 +261,7 @@ class _TooltipState extends State<Tooltip> with SingleTickerProviderStateMixin {
           targetContext.size!.center(Offset.zero),
           ancestor: overlayState.context.findRenderObject(),
         );
-
+    final linden = this.linden;
     // We create this widget outside of the overlay entry's builder to prevent
     // updated values from happening to leak into the overlay when the overlay
     // rebuilds.
@@ -273,7 +272,7 @@ class _TooltipState extends State<Tooltip> with SingleTickerProviderStateMixin {
         onBuild: calculateCurrentOffset,
         initialValue: calculateCurrentOffset(),
         builder: (context, Offset? offset) => _TooltipOverlay(
-          linden: widget.linden,
+          linden: linden,
           messageFactory: messageFactory,
           tooltipKey: tooltipKey,
           height: height,
@@ -318,9 +317,9 @@ class _TooltipState extends State<Tooltip> with SingleTickerProviderStateMixin {
       case TargetPlatform.macOS:
       case TargetPlatform.linux:
       case TargetPlatform.windows:
-        return widget.linden.dimen.unit3;
+        return linden.dimen.unit3;
       default:
-        return widget.linden.dimen.unit4;
+        return linden.dimen.unit4;
     }
   }
 
