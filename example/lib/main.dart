@@ -4,40 +4,28 @@ import 'package:xayn_design/xayn_design.dart';
 import 'screen/linden_screen.dart';
 
 void main() {
-  /// Instead of passing [Linden] as a parameter, it's better to injected it
-  /// using your preferred state management package
-  runApp(MyApp(Linden()));
+  final unterDenLinden = UnterDenLinden(
+    child: const MyApp(),
+    initialLinden: Linden(),
+    onLindenUpdated: (final Linden newLinden) {
+      print('Yay, linden was updated');
+    },
+  );
+
+  runApp(unterDenLinden);
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp(this.linden, {Key? key}) : super(key: key);
-  final Linden linden;
-
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  late Linden linden;
-
-  @override
-  void initState() {
-    linden = widget.linden;
-    super.initState();
-  }
-
-  onThemeChange(Brightness brightness) {
-    setState(() {
-      linden = linden.updateBrightness(brightness);
-    });
-  }
+class MyApp extends StatelessWidget {
+  const MyApp({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: linden.themeData,
-      home: LindenScreen(linden, onThemeChange),
+      theme: UnterDenLinden.getLinden(context).themeData,
+      home: const LindenScreen(),
     );
   }
 }
