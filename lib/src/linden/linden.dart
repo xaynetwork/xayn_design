@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'xanimations.dart';
 import 'xassets.dart';
 import 'xcolors.dart';
 import 'xsizes.dart';
 import 'xstyles.dart';
 
-/// [Linden] is a design class that provide shared stylistic design elements
+/// [_Linden] is a design class that provide shared stylistic design elements
 /// including:
 ///  1. [Duration]s for [animations] by configuring [XAnimations]
 ///
@@ -23,7 +24,7 @@ import 'xstyles.dart';
 ///  [XColors]
 ///
 /// {@tool snippet}
-/// This example shows how to create a [Linden] that defines a [theme] that
+/// This example shows how to create a [_Linden] that defines a [theme] that
 /// will be used for material widgets in the app.
 ///
 /// ```dart
@@ -40,8 +41,8 @@ import 'xstyles.dart';
 /// {@end-tool}
 ///
 @immutable
-class Linden {
-  Linden({
+class _Linden {
+  _Linden({
     this.screenSize,
     this.deviceOrientation = Orientation.portrait,
     this.notchPaddingLandscapeMode = 0,
@@ -119,7 +120,7 @@ class Linden {
 
   /// Creates a copy of this theme but with the given fields replaced with the new values.
   ///
-  Linden copyWith({
+  _Linden copyWith({
     Size? screenSize,
     Orientation? deviceOrientation,
     double? notchPaddingLandscapeMode,
@@ -131,7 +132,7 @@ class Linden {
     XAssets? assets,
     XAnimations? animations,
   }) =>
-      Linden(
+      _Linden(
         screenSize: screenSize ?? this.screenSize,
         deviceOrientation: deviceOrientation ?? this.deviceOrientation,
         notchPaddingLandscapeMode:
@@ -145,9 +146,9 @@ class Linden {
         animations: animations ?? this.animations,
       );
 
-  /// Update all the dimension configuration of [XSizes] in [Linden]
+  /// Update all the dimension configuration of [XSizes] in [_Linden]
   ///
-  Linden updateScreenInfo({
+  _Linden updateScreenInfo({
     required Size screenSize,
     required Orientation deviceOrientation,
     double notchPaddingLandscapeMode = 0.0,
@@ -171,7 +172,7 @@ class Linden {
 
   /// Update theme to light/dark mode
   ///
-  Linden updateBrightness(Brightness brightness) {
+  _Linden updateBrightness(Brightness brightness) {
     final styles = XStyles(
       _defaultTheme(brightness).textTheme,
       brightness: brightness,
@@ -222,4 +223,52 @@ ThemeData _defaultTheme(Brightness brightness, {XStyles? styles}) {
     );
   }
   return themeData;
+}
+
+@immutable
+class Linden {
+  const Linden._();
+
+  static _Linden _linden = _Linden();
+
+  static ThemeData get themeData => _linden.themeData;
+
+  static XStyles get styles => _linden.styles;
+
+  static XSizes get dimen => _linden.dimen;
+
+  static XColors get colors => _linden.colors;
+
+  static XAssets get assets => _linden.assets;
+
+  static XAnimations get animations => _linden.animations;
+
+  static Brightness get brightness => _linden.brightness;
+
+  static bool get isDarkMode => brightness == Brightness.dark;
+
+  static Brightness get brightnessInverted =>
+      isDarkMode ? Brightness.light : Brightness.dark;
+
+  static _Linden updateBrightness(Brightness brightness) {
+    _linden = _linden.updateBrightness(brightness);
+
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarBrightness: brightness,
+    ));
+
+    return _linden;
+  }
+
+  static _Linden updateScreenInfo(
+      {required Size screenSize,
+      required Orientation deviceOrientation,
+      double notchPaddingLandscapeMode = 0.0}) {
+    _linden = _linden.updateScreenInfo(
+      screenSize: screenSize,
+      deviceOrientation: deviceOrientation,
+      notchPaddingLandscapeMode: notchPaddingLandscapeMode,
+    );
+    return _linden;
+  }
 }

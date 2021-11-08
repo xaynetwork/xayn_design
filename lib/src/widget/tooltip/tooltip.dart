@@ -21,7 +21,6 @@ class Tooltip extends StatefulWidget {
   final TooltipController? controller;
   final ContextProvider? contextProvider;
   final MessageFactory messageFactory;
-  final Linden linden;
   final double? height;
   final double? verticalOffset;
   final Widget? child;
@@ -35,7 +34,6 @@ class Tooltip extends StatefulWidget {
   const Tooltip({
     Key? key,
     required this.messageFactory,
-    required this.linden,
     this.height,
     this.verticalOffset,
     this.child,
@@ -52,7 +50,6 @@ class Tooltip extends StatefulWidget {
   Tooltip.contextDeferred({
     Key? key,
     required this.messageFactory,
-    required this.linden,
     this.contextProvider,
     this.height,
     this.verticalOffset,
@@ -86,7 +83,6 @@ class _OverlayKeyEntry {
 
 class _TooltipOverlay extends StatelessWidget {
   final MessageFactory messageFactory;
-  final Linden linden;
   final TooltipKey tooltipKey;
   final double height;
   final Animation<double> animation;
@@ -97,7 +93,6 @@ class _TooltipOverlay extends StatelessWidget {
   const _TooltipOverlay({
     Key? key,
     required this.messageFactory,
-    required this.linden,
     required this.tooltipKey,
     required this.height,
     required this.animation,
@@ -123,7 +118,6 @@ class _TooltipOverlay extends StatelessWidget {
     return Positioned.fill(
       child: CustomSingleChildLayout(
         delegate: _TooltipPositionDelegate(
-          linden: linden,
           target: offset,
           verticalOffset: verticalOffset,
           preferBelow: preferBelow,
@@ -161,13 +155,10 @@ class _TooltipPositionDelegate extends SingleChildLayoutDelegate {
   /// direction, the tooltip will be displayed in the opposite direction.
   final bool preferBelow;
 
-  final Linden linden;
-
   /// Creates a delegate for computing the layout of a tooltip.
   ///
   /// The arguments must not be null.
   _TooltipPositionDelegate({
-    required this.linden,
     required this.target,
     required this.verticalOffset,
     required this.preferBelow,
@@ -187,7 +178,7 @@ class _TooltipPositionDelegate extends SingleChildLayoutDelegate {
       preferBelow: preferBelow,
     );
 
-    final additionalOffset = preferBelow ? .0 : -linden.dimen.unit2;
+    final additionalOffset = preferBelow ? .0 : -Linden.dimen.unit2;
     final normalizedOffset =
         min(box.dy, size.height - childSize.height) + additionalOffset;
     final dx = preferBelow ? box.dx : size.width / 2 - childSize.width / 2;
@@ -216,7 +207,7 @@ class _TooltipState extends State<Tooltip> with SingleTickerProviderStateMixin {
     assert(Overlay.of(context, debugRequiredFor: widget) != null);
 
     height = widget.height ?? _getDefaultTooltipHeight();
-    verticalOffset = widget.verticalOffset ?? widget.linden.dimen.unit4;
+    verticalOffset = widget.verticalOffset ?? Linden.dimen.unit4;
 
     return ChangeNotifierProvider<TooltipController>.value(
       value: tooltipController,
@@ -273,7 +264,6 @@ class _TooltipState extends State<Tooltip> with SingleTickerProviderStateMixin {
         onBuild: calculateCurrentOffset,
         initialValue: calculateCurrentOffset(),
         builder: (context, Offset? offset) => _TooltipOverlay(
-          linden: widget.linden,
           messageFactory: messageFactory,
           tooltipKey: tooltipKey,
           height: height,
@@ -318,9 +308,9 @@ class _TooltipState extends State<Tooltip> with SingleTickerProviderStateMixin {
       case TargetPlatform.macOS:
       case TargetPlatform.linux:
       case TargetPlatform.windows:
-        return widget.linden.dimen.unit3;
+        return Linden.dimen.unit3;
       default:
-        return widget.linden.dimen.unit4;
+        return Linden.dimen.unit4;
     }
   }
 
