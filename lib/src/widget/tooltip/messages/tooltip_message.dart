@@ -35,29 +35,31 @@ mixin TooltipControllerProviderMixin<T extends TooltipMessage> on State<T> {
 
 class TooltipMessageContainer extends StatelessWidget
     with SingleChildStatelessWidgetMixin {
+  final Linden linden;
   @override
   final Widget child;
 
   const TooltipMessageContainer({
     Key? key,
     required this.child,
+    required this.linden,
   }) : super(key: key);
 
   @override
   Widget buildWithChild(BuildContext context, Widget? child) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: Linden.dimen.unit2,
+        horizontal: linden.dimen.unit2,
       ),
       child: Material(
         type: MaterialType.button,
-        elevation: Linden.dimen.elevationLow,
-        textStyle: Linden.styles.tooltipText,
-        borderRadius: BorderRadius.all(Radius.circular(Linden.dimen.unit4)),
-        color: Linden.colors.tooltipBackground,
+        elevation: linden.dimen.elevationLow,
+        textStyle: linden.styles.tooltipText,
+        borderRadius: BorderRadius.all(Radius.circular(linden.dimen.unit4)),
+        color: linden.colors.tooltipBackground,
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: Linden.dimen.unit2, vertical: Linden.dimen.unit),
+              horizontal: linden.dimen.unit2, vertical: linden.dimen.unit),
           child: child,
         ),
       ),

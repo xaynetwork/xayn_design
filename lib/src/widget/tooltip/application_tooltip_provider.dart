@@ -9,9 +9,11 @@ import 'package:xayn_design/xayn_design.dart';
 /// which will be used for laying out the actual [Tooltip].
 class ApplicationTooltipProvider extends SingleChildStatefulWidget {
   final MessageFactory messageFactory;
+  final Linden linden;
 
   const ApplicationTooltipProvider({
     required this.messageFactory,
+    required this.linden,
     required Widget? child,
     Key? key,
   }) : super(key: key, child: child);
@@ -25,6 +27,7 @@ class _ApplicationTooltipProviderState
   @override
   Widget buildWithChild(BuildContext context, Widget? child) {
     return Tooltip.contextDeferred(
+      linden: widget.linden,
       messageFactory: widget.messageFactory,
       preferBelow: false,
       contextProvider: () {
