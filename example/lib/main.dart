@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xayn_design/xayn_design.dart';
 
-import 'screen/linden_screen.dart';
+import 'screen/main_screen.dart';
 
 void main() {
   final unterDenLinden = UnterDenLinden(
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: UnterDenLinden.getLinden(context).themeData,
-      home: const LindenScreen(),
+      home: const MainScreen(),
     );
   }
 }
