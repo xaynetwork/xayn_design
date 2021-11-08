@@ -24,5 +24,6 @@ export 'src/widget/tooltip/tooltip_controller.dart';
 export 'src/widget/tooltip/tooltip_options.dart';
 export 'src/widget/tooltip/tooltip_state_mixin.dart';
 export 'src/widget/tooltip/tooltip_stateless_mixin.dart';
+export 'src/widget/unter_den_linden/unter_den_linden.dart';
 
 export 'package:flutter_svg/flutter_svg.dart';
