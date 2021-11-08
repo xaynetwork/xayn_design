@@ -23,7 +23,7 @@ class _LindenScreenState extends State<LindenScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Xayn Design Library (Linden)'),
+        title: const Text('Xayn Linden'),
       ),
       body: _buildListView(),
       floatingActionButton: _buildThemeTogglerButton(),
