@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xayn_design/src/widget/unter_den_linden/unter_den_linden_mixin.dart';
 import 'package:xayn_design/xayn_design.dart';
 
 const Duration kTimeToLive = Duration(seconds: 3);
@@ -6,13 +7,11 @@ const Duration kTimeToLive = Duration(seconds: 3);
 typedef ParameterCallback = void Function(List<dynamic>? parameters);
 
 class TextualNotification extends TooltipMessage {
-  final Linden linden;
   final double? width, height;
   final String? icon;
   final ParameterCallback? onTap;
 
   const TextualNotification({
-    required this.linden,
     Key? key,
     this.width,
     this.height,
@@ -25,7 +24,7 @@ class TextualNotification extends TooltipMessage {
 }
 
 class _TextualNotificationState extends State<TextualNotification>
-    with TooltipControllerProviderMixin {
+    with TooltipControllerProviderMixin, UnterDenLindenMixin {
   @override
   Widget build(BuildContext context) {
     final icon = widget.icon;
@@ -36,10 +35,10 @@ class _TextualNotificationState extends State<TextualNotification>
         if (icon != null) ...[
           SvgPicture.asset(
             icon,
-            color: widget.linden.colors.primary,
+            color: linden.colors.primary,
           ),
           SizedBox(
-            width: widget.linden.dimen.unit,
+            width: linden.dimen.unit,
           )
         ],
         if (tooltipController.activeKey != null)
@@ -61,7 +60,7 @@ class _TextualNotificationState extends State<TextualNotification>
         tooltipController.hide();
       },
       child: TooltipMessageContainer(
-        linden: widget.linden,
+        linden: linden,
         child: content,
       ),
     );
