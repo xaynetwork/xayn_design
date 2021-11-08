@@ -6,13 +6,11 @@ const Duration kTimeToLive = Duration(seconds: 3);
 typedef ParameterCallback = void Function(List<dynamic>? parameters);
 
 class TextualNotification extends TooltipMessage {
-  final Linden linden;
   final double? width, height;
   final String? icon;
   final ParameterCallback? onTap;
 
   const TextualNotification({
-    required this.linden,
     Key? key,
     this.width,
     this.height,
@@ -36,10 +34,10 @@ class _TextualNotificationState extends State<TextualNotification>
         if (icon != null) ...[
           SvgPicture.asset(
             icon,
-            color: widget.linden.colors.primary,
+            color: Linden.colors.primary,
           ),
           SizedBox(
-            width: widget.linden.dimen.unit,
+            width: Linden.dimen.unit,
           )
         ],
         if (tooltipController.activeKey != null)
@@ -61,7 +59,6 @@ class _TextualNotificationState extends State<TextualNotification>
         tooltipController.hide();
       },
       child: TooltipMessageContainer(
-        linden: widget.linden,
         child: content,
       ),
     );
