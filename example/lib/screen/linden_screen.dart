@@ -4,20 +4,18 @@ import 'package:xayn_design/xayn_design.dart';
 import '../resources.dart';
 
 class LindenScreen extends StatefulWidget {
-  const LindenScreen(
-    this.linden,
-    this.onThemeChange, {
+  static const routeName = '/linden';
+
+  const LindenScreen({
     Key? key,
   }) : super(key: key);
-  final Linden linden;
-  final Function(Brightness) onThemeChange;
 
   @override
   State<LindenScreen> createState() => _LindenScreenState();
 }
 
 class _LindenScreenState extends State<LindenScreen> {
-  Linden get linden => widget.linden;
+  Linden get linden => UnterDenLinden.getLinden(context);
 
   bool get isDark => linden.brightness == Brightness.dark;
 
@@ -60,8 +58,10 @@ class _LindenScreenState extends State<LindenScreen> {
       );
 
   FloatingActionButton _buildThemeTogglerButton() => FloatingActionButton(
-        onPressed: () =>
-            widget.onThemeChange(isDark ? Brightness.light : Brightness.dark),
+        onPressed: () {
+          final brightness = isDark ? Brightness.light : Brightness.dark;
+          UnterDenLinden.of(context).changeBrightness(brightness);
+        },
         tooltip: 'Toggle Theme',
         child: SvgPicture.asset(
           isDark ? linden.assets.icons.sun : linden.assets.icons.moon,
