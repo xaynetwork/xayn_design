@@ -30,14 +30,34 @@ _for assets, check [Importing assets in `pubspec.yaml`](#troubleshooting-thinkin
 
 ## How to use `Linden` :building_construction:
 
-First you'd need to store an instance of `Linden` in your preferred state management solution.
+The top-level widget in the app should be `UnterDenLinden`. Idealy it should wrap your app widget.
+This widget is responsible for storing `Linden` and also provide mechanisms for changing `brightness` 
+and using `Linden` by the internal widgets (part of the `xayn_design`) 
+
 ```dart
-Linden linden = Linden;
+final unterDenLinden = UnterDenLinden(
+  child: MyApp(),
+  initialLinden: Linden(),
+  onLindenUpdated: (final Linden newLinden) {
+    // will be called every time, when `Linden` updated
+  },
+);
+
+runApp(unterDenLinden);
 ```
-Make sure it's exposed to the `MaterialApp`, in case you plan update the theme.
 
+**Use case #1 (accessing `Linden`)**
 
-**Use case #1 (using `Linden` theme)**
+You can access `Linden` with the `BuildContext`:
+```dart
+final linden = UnterDenLinden.getLinden(context);
+```
+**Remember:**
+It should be called ONLY inside the [build] method.
+If you will use it inside the builders - it might leak to the exception:
+``` Looking up a deactivated widget's ancestor is unsafe.```
+
+**Use case #2 (using `Linden`)**
 ```dart
 MaterialApp(
 ..
@@ -45,23 +65,31 @@ MaterialApp(
 );
 ```
 
-**Use case #2 (update theme)**
+**Use case #2 (update `brightness`)**
 ```dart
-linden = linden.updateBrightness(brightness);
+final newBrightness = Random().nextBool() ? Brightness.light : Brightness.dark;
+UnterDenLinden.of(context).changeBrightness(newBrightness);
 ```
 
-**Use case #3 (update screen information)**
+**Use case #3 (for the internal `xayn_design` widgets)**
+
+If you need to build internal widget and at the same time you need rely on the current `Linden`,
+you have 2 options:
+1. get `Linden` with `UnterDenLinde.getLinden(context)`
+2. for the `StatefullWidget` you can add `mixin` - `UnterDenLindenMixin` - it will do same job for you :smile:
+
 ```dart
-linden = linden.updateScreenInfo(
-      screenSize: screenSize,
-      deviceOrientation: deviceOrientation,
-      notchPaddingLandscapeMode: notchPaddingLandscapeMode,
-    );
+class _TooltipState extends State<Tooltip> with UnterDenLindenMixin {
+  ...
 ```
+
+
 
 ----------
 
 ## Attributes :gear:
+
+#### Linden
 
 | attribute name                | Datatype      | Default Value                                                                                                                 | Description   |
 | --                            | --            | --                                                                                                                            | --    |
@@ -75,3 +103,11 @@ linden = linden.updateScreenInfo(
 | `screenSize`                  | `Size?`       | `null`                                                                                                                        | Responsible for the screen size and eventually updates the `XSizes` instance, `dimen`, when altered.  |
 | `deviceOrientation`           | `Orientation` | `Orientation.portrait`                                                                                                        | Passes the state of the device orientation and updates the `XSizes` instance, `dimen`, when altered.  |
 | `notchPaddingLandscapeMode`   | `double`      | `0`                                                                                                                           | When in landscape mode, regardless of the orientation; left or right, if there is a notch both `padding.right` and `padding.left` return the notch padding value. It updates the `XSizes` instance, `dimen`, when altered.    |
+
+#### UnterDenLinden
+
+| attribute name    | Datatype          | Default Value | Description   |
+| --                | --                | --            | --    |
+| `child`           | `Widget`          | `required`    | Your app widget   |
+| `initialLinden`   | `Linden`          | `required`    | Initial `Linden`, that will be stored inside `UntgerDenLinden` and will later updated and populated to the rest of the app |
+| `onLindenUpdated` | `OnLindenUpdated` | `null`        | Callback, that will be emitted everytime when `Linden` changes inside `UnterDenLinden`    |
