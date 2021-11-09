@@ -54,6 +54,11 @@ $ flutter pub get
     * [Installing](../TB-2973_update_docs/docs/LINDEN.md#installing-hammer_and_wrench)
     * [How to use](../TB-2973_update_docs/docs/LINDEN.md#how-to-use-linden-building_construction)
     * [Attributes](../TB-2973_update_docs/docs/LINDEN.md#attributes-gear)
+ 2) Widgets
+    * [Tooltip](../TB-2973_update_docs/docs/TOOLTIP.md)
+        * [Installing](../TB-2973_update_docs/docs/TOOLTIP.md#installing-hammer_and_wrench)
+        * [How to use](../TB-2973_update_docs/docs/TOOLTIP.md#how-to-use-building_construction)
+        * [Attributes](../TB-2973_update_docs/docs/TOOLTIP.md#attributes-gear)
 
 Give a try to the [example app](../main/example/)
 
