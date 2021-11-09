@@ -50,15 +50,15 @@ $ flutter pub get
 
 ## Library docs :book:
 
- 1) [Linden](../TB-2973_update_docs/docs/LINDEN.md)
-    * [Installing](../TB-2973_update_docs/docs/LINDEN.md#installing-hammer_and_wrench)
-    * [How to use](../TB-2973_update_docs/docs/LINDEN.md#how-to-use-linden-building_construction)
-    * [Attributes](../TB-2973_update_docs/docs/LINDEN.md#attributes-gear)
+ 1) [Linden](../main/docs/LINDEN.md)
+    * [Installing](../main/docs/LINDEN.md#installing-hammer_and_wrench)
+    * [How to use](../main/docs/LINDEN.md#how-to-use-linden-building_construction)
+    * [Attributes](../main/docs/LINDEN.md#attributes-gear)
  2) Widgets
-    * [Tooltip](../TB-2973_update_docs/docs/TOOLTIP.md)
-        * [Installing](../TB-2973_update_docs/docs/TOOLTIP.md#installing-hammer_and_wrench)
-        * [How to use](../TB-2973_update_docs/docs/TOOLTIP.md#how-to-use-building_construction)
-        * [Attributes](../TB-2973_update_docs/docs/TOOLTIP.md#attributes-gear)
+    * [Tooltip](../main/docs/TOOLTIP.md)
+        * [Installing](../main/docs/TOOLTIP.md#installing-hammer_and_wrench)
+        * [How to use](../main/docs/TOOLTIP.md#how-to-use-building_construction)
+        * [Attributes](../main/docs/TOOLTIP.md#attributes-gear)
 
 Give a try to the [example app](../main/example/)
 
