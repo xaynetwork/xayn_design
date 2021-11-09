@@ -13,8 +13,11 @@ mixin TooltipStatelessMixin on StatelessWidget {
     _tooltipController.register(key: key, params: params);
   }
 
-  void showTooltip(BuildContext context, TooltipKey key,
-      [List<dynamic>? parameters]) {
+  void showTooltip(
+    BuildContext context,
+    TooltipKey key, [
+    List<dynamic>? parameters,
+  ]) {
     final _tooltipController =
         Provider.of<TooltipController>(context, listen: false);
     _tooltipController.show(key, parameters);

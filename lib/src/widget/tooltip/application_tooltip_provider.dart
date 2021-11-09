@@ -12,7 +12,7 @@ class ApplicationTooltipProvider extends SingleChildStatefulWidget {
 
   const ApplicationTooltipProvider({
     required this.messageFactory,
-    required Widget? child,
+    required Widget child,
     Key? key,
   }) : super(key: key, child: child);
 
