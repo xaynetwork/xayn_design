@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
     return CupertinoPageRoute(
       builder: (_) => ApplicationTooltipProvider(
         messageFactory: TooltipMessageProvider.of(),
-        child: screenWidget,
+        child: screenWidget!,
       ),
       settings: routeSettings,
     );
