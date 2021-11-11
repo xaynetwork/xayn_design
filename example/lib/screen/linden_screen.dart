@@ -70,25 +70,27 @@ class _LindenScreenState extends State<LindenScreen> {
       );
 
   GridView _buildAssetsGrid(
-    List<String> icons, {
+    Set<String> icons, {
     Color? color,
     Color? backgroundColor,
-  }) =>
-      GridView.builder(
-        shrinkWrap: true,
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 50,
-          crossAxisSpacing: 5,
-        ),
-        itemCount: icons.length,
-        itemBuilder: (context, index) {
-          return Container(
-            color: backgroundColor,
-            child: SvgPicture.asset(
-              icons[index],
-              color: color,
-            ),
-          );
-        },
-      );
+  }) {
+    final iconList = icons.toList();
+    return GridView.builder(
+      shrinkWrap: true,
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 50,
+        crossAxisSpacing: 5,
+      ),
+      itemCount: iconList.length,
+      itemBuilder: (context, index) {
+        return Container(
+          color: backgroundColor,
+          child: SvgPicture.asset(
+            iconList[index],
+            color: color,
+          ),
+        );
+      },
+    );
+  }
 }
