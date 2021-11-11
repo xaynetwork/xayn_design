@@ -1,6 +1,6 @@
 import 'package:xayn_design/xayn_design.dart';
 
-List<String> getIconAssets(Linden linden) => [
+Set<String> getIconAssets(Linden linden) => {
       linden.assets.icons.confetti,
       linden.assets.icons.play,
       linden.assets.icons.thumbsDown,
@@ -53,23 +53,23 @@ List<String> getIconAssets(Linden linden) => [
       linden.assets.icons.news,
       linden.assets.icons.trash,
       linden.assets.icons.filters,
-    ];
+    };
 
-List<String> getGraphicsAssets(Linden linden) => [
+Set<String> getGraphicsAssets(Linden linden) => {
       linden.assets.graphics.listView,
       linden.assets.graphics.gridView,
       linden.assets.graphics.newsOnly,
       linden.assets.graphics.searchNews,
       linden.assets.graphics.searchOnly,
-    ];
+    };
 
-List<String> getIllustrationsAssets(Linden linden) => [
+Set<String> getIllustrationsAssets(Linden linden) => {
       linden.assets.illustrations.enableCamera,
       linden.assets.illustrations.brainyEnabled,
       linden.assets.illustrations.brainyDisabled,
-    ];
+    };
 
-List<String> getLogoAssets(Linden linden) => [
+Set<String> getLogoAssets(Linden linden) => {
       linden.assets.logo.xayn,
       linden.assets.logo.xaynIcon,
-    ];
+    };
