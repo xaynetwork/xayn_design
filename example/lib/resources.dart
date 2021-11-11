@@ -28,8 +28,6 @@ List<String> getIconAssets(Linden linden) => [
       linden.assets.icons.filtersIconRound,
       linden.assets.icons.heart,
       linden.assets.icons.alert,
-      linden.assets.icons.brainyEnabled,
-      linden.assets.icons.brainyDisabled,
       linden.assets.icons.check,
       linden.assets.icons.neutral,
       linden.assets.icons.cross,
@@ -67,6 +65,8 @@ List<String> getGraphicsAssets(Linden linden) => [
 
 List<String> getIllustrationsAssets(Linden linden) => [
       linden.assets.illustrations.enableCamera,
+      linden.assets.illustrations.brainyEnabled,
+      linden.assets.illustrations.brainyDisabled,
     ];
 
 List<String> getLogoAssets(Linden linden) => [

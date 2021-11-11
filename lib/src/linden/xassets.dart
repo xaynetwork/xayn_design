@@ -15,14 +15,19 @@ class XAssets {
       : _brightness = brightness ?? Brightness.light;
 
   _Lottie get lottie => _Lottie(_brightness);
+
   _Icons get icons => _Icons(_brightness);
-  _Illustrations get illustrations => _Illustrations();
+
+  _Illustrations get illustrations => _Illustrations(_brightness);
+
   _Graphics get graphics => _Graphics();
+
   _Logo get logo => _Logo();
 }
 
 class _Lottie {
   final Brightness _brightness;
+
   const _Lottie(this._brightness);
 
   String brainyJson(Brightness brightness) => _theme(
@@ -44,12 +49,37 @@ class _Lottie {
 
 class _Logo {
   String get xayn => packagePath + 'assets/logo/xayn_logo.svg';
+
   String get xaynIcon => packagePath + 'assets/logo/icon_logo.svg';
 }
 
 class _Illustrations {
+  final Brightness _brightness;
+
+  const _Illustrations(this._brightness);
+
   String get enableCamera =>
       packagePath + 'assets/illustrations/illustration_enable_camera.svg';
+
+  String get brainyEnabled => _theme(
+        brightAsset: 'assets/icons/brainy_enabled.svg',
+        darkAsset: 'assets/icons/brainy_enabled_dark.svg',
+      );
+
+  String get brainyDisabled => _theme(
+        brightAsset: 'assets/icons/brainy_disabled.svg',
+        darkAsset: 'assets/icons/brainy_disabled_dark.svg',
+      );
+
+  String _theme({
+    required String brightAsset,
+    String? darkAsset,
+    Brightness? brightness,
+  }) {
+    final isDark = (brightness ?? _brightness) == Brightness.dark;
+    final asset = isDark ? (darkAsset ?? brightAsset) : brightAsset;
+    return packagePath + asset;
+  }
 }
 
 class _Graphics {
@@ -68,19 +98,10 @@ class _Graphics {
 
 class _Icons {
   final Brightness _brightness;
+
   const _Icons(this._brightness);
 
   String get alert => _theme(brightAsset: 'assets/icons/icon_alert.svg');
-
-  String get brainyEnabled => _theme(
-        brightAsset: 'assets/icons/brainy_enabled.svg',
-        darkAsset: 'assets/icons/brainy_enabled_dark.svg',
-      );
-
-  String get brainyDisabled => _theme(
-        brightAsset: 'assets/icons/brainy_disabled.svg',
-        darkAsset: 'assets/icons/brainy_disabled_dark.svg',
-      );
 
   String get check => _theme(brightAsset: 'assets/icons/icon_check.svg');
 
