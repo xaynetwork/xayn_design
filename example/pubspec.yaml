@@ -44,17 +44,16 @@ flutter:
     - packages/xayn_design/assets/graphics/graphic_search_only.svg
 
     # illustrations
+    - packages/xayn_design/assets/illustrations/brainy_disabled.svg
+    - packages/xayn_design/assets/illustrations/brainy_disabled_dark.svg
+    - packages/xayn_design/assets/illustrations/brainy_enabled.svg
+    - packages/xayn_design/assets/illustrations/brainy_enabled_dark.svg
     - packages/xayn_design/assets/illustrations/illustration_enable_camera.svg
-
     # logo
     - packages/xayn_design/assets/logo/icon_logo.svg
     - packages/xayn_design/assets/logo/xayn_logo.svg
 
     # icons
-    - packages/xayn_design/assets/icons/brainy_disabled.svg
-    - packages/xayn_design/assets/icons/brainy_disabled_dark.svg
-    - packages/xayn_design/assets/icons/brainy_enabled.svg
-    - packages/xayn_design/assets/icons/brainy_enabled_dark.svg
     - packages/xayn_design/assets/icons/icon_alert.svg
     - packages/xayn_design/assets/icons/icon_back.svg
     - packages/xayn_design/assets/icons/icon_binoculars.svg
