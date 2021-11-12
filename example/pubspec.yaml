@@ -55,7 +55,10 @@ flutter:
 
     # icons
     - packages/xayn_design/assets/icons/alert.svg
-    - packages/xayn_design/assets/icons/back.svg
+    - packages/xayn_design/assets/icons/arrow_down.svg
+    - packages/xayn_design/assets/icons/arrow_left.svg
+    - packages/xayn_design/assets/icons/arrow_right.svg
+    - packages/xayn_design/assets/icons/arrow_up.svg
     - packages/xayn_design/assets/icons/binoculars.svg
     - packages/xayn_design/assets/icons/book.svg
     - packages/xayn_design/assets/icons/bookmark.svg
@@ -67,12 +70,10 @@ flutter:
     - packages/xayn_design/assets/icons/confetti.svg
     - packages/xayn_design/assets/icons/cross.svg
     - packages/xayn_design/assets/icons/devices.svg
-    - packages/xayn_design/assets/icons/down.svg
     - packages/xayn_design/assets/icons/download.svg
     - packages/xayn_design/assets/icons/edit.svg
     - packages/xayn_design/assets/icons/filters.svg
     - packages/xayn_design/assets/icons/filters_round.svg
-    - packages/xayn_design/assets/icons/forward.svg
     - packages/xayn_design/assets/icons/gear.svg
     - packages/xayn_design/assets/icons/globe.svg
     - packages/xayn_design/assets/icons/heart.svg
@@ -117,5 +118,4 @@ flutter:
     - packages/xayn_design/assets/icons/thumbs_up_active.svg
     - packages/xayn_design/assets/icons/trash.svg
     - packages/xayn_design/assets/icons/undo.svg
-    - packages/xayn_design/assets/icons/up.svg
     - packages/xayn_design/assets/icons/video.svg

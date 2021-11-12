@@ -101,7 +101,13 @@ class _Icons {
 
   String get alert => _theme(brightAsset: 'assets/icons/alert.svg');
 
-  String get back => _theme(brightAsset: 'assets/icons/back.svg');
+  String get arrowDown => _theme(brightAsset: 'assets/icons/arrow_down.svg');
+
+  String get arrowLeft => _theme(brightAsset: 'assets/icons/arrow_left.svg');
+
+  String get arrowRight => _theme(brightAsset: 'assets/icons/arrow_right.svg');
+
+  String get arrowUp => _theme(brightAsset: 'assets/icons/arrow_up.svg');
 
   String get binoculars => _theme(brightAsset: 'assets/icons/binoculars.svg');
 
@@ -126,8 +132,6 @@ class _Icons {
 
   String get devices => _theme(brightAsset: 'assets/icons/devices.svg');
 
-  String get down => _theme(brightAsset: 'assets/icons/down.svg');
-
   String get download => _theme(brightAsset: 'assets/icons/download.svg');
 
   String get edit => _theme(brightAsset: 'assets/icons/edit.svg');
@@ -136,8 +140,6 @@ class _Icons {
 
   String get filtersIconRound =>
       _theme(brightAsset: 'assets/icons/filters_round.svg');
-
-  String get forward => _theme(brightAsset: 'assets/icons/forward.svg');
 
   String get gear => _theme(brightAsset: 'assets/icons/gear.svg');
 
@@ -233,8 +235,6 @@ class _Icons {
   String get trash => _theme(brightAsset: 'assets/icons/trash.svg');
 
   String get undo => _theme(brightAsset: 'assets/icons/undo.svg');
-
-  String get up => _theme(brightAsset: 'assets/icons/up.svg');
 
   String get video => _theme(brightAsset: 'assets/icons/video.svg');
 
