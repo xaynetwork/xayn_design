@@ -1,5 +1,5 @@
 import 'package:example/screen/linden_screen.dart';
-import 'package:example/screen/widgets_screen.dart';
+import 'package:example/screen/xayn_widgets/widgets_screen.dart';
 import 'package:example/utils/tooltip_keys.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -1,47 +1,39 @@
 import 'package:example/utils/tooltip_keys.dart';
-import 'package:example/widget/toolbar.dart';
 import 'package:flutter/material.dart';
 import 'package:xayn_design/xayn_design.dart';
 
-class WidgetsScreen extends StatefulWidget {
-  static const routeName = '/widgets';
-
-  const WidgetsScreen({
-    Key? key,
-  }) : super(key: key);
+class TooltipPage extends StatefulWidget {
+  const TooltipPage({Key? key}) : super(key: key);
 
   @override
-  State<WidgetsScreen> createState() => _WidgetsScreenState();
+  State<TooltipPage> createState() => _TooltipPageState();
 }
 
-class _WidgetsScreenState extends State<WidgetsScreen> with TooltipStateMixin {
+class _TooltipPageState extends State<TooltipPage> with TooltipStateMixin {
   Linden get linden => UnterDenLinden.getLinden(context);
 
   @override
   void initState() {
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      _registerDynamicTooltips();
+      _registerDynamicTooltips(linden);
     });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final content = Column(
+    return Column(
       children: [
         _buildSimpleTooltipBtn(),
+        _buildTooltipWithIcon(),
+        const SizedBox(height: 30),
+        _buildAnchorWidget(linden),
       ],
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     );
-    return Scaffold(
-      appBar: const Toolbar(title: 'Xayn widgets'),
-      body: content,
-      floatingActionButton: _buildUndoButton(),
-    );
   }
 
-  void _registerDynamicTooltips() {
-    final linden = this.linden;
+  void _registerDynamicTooltips(Linden linden) {
     registerTooltip(
       key: TooltipKeys.withIcon,
       params: TooltipParams(
@@ -57,22 +49,16 @@ class _WidgetsScreenState extends State<WidgetsScreen> with TooltipStateMixin {
     );
   }
 
-  Widget _buildUndoButton() {
-    final fab = FloatingActionButton(
-      onPressed: () {
-        showTooltip(TooltipKeys.withIcon);
-      },
-      tooltip: 'Show undo',
-      child: SvgPicture.asset(
-        linden.assets.icons.undo,
-        color: linden.colors.brightIcon,
-      ),
-    );
-    return TooltipContextProvider(child: fab);
-  }
+  Widget _buildAnchorWidget(Linden linden) => TooltipContextProvider(
+      child: Text('This is tooltip anchor widget',
+          style: linden.styles.appBodyText));
 
   Widget _buildSimpleTooltipBtn() => _buildButton('Show simple tooltip', () {
         showTooltip(TooltipKeys.simple);
+      });
+
+  Widget _buildTooltipWithIcon() => _buildButton('Show tooltip with Icon', () {
+        showTooltip(TooltipKeys.withIcon);
       });
 
   Widget _buildButton(String text, VoidCallback onPressed) => Center(
