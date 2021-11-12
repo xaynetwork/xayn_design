@@ -58,18 +58,18 @@ class _Illustrations {
 
   const _Illustrations(this._brightness);
 
-  String get enableCamera =>
-      packagePath + 'assets/illustrations/illustration_enable_camera.svg';
-
   String get brainyEnabled => _theme(
-        brightAsset: 'assets/icons/brainy_enabled.svg',
-        darkAsset: 'assets/icons/brainy_enabled_dark.svg',
+        brightAsset: 'assets/illustrations/brainy_enabled.svg',
+        darkAsset: 'assets/illustrations/brainy_enabled_dark.svg',
       );
 
   String get brainyDisabled => _theme(
-        brightAsset: 'assets/icons/brainy_disabled.svg',
-        darkAsset: 'assets/icons/brainy_disabled_dark.svg',
+        brightAsset: 'assets/illustrations/brainy_disabled.svg',
+        darkAsset: 'assets/illustrations/brainy_disabled_dark.svg',
       );
+
+  String get enableCamera =>
+      packagePath + 'assets/illustrations/illustration_enable_camera.svg';
 
   String _theme({
     required String brightAsset,
