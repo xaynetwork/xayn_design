@@ -1,3 +1,4 @@
+import 'package:example/widget/toolbar.dart';
 import 'package:flutter/material.dart';
 import 'package:xayn_design/xayn_design.dart';
 
@@ -22,9 +23,7 @@ class _LindenScreenState extends State<LindenScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Xayn Linden'),
-      ),
+      appBar: const Toolbar(title: 'Xayn Linden'),
       body: _buildListView(),
       floatingActionButton: _buildThemeTogglerButton(),
     );
