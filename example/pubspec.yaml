@@ -37,85 +37,85 @@ flutter:
     # https://github.com/flutter/flutter/issues/27802
 
     # graphics
-    - packages/xayn_design/assets/graphics/graphic_grid_view.svg
-    - packages/xayn_design/assets/graphics/graphic_list_view.svg
-    - packages/xayn_design/assets/graphics/graphic_news_only.svg
-    - packages/xayn_design/assets/graphics/graphic_search_news.svg
-    - packages/xayn_design/assets/graphics/graphic_search_only.svg
+    - packages/xayn_design/assets/graphics/grid_view.svg
+    - packages/xayn_design/assets/graphics/list_view.svg
+    - packages/xayn_design/assets/graphics/news_only.svg
+    - packages/xayn_design/assets/graphics/search_news.svg
+    - packages/xayn_design/assets/graphics/search_only.svg
 
     # illustrations
+    - packages/xayn_design/assets/illustrations/enable_camera.svg
     - packages/xayn_design/assets/illustrations/brainy_disabled.svg
     - packages/xayn_design/assets/illustrations/brainy_disabled_dark.svg
     - packages/xayn_design/assets/illustrations/brainy_enabled.svg
     - packages/xayn_design/assets/illustrations/brainy_enabled_dark.svg
-    - packages/xayn_design/assets/illustrations/illustration_enable_camera.svg
     # logo
     - packages/xayn_design/assets/logo/icon_logo.svg
     - packages/xayn_design/assets/logo/xayn_logo.svg
 
     # icons
-    - packages/xayn_design/assets/icons/icon_alert.svg
-    - packages/xayn_design/assets/icons/icon_back.svg
-    - packages/xayn_design/assets/icons/icon_binoculars.svg
-    - packages/xayn_design/assets/icons/icon_book.svg
-    - packages/xayn_design/assets/icons/icon_bookmark.svg
-    - packages/xayn_design/assets/icons/icon_bookmark_active.svg
-    - packages/xayn_design/assets/icons/icon_bug.svg
-    - packages/xayn_design/assets/icons/icon_carousel.svg
-    - packages/xayn_design/assets/icons/icon_check.svg
-    - packages/xayn_design/assets/icons/icon_clock.svg
-    - packages/xayn_design/assets/icons/icon_confetti.svg
-    - packages/xayn_design/assets/icons/icon_cross.svg
-    - packages/xayn_design/assets/icons/icon_devices.svg
-    - packages/xayn_design/assets/icons/icon_down.svg
-    - packages/xayn_design/assets/icons/icon_download.svg
-    - packages/xayn_design/assets/icons/icon_edit.svg
-    - packages/xayn_design/assets/icons/icon_filters.svg
-    - packages/xayn_design/assets/icons/icon_filters_round.svg
-    - packages/xayn_design/assets/icons/icon_forward.svg
-    - packages/xayn_design/assets/icons/icon_gear.svg
-    - packages/xayn_design/assets/icons/icon_globe.svg
-    - packages/xayn_design/assets/icons/icon_heart.svg
-    - packages/xayn_design/assets/icons/icon_home.svg
-    - packages/xayn_design/assets/icons/icon_image.svg
-    - packages/xayn_design/assets/icons/icon_info.svg
-    - packages/xayn_design/assets/icons/icon_language.svg
-    - packages/xayn_design/assets/icons/icon_legal.svg
-    - packages/xayn_design/assets/icons/icon_lightening.svg
-    - packages/xayn_design/assets/icons/icon_list.svg
-    - packages/xayn_design/assets/icons/icon_loading.svg
-    - packages/xayn_design/assets/icons/icon_location_pin.svg
-    - packages/xayn_design/assets/icons/icon_map.svg
-    - packages/xayn_design/assets/icons/icon_menu.svg
-    - packages/xayn_design/assets/icons/icon_minus.svg
-    - packages/xayn_design/assets/icons/icon_moon.svg
-    - packages/xayn_design/assets/icons/icon_moon_and_sun.svg
-    - packages/xayn_design/assets/icons/icon_neutral.svg
-    - packages/xayn_design/assets/icons/icon_new_tab.svg
-    - packages/xayn_design/assets/icons/icon_news.svg
-    - packages/xayn_design/assets/icons/icon_notification.svg
-    - packages/xayn_design/assets/icons/icon_person.svg
-    - packages/xayn_design/assets/icons/icon_phone.svg
-    - packages/xayn_design/assets/icons/icon_plant.svg
-    - packages/xayn_design/assets/icons/icon_play.svg
-    - packages/xayn_design/assets/icons/icon_plus.svg
-    - packages/xayn_design/assets/icons/icon_qr_code.svg
-    - packages/xayn_design/assets/icons/icon_qr_scanner.svg
-    - packages/xayn_design/assets/icons/icon_reader_mode.svg
-    - packages/xayn_design/assets/icons/icon_reload.svg
-    - packages/xayn_design/assets/icons/icon_rocket.svg
-    - packages/xayn_design/assets/icons/icon_search.svg
-    - packages/xayn_design/assets/icons/icon_share_android.svg
-    - packages/xayn_design/assets/icons/icon_share_ios.svg
-    - packages/xayn_design/assets/icons/icon_shield.svg
-    - packages/xayn_design/assets/icons/icon_speech_bubbles.svg
-    - packages/xayn_design/assets/icons/icon_sun.svg
-    - packages/xayn_design/assets/icons/icon_tabs.svg
-    - packages/xayn_design/assets/icons/icon_thumbs_down.svg
-    - packages/xayn_design/assets/icons/icon_thumbs_down_active.svg
-    - packages/xayn_design/assets/icons/icon_thumbs_up.svg
-    - packages/xayn_design/assets/icons/icon_thumbs_up_active.svg
-    - packages/xayn_design/assets/icons/icon_trash.svg
-    - packages/xayn_design/assets/icons/icon_undo.svg
-    - packages/xayn_design/assets/icons/icon_up.svg
-    - packages/xayn_design/assets/icons/icon_video.svg
+    - packages/xayn_design/assets/icons/alert.svg
+    - packages/xayn_design/assets/icons/back.svg
+    - packages/xayn_design/assets/icons/binoculars.svg
+    - packages/xayn_design/assets/icons/book.svg
+    - packages/xayn_design/assets/icons/bookmark.svg
+    - packages/xayn_design/assets/icons/bookmark_active.svg
+    - packages/xayn_design/assets/icons/bug.svg
+    - packages/xayn_design/assets/icons/carousel.svg
+    - packages/xayn_design/assets/icons/check.svg
+    - packages/xayn_design/assets/icons/clock.svg
+    - packages/xayn_design/assets/icons/confetti.svg
+    - packages/xayn_design/assets/icons/cross.svg
+    - packages/xayn_design/assets/icons/devices.svg
+    - packages/xayn_design/assets/icons/down.svg
+    - packages/xayn_design/assets/icons/download.svg
+    - packages/xayn_design/assets/icons/edit.svg
+    - packages/xayn_design/assets/icons/filters.svg
+    - packages/xayn_design/assets/icons/filters_round.svg
+    - packages/xayn_design/assets/icons/forward.svg
+    - packages/xayn_design/assets/icons/gear.svg
+    - packages/xayn_design/assets/icons/globe.svg
+    - packages/xayn_design/assets/icons/heart.svg
+    - packages/xayn_design/assets/icons/home.svg
+    - packages/xayn_design/assets/icons/image.svg
+    - packages/xayn_design/assets/icons/info.svg
+    - packages/xayn_design/assets/icons/language.svg
+    - packages/xayn_design/assets/icons/legal.svg
+    - packages/xayn_design/assets/icons/lightening.svg
+    - packages/xayn_design/assets/icons/list.svg
+    - packages/xayn_design/assets/icons/loading.svg
+    - packages/xayn_design/assets/icons/location_pin.svg
+    - packages/xayn_design/assets/icons/map.svg
+    - packages/xayn_design/assets/icons/menu.svg
+    - packages/xayn_design/assets/icons/minus.svg
+    - packages/xayn_design/assets/icons/moon.svg
+    - packages/xayn_design/assets/icons/moon_and_sun.svg
+    - packages/xayn_design/assets/icons/neutral.svg
+    - packages/xayn_design/assets/icons/new_tab.svg
+    - packages/xayn_design/assets/icons/news.svg
+    - packages/xayn_design/assets/icons/notification.svg
+    - packages/xayn_design/assets/icons/person.svg
+    - packages/xayn_design/assets/icons/phone.svg
+    - packages/xayn_design/assets/icons/plant.svg
+    - packages/xayn_design/assets/icons/play.svg
+    - packages/xayn_design/assets/icons/plus.svg
+    - packages/xayn_design/assets/icons/qr_code.svg
+    - packages/xayn_design/assets/icons/qr_scanner.svg
+    - packages/xayn_design/assets/icons/reader_mode.svg
+    - packages/xayn_design/assets/icons/reload.svg
+    - packages/xayn_design/assets/icons/rocket.svg
+    - packages/xayn_design/assets/icons/search.svg
+    - packages/xayn_design/assets/icons/share_android.svg
+    - packages/xayn_design/assets/icons/share_ios.svg
+    - packages/xayn_design/assets/icons/shield.svg
+    - packages/xayn_design/assets/icons/speech_bubbles.svg
+    - packages/xayn_design/assets/icons/sun.svg
+    - packages/xayn_design/assets/icons/tabs.svg
+    - packages/xayn_design/assets/icons/thumbs_down.svg
+    - packages/xayn_design/assets/icons/thumbs_down_active.svg
+    - packages/xayn_design/assets/icons/thumbs_up.svg
+    - packages/xayn_design/assets/icons/thumbs_up_active.svg
+    - packages/xayn_design/assets/icons/trash.svg
+    - packages/xayn_design/assets/icons/undo.svg
+    - packages/xayn_design/assets/icons/up.svg
+    - packages/xayn_design/assets/icons/video.svg
