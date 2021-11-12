@@ -1,5 +1,5 @@
 import 'package:example/screen/linden_screen.dart';
-import 'package:example/screen/widgets_screen.dart';
+import 'package:example/screen/xayn_widgets/widgets_screen.dart';
 import 'package:example/widget/toolbar.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +32,7 @@ class _MainScreenState extends State<MainScreen> {
         _pushScreen(LindenScreen.routeName);
       });
 
-  Widget _buildWidgetsBtn() => _buildButton('Show widgets', () {
+  Widget _buildWidgetsBtn() => _buildButton('Show xayn widgets', () {
         _pushScreen(WidgetsScreen.routeName);
       });
 
