@@ -1,4 +1,5 @@
 import 'package:example/utils/tooltip_keys.dart';
+import 'package:example/widget/toolbar.dart';
 import 'package:flutter/material.dart';
 import 'package:xayn_design/xayn_design.dart';
 
@@ -33,9 +34,7 @@ class _WidgetsScreenState extends State<WidgetsScreen> with TooltipStateMixin {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     );
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Xayn widgets'),
-      ),
+      appBar: const Toolbar(title: 'Xayn widgets'),
       body: content,
       floatingActionButton: _buildUndoButton(),
     );

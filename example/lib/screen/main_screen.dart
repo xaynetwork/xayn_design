@@ -1,5 +1,6 @@
 import 'package:example/screen/linden_screen.dart';
 import 'package:example/screen/widgets_screen.dart';
+import 'package:example/widget/toolbar.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -22,7 +23,7 @@ class _MainScreenState extends State<MainScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     );
     return Scaffold(
-      appBar: AppBar(title: const Text('Xayn Design Library')),
+      appBar: const Toolbar(title: 'Xayn Design Library'),
       body: content,
     );
   }
