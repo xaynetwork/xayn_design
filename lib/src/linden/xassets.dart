@@ -117,7 +117,7 @@ class _Icons {
 
   String get bug => _theme(brightAsset: 'assets/icons/icon_bug.svg');
 
-  String get cancel => _theme(brightAsset: 'assets/icons/icon_cancel.svg');
+  String get carousel => _theme(brightAsset: 'assets/icons/icon_carousel.svg');
 
   String get check => _theme(brightAsset: 'assets/icons/icon_check.svg');
 
@@ -155,10 +155,21 @@ class _Icons {
 
   String get info => _theme(brightAsset: 'assets/icons/icon_info.svg');
 
+  String get language => _theme(brightAsset: 'assets/icons/icon_language.svg');
+
   String get legal => _theme(brightAsset: 'assets/icons/icon_legal.svg');
 
   String get lightening =>
       _theme(brightAsset: 'assets/icons/icon_lightening.svg');
+
+  String get list => _theme(brightAsset: 'assets/icons/icon_list.svg');
+
+  String get loading => _theme(brightAsset: 'assets/icons/icon_loading.svg');
+
+  String get locationPin =>
+      _theme(brightAsset: 'assets/icons/icon_location_pin.svg');
+
+  String get map => _theme(brightAsset: 'assets/icons/icon_map.svg');
 
   String get menu => _theme(brightAsset: 'assets/icons/icon_menu.svg');
 
@@ -175,7 +186,14 @@ class _Icons {
 
   String get news => _theme(brightAsset: 'assets/icons/icon_news.svg');
 
+  String get notification =>
+      _theme(brightAsset: 'assets/icons/icon_notification.svg');
+
   String get person => _theme(brightAsset: 'assets/icons/icon_person.svg');
+
+  String get phone => _theme(brightAsset: 'assets/icons/icon_phone.svg');
+
+  String get plant => _theme(brightAsset: 'assets/icons/icon_plant.svg');
 
   String get play => _theme(brightAsset: 'assets/icons/icon_play.svg');
 
@@ -211,7 +229,13 @@ class _Icons {
   String get thumbsDown =>
       _theme(brightAsset: 'assets/icons/icon_thumbs_down.svg');
 
+  String get thumbsDownActive =>
+      _theme(brightAsset: 'assets/icons/icon_thumbs_down_active.svg');
+
   String get thumbsUp => _theme(brightAsset: 'assets/icons/icon_thumbs_up.svg');
+
+  String get thumbsUpActive =>
+      _theme(brightAsset: 'assets/icons/icon_thumbs_up_active.svg');
 
   String get trash => _theme(brightAsset: 'assets/icons/icon_trash.svg');
 
