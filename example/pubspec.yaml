@@ -61,7 +61,7 @@ flutter:
     - packages/xayn_design/assets/icons/icon_bookmark.svg
     - packages/xayn_design/assets/icons/icon_bookmark_active.svg
     - packages/xayn_design/assets/icons/icon_bug.svg
-    - packages/xayn_design/assets/icons/icon_cancel.svg
+    - packages/xayn_design/assets/icons/icon_carousel.svg
     - packages/xayn_design/assets/icons/icon_check.svg
     - packages/xayn_design/assets/icons/icon_clock.svg
     - packages/xayn_design/assets/icons/icon_confetti.svg
@@ -79,8 +79,13 @@ flutter:
     - packages/xayn_design/assets/icons/icon_home.svg
     - packages/xayn_design/assets/icons/icon_image.svg
     - packages/xayn_design/assets/icons/icon_info.svg
+    - packages/xayn_design/assets/icons/icon_language.svg
     - packages/xayn_design/assets/icons/icon_legal.svg
     - packages/xayn_design/assets/icons/icon_lightening.svg
+    - packages/xayn_design/assets/icons/icon_list.svg
+    - packages/xayn_design/assets/icons/icon_loading.svg
+    - packages/xayn_design/assets/icons/icon_location_pin.svg
+    - packages/xayn_design/assets/icons/icon_map.svg
     - packages/xayn_design/assets/icons/icon_menu.svg
     - packages/xayn_design/assets/icons/icon_minus.svg
     - packages/xayn_design/assets/icons/icon_moon.svg
@@ -88,7 +93,10 @@ flutter:
     - packages/xayn_design/assets/icons/icon_neutral.svg
     - packages/xayn_design/assets/icons/icon_new_tab.svg
     - packages/xayn_design/assets/icons/icon_news.svg
+    - packages/xayn_design/assets/icons/icon_notification.svg
     - packages/xayn_design/assets/icons/icon_person.svg
+    - packages/xayn_design/assets/icons/icon_phone.svg
+    - packages/xayn_design/assets/icons/icon_plant.svg
     - packages/xayn_design/assets/icons/icon_play.svg
     - packages/xayn_design/assets/icons/icon_plus.svg
     - packages/xayn_design/assets/icons/icon_qr_code.svg
@@ -104,7 +112,9 @@ flutter:
     - packages/xayn_design/assets/icons/icon_sun.svg
     - packages/xayn_design/assets/icons/icon_tabs.svg
     - packages/xayn_design/assets/icons/icon_thumbs_down.svg
+    - packages/xayn_design/assets/icons/icon_thumbs_down_active.svg
     - packages/xayn_design/assets/icons/icon_thumbs_up.svg
+    - packages/xayn_design/assets/icons/icon_thumbs_up_active.svg
     - packages/xayn_design/assets/icons/icon_trash.svg
     - packages/xayn_design/assets/icons/icon_undo.svg
     - packages/xayn_design/assets/icons/icon_up.svg
