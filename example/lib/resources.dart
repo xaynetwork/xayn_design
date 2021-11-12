@@ -2,7 +2,10 @@ import 'package:xayn_design/xayn_design.dart';
 
 Set<String> getIconAssets(Linden linden) => {
       linden.assets.icons.alert,
-      linden.assets.icons.back,
+      linden.assets.icons.arrowDown,
+      linden.assets.icons.arrowLeft,
+      linden.assets.icons.arrowRight,
+      linden.assets.icons.arrowUp,
       linden.assets.icons.binoculars,
       linden.assets.icons.book,
       linden.assets.icons.bookmark,
@@ -14,12 +17,10 @@ Set<String> getIconAssets(Linden linden) => {
       linden.assets.icons.confetti,
       linden.assets.icons.cross,
       linden.assets.icons.devices,
-      linden.assets.icons.down,
       linden.assets.icons.download,
       linden.assets.icons.edit,
       linden.assets.icons.filters,
       linden.assets.icons.filtersIconRound,
-      linden.assets.icons.forward,
       linden.assets.icons.gear,
       linden.assets.icons.globe,
       linden.assets.icons.heart,
@@ -61,7 +62,6 @@ Set<String> getIconAssets(Linden linden) => {
       linden.assets.icons.thumbsUpActive,
       linden.assets.icons.trash,
       linden.assets.icons.undo,
-      linden.assets.icons.up,
       linden.assets.icons.video,
     };
 
