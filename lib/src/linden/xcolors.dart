@@ -105,6 +105,7 @@ class XColors {
 
   /// Colors that are independent of the dark mode
   Color get onboardingBackground => _white;
+  Color get onboardingTutorialBackground => _black.withOpacity(0.85);
   Color get onboardingTextSelected => _green;
   Color get onboardingTextInverse => _white;
   Color get onboardingTagTextInverse => _white;
@@ -127,6 +128,11 @@ class XColors {
   Color get speedDialButtonUnSelected => _lightGrey;
 
   Color get qrCodeBackground => _white;
+
+  /// Dots indicator
+  Color get dotsIndicatorColor => _transparent;
+  Color get dotsIndicatorActiveColor => _white;
+  Color get dotsIndicatorBorderColor => _white;
 
   /// Color helper constants
   final alpha50 = 0x7f;
