@@ -15,12 +15,18 @@ class DotsDecorator {
   final Size size;
 
   const DotsDecorator({
-    this.color = Colors.transparent,
-    this.activeColor = Colors.white,
-    this.borderColor = Colors.white,
-    this.borderWidth = kDefaultBorderWidth,
-    this.spacing = kDefaultSpacing,
-    this.shape = kDefaultShape,
-    this.size = kDefaultSize,
-  });
+    Color? color,
+    Color? activeColor,
+    Color? borderColor,
+    double? borderWidth,
+    EdgeInsets? spacing,
+    BoxShape? shape,
+    Size? size,
+  })  : color = color ?? Colors.transparent,
+        activeColor = activeColor ?? Colors.white,
+        borderColor = borderColor ?? Colors.white,
+        borderWidth = borderWidth ?? kDefaultBorderWidth,
+        spacing = spacing ?? kDefaultSpacing,
+        shape = shape ?? kDefaultShape,
+        size = size ?? kDefaultSize;
 }
