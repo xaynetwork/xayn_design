@@ -67,12 +67,19 @@ class XSizes {
   final double onboardingScreenHeight = 900;
   final double onboardingCardWidth = 370;
   final double onboardingCardAverageHeight = 300;
+
   double get breakpoint320 => 320;
+
   double get breakpoint375 => 375;
+
   double get breakpoint621 => 621;
+
   double get breakpoint656 => 656;
+
   double get breakpoint768 => 768;
+
   double get breakpoint1024 => 1024;
+
   double get breakpoint1440 => 1440;
 
   double get screenWidth => _screenSize.width;
@@ -207,6 +214,8 @@ class XSizes {
   final double graphicsGridViewWidth = 149;
   final double graphicsNewsFeedLayoutWidth = 57;
   final double graphicsHeight = 93;
+
+  final double disabledOpacity = 0.5;
 }
 
 /// Describes which configuration for certain [XSizes] attributes to use
