@@ -190,6 +190,10 @@ class XSizes {
 
   double get iconButtonSize => unit6;
 
+  double get buttonMinHeight => unit5;
+
+  double get buttonMinWidth => unit8;
+
   /// Bottom Bar
   double get bottomBarVerticalPadding => unit1_5;
 

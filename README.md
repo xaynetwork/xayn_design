@@ -62,6 +62,9 @@ $ flutter pub get
     * [AppSwitch](../main/docs/SWITCH.md)
         * [How to use](../main/docs/SWITCH.md#how-to-use-building_construction)
         * [Attributes](../main/docs/SWITCH.md#attributes-gear)
+    * [AppRaisedButton](../main/docs/BUTTON.md)
+        * [How to use](../main/docs/BUTTON.md#how-to-use-building_construction)
+        * [Attributes](../main/docs/BUTTON.md#attributes-gear)
 
 Give a try to the [example app](../main/example/)
 
