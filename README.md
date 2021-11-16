@@ -65,6 +65,9 @@ $ flutter pub get
     * [AppRaisedButton](../main/docs/BUTTON.md)
         * [How to use](../main/docs/BUTTON.md#how-to-use-building_construction)
         * [Attributes](../main/docs/BUTTON.md#attributes-gear)
+    * [AppCard](../main/docs/CARD.md)
+        * [How to use](../main/docs/CARD.md#how-to-use-building_construction)
+        * [Attributes](../main/docs/CARD.md#attributes-gear)
 
 Give a try to the [example app](../main/example/)
 
