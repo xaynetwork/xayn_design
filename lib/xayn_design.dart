@@ -16,6 +16,7 @@ export 'src/linden/xstyles.dart' show XStyles;
 export 'src/utils/safe_platform.dart' show SafePlatform;
 
 export 'src/widget/build_observer.dart';
+export 'src/widget/button/app_raised_button.dart';
 export 'src/widget/dots_indicator/dots_decorator.dart';
 export 'src/widget/dots_indicator/dots_indicator.dart';
 export 'src/widget/switch/app_switch.dart';

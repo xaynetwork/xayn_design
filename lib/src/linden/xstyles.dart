@@ -16,6 +16,7 @@ class XStyles {
   }) : colors = XColors(brightness: brightness);
 
   FontWeight get _weightBold => FontWeight.w700;
+
   FontWeight get _weightRegular => FontWeight.w400;
 
   /// Defined by design
@@ -275,6 +276,7 @@ class XStyles {
 
   /// Borders generic
   static XSizes get _dimen => const XSizes();
+
   static double get _unit0_5 => _dimen.unit0_5;
 
   static double get _unit => _dimen.unit;
