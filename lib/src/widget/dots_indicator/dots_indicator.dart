@@ -73,7 +73,7 @@ class DotsIndicator extends StatelessWidget {
       margin: decorator.spacing,
       decoration: BoxDecoration(
         color: color,
-        shape: BoxShape.circle,
+        shape: decorator.shape,
         border: Border.all(
           color: decorator.borderColor,
           width: decorator.borderWidth,
