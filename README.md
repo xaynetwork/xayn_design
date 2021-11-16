@@ -59,6 +59,9 @@ $ flutter pub get
         * [Installing](../main/docs/TOOLTIP.md#installing-hammer_and_wrench)
         * [How to use](../main/docs/TOOLTIP.md#how-to-use-building_construction)
         * [Attributes](../main/docs/TOOLTIP.md#attributes-gear)
+    * [AppSwitch](../main/docs/SWITCH.md)
+        * [How to use](../main/docs/SWITCH.md#how-to-use-building_construction)
+        * [Attributes](../main/docs/SWITCH.md#attributes-gear)
 
 Give a try to the [example app](../main/example/)
 

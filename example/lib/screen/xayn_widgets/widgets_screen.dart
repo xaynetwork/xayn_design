@@ -1,4 +1,5 @@
 import 'package:example/screen/xayn_widgets/page/dots_indicator_page.dart';
+import 'package:example/screen/xayn_widgets/page/switch_page.dart';
 import 'package:example/screen/xayn_widgets/page/tooltip_page.dart';
 import 'package:example/widget/toolbar.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class _WidgetsScreenState extends State<WidgetsScreen>
   final tabs = <String, Widget>{
     'Tooltip': const TooltipPage(),
     'Dots Indicator': const DotsIndicatorPage(),
+    'Switch': const SwitchPage(),
   };
 
   late final TabController _tabController;

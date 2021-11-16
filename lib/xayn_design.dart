@@ -7,15 +7,18 @@ library xayn_design;
 export 'package:flutter_svg/flutter_svg.dart';
 
 export 'src/linden/linden.dart' show Linden;
+
 export 'src/linden/xanimations.dart' show XAnimations;
 export 'src/linden/xassets.dart' show XAssets;
 export 'src/linden/xcolors.dart' show XColors;
 export 'src/linden/xsizes.dart' show XSizes, Experiences;
 export 'src/linden/xstyles.dart' show XStyles;
 export 'src/utils/safe_platform.dart' show SafePlatform;
+
 export 'src/widget/build_observer.dart';
 export 'src/widget/dots_indicator/dots_decorator.dart';
 export 'src/widget/dots_indicator/dots_indicator.dart';
+export 'src/widget/switch/app_switch.dart';
 export 'src/widget/tooltip/application_tooltip_provider.dart';
 export 'src/widget/tooltip/messages/textual_notification.dart';
 export 'src/widget/tooltip/messages/tooltip_message.dart';
