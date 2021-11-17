@@ -1,6 +1,7 @@
 import 'package:example/screen/xayn_widgets/page/button_page.dart';
 import 'package:example/screen/xayn_widgets/page/card_page.dart';
 import 'package:example/screen/xayn_widgets/page/dots_indicator_page.dart';
+import 'package:example/screen/xayn_widgets/page/settings_page.dart';
 import 'package:example/screen/xayn_widgets/page/switch_page.dart';
 import 'package:example/screen/xayn_widgets/page/tooltip_page.dart';
 import 'package:example/widget/toolbar.dart';
@@ -26,6 +27,7 @@ class _WidgetsScreenState extends State<WidgetsScreen>
     'Switch': const SwitchPage(),
     'Button': const ButtonPage(),
     'Card': const CardPage(),
+    'Settings': const SettingsPage(),
   };
 
   late final TabController _tabController;
