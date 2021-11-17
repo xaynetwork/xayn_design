@@ -129,6 +129,10 @@ class XColors {
 
   Color get qrCodeBackground => _white;
 
+  Color get swipeCardBackground => _black;
+  Color get snippetBackground => _white;
+  Color get snippetTextColor => _black;
+
   /// Dots indicator
   Color get dotsIndicatorColor => _transparent;
   Color get dotsIndicatorActiveColor => _white;

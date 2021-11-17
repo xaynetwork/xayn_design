@@ -264,6 +264,13 @@ class XStyles {
         fontWeight: _weightBold,
       );
 
+  TextStyle? get snippetTextStyle => appBodyText?.copyWith(
+        fontWeight: FontWeight.w500,
+        color: colors.snippetTextColor,
+        fontSize: 16,
+        height: 2,
+      );
+
   /// Other styles
 
   /// Borders generic
