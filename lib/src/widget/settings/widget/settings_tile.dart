@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:xayn_design/xayn_design.dart';
 
-class SettingsTileWidget extends StatelessWidget {
+class SettingsTile extends StatelessWidget {
   final SettingsTileData data;
 
-  const SettingsTileWidget({
+  const SettingsTile({
     Key? key,
     required this.data,
   }) : super(key: key);

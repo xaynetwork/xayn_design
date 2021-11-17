@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:xayn_design/xayn_design.dart';
 
-enum SettingsSelectable {
+enum SettingsSelectableType {
   icon,
   graphic,
 }
 
-class SettingsSelectableWidget extends StatelessWidget {
-  final List<SettingsSelectableItem> items;
-  final SettingsSelectable type;
+class SettingsSelectable extends StatelessWidget {
+  final List<SettingsSelectableData> items;
+  final SettingsSelectableType type;
 
-  const SettingsSelectableWidget.icons({
+  const SettingsSelectable.icons({
     Key? key,
     required this.items,
-  })  : type = SettingsSelectable.icon,
+  })  : type = SettingsSelectableType.icon,
         super(key: key);
 
-  const SettingsSelectableWidget.graphics({
+  const SettingsSelectable.graphics({
     Key? key,
     required this.items,
-  })  : type = SettingsSelectable.graphic,
+  })  : type = SettingsSelectableType.graphic,
         super(key: key);
 
   @override
@@ -35,9 +35,9 @@ class SettingsSelectableWidget extends StatelessWidget {
         BoxConstraints(minWidth: constraints.maxWidth / items.length);
 
     switch (type) {
-      case SettingsSelectable.icon:
+      case SettingsSelectableType.icon:
         return _buildIconGroup(itemConstrains, linden);
-      case SettingsSelectable.graphic:
+      case SettingsSelectableType.graphic:
         return _buildGraphicGroup(itemConstrains, linden);
     }
   }
@@ -64,11 +64,11 @@ class SettingsSelectableWidget extends StatelessWidget {
   }
 
   Widget _buildGraphicIcon(
-    SettingsSelectableItem item,
+    SettingsSelectableData item,
     BoxConstraints itemConstraints,
     Linden linden,
   ) {
-    final radioBtn = Radio<SettingsSelectableItem>(
+    final radioBtn = Radio<SettingsSelectableData>(
       key: item.key,
       value: item,
       groupValue: item.isSelected ? item : null,
@@ -116,7 +116,7 @@ class SettingsSelectableWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildIconItem(SettingsSelectableItem item, Linden linden) {
+  Widget _buildIconItem(SettingsSelectableData item, Linden linden) {
     final icon = SvgPicture.asset(
       item.svgIconPath,
       width: linden.dimen.iconSize,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xayn_design/xayn_design.dart';
 
-/// Item, that is displayed in [SettingsSectionWidget]
+/// Item, that is displayed in [SettingsSection]
 @immutable
 class SettingsCardData {
   final List<SettingsGroupData> items;

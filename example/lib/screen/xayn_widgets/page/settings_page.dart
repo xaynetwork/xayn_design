@@ -56,7 +56,7 @@ class _PrivacySectionState extends State<_PrivacySection> {
   bool blockCookiesEnable = true;
 
   @override
-  Widget build(BuildContext context) => SettingsSectionWidget(
+  Widget build(BuildContext context) => SettingsSection(
         title: 'Privacy settings',
         items: [
           _getBlockTrackers(),
@@ -151,7 +151,7 @@ class _AppLanguageSectionState extends State<_AppLanguageSection> {
   Linden get linden => UnterDenLinden.getLinden(context);
 
   @override
-  Widget build(BuildContext context) => SettingsSectionWidget(
+  Widget build(BuildContext context) => SettingsSection(
         title: 'Your app language',
         subTitle: 'Chose the interface language',
         items: [_getBlockTrackers()],
@@ -202,7 +202,7 @@ class _IrrelevantContentSectionState extends State<_IrrelevantContentSection> {
       _getDismissedSources(),
       _getDismissedTopics(),
     ]);
-    return SettingsSectionWidget(
+    return SettingsSection(
       title: 'Content marked as irrelevant',
       items: [cardData],
     );
@@ -260,16 +260,16 @@ class _AppThemeSectionState extends State<_AppThemeSection> {
 
   @override
   Widget build(BuildContext context) {
-    final selectable = SettingsSelectableWidget.icons(
+    final selectable = SettingsSelectable.icons(
       items: _AppTheme.values.map(_getItem).toList(),
     );
-    return SettingsSectionWidget.custom(
+    return SettingsSection.custom(
       title: 'Your app theme',
       child: selectable,
     );
   }
 
-  SettingsSelectableItem _getItem(_AppTheme theme) {
+  SettingsSelectableData _getItem(_AppTheme theme) {
     late final String title;
     late final String icon;
 
@@ -288,7 +288,7 @@ class _AppThemeSectionState extends State<_AppThemeSection> {
         break;
     }
 
-    return SettingsSelectableItem(
+    return SettingsSelectableData(
         key: Key(theme.toString()),
         title: title,
         svgIconPath: icon,
@@ -321,17 +321,17 @@ class _HomeLayoutSectionState extends State<_HomeLayoutSection> {
 
   @override
   Widget build(BuildContext context) {
-    final selectable = SettingsSelectableWidget.graphics(
+    final selectable = SettingsSelectable.graphics(
       items: _HomeLayout.values.map(_getItem).toList(),
     );
-    return SettingsSectionWidget.custom(
+    return SettingsSection.custom(
       title: 'Your Home Screen Setup',
       subTitle: 'What is displayed',
       child: selectable,
     );
   }
 
-  SettingsSelectableItem _getItem(_HomeLayout layout) {
+  SettingsSelectableData _getItem(_HomeLayout layout) {
     late final String title;
     late final String graphic;
 
@@ -350,7 +350,7 @@ class _HomeLayoutSectionState extends State<_HomeLayoutSection> {
         break;
     }
 
-    return SettingsSelectableItem(
+    return SettingsSelectableData(
         key: Key(layout.toString()),
         title: title,
         svgIconPath: graphic,
@@ -382,17 +382,17 @@ class _GridSetupSectionState extends State<_GridSetupSection> {
 
   @override
   Widget build(BuildContext context) {
-    final selectable = SettingsSelectableWidget.graphics(
+    final selectable = SettingsSelectable.graphics(
       items: _GridSetup.values.map(_getItem).toList(),
     );
-    return SettingsSectionWidget.custom(
+    return SettingsSection.custom(
       title: 'Grid setup',
       subTitle: 'How your results should be displayed',
       child: selectable,
     );
   }
 
-  SettingsSelectableItem _getItem(_GridSetup layout) {
+  SettingsSelectableData _getItem(_GridSetup layout) {
     late final String title;
     late final String graphic;
 
@@ -407,7 +407,7 @@ class _GridSetupSectionState extends State<_GridSetupSection> {
         break;
     }
 
-    return SettingsSelectableItem(
+    return SettingsSelectableData(
         key: Key(layout.toString()),
         title: title,
         svgIconPath: graphic,

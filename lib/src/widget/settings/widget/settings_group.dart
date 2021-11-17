@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:xayn_design/xayn_design.dart';
 
-class SettingsGroupWidget extends StatelessWidget {
+class SettingsGroup extends StatelessWidget {
   final SettingsGroupData data;
 
-  const SettingsGroupWidget({
+  const SettingsGroup({
     Key? key,
     required this.data,
   }) : super(key: key);
@@ -18,7 +18,7 @@ class SettingsGroupWidget extends StatelessWidget {
 
     final size = data.items.length;
     for (int i = 0; i < size; i++) {
-      children.add(SettingsTileWidget(data: data.items[i]));
+      children.add(SettingsTile(data: data.items[i]));
       if (i < size - 1) {
         // we want to add widget after every item except the last one
         children.add(SizedBox(height: linden.dimen.unit2));

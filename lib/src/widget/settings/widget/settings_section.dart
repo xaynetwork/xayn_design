@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:xayn_design/xayn_design.dart';
 
-class SettingsSectionWidget extends StatelessWidget {
+class SettingsSection extends StatelessWidget {
   final String title;
   final String? subTitle;
   final List<SettingsCardData> items;
   final Widget? _child;
 
-  const SettingsSectionWidget({
+  const SettingsSection({
     Key? key,
     required this.title,
     required this.items,
@@ -16,7 +16,7 @@ class SettingsSectionWidget extends StatelessWidget {
         _child = null,
         super(key: key);
 
-  SettingsSectionWidget.fromTile({
+  SettingsSection.fromTile({
     Key? key,
     required this.title,
     required SettingsTileData tileData,
@@ -29,8 +29,8 @@ class SettingsSectionWidget extends StatelessWidget {
         _child = null,
         super(key: key);
 
-  /// So far used to show [SettingsSelectableWidget]
-  SettingsSectionWidget.custom({
+  /// So far used to show [SettingsSelectable]
+  SettingsSection.custom({
     Key? key,
     required this.title,
     required Widget child,
@@ -62,7 +62,7 @@ class SettingsSectionWidget extends StatelessWidget {
     } else {
       final size = items.length;
       for (int i = 0; i < size; i++) {
-        final card = SettingsCardWidget(data: SettingsCardData(items[i].items));
+        final card = SettingsCard(data: SettingsCardData(items[i].items));
         columnChildren.add(card);
         if (i < size - 1) {
           // we want to add widget after every item except the last one
