@@ -110,11 +110,8 @@ class XStyles {
         color: colors.tertiaryText,
       );
 
-  TextStyle? get appThumbnailTextLight => appBodyText?.copyWith(
+  TextStyle? get appThumbnailTextLight => appThumbnailText?.copyWith(
         fontWeight: _weightRegular,
-        fontSize: 10,
-        // height = 12
-        height: 1.2,
       );
 
   TextStyle? get linkText => appBodyText?.copyWith(
