@@ -7,6 +7,12 @@ enum _DotsColor {
   tertiary,
 }
 
+enum _DotsColorType {
+  general,
+  active,
+  border,
+}
+
 const _kDotsSizeList = [12.0, 16.0, 20.0];
 const _kDotsBorderWidthList = [1.0, 2.0, 3.0];
 const _kDotsSpacingMap = {
@@ -79,9 +85,9 @@ class _DotsIndicatorPageState extends State<DotsIndicatorPage> {
       activePosition: _currentPageIndex,
       dotsNumber: _pagesNumber,
       decorator: DotsDecorator(
-        color: getDotsColor,
-        activeColor: getDotsActiveColor,
-        borderColor: getDotsBorderColor,
+        color: _getDotsColor(dotsColor, _DotsColorType.general),
+        activeColor: _getDotsColor(dotsActiveColor, _DotsColorType.active),
+        borderColor: _getDotsColor(dotsBorderColor, _DotsColorType.border),
         size: Size.square(dotsSize),
         borderWidth: dotsBorderWidth,
         shape: dotsShape,
@@ -134,110 +140,96 @@ class _DotsIndicatorPageState extends State<DotsIndicatorPage> {
     );
   }
 
-  Widget _buildListTileDotsColor() {
-    return ListTile(
-      title: const Text('Dots color: '),
-      trailing: DropdownButton<_DotsColor>(
-        value: dotsColor,
-        items: _DotsColor.values.map(_itemBuilderDotsColor).toList(),
-        onChanged: (value) {
-          setState(() {
-            dotsColor = value!;
-          });
-        },
-      ),
-    );
-  }
+  Widget _buildListTileDotsColor() => ListTile(
+        title: const Text('Dots color: '),
+        trailing: DropdownButton<_DotsColor>(
+          value: dotsColor,
+          items: _DotsColor.values.map(_itemBuilderDotsColor).toList(),
+          onChanged: (value) {
+            setState(() {
+              dotsColor = value!;
+            });
+          },
+        ),
+      );
 
-  Widget _buildListTileDotsActiveColor() {
-    return ListTile(
-      title: const Text('Dots active color: '),
-      trailing: DropdownButton<_DotsColor>(
-        value: dotsActiveColor,
-        items: _DotsColor.values.map(_itemBuilderDotsColor).toList(),
-        onChanged: (value) {
-          setState(() {
-            dotsActiveColor = value!;
-          });
-        },
-      ),
-    );
-  }
+  Widget _buildListTileDotsActiveColor() => ListTile(
+        title: const Text('Dots active color: '),
+        trailing: DropdownButton<_DotsColor>(
+          value: dotsActiveColor,
+          items: _DotsColor.values.map(_itemBuilderDotsColor).toList(),
+          onChanged: (value) {
+            setState(() {
+              dotsActiveColor = value!;
+            });
+          },
+        ),
+      );
 
-  Widget _buildListTileDotsBorderColor() {
-    return ListTile(
-      title: const Text('Dots border color: '),
-      trailing: DropdownButton<_DotsColor>(
-        value: dotsBorderColor,
-        items: _DotsColor.values.map(_itemBuilderDotsColor).toList(),
-        onChanged: (value) {
-          setState(() {
-            dotsBorderColor = value!;
-          });
-        },
-      ),
-    );
-  }
+  Widget _buildListTileDotsBorderColor() => ListTile(
+        title: const Text('Dots border color: '),
+        trailing: DropdownButton<_DotsColor>(
+          value: dotsBorderColor,
+          items: _DotsColor.values.map(_itemBuilderDotsColor).toList(),
+          onChanged: (value) {
+            setState(() {
+              dotsBorderColor = value!;
+            });
+          },
+        ),
+      );
 
-  Widget _buildListTileDotsSize() {
-    return ListTile(
-      title: const Text('Dots size: '),
-      trailing: DropdownButton<double>(
-        value: dotsSize,
-        items: _kDotsSizeList.map(_itemBuilderDotsDimen).toList(),
-        onChanged: (value) {
-          setState(() {
-            dotsSize = value!;
-          });
-        },
-      ),
-    );
-  }
+  Widget _buildListTileDotsSize() => ListTile(
+        title: const Text('Dots size: '),
+        trailing: DropdownButton<double>(
+          value: dotsSize,
+          items: _kDotsSizeList.map(_itemBuilderDotsDimen).toList(),
+          onChanged: (value) {
+            setState(() {
+              dotsSize = value!;
+            });
+          },
+        ),
+      );
 
-  Widget _buildListTileDotsBorderWidth() {
-    return ListTile(
-      title: const Text('Dots border width: '),
-      trailing: DropdownButton<double>(
-        value: dotsBorderWidth,
-        items: _kDotsBorderWidthList.map(_itemBuilderDotsDimen).toList(),
-        onChanged: (value) {
-          setState(() {
-            dotsBorderWidth = value!;
-          });
-        },
-      ),
-    );
-  }
+  Widget _buildListTileDotsBorderWidth() => ListTile(
+        title: const Text('Dots border width: '),
+        trailing: DropdownButton<double>(
+          value: dotsBorderWidth,
+          items: _kDotsBorderWidthList.map(_itemBuilderDotsDimen).toList(),
+          onChanged: (value) {
+            setState(() {
+              dotsBorderWidth = value!;
+            });
+          },
+        ),
+      );
 
-  Widget _buildListTileDotsShape() {
-    return ListTile(
-      title: const Text('Dots shape: '),
-      trailing: DropdownButton<BoxShape>(
-        value: dotsShape,
-        items: BoxShape.values.map(_itemBuilderDotsShape).toList(),
-        onChanged: (value) {
-          setState(() {
-            dotsShape = value!;
-          });
-        },
-      ),
-    );
-  }
+  Widget _buildListTileDotsShape() => ListTile(
+        title: const Text('Dots shape: '),
+        trailing: DropdownButton<BoxShape>(
+          value: dotsShape,
+          items: BoxShape.values.map(_itemBuilderDotsShape).toList(),
+          onChanged: (value) {
+            setState(() {
+              dotsShape = value!;
+            });
+          },
+        ),
+      );
 
-  Widget _buildListTileDotsSpacing() {
-    return ListTile(
-      title: const Text('Dots spacing: '),
-      trailing: DropdownButton<EdgeInsets>(
-        value: dotsSpacing,
-        items: _kDotsSpacingMap.keys.map(_itemBuilderDotsSpacing).toList(),
-        onChanged: (value) {
-          setState(() {
-            dotsSpacing = value!;
-          });
-        },
-      ),
-    );
-  }
+  Widget _buildListTileDotsSpacing() => ListTile(
+        title: const Text('Dots spacing: '),
+        trailing: DropdownButton<EdgeInsets>(
+          value: dotsSpacing,
+          items: _kDotsSpacingMap.keys.map(_itemBuilderDotsSpacing).toList(),
+          onChanged: (value) {
+            setState(() {
+              dotsSpacing = value!;
+            });
+          },
+        ),
+      );
 
   DropdownMenuItem<_DotsColor> _itemBuilderDotsColor(_DotsColor value) {
     final text = value.toString().substring(value.toString().indexOf(".") + 1);
@@ -267,22 +259,17 @@ class _DotsIndicatorPageState extends State<DotsIndicatorPage> {
         child: Text(spacingKey),
       );
 
-  Color get getDotsColor => dotsColor.fold(
-        onPrimary: () => linden.colors.dotsIndicatorColor,
+  Color _getDotsColor(_DotsColor dotsColor, _DotsColorType dotsColorType) =>
+      dotsColor.fold(
+        onPrimary: () => _getPrimaryColor(dotsColorType),
         onSecondary: () => linden.colors.secondaryAccent,
         onTertiary: () => linden.colors.primaryAction,
       );
 
-  Color get getDotsActiveColor => dotsActiveColor.fold(
-        onPrimary: () => linden.colors.dotsIndicatorActiveColor,
-        onSecondary: () => linden.colors.secondaryAccent,
-        onTertiary: () => linden.colors.primaryAction,
-      );
-
-  Color get getDotsBorderColor => dotsBorderColor.fold(
-        onPrimary: () => linden.colors.dotsIndicatorBorderColor,
-        onSecondary: () => linden.colors.secondaryAccent,
-        onTertiary: () => linden.colors.primaryAction,
+  Color _getPrimaryColor(_DotsColorType dotsColorType) => dotsColorType.fold(
+        onGeneral: () => linden.colors.dotsIndicatorColor,
+        onActive: () => linden.colors.dotsIndicatorActiveColor,
+        onBorder: () => linden.colors.dotsIndicatorBorderColor,
       );
 }
 
@@ -299,6 +286,23 @@ extension DotsColorExtension on _DotsColor {
         return onSecondary();
       case _DotsColor.tertiary:
         return onTertiary();
+    }
+  }
+}
+
+extension DotsColorTypeExtension on _DotsColorType {
+  T fold<T>({
+    required T Function() onGeneral,
+    required T Function() onActive,
+    required T Function() onBorder,
+  }) {
+    switch (this) {
+      case _DotsColorType.general:
+        return onGeneral();
+      case _DotsColorType.active:
+        return onActive();
+      case _DotsColorType.border:
+        return onBorder();
     }
   }
 }

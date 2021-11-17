@@ -67,7 +67,7 @@ class DotsIndicator extends StatelessWidget {
     final color =
         index == activePosition ? decorator.activeColor : decorator.color;
 
-    final dot = Container(
+    return Container(
       height: decorator.size.height,
       width: decorator.size.width,
       margin: decorator.spacing,
@@ -80,7 +80,5 @@ class DotsIndicator extends StatelessWidget {
         ),
       ),
     );
-
-    return dot;
   }
 }
