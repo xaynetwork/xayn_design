@@ -11,6 +11,9 @@ class AppCardWidget extends StatelessWidget {
   /// If not provided, then by default will apply [XSizes.elevationHigh]
   final double? elevation;
 
+  /// If not provided, then by default will apply [XSizes.unit0_25]
+  final double? highlightedLineWidth;
+
   /// If not provided, then by default will apply:
   /// [EdgeInsets.all(XSizes.unit2)]
   final EdgeInsets? contentPadding;
@@ -24,6 +27,7 @@ class AppCardWidget extends StatelessWidget {
     this.elevation,
     this.contentPadding,
     this.borderRadius,
+    this.highlightedLineWidth,
   }) : super(key: key);
 
   @override
@@ -32,7 +36,7 @@ class AppCardWidget extends StatelessWidget {
 
     final borderSide = BorderSide(
       style: BorderStyle.solid,
-      width: 2,
+      width: highlightedLineWidth ?? linden.dimen.unit0_25,
       color: isHighlighted
           ? linden.colors.cardBorderHighlight
           : linden.colors.transparent,
