@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:xayn_design/xayn_design.dart';
 
-/// Contain all necessary data for each individual [SettingsTileWidget]
+/// Contain all necessary data for each individual [SettingsTile]
 @immutable
 class SettingsTileData {
   final String title;

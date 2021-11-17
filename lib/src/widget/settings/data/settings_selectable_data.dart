@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SettingsSelectableItem {
+class SettingsSelectableData {
   final Key key;
   final String title;
   final String svgIconPath;
   final bool isSelected;
   final VoidCallback onPressed;
 
-  SettingsSelectableItem({
+  SettingsSelectableData({
     required this.key,
     required this.title,
     required this.svgIconPath,
