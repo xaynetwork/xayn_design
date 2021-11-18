@@ -1,7 +1,8 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 @immutable
-abstract class SettingsTileAction {
+abstract class SettingsTileAction extends Equatable {
   final Key key;
   final VoidCallback onPressed;
 
@@ -17,6 +18,13 @@ class SettingsTileActionText extends SettingsTileAction {
     required VoidCallback onPressed,
     required Key key,
   }) : super(key, onPressed);
+
+  @override
+  List<Object?> get props => [
+        key,
+        onPressed,
+        text,
+      ];
 }
 
 class SettingsTileActionIcon extends SettingsTileAction {
@@ -27,6 +35,13 @@ class SettingsTileActionIcon extends SettingsTileAction {
     required VoidCallback onPressed,
     required Key key,
   }) : super(key, onPressed);
+
+  @override
+  List<Object?> get props => [
+        key,
+        onPressed,
+        svgIconPath,
+      ];
 }
 
 class SettingsTileActionCircle extends SettingsTileAction {
@@ -39,6 +54,14 @@ class SettingsTileActionCircle extends SettingsTileAction {
     required VoidCallback onPressed,
     required Key key,
   }) : super(key, onPressed);
+
+  @override
+  List<Object?> get props => [
+        key,
+        onPressed,
+        svgIconPath,
+        isActive,
+      ];
 }
 
 class SettingsTileActionSwitch extends SettingsTileAction {
@@ -49,4 +72,11 @@ class SettingsTileActionSwitch extends SettingsTileAction {
     required VoidCallback onPressed,
     required Key key,
   }) : super(key, onPressed);
+
+  @override
+  List<Object?> get props => [
+        key,
+        onPressed,
+        value,
+      ];
 }
