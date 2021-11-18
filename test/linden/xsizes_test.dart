@@ -1,4 +1,3 @@
-// @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:test/test.dart';
 import 'package:xayn_design/xayn_design.dart';
