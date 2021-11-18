@@ -29,45 +29,137 @@ class SettingsSelectable extends StatelessWidget {
       );
 
   Widget _buildGroup(BuildContext context, BoxConstraints constraints) {
-    final linden = UnterDenLinden.getLinden(context);
-
     final itemConstrains =
         BoxConstraints(minWidth: constraints.maxWidth / items.length);
 
     switch (type) {
       case SettingsSelectableType.icon:
-        return _buildIconGroup(itemConstrains, linden);
+        return SettingsSelectableIconGroup(
+          constraints: itemConstrains,
+          items: items,
+        );
       case SettingsSelectableType.graphic:
-        return _buildGraphicGroup(itemConstrains, linden);
+        return SettingsSelectableGraphicGroup(
+          items: items,
+          constraints: itemConstrains,
+        );
     }
   }
+}
 
-  Widget _buildIconGroup(BoxConstraints itemConstraints, Linden linden) =>
-      ToggleButtons(
+class SettingsSelectableIconGroup extends StatelessWidget {
+  final BoxConstraints constraints;
+  final List<SettingsSelectableData> items;
+
+  const SettingsSelectableIconGroup({
+    Key? key,
+    required this.constraints,
+    required this.items,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final linden = UnterDenLinden.getLinden(context);
+    return ToggleButtons(
         fillColor: linden.colors.accent,
         renderBorder: false,
-        constraints: itemConstraints,
+        constraints: constraints,
         isSelected: items.map((e) => e.isSelected).toList(),
-        children: items.map((e) => _buildIconItem(e, linden)).toList(),
+        children: items.map((e) => SettingsSelectableIcon(item: e)).toList(),
         onPressed: (int index) {
           items[index].onPressed();
-        },
-      );
+        });
+  }
+}
 
-  Widget _buildGraphicGroup(BoxConstraints itemConstraints, Linden linden) {
-    final children = items
-        .map((e) => _buildGraphicIcon(e, itemConstraints, linden))
-        .toList();
-    return Row(
-      children: children,
+class SettingsSelectableIcon extends StatelessWidget {
+  final SettingsSelectableData item;
+
+  const SettingsSelectableIcon({
+    Key? key,
+    required this.item,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final linden = UnterDenLinden.getLinden(context);
+    final icon = SvgPicture.asset(
+      item.svgIconPath,
+      width: linden.dimen.iconSize,
+      height: linden.dimen.iconSize,
+      color: item.isSelected ? linden.colors.accent : linden.colors.primary,
+    );
+
+    final withCircle = Container(
+      child: Center(child: icon),
+      decoration: BoxDecoration(
+        color: item.isSelected
+            ? linden.colors.iconBackgroundSelected
+            : linden.colors.iconBackground,
+        shape: BoxShape.circle,
+      ),
+      width: linden.dimen.unit5,
+      height: linden.dimen.unit5,
+    );
+
+    final isDarkMode = linden.brightness == Brightness.dark;
+    final title = Text(
+      item.title,
+      textAlign: TextAlign.center,
+      style: item.isSelected && !isDarkMode
+          ? linden.styles.settingsLayoutSectionTextSelected
+          : linden.styles.settingsLayoutSectionText,
+    );
+
+    final column = Column(
+      children: [
+        withCircle,
+        SizedBox(height: linden.dimen.unit1_5),
+        title,
+      ],
+      mainAxisSize: MainAxisSize.min,
+    );
+    return Padding(
+      key: item.key,
+      padding: EdgeInsets.symmetric(vertical: linden.dimen.unit2),
+      child: column,
     );
   }
+}
 
-  Widget _buildGraphicIcon(
-    SettingsSelectableData item,
-    BoxConstraints itemConstraints,
-    Linden linden,
-  ) {
+class SettingsSelectableGraphicGroup extends StatelessWidget {
+  final BoxConstraints constraints;
+  final List<SettingsSelectableData> items;
+
+  const SettingsSelectableGraphicGroup({
+    Key? key,
+    required this.constraints,
+    required this.items,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final children = items
+        .map(
+            (e) => SettingsSelectableGraphic(item: e, constraints: constraints))
+        .toList();
+    return Row(children: children);
+  }
+}
+
+class SettingsSelectableGraphic extends StatelessWidget {
+  final BoxConstraints constraints;
+  final SettingsSelectableData item;
+
+  const SettingsSelectableGraphic({
+    Key? key,
+    required this.item,
+    required this.constraints,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final linden = UnterDenLinden.getLinden(context);
     final radioBtn = Radio<SettingsSelectableData>(
       key: item.key,
       value: item,
@@ -107,55 +199,12 @@ class SettingsSelectable extends StatelessWidget {
       key: item.key,
       onTap: item.onPressed,
       child: Container(
-        constraints: itemConstraints,
+        constraints: constraints,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: children,
         ),
       ),
-    );
-  }
-
-  Widget _buildIconItem(SettingsSelectableData item, Linden linden) {
-    final icon = SvgPicture.asset(
-      item.svgIconPath,
-      width: linden.dimen.iconSize,
-      height: linden.dimen.iconSize,
-      color: item.isSelected ? linden.colors.accent : linden.colors.primary,
-    );
-
-    final withCircle = Container(
-      child: Center(child: icon),
-      decoration: BoxDecoration(
-        color: item.isSelected
-            ? linden.colors.iconBackgroundSelected
-            : linden.colors.iconBackground,
-        shape: BoxShape.circle,
-      ),
-      width: linden.dimen.unit5,
-      height: linden.dimen.unit5,
-    );
-
-    final isDarkMode = linden.brightness == Brightness.dark;
-    final title = Text(
-      item.title,
-      textAlign: TextAlign.center,
-      style: item.isSelected && !isDarkMode
-          ? linden.styles.settingsLayoutSectionTextSelected
-          : linden.styles.settingsLayoutSectionText,
-    );
-
-    final column = Column(
-      children: [
-        withCircle,
-        SizedBox(height: linden.dimen.unit1_5),
-        title,
-      ],
-      mainAxisSize: MainAxisSize.min,
-    );
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: linden.dimen.unit2),
-      child: column,
     );
   }
 }
