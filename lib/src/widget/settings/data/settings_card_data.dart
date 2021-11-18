@@ -7,7 +7,7 @@ import 'package:xayn_design/xayn_design.dart';
 class SettingsCardData extends Equatable {
   final List<SettingsGroupData> items;
 
-  const SettingsCardData(this.items);
+  const SettingsCardData(this.items) : assert(items.length > 0);
 
   factory SettingsCardData.fromTile(SettingsTileData tile) => SettingsCardData([
         SettingsGroupData(items: [tile])
