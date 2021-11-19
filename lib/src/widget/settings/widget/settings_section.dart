@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:xayn_design/xayn_design.dart';
 
+const _defaultAlignment = CrossAxisAlignment.start;
+
 class SettingsSection extends StatelessWidget {
   final String title;
   final String? subTitle;
   final List<SettingsCardData> items;
   final Widget? _child;
 
+  /// Controls how the children should be placed along the cross axis
+  final CrossAxisAlignment crossAxisAlignment;
+
   const SettingsSection({
     Key? key,
     required this.title,
     required this.items,
     this.subTitle,
+    this.crossAxisAlignment = _defaultAlignment,
   })  : assert(items.length > 0),
         _child = null,
         super(key: key);
@@ -21,6 +27,7 @@ class SettingsSection extends StatelessWidget {
     required this.title,
     required SettingsTileData tileData,
     this.subTitle,
+    this.crossAxisAlignment = _defaultAlignment,
   })  : items = [
           SettingsCardData([
             SettingsGroupData(items: [tileData])
@@ -35,6 +42,7 @@ class SettingsSection extends StatelessWidget {
     required this.title,
     required Widget child,
     this.subTitle,
+    this.crossAxisAlignment = _defaultAlignment,
   })  : items = [],
         _child = child,
         super(key: key);
@@ -72,7 +80,7 @@ class SettingsSection extends StatelessWidget {
     }
     return Column(
       mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: crossAxisAlignment,
       children: columnChildren,
     );
   }
