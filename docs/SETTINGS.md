@@ -142,12 +142,13 @@ Please, check the [example app](../../TB_3035_settings_widgets_test_and_docs/exa
 
 ### SettingsSection
 
-| attribute name  | Datatype                 | Default Value | Description |
-| --              | --                       | --            | --  |
-| `title`         | `String`                 | `required`    | text, used as a title for the settings section |
-| `items`         | `List<SettingsCardData>` | `required`    | list of card models, that belong to the current section   |
-| `subTitle`      | `String?`                | `null`        | optional text, that describes section with some details  |
-| `key`           | `Key`                    | `null`        | key identifier |
+| attribute name        | Datatype                 | Default Value               | Description |
+| --                    | --                       | --                          | --  |
+| `title`               | `String`                 | `required`                  | text, used as a title for the settings section |
+| `items`               | `List<SettingsCardData>` | `required`                  | list of card models, that belong to the current section   |
+| `subTitle`            | `String?`                | `null`                      | optional text, that describes section with some details  |
+| `crossAxisAlignment`  | `CrossAxisAlignment`     | `CrossAxisAlignment.start`  | controls how the children should be placed along the cross axis |
+| `key`                 | `Key`                    | `null`                      | key identifier |
 
 ----------
 
