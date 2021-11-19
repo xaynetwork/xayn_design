@@ -35,7 +35,7 @@ class SettingsSection extends StatelessWidget {
     required this.title,
     required Widget child,
     this.subTitle,
-  })  : items = [SettingsCardData(const [])],
+  })  : items = [],
         _child = child,
         super(key: key);
 
