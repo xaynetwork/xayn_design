@@ -69,6 +69,9 @@ $ flutter pub get
         * [How to use](../main/docs/CARD.md#how-to-use-building_construction)
         * [Attributes](../main/docs/CARD.md#attributes-gear)
     * [Settings](../main/docs/SETTINGS.md)
+    * [DotsIndicator](../main/docs/DOTS_INDICATOR.md)
+        * [How to use](../main/docs/DOTS_INDICATOR.md#how-to-use-building_construction)
+        * [Attributes](../main/docs/DOTS_INDICATOR.md#attributes-gear)
 
 Give a try to the [example app](../main/example/)
 

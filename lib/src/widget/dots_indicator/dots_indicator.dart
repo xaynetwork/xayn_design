@@ -11,10 +11,26 @@ import 'dots_decorator.dart';
 /// If [decorator] is null then the [DotsDecorator] object is created
 /// by following the Xayn design system
 class DotsIndicator extends StatelessWidget {
+  /// Number of dots to show
   final int dotsNumber;
+
+  /// Index of the active dot
   final int activePosition;
+
+  /// Decorator object for styling the dots
+  /// If null a decorator with Xayn style is created
+  ///
+  /// @Default `null`
   final DotsDecorator? decorator;
+
+  /// How the dots should be placed along the main axis of the row
+  ///
+  /// @Default `MainAxisAlignment.center`
   final MainAxisAlignment mainAxisAlignment;
+
+  /// How much space the dots should occupy in the main axis
+  ///
+  /// @Default `MainAxisAlignment.min`
   final MainAxisSize mainAxisSize;
 
   const DotsIndicator({
