@@ -4,11 +4,12 @@ import 'package:xayn_design/xayn_design.dart';
 import 'dots_decorator.dart';
 
 /// A widget used to display customizable dots in a row.
+///
 /// Usually used in combination with a [PageView] in order to
 /// highlight the index of the current page
 ///
 /// If [decorator] is null then the [DotsDecorator] object is created
-/// by following the Xayn design system.
+/// by following the Xayn design system
 class DotsIndicator extends StatelessWidget {
   final int dotsNumber;
   final int activePosition;
