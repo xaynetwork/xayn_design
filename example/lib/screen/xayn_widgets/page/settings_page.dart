@@ -25,6 +25,7 @@ class _SettingsPageState extends State<SettingsPage> {
       const _AppThemeSection(),
       const _HomeLayoutSection(),
       const _GridSetupSection(),
+      const _SpreadWordSection(),
     ]);
     super.initState();
   }
@@ -418,4 +419,18 @@ class _GridSetupSectionState extends State<_GridSetupSection> {
           });
         });
   }
+}
+
+class _SpreadWordSection extends StatelessWidget {
+  const _SpreadWordSection({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => SettingsSection.custom(
+        title: 'Spread the Word',
+        crossAxisAlignment: CrossAxisAlignment.center,
+        child: AppRaisedButton.textWithIcon(
+            onPressed: () {},
+            text: 'Share with friends',
+            svgIconPath: UnterDenLinden.getLinden(context).assets.icons.heart),
+      );
 }
