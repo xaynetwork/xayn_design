@@ -269,6 +269,12 @@ class XStyles {
         height: 2,
       );
 
+  TextStyle? get readerModeTextStyle => appBodyText?.copyWith(
+        fontSize: 14.0,
+        height: 1.75,
+        letterSpacing: 1.1,
+      );
+
   /// Other styles
 
   /// Borders generic
