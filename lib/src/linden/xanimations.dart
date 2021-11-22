@@ -48,4 +48,6 @@ class XAnimations {
   Duration get onboardingScrollAnimation => unit25;
 
   Duration get tooltipTimeToLive => unit10;
+
+  Duration get cardTransitionDuration => unit3;
 }
