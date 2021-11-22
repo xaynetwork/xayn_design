@@ -76,4 +76,39 @@ void main() {
       expect(widget.items.length, equals(0));
     },
   );
+
+  testWidgets(
+    'GIVEN topTitle < 0 WHEN create section THEN throw assert exception',
+    (final WidgetTester tester) async {
+      const topPadding = -1.0;
+      Widget build() => SettingsSection(
+            title: title,
+            items: [SettingsCardData.fromTile(tile)],
+            topPadding: topPadding,
+          );
+      Widget build0() => SettingsSection.fromTile(
+            title: title,
+            tileData: tile,
+            topPadding: topPadding,
+          );
+      Widget build1() => SettingsSection.custom(
+            title: title,
+            topPadding: topPadding,
+            child: const SizedBox(height: 100),
+          );
+
+      expect(
+        build,
+        throwsA(isA<AssertionError>()),
+      );
+      expect(
+        build0,
+        throwsA(isA<AssertionError>()),
+      );
+      expect(
+        build1,
+        throwsA(isA<AssertionError>()),
+      );
+    },
+  );
 }
