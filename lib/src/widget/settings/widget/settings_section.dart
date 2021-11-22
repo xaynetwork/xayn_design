@@ -3,11 +3,19 @@ import 'package:xayn_design/xayn_design.dart';
 
 const _defaultAlignment = CrossAxisAlignment.start;
 
+/// Should be equal to [XSizes.unit4];
+const _defaultTopPadding = 32.0;
+
 class SettingsSection extends StatelessWidget {
   final String title;
   final String? subTitle;
   final List<SettingsCardData> items;
   final Widget? _child;
+
+  /// Padding, that applied above title.
+  /// if value not provided via constructor, the default applied.
+  /// Should be >= 0
+  final double topPadding;
 
   /// Controls how the children should be placed along the cross axis
   final CrossAxisAlignment crossAxisAlignment;
@@ -18,7 +26,9 @@ class SettingsSection extends StatelessWidget {
     required this.items,
     this.subTitle,
     this.crossAxisAlignment = _defaultAlignment,
+    this.topPadding = _defaultTopPadding,
   })  : assert(items.length > 0),
+        assert(topPadding >= 0),
         _child = null,
         super(key: key);
 
@@ -28,7 +38,9 @@ class SettingsSection extends StatelessWidget {
     required SettingsTileData tileData,
     this.subTitle,
     this.crossAxisAlignment = _defaultAlignment,
-  })  : items = [
+    this.topPadding = _defaultTopPadding,
+  })  : assert(topPadding >= 0),
+        items = [
           SettingsCardData([
             SettingsGroupData(items: [tileData])
           ])
@@ -43,7 +55,9 @@ class SettingsSection extends StatelessWidget {
     required Widget child,
     this.subTitle,
     this.crossAxisAlignment = _defaultAlignment,
-  })  : items = [],
+    this.topPadding = _defaultTopPadding,
+  })  : assert(topPadding >= 0),
+        items = [],
         _child = child,
         super(key: key);
 
@@ -52,7 +66,7 @@ class SettingsSection extends StatelessWidget {
     final linden = UnterDenLinden.getLinden(context);
 
     final columnChildren = <Widget>[
-      SizedBox(height: linden.dimen.unit4),
+      SizedBox(height: topPadding),
       _buildTitle(linden),
     ];
 

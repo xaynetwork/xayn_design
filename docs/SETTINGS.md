@@ -148,6 +148,7 @@ Please, check the [example app](../../TB_3035_settings_widgets_test_and_docs/exa
 | `items`               | `List<SettingsCardData>` | `required`                  | list of card models, that belong to the current section   |
 | `subTitle`            | `String?`                | `null`                      | optional text, that describes section with some details  |
 | `crossAxisAlignment`  | `CrossAxisAlignment`     | `CrossAxisAlignment.start`  | controls how the children should be placed along the cross axis |
+| `topPadding`          | `double`                 | `32`                        | value, that applied to padding above title  |
 | `key`                 | `Key`                    | `null`                      | key identifier |
 
 ----------
