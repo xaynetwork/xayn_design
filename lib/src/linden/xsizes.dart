@@ -108,6 +108,8 @@ class XSizes {
   bool get isTabletLandscapeMode =>
       isTablet && _deviceOrientation == Orientation.landscape;
 
+  Size get screenSize => _screenSize;
+
   /// Return the number of columns to show in a grid view depending on
   /// the screen the user is experiencing (Experience) and the device and
   /// the orientation

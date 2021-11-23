@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'xanimations.dart';
 import 'xassets.dart';
 import 'xcolors.dart';
@@ -42,7 +43,6 @@ import 'xstyles.dart';
 @immutable
 class Linden {
   Linden({
-    this.screenSize,
     this.deviceOrientation = Orientation.portrait,
     this.notchPaddingLandscapeMode = 0,
     this.brightness = Brightness.light,
@@ -63,13 +63,7 @@ class Linden {
             XSizes(
               notchPaddingLandscapeMode: notchPaddingLandscapeMode,
               deviceOrientation: deviceOrientation,
-              screenSize: screenSize,
             );
-
-  /// Responsible for the screen size and eventually updates the [XSizes]
-  /// instance, dimen, when altered.
-  ///
-  final Size? screenSize;
 
   /// Passes the state of the device orientation and updates the [XSizes]
   /// instance, dimen, when altered.
@@ -132,7 +126,6 @@ class Linden {
     XAnimations? animations,
   }) =>
       Linden(
-        screenSize: screenSize ?? this.screenSize,
         deviceOrientation: deviceOrientation ?? this.deviceOrientation,
         notchPaddingLandscapeMode:
             notchPaddingLandscapeMode ?? this.notchPaddingLandscapeMode,
@@ -152,11 +145,10 @@ class Linden {
     required Orientation deviceOrientation,
     double notchPaddingLandscapeMode = 0.0,
   }) {
-    if (screenSize != this.screenSize ||
+    if (screenSize != dimen.screenSize ||
         deviceOrientation != this.deviceOrientation ||
         notchPaddingLandscapeMode != this.notchPaddingLandscapeMode) {
       return copyWith(
-        screenSize: screenSize,
         deviceOrientation: deviceOrientation,
         notchPaddingLandscapeMode: notchPaddingLandscapeMode,
         dimen: XSizes(
