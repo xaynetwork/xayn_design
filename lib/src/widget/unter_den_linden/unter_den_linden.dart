@@ -71,9 +71,7 @@ class _UnterDenLindenState extends State<UnterDenLinden>
 
   @override
   Widget build(BuildContext context) {
-    if (_linden.screenSize == null) {
-      _updateScreenData();
-    }
+    _updateScreenData();
 
     return _LindenUpdater(
       data: this,
