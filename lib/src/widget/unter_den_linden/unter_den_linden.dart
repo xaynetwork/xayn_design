@@ -59,8 +59,15 @@ class _UnterDenLindenState extends State<UnterDenLinden>
 
   @override
   void initState() {
+    WidgetsBinding.instance!.addObserver(this);
     _linden = widget.initialLinden;
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance!.removeObserver(this);
+    super.dispose();
   }
 
   @override
