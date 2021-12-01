@@ -19,6 +19,8 @@ extension XaynDesignWidgetTesterExtension on WidgetTester {
           initialLinden: initialLinden,
           theme: theme,
         ),
+        duration,
+        phase,
       );
 }
 
