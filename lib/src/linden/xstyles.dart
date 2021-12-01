@@ -128,6 +128,9 @@ class XStyles {
   TextStyle? get textInputTextSmall =>
       textInputText?.copyWith(fontSize: 13.0, height: 1.75);
 
+  TextStyle? get textInputHintSmall =>
+      textInputTextSmall?.copyWith(color: colors.hintTextStyle);
+
   TextStyle? get textInputError => appBodyText?.copyWith(
         fontSize: 13.0,
         color: colors.inputErrorText,

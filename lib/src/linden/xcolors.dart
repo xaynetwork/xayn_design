@@ -43,7 +43,13 @@ class XColors {
   Color get secondaryText => _theme(bright: _darkGrey);
   Color get tertiaryText => _theme(bright: _mediumGrey);
   Color get tooltipText => _theme(bright: _blue, dark: _white);
+  @Deprecated(
+      'should be replaced with `iconNew`. Be aware about the bright color change there')
   Color get icon => _theme(bright: _black, dark: _white);
+
+  //ignore:deprecated_member_use_from_same_package
+  /// later, when [icon] color will be removed, the name will be changed to [icon]
+  Color get iconNew => _theme(bright: _blue, dark: _white);
   Color get iconDisabled => _theme(bright: _mediumGrey, dark: _darkGrey);
   Color get iconSelected => _theme(bright: _green);
   Color get iconInverse => _theme(bright: _white);
