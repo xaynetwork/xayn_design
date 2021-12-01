@@ -1,4 +1,5 @@
 import 'package:example/screen/linden_screen.dart';
+import 'package:example/screen/nav_bar/nav_bar_home_screen.dart';
 import 'package:example/screen/xayn_widgets/widgets_screen.dart';
 import 'package:example/widget/toolbar.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class _MainScreenState extends State<MainScreen> {
       children: [
         _buildLindenBtn(),
         _buildWidgetsBtn(),
+        _buildNavBarBtn(),
       ],
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     );
@@ -34,6 +36,10 @@ class _MainScreenState extends State<MainScreen> {
 
   Widget _buildWidgetsBtn() => _buildButton('Show xayn widgets', () {
         _pushScreen(WidgetsScreen.routeName);
+      });
+
+  Widget _buildNavBarBtn() => _buildButton('Show NavBar', () {
+        _pushScreen(NavBarHomeScreen.routeName);
       });
 
   Widget _buildButton(String text, VoidCallback onPressed) => Center(
