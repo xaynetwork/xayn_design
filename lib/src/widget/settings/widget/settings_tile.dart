@@ -95,7 +95,7 @@ class SettingsTile extends StatelessWidget {
         break;
       default:
         throw Exception(
-            'Unknown instance of $SettingsTileActionText: ${action.runtimeType}');
+            'Unknown instance of $SettingsTileAction: ${action.runtimeType}');
     }
 
     final withPadding = Padding(
