@@ -28,9 +28,11 @@ class _NavBarScreenState extends BaseNavBarScreenState<NavBarSearchScreen>
       svgIconPath: linden.assets.icons.search,
       isHighlighted: true,
       onSearchPressed: (final String text) {
+        //ignore: avoid_print
         print('SEARCH SCREEN: onSubmitted: $text');
       },
       onTextChanged: (final String text) {
+        //ignore: avoid_print
         print('SEARCH SCREEN: onTextChanged: $text');
       },
       autofocus: true,
