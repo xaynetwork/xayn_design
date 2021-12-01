@@ -18,7 +18,6 @@ export 'src/utils/safe_platform.dart' show SafePlatform;
 export 'src/widget/build_observer.dart';
 export 'src/widget/button/app_raised_button.dart';
 export 'src/widget/card/app_card.dart';
-export 'src/widget/dots_indicator/dots_decorator.dart';
 export 'src/widget/dots_indicator/dots_indicator.dart';
 export 'src/widget/nav_bar/nav_bar.dart';
 export 'src/widget/settings/settings.dart';
