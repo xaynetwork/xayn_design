@@ -34,7 +34,7 @@ class _LindenScreenState extends State<LindenScreen> {
           _buildHeadline('Icons'),
           _buildAssetsGrid(
             getIconAssets(linden),
-            color: linden.colors.icon,
+            color: linden.colors.iconNew,
           ),
           SizedBox(height: linden.dimen.unit3),
           _buildHeadline('Graphics'),
