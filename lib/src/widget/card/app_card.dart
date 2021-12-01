@@ -18,6 +18,10 @@ class AppCardWidget extends StatelessWidget {
   /// [EdgeInsets.all(XSizes.unit2)]
   final EdgeInsets? contentPadding;
 
+  /// If not provided, then by default will apply:
+  /// [XColors.cardBackground]
+  final Color? cardBackground;
+
   final Widget child;
 
   const AppCardWidget({
@@ -28,6 +32,7 @@ class AppCardWidget extends StatelessWidget {
     this.contentPadding,
     this.borderRadius,
     this.highlightedLineWidth,
+    this.cardBackground,
   }) : super(key: key);
 
   @override
@@ -58,7 +63,7 @@ class AppCardWidget extends StatelessWidget {
         type: MaterialType.card,
         elevation: elevation ?? linden.dimen.elevationHigh,
         shadowColor: linden.colors.shadowTransparent,
-        color: linden.colors.cardBackground,
+        color: cardBackground ?? linden.colors.cardBackground,
         clipBehavior: Clip.antiAlias,
         shape: shape,
         child: Semantics(
