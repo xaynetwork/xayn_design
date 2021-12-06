@@ -21,7 +21,7 @@ class _NavBarScreenState extends BaseNavBarScreenState<NavBarSettingsScreen>
   Color get screenBgColor => Colors.blue;
 
   @override
-  NavBarConfig get navBarConfig {
+  NavBarConfig? get navBarConfig {
     final item = NavBarItemBackButton(
       onPressed: () {
         Navigator.of(context).pop();

@@ -43,6 +43,12 @@ class _NavBarState extends State<NavBar> implements ConfigUpdater {
   void update(NavBarConfig? config) {
     setState(() {
       this.config = config;
+      if (config != null) {
+        assert(
+          config.items.where((element) => element.isHighlighted).length <= 1,
+          'There can be maximum one highlighted item',
+        );
+      }
     });
   }
 

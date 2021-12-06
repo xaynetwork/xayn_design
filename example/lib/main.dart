@@ -2,6 +2,7 @@ import 'package:example/screen/linden_screen.dart';
 import 'package:example/screen/main_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_account_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_home_screen.dart';
+import 'package:example/screen/nav_bar/nav_bar_ignored_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_onboarding_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_reader_node_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_search_screen.dart';
@@ -100,6 +101,9 @@ class MyApp extends StatelessWidget {
         break;
       case NavBarReaderModeScreen.routeName:
         screenWidget = const NavBarReaderModeScreen();
+        break;
+      case NavBarIgnoredScreen.routeName:
+        screenWidget = const NavBarIgnoredScreen();
         break;
       default:
         screenWidget = null;
