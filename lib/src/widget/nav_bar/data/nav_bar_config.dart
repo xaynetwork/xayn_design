@@ -1,10 +1,13 @@
 import 'package:equatable/equatable.dart';
 import 'package:xayn_design/src/widget/nav_bar/data/nav_bar_item.dart';
+import 'package:xayn_design/src/widget/nav_bar/nav_bar.dart';
 import 'package:xayn_design/src/widget/nav_bar/widget/nav_bar.dart';
 
 enum NavBarType {
   card,
   backBtn,
+  hidden,
+  ignored,
 }
 
 class NavBarConfig extends Equatable {
@@ -16,14 +19,28 @@ class NavBarConfig extends Equatable {
   final bool isWidthExpanded;
   final NavBarType type;
 
+  const NavBarConfig._(
+    this.items,
+    this.isWidthExpanded,
+    this.type,
+  );
+
   const NavBarConfig(
     this.items, {
     this.isWidthExpanded = false,
-  }) : type = NavBarType.card;
+  })  : assert(items.length > 0, 'There should be at least one item'),
+        type = NavBarType.card;
 
   /// Use this constructor, if you need to hide [NavBar]
   /// when widget that use [NavBarConfig] is shown
-  factory NavBarConfig.hidden() => const NavBarConfig([]);
+  factory NavBarConfig.hidden() =>
+      const NavBarConfig._([], false, NavBarType.hidden);
+
+  /// Use this constructor, if you need to ignore
+  /// implementation of the [NavBarConfigMixin]
+  /// In this case previous in the widget tree [NavBarConfigMixin] will be used
+  factory NavBarConfig.ignored() =>
+      const NavBarConfig._([], false, NavBarType.ignored);
 
   NavBarConfig.backBtn(
     NavBarItemBackButton btn,
@@ -37,4 +54,14 @@ class NavBarConfig extends Equatable {
         isWidthExpanded,
         type,
       ];
+}
+
+extension NavBarTypeExtension on NavBarType {
+  bool get isCard => this == NavBarType.card;
+
+  bool get isBack => this == NavBarType.backBtn;
+
+  bool get isHidden => this == NavBarType.hidden;
+
+  bool get isIgnored => this == NavBarType.ignored;
 }
