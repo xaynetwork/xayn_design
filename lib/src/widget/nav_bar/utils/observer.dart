@@ -14,7 +14,7 @@ class NavBarObserver extends NavigatorObserver {
 
   @override
   void didRemove(Route route, Route? previousRoute) {
-    _resetNavBarConfig(true);
+    _resetNavBarConfig(false);
   }
 
   @override
