@@ -41,6 +41,11 @@ class _NavBarState extends State<NavBar> implements ConfigUpdater {
 
   @override
   void update(NavBarConfig? config) {
+    assert(
+      config?.type != NavBarType.ignored,
+      'This config should be ignored and should NOT be populated here',
+    );
+
     setState(() {
       this.config = config;
       if (config != null) {
@@ -55,7 +60,7 @@ class _NavBarState extends State<NavBar> implements ConfigUpdater {
   @override
   Widget build(BuildContext context) {
     final config = this.config;
-    if (config == null || config.items.isEmpty) return const Center();
+    if (config == null || config.type.isHidden) return const Center();
 
     final items = config.items.map(_buildItem).toList(growable: false);
 

@@ -23,7 +23,7 @@ class _NavBarSearchScreenState extends BaseNavBarScreenState<NavBarSearchScreen>
   Color get screenBgColor => Colors.greenAccent;
 
   @override
-  NavBarConfig? get navBarConfig {
+  NavBarConfig get navBarConfig {
     final search = NavBarItemEdit(
       svgIconPath: linden.assets.icons.search,
       isHighlighted: true,
