@@ -9,10 +9,10 @@ class NavBarReaderModeScreen extends BaseNavBarScreen {
   const NavBarReaderModeScreen({Key? key}) : super(key: key);
 
   @override
-  _NavBarHomeScreenState createState() => _NavBarHomeScreenState();
+  _NavBarReaderModeScreenState createState() => _NavBarReaderModeScreenState();
 }
 
-class _NavBarHomeScreenState
+class _NavBarReaderModeScreenState
     extends BaseNavBarScreenState<NavBarReaderModeScreen>
     with NavBarConfigMixin {
   @override

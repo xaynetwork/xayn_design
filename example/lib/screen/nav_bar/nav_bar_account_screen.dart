@@ -9,10 +9,10 @@ class NavBarAccountScreen extends BaseNavBarScreen {
   const NavBarAccountScreen({Key? key}) : super(key: key);
 
   @override
-  _NavBarHomeScreenState createState() => _NavBarHomeScreenState();
+  _NavBarAccountScreenState createState() => _NavBarAccountScreenState();
 }
 
-class _NavBarHomeScreenState extends BaseNavBarScreenState<NavBarAccountScreen>
+class _NavBarAccountScreenState extends BaseNavBarScreenState<NavBarAccountScreen>
     with NavBarConfigMixin {
   @override
   String get screenTitle => 'Account screen';
