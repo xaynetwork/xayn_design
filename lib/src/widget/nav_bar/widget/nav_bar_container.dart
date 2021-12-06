@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:xayn_design/src/widget/nav_bar/data/config_pair.dart';
 import 'package:xayn_design/src/widget/nav_bar/widget/nav_bar.dart';
 import 'package:xayn_design/xayn_design.dart';
@@ -6,6 +9,8 @@ import 'package:xayn_design/xayn_design.dart';
 final _containerNotImplementedException =
     Exception('Did you forget to add $NavBarContainer?\n'
         'Please wrap your MaterialApp with $NavBarContainer');
+
+const updateNabBarDebounceTimeout = Duration(milliseconds: 50);
 
 class NavBarContainer extends StatefulWidget {
   final Widget child;
@@ -53,9 +58,30 @@ class NavBarContainer extends StatefulWidget {
 
 class _NavBarContainerState extends State<NavBarContainer>
     implements _NavBarController {
-  late ConfigPair _configPair;
+  final resetStream = StreamController<bool?>();
+  final updateStream = StreamController<bool?>();
+
+  ConfigPair? _configPair;
 
   Linden get linden => UnterDenLinden.getLinden(context);
+
+  @override
+  void initState() {
+    MergeStream([resetStream.stream, updateStream.stream])
+        .debounceTime(updateNabBarDebounceTimeout)
+        .listen((bool? goingBack) {
+      _configPair ??= _getConfigPair(context, goingBack ?? false);
+      _updateBar(_configPair!);
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() async {
+    await updateStream.close();
+    await resetStream.close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) =>
@@ -63,32 +89,29 @@ class _NavBarContainerState extends State<NavBarContainer>
 
   @override
   void resetNavBar(bool goingBack) {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      if (!mounted) return;
-      _configPair = _getNavBarConfigPairToShow(context, goingBack);
-      _updateBar();
-    });
+    _configPair = null;
+    resetStream.add(goingBack);
   }
 
   @override
-  void updateNavBar() {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      if (!mounted) return;
-      _updateBar();
-    });
+  void updateNavBar() => updateStream.add(null);
+
+  void _updateBar(ConfigPair configPair) {
+    for (final mixin in configPair.configMixins.reversed) {
+      final config = mixin.navBarConfig;
+      if (config != null) {
+        configPair.updater.update(config);
+        return;
+      }
+    }
+    configPair.updater.update(null);
   }
 
-  void _updateBar() {
-    final config = _configPair.configMixin?.navBarConfig;
-    _configPair.updater.update(config);
-  }
-
-  ConfigPair _getNavBarConfigPairToShow(
+  ConfigPair _getConfigPair(
     BuildContext context,
     bool ignoreLast,
   ) {
-    NavBarConfigMixin? preLastMixin;
-    NavBarConfigMixin? lastMixin;
+    List<NavBarConfigMixin> list = [];
     ConfigUpdater? updater;
     void visitor(Element element) {
       if (element.widget is NavBar) {
@@ -102,8 +125,7 @@ class _NavBarContainerState extends State<NavBarContainer>
         final widget = element as StatefulElement;
         if (widget.state is NavBarConfigMixin) {
           final mixin = widget.state as NavBarConfigMixin;
-          preLastMixin = lastMixin;
-          lastMixin = mixin;
+          list.add(mixin);
         }
       }
       element.visitChildren(visitor);
@@ -115,8 +137,11 @@ class _NavBarContainerState extends State<NavBarContainer>
       throw Exception('Did you forget to add $NavBar?\n'
           'Please add with other children to $NavBarContainer');
     }
-    final mixin = ignoreLast ? preLastMixin : lastMixin;
-    return ConfigPair(navBarState, mixin);
+
+    if (ignoreLast && list.isNotEmpty) {
+      list.removeLast();
+    }
+    return ConfigPair(navBarState, list);
   }
 }
 
@@ -134,6 +159,8 @@ class _InheritedNavBarContainer extends InheritedWidget {
 }
 
 abstract class _NavBarController {
+  /// Used internally, to find actual [NavBarConfigMixin]
+  /// so it's [NavBarConfig] can be shown
   void resetNavBar(bool isGoingBack);
 
   /// [goingBack] needed, cos when
