@@ -11,10 +11,10 @@ class NavBarSearchScreen extends BaseNavBarScreen {
   const NavBarSearchScreen({Key? key}) : super(key: key);
 
   @override
-  _NavBarScreenState createState() => _NavBarScreenState();
+  _NavBarSearchScreenState createState() => _NavBarSearchScreenState();
 }
 
-class _NavBarScreenState extends BaseNavBarScreenState<NavBarSearchScreen>
+class _NavBarSearchScreenState extends BaseNavBarScreenState<NavBarSearchScreen>
     with NavBarConfigMixin {
   @override
   String get screenTitle => 'Search screen';
