@@ -16,20 +16,14 @@ class NavBarConfig extends Equatable {
   final bool isWidthExpanded;
   final NavBarType type;
 
-  NavBarConfig(
+  const NavBarConfig(
     this.items, {
     this.isWidthExpanded = false,
-  })  : assert(
-          items.where((element) => element.isHighlighted).length <= 1,
-          'There can be maximum one highlighted item',
-        ),
-        type = NavBarType.card;
+  }) : type = NavBarType.card;
 
   /// Use this constructor, if you need to hide [NavBar]
-  NavBarConfig.hide()
-      : items = [],
-        isWidthExpanded = false,
-        type = NavBarType.backBtn;
+  /// when widget that use [NavBarConfig] is shown
+  factory NavBarConfig.hidden() => const NavBarConfig([]);
 
   NavBarConfig.backBtn(
     NavBarItemBackButton btn,

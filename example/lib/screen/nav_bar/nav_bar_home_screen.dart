@@ -24,10 +24,11 @@ class _NavBarHomeScreenState extends BaseNavBarScreenState<NavBarHomeScreen>
   List<Widget> buildExtraChildren() => [
         buildBtn('Open reader mode', openReaderMode),
         buildBtn('Open onboarding screen', openOnboarding),
+        buildBtn('Open ignored screen', openIgnored),
       ];
 
   @override
-  NavBarConfig get navBarConfig => NavBarConfig([
+  NavBarConfig? get navBarConfig => NavBarConfig([
         itemHome(isCurrent: true),
         itemSearch(),
         itemAccount(),

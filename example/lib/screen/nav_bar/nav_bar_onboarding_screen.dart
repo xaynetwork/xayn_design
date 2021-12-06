@@ -21,7 +21,7 @@ class _NavBarScreenState extends BaseNavBarScreenState<NavBarOnboardingScreen>
   Color get screenBgColor => Colors.blue;
 
   @override
-  NavBarConfig get navBarConfig => NavBarConfig.hide();
+  NavBarConfig? get navBarConfig => NavBarConfig.hidden();
 
   @override
   List<Widget> buildExtraChildren() => [

@@ -1,5 +1,6 @@
 import 'package:example/screen/nav_bar/nav_bar_account_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_home_screen.dart';
+import 'package:example/screen/nav_bar/nav_bar_ignored_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_onboarding_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_reader_node_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_search_screen.dart';
@@ -73,6 +74,8 @@ abstract class BaseNavBarScreenState<T extends BaseNavBarScreen>
   void openReaderMode() => _push(NavBarReaderModeScreen.routeName);
 
   void openOnboarding() => _push(NavBarOnboardingScreen.routeName);
+
+  void openIgnored() => _push(NavBarIgnoredScreen.routeName);
 
   Widget buildBtn(String title, VoidCallback onPressed) =>
       AppRaisedButton.text(onPressed: onPressed, text: title);
