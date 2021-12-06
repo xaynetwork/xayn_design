@@ -12,8 +12,8 @@ class NavBarSettingsScreen extends BaseNavBarScreen {
   _NavBarSettingsScreenState createState() => _NavBarSettingsScreenState();
 }
 
-class _NavBarSettingsScreenState extends BaseNavBarScreenState<NavBarSettingsScreen>
-    with NavBarConfigMixin {
+class _NavBarSettingsScreenState
+    extends BaseNavBarScreenState<NavBarSettingsScreen> with NavBarConfigMixin {
   @override
   String get screenTitle => 'Settings screen';
 
@@ -21,7 +21,7 @@ class _NavBarSettingsScreenState extends BaseNavBarScreenState<NavBarSettingsScr
   Color get screenBgColor => Colors.blue;
 
   @override
-  NavBarConfig? get navBarConfig {
+  NavBarConfig get navBarConfig {
     final item = NavBarItemBackButton(
       onPressed: () {
         Navigator.of(context).pop();

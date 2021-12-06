@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:xayn_design/src/widget/nav_bar/data/config_pair.dart';
+import 'package:xayn_design/src/widget/nav_bar/data/nav_bar_config.dart';
 import 'package:xayn_design/src/widget/nav_bar/widget/nav_bar.dart';
 import 'package:xayn_design/xayn_design.dart';
 
@@ -99,7 +100,7 @@ class _NavBarContainerState extends State<NavBarContainer>
   void _updateBar(ConfigPair configPair) {
     for (final mixin in configPair.configMixins.reversed) {
       final config = mixin.navBarConfig;
-      if (config != null) {
+      if (!config.type.isIgnored) {
         configPair.updater.update(config);
         return;
       }

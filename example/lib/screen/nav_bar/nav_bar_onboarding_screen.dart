@@ -12,7 +12,8 @@ class NavBarOnboardingScreen extends BaseNavBarScreen {
   _NavBarOnboardingScreenState createState() => _NavBarOnboardingScreenState();
 }
 
-class _NavBarOnboardingScreenState extends BaseNavBarScreenState<NavBarOnboardingScreen>
+class _NavBarOnboardingScreenState
+    extends BaseNavBarScreenState<NavBarOnboardingScreen>
     with NavBarConfigMixin {
   @override
   String get screenTitle => 'Onboarding screen';
@@ -21,7 +22,7 @@ class _NavBarOnboardingScreenState extends BaseNavBarScreenState<NavBarOnboardin
   Color get screenBgColor => Colors.blue;
 
   @override
-  NavBarConfig? get navBarConfig => NavBarConfig.hidden();
+  NavBarConfig get navBarConfig => NavBarConfig.hidden();
 
   @override
   List<Widget> buildExtraChildren() => [

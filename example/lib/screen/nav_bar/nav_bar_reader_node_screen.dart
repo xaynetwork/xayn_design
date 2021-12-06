@@ -24,7 +24,7 @@ class _NavBarReaderModeScreenState
   bool? isLiked;
 
   @override
-  NavBarConfig? get navBarConfig {
+  NavBarConfig get navBarConfig {
     final goBack = NavBarItemIconButton(
       svgIconPath: linden.assets.icons.arrowLeft,
       isHighlighted: false,
