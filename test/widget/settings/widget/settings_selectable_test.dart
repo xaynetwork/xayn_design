@@ -3,8 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:xayn_design/src/widget/settings/data/settings_selectable_data.dart';
 import 'package:xayn_design/src/widget/settings/settings.dart';
 import 'package:xayn_design/src/widget/settings/widget/settings_selectable.dart';
-
-import '../../../utils/widget_test_utils.dart';
+import 'package:xayn_design/xayn_design_test.dart';
 
 void main() {
   const selectedKey = Key('selected');
@@ -38,7 +37,7 @@ void main() {
     (final WidgetTester tester) async {
       final data = selected(() {});
       final widget = SettingsSelectable.icons(items: [data]);
-      await tester.pumpAppWrapped(widget);
+      await tester.pumpLindenApp(widget);
 
       expect(find.byType(SettingsSelectableIconGroup), findsOneWidget);
       expect(find.byType(SettingsSelectableGraphicGroup), findsNothing);
@@ -51,7 +50,7 @@ void main() {
     (final WidgetTester tester) async {
       final data = selected(() {});
       final widget = SettingsSelectable.graphics(items: [data]);
-      await tester.pumpAppWrapped(widget);
+      await tester.pumpLindenApp(widget);
 
       expect(find.byType(SettingsSelectableIconGroup), findsNothing);
       expect(find.byType(SettingsSelectableGraphicGroup), findsOneWidget);
@@ -66,7 +65,7 @@ void main() {
         selected(() {}),
         unSelected(() {}),
       ];
-      await tester.pumpAppWrapped(SettingsSelectable.icons(items: items));
+      await tester.pumpLindenApp(SettingsSelectable.icons(items: items));
 
       final iconFinder = find.byType(SettingsSelectableIcon);
 
@@ -86,7 +85,7 @@ void main() {
         selected(() {}),
         unSelected(() {}),
       ];
-      await tester.pumpAppWrapped(SettingsSelectable.graphics(items: items));
+      await tester.pumpLindenApp(SettingsSelectable.graphics(items: items));
 
       final iconFinder = find.byType(SettingsSelectableGraphic);
 
@@ -107,7 +106,7 @@ void main() {
         onPressCalled = true;
       });
       final widget = SettingsSelectable.icons(items: [data]);
-      await tester.pumpAppWrapped(widget);
+      await tester.pumpLindenApp(widget);
 
       expect(onPressCalled, isFalse);
       await tester.tap(find.byKey(selectedKey));
@@ -123,7 +122,7 @@ void main() {
         onPressCalled = !onPressCalled;
       });
       final widget = SettingsSelectable.graphics(items: [data]);
-      await tester.pumpAppWrapped(widget);
+      await tester.pumpLindenApp(widget);
 
       final keyFinder = find.byKey(selectedKey);
       expect(keyFinder, findsNWidgets(2));

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:xayn_design/src/utils/design_testing_utils.dart';
 import 'package:xayn_design/src/widget/nav_bar/widget/nav_bar_item/edit.dart';
 import 'package:xayn_design/xayn_design.dart';
+import 'package:xayn_design/xayn_design_test.dart';
 
 void main() {
   const iconPath = 'packages/xayn_design/assets/icons/arrow_left.svg';

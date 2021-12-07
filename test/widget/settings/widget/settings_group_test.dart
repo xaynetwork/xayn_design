@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:xayn_design/xayn_design.dart';
-
-import '../../../utils/widget_test_utils.dart';
+import 'package:xayn_design/xayn_design_test.dart';
 
 void main() {
   const groupTitle = 'group title';
@@ -15,7 +14,7 @@ void main() {
     (final WidgetTester tester) async {
       final data = SettingsGroupData(items: const [tile0, tile1]);
 
-      await tester.pumpAppWrapped(SettingsGroup(data: data));
+      await tester.pumpLindenApp(SettingsGroup(data: data));
 
       final titleFinder = find.text(groupTitle);
 
@@ -34,7 +33,7 @@ void main() {
         title: groupTitle,
       );
 
-      await tester.pumpAppWrapped(SettingsGroup(data: data));
+      await tester.pumpLindenApp(SettingsGroup(data: data));
 
       final titleFinder = find.text(groupTitle);
 
@@ -50,7 +49,7 @@ void main() {
     (final WidgetTester tester) async {
       final data = SettingsGroupData(items: const [tile2, tile1, tile0]);
 
-      await tester.pumpAppWrapped(SettingsGroup(data: data));
+      await tester.pumpLindenApp(SettingsGroup(data: data));
 
       final tileFinder = find.byType(SettingsTile);
 

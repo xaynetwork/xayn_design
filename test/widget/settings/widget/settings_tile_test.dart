@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:xayn_design/xayn_design.dart';
-
-import '../../../utils/widget_test_utils.dart';
+import 'package:xayn_design/xayn_design_test.dart';
 
 typedef GetSettingsTileAction = Function(VoidCallback onPressed);
 
@@ -28,7 +27,7 @@ void main() {
           action: getAction(onPressed),
         );
 
-        await tester.pumpWidget(appWrapped(SettingsTile(data: data)));
+        await tester.pumpLindenApp(SettingsTile(data: data));
 
         expect(onPressCalled, isFalse);
         await tester.tap(find.byKey(actionKey));
@@ -111,7 +110,7 @@ void main() {
         'GIVEN data with title WHEN rendering widget THEN only title visible',
         (final WidgetTester tester) async {
           const data = SettingsTileData(title: title);
-          await tester.pumpAppWrapped(const SettingsTile(data: data));
+          await tester.pumpLindenApp(const SettingsTile(data: data));
 
           final titleFinder = find.text(title);
 
@@ -124,7 +123,7 @@ void main() {
         (final WidgetTester tester) async {
           const subtitle = 'App subtitle';
           const data = SettingsTileData(title: title, subTitle: subtitle);
-          await tester.pumpAppWrapped(const SettingsTile(data: data));
+          await tester.pumpLindenApp(const SettingsTile(data: data));
 
           final titleFinder = find.text(title);
           final subTitleFinder = find.text(subtitle);
@@ -138,7 +137,7 @@ void main() {
         'GIVEN data with title and icon WHEN rendering widget THEN visible only those are visible',
         (final WidgetTester tester) async {
           const data = SettingsTileData(title: title, svgIconPath: svgIconPath);
-          await tester.pumpAppWrapped(const SettingsTile(data: data));
+          await tester.pumpLindenApp(const SettingsTile(data: data));
 
           final titleFinder = find.text(title);
           final iconFinder = find.byType(SvgPicture);
@@ -161,7 +160,7 @@ void main() {
               key: actionKey,
             ),
           );
-          await tester.pumpAppWrapped(SettingsTile(data: data));
+          await tester.pumpLindenApp(SettingsTile(data: data));
 
           final titleFinder = find.text(title);
           final btnTextFinder = find.text(btnText);
@@ -185,7 +184,7 @@ void main() {
               key: actionKey,
             ),
           );
-          await tester.pumpAppWrapped(SettingsTile(data: data));
+          await tester.pumpLindenApp(SettingsTile(data: data));
 
           final titleFinder = find.text(title);
           final actionFinder = find.byKey(actionKey);
@@ -209,7 +208,7 @@ void main() {
               key: actionKey,
             ),
           );
-          await tester.pumpAppWrapped(SettingsTile(data: data));
+          await tester.pumpLindenApp(SettingsTile(data: data));
 
           final titleFinder = find.text(title);
           final actionFinder = find.byKey(actionKey);
@@ -232,7 +231,7 @@ void main() {
               key: actionKey,
             ),
           );
-          await tester.pumpAppWrapped(SettingsTile(data: data));
+          await tester.pumpLindenApp(SettingsTile(data: data));
 
           final titleFinder = find.text(title);
           final actionFinder = find.byKey(actionKey);
@@ -260,7 +259,7 @@ void main() {
               key: actionKey,
             ),
           );
-          await tester.pumpAppWrapped(SettingsTile(data: data));
+          await tester.pumpLindenApp(SettingsTile(data: data));
 
           final titleFinder = find.text(title);
           final subTitleFinder = find.text(subtitle);

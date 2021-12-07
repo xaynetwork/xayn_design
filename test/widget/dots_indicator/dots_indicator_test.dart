@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:xayn_design/xayn_design.dart';
-
-import '../../utils/widget_test_utils.dart';
+import 'package:xayn_design/xayn_design_test.dart';
 
 void main() {
   test(
@@ -49,7 +48,7 @@ void main() {
     (final WidgetTester tester) async {
       const dotsNumber = 3;
 
-      await tester.pumpAppWrapped(const DotsIndicator(
+      await tester.pumpLindenApp(const DotsIndicator(
         dotsNumber: dotsNumber,
         activePosition: 1,
       ));
