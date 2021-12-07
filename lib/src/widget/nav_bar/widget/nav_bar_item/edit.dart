@@ -2,18 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:xayn_design/src/widget/nav_bar/data/nav_bar_item.dart';
 import 'package:xayn_design/xayn_design.dart';
 
+typedef _NavBarUpdater = Function(BuildContext context);
+
 class NavBarEdit extends StatefulWidget {
   final NavBarItemEdit data;
+  final _NavBarUpdater _updateNavBar;
+  final FocusNode _focusNode;
 
-  const NavBarEdit(this.data) : super(key: null);
+  NavBarEdit(
+    this.data, {
+    @visibleForTesting _NavBarUpdater? updater,
+    @visibleForTesting FocusNode? focusNode,
+  })  : _updateNavBar = updater ?? NavBarContainer.updateNavBar,
+        _focusNode = focusNode ?? FocusNode(),
+        super(key: null);
 
   @override
   State<NavBarEdit> createState() => _NavBarEditState();
 }
 
 class _NavBarEditState extends State<NavBarEdit> {
-  final focusNode = FocusNode();
-
   late final TextEditingController controller;
 
   Linden get linden => UnterDenLinden.getLinden(context);
@@ -23,12 +31,12 @@ class _NavBarEditState extends State<NavBarEdit> {
     controller = TextEditingController(text: widget.data.initialText);
     if (widget.data.autofocus) {
       WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-        focusNode.requestFocus();
+        widget._focusNode.requestFocus();
       });
     }
 
-    focusNode.addListener(() {
-      NavBarContainer.updateNavBar(context);
+    widget._focusNode.addListener(() {
+      widget._updateNavBar(context);
     });
     super.initState();
   }
@@ -41,16 +49,9 @@ class _NavBarEditState extends State<NavBarEdit> {
 
   @override
   Widget build(BuildContext context) {
-    final icon = SvgPicture.asset(
-      widget.data.svgIconPath,
-      width: linden.dimen.iconSize,
-      height: linden.dimen.iconSize,
-      color: linden.colors.iconNew,
-    );
-
     final row = Row(
       children: [
-        icon,
+        _buildIcon(),
         SizedBox(width: linden.dimen.unit),
         Expanded(child: _buildEditText()),
       ],
@@ -72,9 +73,23 @@ class _NavBarEditState extends State<NavBarEdit> {
     );
   }
 
+  Widget _buildIcon() {
+    final icon = SvgPicture.asset(
+      widget.data.svgIconPath,
+      width: linden.dimen.iconSize,
+      height: linden.dimen.iconSize,
+      color: linden.colors.iconNew,
+    );
+    return InkWell(
+      onTap: widget._focusNode.requestFocus,
+      child: Center(child: icon),
+      borderRadius: BorderRadius.circular(linden.dimen.unit),
+    );
+  }
+
   Widget _buildEditText() => TextField(
         key: widget.data.key,
-        focusNode: focusNode,
+        focusNode: widget._focusNode,
         controller: controller,
         style: linden.styles.textInputTextSmall,
         textInputAction: TextInputAction.search,

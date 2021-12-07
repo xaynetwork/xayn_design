@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:xayn_design/src/widget/nav_bar/widget/nav_bar_container.dart';
 
+typedef _NavBarReset = Function(
+  BuildContext context, {
+  required bool goingBack,
+});
+
 class NavBarObserver extends NavigatorObserver {
+  final _NavBarReset _navBarReset;
+
+  NavBarObserver() : _navBarReset = NavBarContainer.resetNavBar;
+
+  @visibleForTesting
+  NavBarObserver.test(_NavBarReset navBarReset) : _navBarReset = navBarReset;
+
   @override
   void didPop(Route route, Route? previousRoute) {
     _resetNavBarConfig(true);
@@ -25,6 +37,6 @@ class NavBarObserver extends NavigatorObserver {
   void _resetNavBarConfig(bool goingBack) {
     final context = navigator?.context;
     if (context == null) return;
-    NavBarContainer.resetNavBar(context, goingBack: goingBack);
+    _navBarReset(context, goingBack: goingBack);
   }
 }

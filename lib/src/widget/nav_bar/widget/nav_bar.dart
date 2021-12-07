@@ -10,6 +10,7 @@ const _defaultKeyboardCheckDelay = Duration(milliseconds: 50);
 
 class NavBar extends StatefulWidget {
   /// Padding, that applied around the [NavBar] content
+  /// Apply only when config type is [NavBarType.card]
   final EdgeInsets padding;
 
   /// When [true], then will add to the [padding] height of the software keyboard
@@ -26,14 +27,14 @@ class NavBar extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _NavBarState createState() => _NavBarState();
+  NavBarState createState() => NavBarState();
 }
 
 abstract class ConfigUpdater {
   void update(NavBarConfig? config);
 }
 
-class _NavBarState extends State<NavBar> implements ConfigUpdater {
+class NavBarState extends State<NavBar> implements ConfigUpdater {
   Linden get linden => UnterDenLinden.getLinden(context);
 
   /// if configs is [null] - the empty [Center] will be build
@@ -137,7 +138,7 @@ class _NavBarState extends State<NavBar> implements ConfigUpdater {
     final stack = Stack(
       children: [
         Center(child: child),
-        HighlightLine(data),
+        data.isHighlighted ? const HighlightLine() : const Center(),
       ],
     );
 
@@ -159,28 +160,24 @@ class _NavBarState extends State<NavBar> implements ConfigUpdater {
 }
 
 class HighlightLine extends StatelessWidget {
-  final NavBarItem item;
-
-  const HighlightLine(this.item) : super(key: null);
+  const HighlightLine() : super(key: null);
 
   @override
   Widget build(BuildContext context) {
     final linden = UnterDenLinden.getLinden(context);
-    final child = !item.isHighlighted
-        ? const Center()
-        : Container(
-            height: linden.dimen.bottomBarHighlightHigh,
-            width: double.maxFinite,
-            decoration: BoxDecoration(
-              borderRadius: linden.styles.roundBorderLargeTopSide,
-              color: linden.colors.accent,
-            ),
-          );
+    final line = Container(
+      height: linden.dimen.bottomBarHighlightHigh,
+      width: double.maxFinite,
+      decoration: BoxDecoration(
+        borderRadius: linden.styles.roundBorderLargeTopSide,
+        color: linden.colors.accent,
+      ),
+    );
     return Positioned(
       bottom: 0,
       left: 0,
       right: 0,
-      child: child,
+      child: line,
     );
   }
 }

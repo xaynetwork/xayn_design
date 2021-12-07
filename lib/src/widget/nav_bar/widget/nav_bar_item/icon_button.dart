@@ -33,10 +33,6 @@ class NavBarIconButton extends StatelessWidget {
           width: linden.dimen.navBarSelectableHeight,
         ),
       ),
-      // child: Padding(
-      //   padding: EdgeInsets.all(linden.dimen.unit0_25),
-      //   child: btn,
-      // ),
     );
   }
 }
