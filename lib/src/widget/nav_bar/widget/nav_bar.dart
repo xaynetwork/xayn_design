@@ -43,7 +43,7 @@ class _NavBarState extends State<NavBar> implements ConfigUpdater {
   void update(NavBarConfig? config) {
     assert(
       config?.type != NavBarType.ignored,
-      'This config should be ignored and should NOT be populated here',
+      'This config is ignored, so it can not be used to update the NavBar. This is likely a internal Bug.',
     );
 
     setState(() {
