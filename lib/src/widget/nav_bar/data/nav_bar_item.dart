@@ -72,6 +72,7 @@ class NavBarItemEdit extends NavBarItem {
         isHighlighted,
         svgIconPath,
         initialText,
+        hint,
         autofocus,
       ];
 }

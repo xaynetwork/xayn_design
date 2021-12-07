@@ -27,6 +27,7 @@ class NavBarContainer extends StatefulWidget {
   /// Call this, when you need to update current instance of the [NavBar]
   /// f.e. [NavBarConfig] was changed for the screen
   static void updateNavBar(BuildContext context) {
+    if (!staticCallsEnabled) return;
     final typedWidget =
         context.dependOnInheritedWidgetOfExactType<_InheritedNavBarContainer>();
     if (typedWidget == null) {
@@ -48,6 +49,7 @@ class NavBarContainer extends StatefulWidget {
     BuildContext context, {
     required bool goingBack,
   }) {
+    if (!staticCallsEnabled) return;
     final typedWidget =
         context.dependOnInheritedWidgetOfExactType<_InheritedNavBarContainer>();
     if (typedWidget == null) {
@@ -55,6 +57,11 @@ class NavBarContainer extends StatefulWidget {
     }
     return typedWidget.controller.resetNavBar(goingBack);
   }
+
+  /// We need disable [resetNavBar] && [updateNavBar] methods call,
+  /// to be able properly test [NavBar]
+  @visibleForTesting
+  static bool staticCallsEnabled = true;
 }
 
 class _NavBarContainerState extends State<NavBarContainer>
@@ -71,6 +78,7 @@ class _NavBarContainerState extends State<NavBarContainer>
     MergeStream([resetStream.stream, updateStream.stream])
         .debounceTime(updateNabBarDebounceTimeout)
         .listen((bool? goingBack) {
+      if (!mounted) return;
       _configPair ??= _getConfigPair(context, goingBack ?? false);
       _updateBar(_configPair!);
     });
@@ -78,9 +86,9 @@ class _NavBarContainerState extends State<NavBarContainer>
   }
 
   @override
-  void dispose() async {
-    await updateStream.close();
-    await resetStream.close();
+  void dispose() {
+    updateStream.close();
+    resetStream.close();
     super.dispose();
   }
 
