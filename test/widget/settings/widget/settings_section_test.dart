@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:xayn_design/xayn_design.dart';
-
-import '../../../utils/widget_test_utils.dart';
+import 'package:xayn_design/xayn_design_test.dart';
 
 void main() {
   const title = 'Section title';
@@ -14,7 +13,7 @@ void main() {
     (final WidgetTester tester) async {
       final widget = SettingsSection.fromTile(title: title, tileData: tile);
 
-      await tester.pumpAppWrapped(widget);
+      await tester.pumpLindenApp(widget);
 
       expect(find.byType(Text), findsNWidgets(2));
       expect(find.text(title), findsOneWidget);
@@ -38,7 +37,7 @@ void main() {
         ],
       );
 
-      await tester.pumpAppWrapped(widget);
+      await tester.pumpLindenApp(widget);
 
       // 3 tiles + title + subtitle
       expect(find.byType(Text), findsNWidgets(5));
@@ -68,7 +67,7 @@ void main() {
         child: SettingsSelectable.icons(items: [selectableItem]),
       );
 
-      await tester.pumpAppWrapped(widget);
+      await tester.pumpLindenApp(widget);
 
       expect(find.text(title), findsOneWidget);
       expect(find.text(subTitle), findsOneWidget);

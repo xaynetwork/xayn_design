@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:xayn_design/src/widget/settings/data/settings_card_data.dart';
 import 'package:xayn_design/xayn_design.dart';
-
-import '../../../utils/widget_test_utils.dart';
+import 'package:xayn_design/xayn_design_test.dart';
 
 void main() {
   const tile0 = SettingsTileData(title: 'tile title 0');
@@ -17,7 +16,7 @@ void main() {
     (final WidgetTester tester) async {
       final data = SettingsCardData([groupData0]);
 
-      await tester.pumpAppWrapped(SettingsCard(data: data));
+      await tester.pumpLindenApp(SettingsCard(data: data));
 
       expect(find.byType(SettingsGroup), findsNWidgets(1));
       expect(find.byType(Divider), findsNothing);
@@ -29,7 +28,7 @@ void main() {
     (final WidgetTester tester) async {
       final data = SettingsCardData([groupData0, groupData1]);
 
-      await tester.pumpAppWrapped(SettingsCard(data: data));
+      await tester.pumpLindenApp(SettingsCard(data: data));
 
       expect(find.byType(SettingsGroup), findsNWidgets(2));
       expect(find.byType(Divider), findsOneWidget);
@@ -41,7 +40,7 @@ void main() {
     (final WidgetTester tester) async {
       final data = SettingsCardData([groupData0, groupData1, groupData2]);
 
-      await tester.pumpAppWrapped(SettingsCard(data: data));
+      await tester.pumpLindenApp(SettingsCard(data: data));
 
       final groupFinder = find.byType(SettingsGroup);
 
@@ -55,7 +54,7 @@ void main() {
     (final WidgetTester tester) async {
       final data = SettingsCardData([groupData2, groupData1, groupData0]);
 
-      await tester.pumpAppWrapped(SettingsCard(data: data));
+      await tester.pumpLindenApp(SettingsCard(data: data));
 
       final groupFinder = find.byType(SettingsGroup);
 
