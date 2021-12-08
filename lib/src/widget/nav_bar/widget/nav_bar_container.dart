@@ -130,6 +130,11 @@ class _NavBarContainerState extends State<NavBarContainer>
               'There can be only one $NavBar per $NavBarContainer, but found more.');
         }
         updater = widget.state as ConfigUpdater;
+      } else if (element.widget is StatelessWidget) {
+        if (element.widget is NavBarConfigMixin) {
+          final mixin = element.widget as NavBarConfigMixin;
+          list.add(mixin);
+        }
       } else if (element.widget is StatefulWidget) {
         final widget = element as StatefulElement;
         if (widget.state is NavBarConfigMixin) {
