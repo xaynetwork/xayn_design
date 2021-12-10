@@ -41,9 +41,8 @@ void main() {
           child: _StatelessConfigWidget(() => config),
         ));
 
-        resetNavBar();
+        await tester.resetNavBarWithDebounce();
 
-        await tester.pumpAndSettle(updateNabBarDebounceTimeout);
         await tester.pumpAndSettle();
         listOfConfigs.add(getState().configPair!);
       }
@@ -115,8 +114,7 @@ void main() {
       ));
       final state = getState();
 
-      resetNavBar();
-      await tester.pumpAndSettle(updateNabBarDebounceTimeout);
+      await tester.resetNavBarWithDebounce();
 
       // verify that it is NOT null after reset and debounce
       expect(state.configPair, isNotNull);
@@ -183,13 +181,11 @@ void main() {
           final stateNavBar = getStateNavBar();
           expect(stateNavBar.config, isNull);
 
-          resetNavBar();
-          await tester.pumpAndSettle(updateNabBarDebounceTimeout);
+          await tester.resetNavBarWithDebounce();
           expect(stateNavBar.config, equals(_backBtnConfig));
           firstTimeCall = false;
 
-          resetNavBar();
-          await tester.pumpAndSettle(updateNabBarDebounceTimeout);
+          await tester.resetNavBarWithDebounce();
           expect(stateNavBar.config, equals(_singleItemConfig));
 
           // wait until NavBar update finished
@@ -208,16 +204,14 @@ void main() {
           final stateNavBar = getStateNavBar();
           expect(stateNavBar.config, isNull);
 
-          resetNavBar();
-          await tester.pumpAndSettle(updateNabBarDebounceTimeout);
+          await tester.resetNavBarWithDebounce();
           expect(stateNavBar.config, equals(_backBtnConfig));
           // we need code above to make sure it is not null
 
           // now we pushing screen without NavBarConfigMixin
           await tester.pumpLindenApp(buildWidget());
 
-          resetNavBar();
-          await tester.pumpAndSettle(updateNabBarDebounceTimeout);
+          await tester.resetNavBarWithDebounce();
           expect(stateNavBar.config, isNull);
 
           // wait until NavBar update finished
@@ -237,15 +231,13 @@ void main() {
           final stateNavBar = getStateNavBar();
           expect(stateNavBar.config, isNull);
 
-          resetNavBar();
-          await tester.pumpAndSettle(updateNabBarDebounceTimeout);
+          await tester.resetNavBarWithDebounce();
           expect(stateNavBar.config, equals(_backBtnConfig));
           // we need code above to make sure the config was not null
 
           // now we will return an ignored config instead of backBtn
           firstTimeCall = false;
-          resetNavBar();
-          await tester.pumpAndSettle(updateNabBarDebounceTimeout);
+          await tester.resetNavBarWithDebounce();
           expect(stateNavBar.config, isNull);
           // we want to verify that ignored `config` was ignored and new config is null
 
@@ -267,8 +259,7 @@ void main() {
 
           expect(stateNavBar.config, isNull);
 
-          resetNavBar();
-          await tester.pumpAndSettle(updateNabBarDebounceTimeout);
+          await tester.resetNavBarWithDebounce();
 
           expect(stateNavBar.config, _backBtnConfig);
         },
@@ -284,8 +275,7 @@ void main() {
         (final WidgetTester tester) async {
           await tester.pumpLindenApp(buildWidget());
 
-          resetNavBar();
-          await tester.pumpAndSettle(updateNabBarDebounceTimeout);
+          await tester.resetNavBarWithDebounce();
 
           expect(getState().configPair!.configMixins, isEmpty);
         },
@@ -317,8 +307,7 @@ void main() {
           final state = getState();
           expect(state.configPair, isNull);
 
-          resetNavBar(goingBack: false);
-          await tester.pumpAndSettle(updateNabBarDebounceTimeout);
+          await tester.resetNavBarWithDebounce(goingBack: false);
 
           expect(
             state.configPair!.configMixins.map((e) => e.navBarConfig).toList(),
@@ -343,8 +332,7 @@ void main() {
           final state = getState();
           expect(state.configPair, isNull);
 
-          resetNavBar(goingBack: true);
-          await tester.pumpAndSettle(updateNabBarDebounceTimeout);
+          await tester.resetNavBarWithDebounce(goingBack: true);
 
           expect(
             state.configPair!.configMixins.map((e) => e.navBarConfig).toList(),
@@ -414,9 +402,7 @@ void main() {
           final state = getState();
           expect(state.configPair, isNull);
 
-          resetNavBar();
-
-          await tester.pumpAndSettle(updateNabBarDebounceTimeout);
+          await tester.resetNavBarWithDebounce();
           expect(state.configPair, isNotNull);
         },
       );
@@ -430,9 +416,7 @@ void main() {
           final state = getState();
           expect(state.configPair, isNull);
 
-          resetNavBar();
-
-          await tester.pumpAndSettle(updateNabBarDebounceTimeout);
+          await tester.resetNavBarWithDebounce();
           expect(state.configPair, isNotNull);
         },
       );
