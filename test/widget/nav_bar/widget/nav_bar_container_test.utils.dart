@@ -44,13 +44,14 @@ void updateNavBar({BuildContext? context}) =>
 
 NavBarContainer buildWidget({
   Widget? child,
+  bool withNavBar = true,
 }) =>
     NavBarContainer(
         child: Stack(
       key: keyStack,
       children: [
         child ?? const SizedBox(),
-        const NavBar(),
+        withNavBar ? const NavBar() : const SizedBox(),
       ],
     ));
 

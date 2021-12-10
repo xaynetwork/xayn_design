@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:xayn_design/src/widget/nav_bar/data/config_pair.dart';
@@ -269,6 +271,86 @@ void main() {
           await tester.pumpAndSettle(updateNabBarDebounceTimeout);
 
           expect(stateNavBar.config, _backBtnConfig);
+        },
+      );
+    },
+  );
+
+  group(
+    '_getConfigPair method checks',
+    () {
+      testWidgets(
+        'GIVEN widget tree without any widget with NavBarConfigMixin WHEN getConfigPair called THEN return config pair with empty list of mixins',
+        (final WidgetTester tester) async {
+          await tester.pumpLindenApp(buildWidget());
+
+          resetNavBar();
+          await tester.pumpAndSettle(updateNabBarDebounceTimeout);
+
+          expect(getState().configPair!.configMixins, isEmpty);
+        },
+      );
+      testWidgets(
+        'GIVEN widget tree without NavBar widget WHEN getConfigPair method called THEN throw NavBarNotFoundException',
+        (final WidgetTester tester) async {
+          await tester.pumpLindenApp(buildWidget(withNavBar: false));
+          // Still need to add a test, which will catch and test this exception
+        },
+      );
+      testWidgets(
+        'GIVEN widget tree with more then 1 NavBar widget WHEN getConfigPair method called THEN throw ToManyNavBarFoundException',
+        (final WidgetTester tester) async {
+          final widget = buildWidget(child: const NavBar());
+          await tester.pumpLindenApp(widget);
+          // Still need to add a test, which will catch and test this exception
+        },
+      );
+
+      testWidgets(
+        'GIVEN config pair with two configs WHEN calling reset(goingBack:false) THEN list of mixin will contain 2 configs',
+        (final WidgetTester tester) async {
+          final widget = _StatelessConfigWidget(
+            () => _backBtnConfig,
+            child: _StatelessConfigWidget(() => _singleItemConfig),
+          );
+          await tester.pumpLindenApp(buildWidget(child: widget));
+          final state = getState();
+          expect(state.configPair, isNull);
+
+          resetNavBar(goingBack: false);
+          await tester.pumpAndSettle(updateNabBarDebounceTimeout);
+
+          expect(
+            state.configPair!.configMixins.map((e) => e.navBarConfig).toList(),
+            equals([_backBtnConfig, _singleItemConfig]),
+          );
+          await tester.pumpAndSettle();
+        },
+      );
+      testWidgets(
+        'GIVEN config pair with tree configs WHEN calling reset(goingBack:true) THEN list of mixin will contain 2 config (last one skipped)',
+        (final WidgetTester tester) async {
+          final widget = _StatelessConfigWidget(
+            () => _singleItemConfig,
+            child: _StatelessConfigWidget(
+              () => _ignoredConfig,
+              child: _StatelessConfigWidget(
+                () => _backBtnConfig,
+              ),
+            ),
+          );
+          await tester.pumpLindenApp(buildWidget(child: widget));
+          final state = getState();
+          expect(state.configPair, isNull);
+
+          resetNavBar(goingBack: true);
+          await tester.pumpAndSettle(updateNabBarDebounceTimeout);
+
+          expect(
+            state.configPair!.configMixins.map((e) => e.navBarConfig).toList(),
+            equals([_singleItemConfig, _ignoredConfig]),
+          );
+          await tester.pumpAndSettle();
         },
       );
     },
