@@ -96,3 +96,13 @@ class _StatefulConfigWidgetState extends State<_StatefulConfigWidget>
   @override
   NavBarConfig get navBarConfig => widget.getConfigCallback();
 }
+
+extension WidgetTesterExtension on WidgetTester {
+  Future<void> resetNavBarWithDebounce({
+    BuildContext? context,
+    goingBack = false,
+  }) async {
+    resetNavBar(context: context, goingBack: goingBack);
+    await pumpAndSettle(updateNabBarDebounceTimeout);
+  }
+}
