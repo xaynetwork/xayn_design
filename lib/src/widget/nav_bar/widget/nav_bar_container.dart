@@ -7,10 +7,6 @@ import 'package:xayn_design/src/widget/nav_bar/data/nav_bar_config.dart';
 import 'package:xayn_design/src/widget/nav_bar/widget/nav_bar.dart';
 import 'package:xayn_design/xayn_design.dart';
 
-final _containerNotImplementedException =
-    Exception('Did you forget to add $NavBarContainer?\n'
-        'Please wrap your MaterialApp with $NavBarContainer');
-
 const updateNabBarDebounceTimeout = Duration(milliseconds: 50);
 
 class NavBarContainer extends StatefulWidget {
@@ -22,16 +18,16 @@ class NavBarContainer extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _NavBarContainerState createState() => _NavBarContainerState();
+  NavBarContainerState createState() => NavBarContainerState();
 
   /// Call this, when you need to update current instance of the [NavBar]
   /// f.e. [NavBarConfig] was changed for the screen
   static void updateNavBar(BuildContext context) {
     if (!staticCallsEnabled) return;
     final typedWidget =
-        context.dependOnInheritedWidgetOfExactType<_InheritedNavBarContainer>();
+        context.dependOnInheritedWidgetOfExactType<InheritedNavBarContainer>();
     if (typedWidget == null) {
-      throw _containerNotImplementedException;
+      throw const NavBarContainerNotFoundException();
     }
     return typedWidget.controller.updateNavBar();
   }
@@ -51,9 +47,9 @@ class NavBarContainer extends StatefulWidget {
   }) {
     if (!staticCallsEnabled) return;
     final typedWidget =
-        context.dependOnInheritedWidgetOfExactType<_InheritedNavBarContainer>();
+        context.dependOnInheritedWidgetOfExactType<InheritedNavBarContainer>();
     if (typedWidget == null) {
-      throw _containerNotImplementedException;
+      throw const NavBarContainerNotFoundException();
     }
     return typedWidget.controller.resetNavBar(goingBack);
   }
@@ -64,12 +60,12 @@ class NavBarContainer extends StatefulWidget {
   static bool staticCallsEnabled = true;
 }
 
-class _NavBarContainerState extends State<NavBarContainer>
-    implements _NavBarController {
+class NavBarContainerState extends State<NavBarContainer>
+    implements NavBarController {
   final resetStream = StreamController<bool?>();
   final updateStream = StreamController<bool?>();
 
-  ConfigPair? _configPair;
+  ConfigPair? configPair;
 
   Linden get linden => UnterDenLinden.getLinden(context);
 
@@ -79,8 +75,8 @@ class _NavBarContainerState extends State<NavBarContainer>
         .debounceTime(updateNabBarDebounceTimeout)
         .listen((bool? goingBack) {
       if (!mounted) return;
-      _configPair ??= _getConfigPair(context, goingBack ?? false);
-      _updateBar(_configPair!);
+      configPair ??= _getConfigPair(context, goingBack ?? false);
+      _updateBar(configPair!);
     });
     super.initState();
   }
@@ -94,16 +90,20 @@ class _NavBarContainerState extends State<NavBarContainer>
 
   @override
   Widget build(BuildContext context) =>
-      _InheritedNavBarContainer(controller: this, child: widget.child);
+      InheritedNavBarContainer(controller: this, child: widget.child);
 
   @override
   void resetNavBar(bool goingBack) {
-    _configPair = null;
+    if (resetStream.isClosed) return;
+    configPair = null;
     resetStream.add(goingBack);
   }
 
   @override
-  void updateNavBar() => updateStream.add(null);
+  void updateNavBar() {
+    if (updateStream.isClosed) return;
+    updateStream.add(null);
+  }
 
   void _updateBar(ConfigPair configPair) {
     for (final mixin in configPair.configMixins.reversed) {
@@ -126,8 +126,7 @@ class _NavBarContainerState extends State<NavBarContainer>
       if (element.widget is NavBar) {
         final widget = element as StatefulElement;
         if (updater != null) {
-          throw Exception(
-              'There can be only one $NavBar per $NavBarContainer, but found more.');
+          throw const ToManyNavBarFoundException();
         }
         updater = widget.state as ConfigUpdater;
       } else if (element.widget is StatelessWidget) {
@@ -148,8 +147,7 @@ class _NavBarContainerState extends State<NavBarContainer>
     context.visitChildElements(visitor);
     final navBarState = updater;
     if (navBarState == null) {
-      throw Exception('Did you forget to add $NavBar?\n'
-          'Please add with other children to $NavBarContainer');
+      throw const NavBarNotFoundException();
     }
 
     if (ignoreLast && list.isNotEmpty) {
@@ -159,20 +157,20 @@ class _NavBarContainerState extends State<NavBarContainer>
   }
 }
 
-class _InheritedNavBarContainer extends InheritedWidget {
-  final _NavBarController controller;
+class InheritedNavBarContainer extends InheritedWidget {
+  final NavBarController controller;
 
-  const _InheritedNavBarContainer({
+  const InheritedNavBarContainer({
     Key? key,
     required this.controller,
     required Widget child,
   }) : super(key: key, child: child);
 
   @override
-  bool updateShouldNotify(_InheritedNavBarContainer oldWidget) => false;
+  bool updateShouldNotify(InheritedNavBarContainer oldWidget) => false;
 }
 
-abstract class _NavBarController {
+abstract class NavBarController {
   /// Used internally, to find actual [NavBarConfigMixin]
   /// so it's [NavBarConfig] can be shown
   void resetNavBar(bool isGoingBack);
@@ -184,4 +182,28 @@ abstract class _NavBarController {
   /// are called, then we need to ignore the latest [NavBarConfig],
   /// which is still part of the widget tree for some time
   void updateNavBar();
+}
+
+class NavBarContainerNotFoundException implements Exception {
+  const NavBarContainerNotFoundException();
+
+  @override
+  String toString() => 'Did you forget to add $NavBarContainer?\n'
+      'Please wrap your MaterialApp with $NavBarContainer';
+}
+
+class NavBarNotFoundException implements Exception {
+  const NavBarNotFoundException();
+
+  @override
+  String toString() => 'Did you forget to add $NavBar?\n'
+      'Please add with other children to $NavBarContainer';
+}
+
+class ToManyNavBarFoundException implements Exception {
+  const ToManyNavBarFoundException();
+
+  @override
+  String toString() =>
+      'There can be only one $NavBar per $NavBarContainer, but found more.';
 }
