@@ -9,16 +9,16 @@ void main() {
   test(
     'GIVEN configPair THEN verify it extends Equatable',
     () {
-      const pair = ConfigPair(FakeConfigUpdater(), []);
+      const pair = ConfigPair(_FakeConfigUpdater(), []);
       expect(pair, isA<Equatable>());
     },
   );
   test(
     'GIVEN configPair THEN props are correct',
     () {
-      const pair = ConfigPair(FakeConfigUpdater(), [
-        NavBarConfigMixinHidden(),
-        NavBarConfigMixinHidden(),
+      const pair = ConfigPair(_FakeConfigUpdater(), [
+        _NavBarConfigMixinHidden(),
+        _NavBarConfigMixinHidden(),
       ]);
       expect(
         pair.props,
@@ -31,15 +31,15 @@ void main() {
   );
 }
 
-class FakeConfigUpdater implements ConfigUpdater {
-  const FakeConfigUpdater();
+class _FakeConfigUpdater implements ConfigUpdater {
+  const _FakeConfigUpdater();
 
   @override
   void update(NavBarConfig? config) {}
 }
 
-class NavBarConfigMixinHidden with NavBarConfigMixin {
-  const NavBarConfigMixinHidden();
+class _NavBarConfigMixinHidden with NavBarConfigMixin {
+  const _NavBarConfigMixinHidden();
 
   @override
   NavBarConfig get navBarConfig => NavBarConfig.hidden();

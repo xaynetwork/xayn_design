@@ -5,14 +5,16 @@ import 'package:xayn_design/src/widget/settings/settings.dart';
 import 'package:xayn_design/src/widget/settings/widget/settings_selectable.dart';
 import 'package:xayn_design/xayn_design_test.dart';
 
+import '../../constants.dart';
+
 void main() {
   const selectedKey = Key('selected');
   const selectedTitle = 'Selected title';
-  const selectedSvgIconPath = 'packages/xayn_design/assets/icons/plus.svg';
+  const selectedSvgIconPath = assetIconPathArrow;
 
   const unSelectedKey = Key('unSelected');
   const unSelectedTitle = 'unSelected title';
-  const unSelectedSvgIconPath = 'packages/xayn_design/assets/icons/plant.svg';
+  const unSelectedSvgIconPath = assetIconPathPlant;
 
   SettingsSelectableData selected(VoidCallback onPressed) =>
       SettingsSelectableData(

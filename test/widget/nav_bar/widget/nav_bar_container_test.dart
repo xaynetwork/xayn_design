@@ -8,6 +8,8 @@ import 'package:xayn_design/src/widget/nav_bar/widget/nav_bar_container.dart';
 import 'package:xayn_design/xayn_design.dart';
 import 'package:xayn_design/xayn_design_test.dart';
 
+import '../../constants.dart';
+
 part 'nav_bar_container_test.utils.dart';
 
 void main() {

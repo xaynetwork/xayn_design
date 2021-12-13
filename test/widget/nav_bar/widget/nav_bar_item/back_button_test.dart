@@ -4,6 +4,8 @@ import 'package:xayn_design/src/widget/nav_bar/widget/nav_bar_item/back_button.d
 import 'package:xayn_design/xayn_design.dart';
 import 'package:xayn_design/xayn_design_test.dart';
 
+import '../../../constants.dart';
+
 void main() {
   const key = Key('btn_key');
   NavBarItemBackButton getItem([VoidCallback? onPressed]) =>
@@ -39,7 +41,7 @@ void main() {
 
       expect(
         (svgWidget.pictureProvider as ExactAssetPicture).assetName,
-        equals('packages/xayn_design/assets/icons/arrow_left.svg'),
+        equals(assetIconPathArrow),
       );
     },
   );

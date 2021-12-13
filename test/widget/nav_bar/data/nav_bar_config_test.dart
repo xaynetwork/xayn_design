@@ -77,12 +77,6 @@ void main() {
               expect(cardConfig.type, NavBarType.card);
             },
           );
-          test(
-            'GIVEN config with main constructor THEN verify type is card',
-            () {
-              expect(cardConfig.type, NavBarType.card);
-            },
-          );
 
           test(
             'GIVEN config THEN verify items are required, the rest is optional',
@@ -110,9 +104,8 @@ void main() {
             'GIVEN back config THEN verify items size == 1, type is back and width is false',
             () {
               expect(backConfig.isWidthExpanded, isFalse);
-              expect(backConfig.type, NavBarType.backBtn);
-              expect(backConfig.items, hasLength(1));
-              expect(backConfig.items.first, backBtnItem);
+              expect(backConfig.type, equals(NavBarType.backBtn));
+              expect(backConfig.items, equals([backBtnItem]));
             },
           );
         },
@@ -125,7 +118,7 @@ void main() {
             'GIVEN hidden config THEN verify items size == 0, type is hidden and width is false',
             () {
               expect(hiddenConfig.isWidthExpanded, isFalse);
-              expect(hiddenConfig.type, NavBarType.hidden);
+              expect(hiddenConfig.type, equals(NavBarType.hidden));
               expect(hiddenConfig.items, isEmpty);
             },
           );

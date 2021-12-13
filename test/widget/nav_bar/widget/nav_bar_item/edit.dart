@@ -4,8 +4,9 @@ import 'package:xayn_design/src/widget/nav_bar/widget/nav_bar_item/edit.dart';
 import 'package:xayn_design/xayn_design.dart';
 import 'package:xayn_design/xayn_design_test.dart';
 
+import '../../../constants.dart';
+
 void main() {
-  const iconPath = 'packages/xayn_design/assets/icons/arrow_left.svg';
   const key = Key('edit_text');
   NavBarItemEdit getItem({
     Function(String)? onSearchPressed,
@@ -15,7 +16,7 @@ void main() {
     bool? autofocus,
   }) =>
       NavBarItemEdit(
-        svgIconPath: iconPath,
+        svgIconPath: assetIconPathArrow,
         isHighlighted: false,
         onSearchPressed: onSearchPressed ?? (_) {},
         onTextChanged: onTextChanged,
@@ -69,7 +70,7 @@ void main() {
 
       expect(
         (svgWidget.pictureProvider as ExactAssetPicture).assetName,
-        equals(iconPath),
+        equals(assetIconPathArrow),
       );
 
       final inkWidget =
@@ -225,7 +226,7 @@ void main() {
         }
       });
       final item = NavBarItemEdit(
-        svgIconPath: iconPath,
+        svgIconPath: assetIconPathArrow,
         isHighlighted: false,
         onSearchPressed: (_) {},
         key: key,

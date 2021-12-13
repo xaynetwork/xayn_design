@@ -4,14 +4,15 @@ import 'package:xayn_design/src/widget/nav_bar/widget/nav_bar_item/icon_button.d
 import 'package:xayn_design/xayn_design.dart';
 import 'package:xayn_design/xayn_design_test.dart';
 
+import '../../../constants.dart';
+
 void main() {
-  const iconPath = 'packages/xayn_design/assets/icons/arrow_left.svg';
   const key = Key('icon_button');
   NavBarItemIconButton getItem({
     VoidCallback? onPressed,
   }) =>
       NavBarItemIconButton(
-        svgIconPath: iconPath,
+        svgIconPath: assetIconPathArrow,
         isHighlighted: false,
         onPressed: onPressed ?? () {},
         key: key,
@@ -50,7 +51,7 @@ void main() {
 
       expect(
         (svgWidget.pictureProvider as ExactAssetPicture).assetName,
-        equals(iconPath),
+        equals(assetIconPathArrow),
       );
 
       expect(svgWidget.width, equals(linden.dimen.iconSize));
