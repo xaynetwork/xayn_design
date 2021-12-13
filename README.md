@@ -72,6 +72,11 @@ $ flutter pub get
     * [DotsIndicator](../main/docs/DOTS_INDICATOR.md)
         * [How to use](../main/docs/DOTS_INDICATOR.md#how-to-use-building_construction)
         * [Attributes](../main/docs/DOTS_INDICATOR.md#attributes-gear)
+    * [NavBar](../main/docs/NAV_BAR.md)
+        * [Installing](../main/docs/NAV_BAR.md#installing-hammer_and_wrench)
+        * [How to use](../main/docs/NAV_BAR.md#how-to-use-building_construction)
+        * [Limitations](../main/docs/NAV_BAR.md#limitations-exclamation)
+        * [Related components](../main/docs/NAV_BAR.md#related-components)
 
 Give a try to the [example app](../main/example/)
 
