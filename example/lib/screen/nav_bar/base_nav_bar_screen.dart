@@ -92,14 +92,14 @@ abstract class BaseNavBarScreenState<T extends BaseNavBarScreen>
         svgIconPath: linden.assets.icons.home,
         isHighlighted: isCurrent,
         onPressed: isCurrent ? () {} : replaceHome,
-        key: keySearch,
+        key: keyHome,
       );
 
   NavBarItem itemAccount({bool isCurrent = false}) => NavBarItemIconButton(
         svgIconPath: linden.assets.icons.person,
         isHighlighted: isCurrent,
         onPressed: isCurrent ? () {} : replaceAccount,
-        key: keySearch,
+        key: keyPerson,
       );
 //endregion items
 }
