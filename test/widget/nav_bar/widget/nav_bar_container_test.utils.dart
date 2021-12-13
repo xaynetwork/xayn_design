@@ -8,7 +8,7 @@ final _backBtnConfig = NavBarConfig.backBtn(
 
 final _ignoredConfig = NavBarConfig.ignored();
 
-final _singleItemConfig = creteConfig();
+final _singleItemConfig = createConfig();
 
 BuildContext getContext() => find.byKey(keyStack).evaluate().first;
 
@@ -20,7 +20,7 @@ NavBarState getStateNavBar() =>
     (find.byType(NavBar).evaluate().first as StatefulElement).state
         as NavBarState;
 
-NavBarConfig creteConfig({int numberOfItems = 1}) {
+NavBarConfig createConfig({int numberOfItems = 1}) {
   assert(numberOfItems >= 1, 'There should be at least 1 item');
   final items = <NavBarItem>[];
 
