@@ -1,5 +1,4 @@
-`Tooltip` allows you to show a tooltip messages, something like Android toasts, but in a dart way :
-smile:
+`Tooltip` allows you to show a tooltip messages, something like Android toasts, but in a dart way :smile:
 
 ----------
 
