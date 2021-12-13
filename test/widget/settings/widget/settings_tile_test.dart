@@ -3,12 +3,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:xayn_design/xayn_design.dart';
 import 'package:xayn_design/xayn_design_test.dart';
 
+import '../../constants.dart';
+
 typedef GetSettingsTileAction = Function(VoidCallback onPressed);
 
 void main() {
   const title = 'SettingsTile title';
   const actionKey = Key('action key');
-  const svgIconPath = 'packages/xayn_design/assets/icons/plant.svg';
 
   group(
     'GIVEN tile with different actions WHEN clicked on the button THEN callback called',
@@ -50,7 +51,7 @@ void main() {
           (final WidgetTester tester) => verifyActionClicked(
                 tester,
                 (VoidCallback onPressed) => SettingsTileActionIcon(
-                  svgIconPath: svgIconPath,
+                  svgIconPath: assetIconPathPlant,
                   onPressed: onPressed,
                   key: actionKey,
                 ),
@@ -62,7 +63,7 @@ void main() {
             tester,
             (VoidCallback onPressed) => SettingsTileActionCircle(
                   isActive: true,
-                  svgIconPath: svgIconPath,
+                  svgIconPath: assetIconPathPlant,
                   onPressed: onPressed,
                   key: actionKey,
                 )),
@@ -74,7 +75,7 @@ void main() {
             tester,
             (VoidCallback onPressed) => SettingsTileActionCircle(
                   isActive: false,
-                  svgIconPath: svgIconPath,
+                  svgIconPath: assetIconPathPlant,
                   onPressed: onPressed,
                   key: actionKey,
                 )),
@@ -136,7 +137,8 @@ void main() {
       testWidgets(
         'GIVEN data with title and icon WHEN rendering widget THEN visible only those are visible',
         (final WidgetTester tester) async {
-          const data = SettingsTileData(title: title, svgIconPath: svgIconPath);
+          const data =
+              SettingsTileData(title: title, svgIconPath: assetIconPathPlant);
           await tester.pumpLindenApp(const SettingsTile(data: data));
 
           final titleFinder = find.text(title);
@@ -179,7 +181,7 @@ void main() {
           final data = SettingsTileData(
             title: title,
             action: SettingsTileActionIcon(
-              svgIconPath: svgIconPath,
+              svgIconPath: assetIconPathPlant,
               onPressed: () {},
               key: actionKey,
             ),
@@ -203,7 +205,7 @@ void main() {
             title: title,
             action: SettingsTileActionCircle(
               isActive: true,
-              svgIconPath: svgIconPath,
+              svgIconPath: assetIconPathPlant,
               onPressed: () {},
               key: actionKey,
             ),
@@ -252,9 +254,9 @@ void main() {
           final data = SettingsTileData(
             title: title,
             subTitle: subtitle,
-            svgIconPath: svgIconPath,
+            svgIconPath: assetIconPathPlant,
             action: SettingsTileActionIcon(
-              svgIconPath: svgIconPath,
+              svgIconPath: assetIconPathPlant,
               onPressed: () {},
               key: actionKey,
             ),

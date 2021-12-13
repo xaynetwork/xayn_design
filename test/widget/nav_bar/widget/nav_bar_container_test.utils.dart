@@ -26,7 +26,7 @@ NavBarConfig createConfig({int numberOfItems = 1}) {
 
   for (int i = 0; i < numberOfItems; i++) {
     final item = NavBarItemIconButton(
-      svgIconPath: 'packages/xayn_design/assets/icons/arrow_left.svg',
+      svgIconPath: assetIconPathArrow,
       isHighlighted: i == 0,
       onPressed: () {},
       key: Key('item-$i'),

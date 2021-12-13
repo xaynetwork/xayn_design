@@ -3,6 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:xayn_design/xayn_design.dart';
 import 'package:xayn_design/xayn_design_test.dart';
 
+import '../../constants.dart';
+
 void main() {
   const title = 'Section title';
   const subTitle = 'Section subTitle';
@@ -57,7 +59,7 @@ void main() {
       final selectableItem = SettingsSelectableData(
         key: const Key('key'),
         title: 'title',
-        svgIconPath: 'packages/xayn_design/assets/icons/plus.svg',
+        svgIconPath: assetIconPathArrow,
         isSelected: true,
         onPressed: () {},
       );

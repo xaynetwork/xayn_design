@@ -7,20 +7,23 @@ import 'package:xayn_design/src/widget/nav_bar/widget/nav_bar_item/icon_button.d
 import 'package:xayn_design/xayn_design.dart';
 import 'package:xayn_design/xayn_design_test.dart';
 
+import '../../constants.dart';
+
 void main() {
-  const iconPath = 'packages/xayn_design/assets/icons/arrow_left.svg';
   const keyboardCheckDelay = Duration(milliseconds: 50);
   Widget buildWidget({
     bool aboveTheKeyboard = false,
     EdgeInsets? padding,
   }) {
+    // This is the main place, where this flag is really needed.try
+    // The main purpose of it is to have possibility to test NavBar outside of
+    // the NavBarContainer and it influence, separately, in its own sandpit.
     NavBarContainer.staticCallsEnabled = false;
-    return NavBarContainer(
-        child: NavBar(
+    return NavBar(
       keyboardCheckDelay: keyboardCheckDelay,
       aboveTheKeyboard: aboveTheKeyboard,
       padding: padding ?? const EdgeInsets.all(16), //default value
-    ));
+    );
   }
 
   final backBtn = NavBarItemBackButton(
@@ -31,7 +34,7 @@ void main() {
     bool isHighlighted = false,
   }) =>
       NavBarItemIconButton(
-        svgIconPath: iconPath,
+        svgIconPath: assetIconPathArrow,
         onPressed: () {},
         isHighlighted: isHighlighted,
         key: Key('icon_btn-key$isHighlighted'),
@@ -40,7 +43,7 @@ void main() {
     bool isHighlighted = false,
   }) =>
       NavBarItemEdit(
-        svgIconPath: iconPath,
+        svgIconPath: assetIconPathArrow,
         onSearchPressed: (_) {},
         isHighlighted: isHighlighted,
         key: Key('edit-key$isHighlighted'),
