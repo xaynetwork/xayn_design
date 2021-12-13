@@ -9,12 +9,6 @@ void main() {
     'Check NavBarType',
     () {
       test(
-        'GIVEN NavBarType values THEN verify size equal 4',
-        () {
-          expect(NavBarType.values.length, equals(4));
-        },
-      );
-      test(
         'GIVEN NavBarType values THEN verify correct names',
         () {
           final expectedNames = [
