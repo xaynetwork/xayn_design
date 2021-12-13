@@ -36,7 +36,7 @@ void main() {
       final listOfConfigs = <ConfigPair>{};
 
       for (int i = 0; i < expectedCallCounter; i++) {
-        final config = creteConfig(numberOfItems: i + 1);
+        final config = createConfig(numberOfItems: i + 1);
         await tester.pumpLindenApp(buildWidget(
           child: _StatelessConfigWidget(() => config),
         ));
@@ -57,7 +57,7 @@ void main() {
       final listOfConfigs = <ConfigPair>{};
 
       for (int i = 0; i < 5; i++) {
-        final config = creteConfig(numberOfItems: i + 1);
+        final config = createConfig(numberOfItems: i + 1);
         await tester.pumpLindenApp(buildWidget(
           child: _StatelessConfigWidget(() => config),
         ));
@@ -82,7 +82,7 @@ void main() {
       const steps = 5;
       late NavBarConfig latestConfig;
       for (int i = 0; i < steps; i++) {
-        latestConfig = creteConfig(numberOfItems: i + 1);
+        latestConfig = createConfig(numberOfItems: i + 1);
         await tester.pumpLindenApp(buildWidget(
           child: _StatelessConfigWidget(() => latestConfig),
         ));
