@@ -11,7 +11,7 @@ enum NavBarType {
 }
 
 class NavBarConfig extends Equatable {
-  /// If list is empty, than [NavBar] will be hidden
+  /// List of items, that will be shown inside [NavBar]
   final List<NavBarItem> items;
 
   /// If [true] than [NavBar] width will be expanded to the possible maximum
