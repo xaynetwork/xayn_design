@@ -33,7 +33,6 @@ There can be only **one** `NavBar` per `NavBarContainer` in the widget tree.
 | --                    | --            | --                            | --    |
 | `padding`             | `EdgeInsets`  | `EdgeInsets.all(16)`          | Padding, that applied around the `NavBar` content. Apply only when config `type` is `NavBarType.card` (for more details see [NavBarConfig](../nav_bar/NAV_BAR_CONFIG.MD))  |
 | `aboveTheKeyboard`    | `bool`        | `true`                        | custom child widget   |
-| `keyboardCheckDelay`  | `Duration`    | `Duration(milliseconds: 50)`  | Duration, used for delay before double-check the height of the software keyboard    |
 | `key`                 | `Key?`        | `null`                        | key identifier    |
 
 ----------

@@ -10,7 +10,6 @@ import 'package:xayn_design/xayn_design_test.dart';
 import '../../constants.dart';
 
 void main() {
-  const keyboardCheckDelay = Duration(milliseconds: 50);
   Widget buildWidget({
     bool aboveTheKeyboard = false,
     EdgeInsets? padding,
@@ -20,7 +19,6 @@ void main() {
     // the NavBarContainer and it influence, separately, in its own sandpit.
     NavBarContainer.staticCallsEnabled = false;
     return NavBar(
-      keyboardCheckDelay: keyboardCheckDelay,
       aboveTheKeyboard: aboveTheKeyboard,
       padding: padding ?? const EdgeInsets.all(16), //default value
     );
@@ -152,9 +150,8 @@ void main() {
   });
 
   group('constructor params', () {
-    final futureBuilderType = typeOf<FutureBuilder<double>>();
     testWidgets(
-      'GIVEN aboveTheKeyboard is false WHEN update config THEN FutureBuilder is NOT there',
+      'GIVEN aboveTheKeyboard is false WHEN update config THEN default padding applied',
       (final WidgetTester tester) async {
         await tester.pumpLindenApp(buildWidget(aboveTheKeyboard: false));
         final state = getState();
@@ -165,13 +162,21 @@ void main() {
 
         await tester.pumpAndSettle();
 
-        expect(find.byType(futureBuilderType), findsNothing);
+        final padding = getMainPadding();
+        expect(padding.padding, equals(const EdgeInsets.all(16)));
       },
     );
     testWidgets(
-      'GIVEN aboveTheKeyboard is true WHEN update config THEN FutureBuilder is NOT there',
+      'GIVEN aboveTheKeyboard is true WHEN update config THEN extra bottom padding added from the MediaQuery',
       (final WidgetTester tester) async {
-        await tester.pumpLindenApp(buildWidget(aboveTheKeyboard: true));
+        final widget = buildWidget(aboveTheKeyboard: true);
+        const keyboardHeight = 42.0;
+        const data = MediaQueryData(
+          size: Size(600, 800),
+          viewInsets: EdgeInsets.all(keyboardHeight),
+        );
+        final mediaQuery = MediaQuery(data: data, child: widget);
+        await tester.pumpLindenApp(mediaQuery);
         final state = getState();
         final config = NavBarConfig([
           getIconBtnItem(),
@@ -180,8 +185,11 @@ void main() {
 
         await tester.pumpAndSettle();
 
-        expect(find.byType(futureBuilderType), findsOneWidget);
-        await tester.pump(keyboardCheckDelay);
+        final padding = getMainPadding();
+        expect(
+          padding.padding,
+          equals(const EdgeInsets.fromLTRB(16, 16, 16, 16 + keyboardHeight)),
+        );
       },
     );
     testWidgets(

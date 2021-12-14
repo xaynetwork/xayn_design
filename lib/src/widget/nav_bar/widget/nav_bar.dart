@@ -6,7 +6,6 @@ import 'package:xayn_design/src/widget/nav_bar/widget/nav_bar_item/icon_button.d
 import 'package:xayn_design/xayn_design.dart';
 
 const _defaultPadding = EdgeInsets.all(16);
-const _defaultKeyboardCheckDelay = Duration(milliseconds: 50);
 
 class NavBar extends StatefulWidget {
   /// Padding, that applied around the [NavBar] content
@@ -16,13 +15,9 @@ class NavBar extends StatefulWidget {
   /// When [true], then will add to the [padding] height of the software keyboard
   final bool aboveTheKeyboard;
 
-  /// Duration, used for delay before double-check the height of the software keyboard
-  final Duration keyboardCheckDelay;
-
   const NavBar({
     this.padding = _defaultPadding,
     this.aboveTheKeyboard = true,
-    this.keyboardCheckDelay = _defaultKeyboardCheckDelay,
     Key? key,
   }) : super(key: key);
 
@@ -94,17 +89,7 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
       return _withPadding(sized);
     }
 
-    final future = Future<double>.delayed(
-      widget.keyboardCheckDelay,
-      () => MediaQueryData.fromWindow(WidgetsBinding.instance!.window)
-          .viewInsets
-          .bottom,
-    );
-
-    return FutureBuilder<double>(
-      future: future,
-      builder: (_, snapshot) => _withPadding(sized, snapshot.data ?? 0),
-    );
+    return _withPadding(sized, MediaQuery.of(context).viewInsets.bottom);
   }
 
   Widget _withPadding(Widget child, [double keyboardHeight = 0]) {
