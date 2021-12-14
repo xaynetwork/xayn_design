@@ -11,7 +11,6 @@ import '../../constants.dart';
 
 void main() {
   Widget buildWidget({
-    bool aboveTheKeyboard = false,
     EdgeInsets? padding,
   }) {
     // This is the main place, where this flag is really needed.try
@@ -19,7 +18,6 @@ void main() {
     // the NavBarContainer and it influence, separately, in its own sandpit.
     NavBarContainer.staticCallsEnabled = false;
     return NavBar(
-      aboveTheKeyboard: aboveTheKeyboard,
       padding: padding ?? const EdgeInsets.all(16), //default value
     );
   }
@@ -153,11 +151,12 @@ void main() {
     testWidgets(
       'GIVEN aboveTheKeyboard is false WHEN update config THEN default padding applied',
       (final WidgetTester tester) async {
-        await tester.pumpLindenApp(buildWidget(aboveTheKeyboard: false));
+        await tester.pumpLindenApp(buildWidget());
         final state = getState();
-        final config = NavBarConfig([
-          getIconBtnItem(),
-        ]);
+        final config = NavBarConfig(
+          [getIconBtnItem()],
+          showAboveKeyboard: false,
+        );
         state.update(config);
 
         await tester.pumpAndSettle();
@@ -167,20 +166,20 @@ void main() {
       },
     );
     testWidgets(
-      'GIVEN aboveTheKeyboard is true WHEN update config THEN extra bottom padding added from the MediaQuery',
+      'GIVEN config with showAboveKeyboard = true WHEN update config THEN extra bottom padding added from the MediaQuery',
       (final WidgetTester tester) async {
-        final widget = buildWidget(aboveTheKeyboard: true);
         const keyboardHeight = 42.0;
         const data = MediaQueryData(
           size: Size(600, 800),
           viewInsets: EdgeInsets.all(keyboardHeight),
         );
-        final mediaQuery = MediaQuery(data: data, child: widget);
+        final mediaQuery = MediaQuery(data: data, child: buildWidget());
         await tester.pumpLindenApp(mediaQuery);
         final state = getState();
-        final config = NavBarConfig([
-          getIconBtnItem(),
-        ]);
+        final config = NavBarConfig(
+          [getIconBtnItem()],
+          showAboveKeyboard: true,
+        );
         state.update(config);
 
         await tester.pumpAndSettle();

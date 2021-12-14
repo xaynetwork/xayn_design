@@ -12,12 +12,8 @@ class NavBar extends StatefulWidget {
   /// Apply only when config type is [NavBarType.card]
   final EdgeInsets padding;
 
-  /// When [true], then will add to the [padding] height of the software keyboard
-  final bool aboveTheKeyboard;
-
   const NavBar({
     this.padding = _defaultPadding,
-    this.aboveTheKeyboard = true,
     Key? key,
   }) : super(key: key);
 
@@ -85,11 +81,9 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
       height: linden.dimen.navBarHeight,
     );
 
-    if (!widget.aboveTheKeyboard) {
-      return _withPadding(sized);
-    }
-
-    return _withPadding(sized, MediaQuery.of(context).viewInsets.bottom);
+    return config.showAboveKeyboard
+        ? _withPadding(sized, MediaQuery.of(context).viewInsets.bottom)
+        : _withPadding(sized);
   }
 
   Widget _withPadding(Widget child, [double keyboardHeight = 0]) {

@@ -32,7 +32,6 @@ There can be only **one** `NavBar` per `NavBarContainer` in the widget tree.
 | attribute name        | Datatype      | Default Value                 | Description   |
 | --                    | --            | --                            | --    |
 | `padding`             | `EdgeInsets`  | `EdgeInsets.all(16)`          | Padding, that applied around the `NavBar` content. Apply only when config `type` is `NavBarType.card` (for more details see [NavBarConfig](../nav_bar/NAV_BAR_CONFIG.MD))  |
-| `aboveTheKeyboard`    | `bool`        | `true`                        | custom child widget   |
 | `key`                 | `Key?`        | `null`                        | key identifier    |
 
 ----------
