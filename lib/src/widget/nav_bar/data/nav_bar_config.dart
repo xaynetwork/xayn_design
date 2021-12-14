@@ -30,11 +30,22 @@ class NavBarConfig extends Equatable {
     this.showAboveKeyboard,
   );
 
-  const NavBarConfig(
+  NavBarConfig(
     this.items, {
     this.isWidthExpanded = false,
     this.showAboveKeyboard = true,
-  })  : assert(items.length > 0, 'There should be at least one item'),
+  })  : assert(
+          items.isNotEmpty,
+          'There should be at least one item',
+        ),
+        assert(
+          items.where((element) => element.isHighlighted).length <= 1,
+          'There can be maximum one highlighted item',
+        ),
+        assert(
+          items.whereType<NavBarItemBackButton>().isEmpty,
+          'BackButton item can be used only with the `.backBtn` constructor',
+        ),
         type = NavBarType.card;
 
   /// Use this constructor, if you need to hide [NavBar]
