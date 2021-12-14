@@ -313,22 +313,6 @@ void main() {
       );
 
       testWidgets(
-        'GIVEN config with two highlighted items WHEN updateConfig method called THEN AssertionError thrown',
-        (final WidgetTester tester) async {
-          await tester.pumpLindenApp(buildWidget());
-
-          final config = NavBarConfig([
-            getIconBtnItem(isHighlighted: true),
-            getIconBtnItem(isHighlighted: true),
-          ]);
-          final state = getState();
-          expect(
-            () => state.update(config),
-            throwsA(isA<AssertionError>()),
-          );
-        },
-      );
-      testWidgets(
         'GIVEN non nullable config and then nullable WHEN updateConfig method called THEN verify config is null',
         (final WidgetTester tester) async {
           await tester.pumpLindenApp(buildWidget());
