@@ -54,6 +54,41 @@ void main() {
 
   group('different configs', () {
     testWidgets(
+      'GIVEN config with isWidthExpanded=false WHEN updating config in widget THEN row size=min and mainAxisAlignment=start',
+      (final WidgetTester tester) async {
+        final config = NavBarConfig([getEditItem()], isWidthExpanded: false);
+        await tester.pumpLindenApp(buildWidget());
+        getState().update(config);
+        await tester.pumpAndSettle();
+
+        final widget = find.byType(Row).evaluate().first.widget as Row;
+
+        expect(widget.mainAxisSize, equals(MainAxisSize.min));
+        expect(widget.mainAxisAlignment, equals(MainAxisAlignment.start));
+      },
+    );
+    testWidgets(
+      'GIVEN config with isWidthExpanded=true WHEN updating config in widget THEN row size=max and mainAxisAlignment=spaceBetween',
+      (final WidgetTester tester) async {
+        final config = NavBarConfig([getEditItem()], isWidthExpanded: true);
+        await tester.pumpLindenApp(buildWidget());
+        getState().update(config);
+        await tester.pumpAndSettle();
+
+        final widget = find.byType(Row).evaluate().first.widget as Row;
+
+        expect(
+          widget.mainAxisSize,
+          equals(MainAxisSize.max),
+        );
+        expect(
+          widget.mainAxisAlignment,
+          equals(MainAxisAlignment.spaceBetween),
+        );
+      },
+    );
+
+    testWidgets(
       'WHEN create a widget THEN state implements ConfigUpdater, default config is null and build Center',
       (final WidgetTester tester) async {
         await tester.pumpLindenApp(buildWidget());
