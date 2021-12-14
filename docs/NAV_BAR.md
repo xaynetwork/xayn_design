@@ -83,7 +83,7 @@ In this way you can describe different content of the `NavBar` for different scr
 [NavBarObserver] will take care of changing those configs when `navigation` happens between screens.
 
 If you need to notify `NavBar` that config was changed for the current screen 
-(f.e. `isLiked` become `true`), provide those changes in `NavBarConfig get navBarConfig` 
+(i.e. `isLiked` become `true`), provide those changes in `NavBarConfig get navBarConfig` 
 and then call `NavBarContainer.updateNavBar(context)`. 
 
 There are 4 types of `NavBar` which you can control via different constructors of the `NavBarConfig`:
