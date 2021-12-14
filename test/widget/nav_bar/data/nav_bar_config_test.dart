@@ -64,6 +64,7 @@ void main() {
             cardConfig.items,
             cardConfig.isWidthExpanded,
             cardConfig.type,
+            cardConfig.showAboveKeyboard,
           ]);
         },
       );
@@ -85,6 +86,7 @@ void main() {
               expect(config.isWidthExpanded, isFalse);
               expect(config.type, NavBarType.card);
               expect(config.items, [iconBtnItem]);
+              expect(config.showAboveKeyboard, isTrue);
             },
           );
           test(
@@ -92,6 +94,22 @@ void main() {
             () {
               final config = NavBarConfig([iconBtnItem], isWidthExpanded: true);
               expect(config.isWidthExpanded, isTrue);
+            },
+          );
+          test(
+            'GIVEN config with showAboveKeyboard = false width THEN verify flag is correct',
+            () {
+              final config =
+                  NavBarConfig([iconBtnItem], showAboveKeyboard: false);
+              expect(config.showAboveKeyboard, isFalse);
+            },
+          );
+          test(
+            'GIVEN config with showAboveKeyboard = true width THEN verify flag is correct',
+            () {
+              final config =
+                  NavBarConfig([iconBtnItem], showAboveKeyboard: true);
+              expect(config.showAboveKeyboard, isTrue);
             },
           );
         },
@@ -106,6 +124,7 @@ void main() {
               expect(backConfig.isWidthExpanded, isFalse);
               expect(backConfig.type, equals(NavBarType.backBtn));
               expect(backConfig.items, equals([backBtnItem]));
+              expect(backConfig.showAboveKeyboard, isFalse);
             },
           );
         },
@@ -120,6 +139,7 @@ void main() {
               expect(hiddenConfig.isWidthExpanded, isFalse);
               expect(hiddenConfig.type, equals(NavBarType.hidden));
               expect(hiddenConfig.items, isEmpty);
+              expect(hiddenConfig.showAboveKeyboard, isFalse);
             },
           );
         },
@@ -134,6 +154,7 @@ void main() {
               expect(ignoredConfig.isWidthExpanded, isFalse);
               expect(ignoredConfig.type, NavBarType.ignored);
               expect(ignoredConfig.items, isEmpty);
+              expect(ignoredConfig.showAboveKeyboard, isFalse);
             },
           );
         },
