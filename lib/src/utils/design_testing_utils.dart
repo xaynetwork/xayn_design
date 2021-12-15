@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:xayn_design/src/linden/linden.dart';
-import 'package:xayn_design/src/widget/unter_den_linden/unter_den_linden.dart';
+import 'package:xayn_design/xayn_design.dart';
 
 /// Helper extension functions for making testing easier for apps that use
 /// Linden
@@ -13,17 +12,22 @@ extension XaynDesignWidgetTesterExtension on WidgetTester {
     Linden? initialLinden,
     ThemeData? theme,
     List<NavigatorObserver>? observers,
-  }) =>
-      pumpWidget(
-        _appWrappedWithLinden(
-          child: widget,
-          initialLinden: initialLinden,
-          theme: theme,
-          observers: observers,
-        ),
-        duration,
-        phase,
-      );
+    bool withNavBarContainer = false,
+  }) {
+    final child =
+        withNavBarContainer ? _appWrappedWithNavBarContainer(widget) : widget;
+    final withLinden = _appWrappedWithLinden(
+      child: child,
+      initialLinden: initialLinden,
+      theme: theme,
+      observers: observers,
+    );
+    return pumpWidget(
+      withLinden,
+      duration,
+      phase,
+    );
+  }
 }
 
 Widget _appWrappedWithLinden({
@@ -42,6 +46,15 @@ Widget _appWrappedWithLinden({
     initialLinden: linden,
   );
 }
+
+Widget _appWrappedWithNavBarContainer(Widget child) => NavBarContainer(
+      child: Stack(
+        children: [
+          Positioned.fill(child: child),
+          const Positioned.fill(top: null, child: NavBar())
+        ],
+      ),
+    );
 
 /// Can be used, when you need to find an element `byType` with the generic
 Type typeOf<T>() => T;
