@@ -51,7 +51,7 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
     final items = config.items.map(_buildItem).toList(growable: false);
 
     if (config.type == NavBarType.backBtn) {
-      return _withPadding(Row(children: [items.first]));
+      return _withPadding(_withFixedHeight(Row(children: [items.first])));
     }
 
     final row = Row(
@@ -70,15 +70,19 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
       cardBackground: linden.colors.background,
     );
 
-    final sized = SizedBox(
-      child: Center(child: card),
-      height: linden.dimen.navBarHeight,
-    );
+    final sized = _withFixedHeight(card);
 
     return config.showAboveKeyboard
         // `MediaQuery.of(context).viewInsets.bottom` represents the height of the keyboard
         ? _withPadding(sized, MediaQuery.of(context).viewInsets.bottom)
         : _withPadding(sized);
+  }
+
+  Widget _withFixedHeight(Widget card) {
+    return SizedBox(
+      child: Center(child: card),
+      height: linden.dimen.navBarHeight,
+    );
   }
 
   Widget _withPadding(Widget child, [double keyboardHeight = 0]) {
