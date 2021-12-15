@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:xayn_design/src/widget/nav_bar/data/nav_bar_config.dart';
 import 'package:xayn_design/xayn_design.dart';
 
 mixin NavBarConfigMixin {

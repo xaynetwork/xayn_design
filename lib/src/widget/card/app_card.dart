@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:xayn_design/src/linden/xsizes.dart';
 import 'package:xayn_design/xayn_design.dart';
 
 class AppCardWidget extends StatelessWidget {

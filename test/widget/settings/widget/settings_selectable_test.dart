@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:xayn_design/src/widget/settings/data/settings_selectable_data.dart';
 import 'package:xayn_design/src/widget/settings/settings.dart';
 import 'package:xayn_design/src/widget/settings/widget/settings_selectable.dart';
 import 'package:xayn_design/xayn_design_test.dart';
