@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:xayn_design/src/widget/nav_bar/data/config_pair.dart';
-import 'package:xayn_design/src/widget/nav_bar/data/nav_bar_config.dart';
 import 'package:xayn_design/src/widget/nav_bar/nav_bar.dart';
 import 'package:xayn_design/src/widget/nav_bar/widget/nav_bar.dart';
 

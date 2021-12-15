@@ -1,7 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:xayn_design/src/widget/nav_bar/data/nav_bar_item.dart';
 import 'package:xayn_design/src/widget/nav_bar/nav_bar.dart';
-import 'package:xayn_design/src/widget/nav_bar/widget/nav_bar.dart';
 
 enum NavBarType {
   card,
