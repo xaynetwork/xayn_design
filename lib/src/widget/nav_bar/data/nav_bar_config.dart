@@ -19,8 +19,8 @@ class NavBarConfig extends Equatable {
   final bool isWidthExpanded;
   final NavBarType type;
 
-  /// If [true] than [NavBar] will be respect the keyboard height
-  /// (it will be added to the default bottom padding)
+  /// If [true] then the height of the keyboard will be added to
+  /// the bottom padding of the [NavBar], so that it will be shown above it
   final bool showAboveKeyboard;
 
   const NavBarConfig._(
