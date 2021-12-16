@@ -76,6 +76,7 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
     );
 
     return config.showAboveKeyboard
+        // `MediaQuery.of(context).viewInsets.bottom` represents the height of the keyboard
         ? _withPadding(sized, MediaQuery.of(context).viewInsets.bottom)
         : _withPadding(sized);
   }
