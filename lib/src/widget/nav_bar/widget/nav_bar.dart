@@ -6,23 +6,14 @@ import 'package:xayn_design/src/widget/nav_bar/widget/nav_bar_item/icon_button.d
 import 'package:xayn_design/xayn_design.dart';
 
 const _defaultPadding = EdgeInsets.all(16);
-const _defaultKeyboardCheckDelay = Duration(milliseconds: 50);
 
 class NavBar extends StatefulWidget {
   /// Padding, that applied around the [NavBar] content
   /// Apply only when config type is [NavBarType.card]
   final EdgeInsets padding;
 
-  /// When [true], then will add to the [padding] height of the software keyboard
-  final bool aboveTheKeyboard;
-
-  /// Duration, used for delay before double-check the height of the software keyboard
-  final Duration keyboardCheckDelay;
-
   const NavBar({
     this.padding = _defaultPadding,
-    this.aboveTheKeyboard = true,
-    this.keyboardCheckDelay = _defaultKeyboardCheckDelay,
     Key? key,
   }) : super(key: key);
 
@@ -49,12 +40,6 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
 
     setState(() {
       this.config = config;
-      if (config != null) {
-        assert(
-          config.items.where((element) => element.isHighlighted).length <= 1,
-          'There can be maximum one highlighted item',
-        );
-      }
     });
   }
 
@@ -66,7 +51,7 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
     final items = config.items.map(_buildItem).toList(growable: false);
 
     if (config.type == NavBarType.backBtn) {
-      return _withPadding(Row(children: [items.first]));
+      return _withPadding(_withFixedHeight(Row(children: [items.first])));
     }
 
     final row = Row(
@@ -85,25 +70,18 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
       cardBackground: linden.colors.background,
     );
 
-    final sized = SizedBox(
+    final sized = _withFixedHeight(card);
+
+    return config.showAboveKeyboard
+        // `MediaQuery.of(context).viewInsets.bottom` represents the height of the keyboard
+        ? _withPadding(sized, MediaQuery.of(context).viewInsets.bottom)
+        : _withPadding(sized);
+  }
+
+  Widget _withFixedHeight(Widget card) {
+    return SizedBox(
       child: Center(child: card),
       height: linden.dimen.navBarHeight,
-    );
-
-    if (!widget.aboveTheKeyboard) {
-      return _withPadding(sized);
-    }
-
-    final future = Future<double>.delayed(
-      widget.keyboardCheckDelay,
-      () => MediaQueryData.fromWindow(WidgetsBinding.instance!.window)
-          .viewInsets
-          .bottom,
-    );
-
-    return FutureBuilder<double>(
-      future: future,
-      builder: (_, snapshot) => _withPadding(sized, snapshot.data ?? 0),
     );
   }
 

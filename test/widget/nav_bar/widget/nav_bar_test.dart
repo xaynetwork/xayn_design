@@ -10,9 +10,7 @@ import 'package:xayn_design/xayn_design_test.dart';
 import '../../constants.dart';
 
 void main() {
-  const keyboardCheckDelay = Duration(milliseconds: 50);
   Widget buildWidget({
-    bool aboveTheKeyboard = false,
     EdgeInsets? padding,
   }) {
     // This is the main place, where this flag is really needed.try
@@ -20,8 +18,6 @@ void main() {
     // the NavBarContainer and it influence, separately, in its own sandpit.
     NavBarContainer.staticCallsEnabled = false;
     return NavBar(
-      keyboardCheckDelay: keyboardCheckDelay,
-      aboveTheKeyboard: aboveTheKeyboard,
       padding: padding ?? const EdgeInsets.all(16), //default value
     );
   }
@@ -57,6 +53,41 @@ void main() {
       find.byType(Padding).evaluate().toList()[1].widget as Padding;
 
   group('different configs', () {
+    testWidgets(
+      'GIVEN config with isWidthExpanded=false WHEN updating config in widget THEN row size=min and mainAxisAlignment=start',
+      (final WidgetTester tester) async {
+        final config = NavBarConfig([getEditItem()], isWidthExpanded: false);
+        await tester.pumpLindenApp(buildWidget());
+        getState().update(config);
+        await tester.pumpAndSettle();
+
+        final widget = find.byType(Row).evaluate().first.widget as Row;
+
+        expect(widget.mainAxisSize, equals(MainAxisSize.min));
+        expect(widget.mainAxisAlignment, equals(MainAxisAlignment.start));
+      },
+    );
+    testWidgets(
+      'GIVEN config with isWidthExpanded=true WHEN updating config in widget THEN row size=max and mainAxisAlignment=spaceBetween',
+      (final WidgetTester tester) async {
+        final config = NavBarConfig([getEditItem()], isWidthExpanded: true);
+        await tester.pumpLindenApp(buildWidget());
+        getState().update(config);
+        await tester.pumpAndSettle();
+
+        final widget = find.byType(Row).evaluate().first.widget as Row;
+
+        expect(
+          widget.mainAxisSize,
+          equals(MainAxisSize.max),
+        );
+        expect(
+          widget.mainAxisAlignment,
+          equals(MainAxisAlignment.spaceBetween),
+        );
+      },
+    );
+
     testWidgets(
       'WHEN create a widget THEN state implements ConfigUpdater, default config is null and build Center',
       (final WidgetTester tester) async {
@@ -152,36 +183,47 @@ void main() {
   });
 
   group('constructor params', () {
-    final futureBuilderType = typeOf<FutureBuilder<double>>();
     testWidgets(
-      'GIVEN aboveTheKeyboard is false WHEN update config THEN FutureBuilder is NOT there',
+      'GIVEN aboveTheKeyboard is false WHEN update config THEN default padding applied',
       (final WidgetTester tester) async {
-        await tester.pumpLindenApp(buildWidget(aboveTheKeyboard: false));
+        await tester.pumpLindenApp(buildWidget());
         final state = getState();
-        final config = NavBarConfig([
-          getIconBtnItem(),
-        ]);
+        final config = NavBarConfig(
+          [getIconBtnItem()],
+          showAboveKeyboard: false,
+        );
         state.update(config);
 
         await tester.pumpAndSettle();
 
-        expect(find.byType(futureBuilderType), findsNothing);
+        final padding = getMainPadding();
+        expect(padding.padding, equals(const EdgeInsets.all(16)));
       },
     );
     testWidgets(
-      'GIVEN aboveTheKeyboard is true WHEN update config THEN FutureBuilder is NOT there',
+      'GIVEN config with showAboveKeyboard = true WHEN update config THEN extra bottom padding added from the MediaQuery',
       (final WidgetTester tester) async {
-        await tester.pumpLindenApp(buildWidget(aboveTheKeyboard: true));
+        const keyboardHeight = 42.0;
+        const data = MediaQueryData(
+          size: Size(600, 800),
+          viewInsets: EdgeInsets.all(keyboardHeight),
+        );
+        final mediaQuery = MediaQuery(data: data, child: buildWidget());
+        await tester.pumpLindenApp(mediaQuery);
         final state = getState();
-        final config = NavBarConfig([
-          getIconBtnItem(),
-        ]);
+        final config = NavBarConfig(
+          [getIconBtnItem()],
+          showAboveKeyboard: true,
+        );
         state.update(config);
 
         await tester.pumpAndSettle();
 
-        expect(find.byType(futureBuilderType), findsOneWidget);
-        await tester.pump(keyboardCheckDelay);
+        final padding = getMainPadding();
+        expect(
+          padding.padding,
+          equals(const EdgeInsets.fromLTRB(16, 16, 16, 16 + keyboardHeight)),
+        );
       },
     );
     testWidgets(
@@ -270,22 +312,6 @@ void main() {
         },
       );
 
-      testWidgets(
-        'GIVEN config with two highlighted items WHEN updateConfig method called THEN AssertionError thrown',
-        (final WidgetTester tester) async {
-          await tester.pumpLindenApp(buildWidget());
-
-          final config = NavBarConfig([
-            getIconBtnItem(isHighlighted: true),
-            getIconBtnItem(isHighlighted: true),
-          ]);
-          final state = getState();
-          expect(
-            () => state.update(config),
-            throwsA(isA<AssertionError>()),
-          );
-        },
-      );
       testWidgets(
         'GIVEN non nullable config and then nullable WHEN updateConfig method called THEN verify config is null',
         (final WidgetTester tester) async {

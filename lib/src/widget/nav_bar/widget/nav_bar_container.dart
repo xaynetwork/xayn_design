@@ -66,6 +66,7 @@ class NavBarContainerState extends State<NavBarContainer>
   final updateStream = StreamController<bool?>();
 
   ConfigPair? configPair;
+  NavBarConfigMixin? currentNavBarConfigMixin;
 
   Linden get linden => UnterDenLinden.getLinden(context);
 
@@ -110,6 +111,7 @@ class NavBarContainerState extends State<NavBarContainer>
       final config = mixin.navBarConfig;
       if (!config.type.isIgnored) {
         configPair.updater.update(config);
+        currentNavBarConfigMixin = mixin;
         return;
       }
     }
@@ -150,7 +152,9 @@ class NavBarContainerState extends State<NavBarContainer>
       throw const NavBarNotFoundException();
     }
 
-    if (ignoreLast && list.isNotEmpty) {
+    if (ignoreLast &&
+        list.isNotEmpty &&
+        list.last == currentNavBarConfigMixin) {
       list.removeLast();
     }
     return ConfigPair(navBarState, list);

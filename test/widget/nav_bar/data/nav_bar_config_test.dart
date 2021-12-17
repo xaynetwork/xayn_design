@@ -5,6 +5,20 @@ import 'package:xayn_design/src/widget/nav_bar/data/nav_bar_config.dart';
 import 'package:xayn_design/src/widget/nav_bar/data/nav_bar_item.dart';
 
 void main() {
+  NavBarItemIconButton getIconData({
+    bool isHighlighted = false,
+  }) =>
+      NavBarItemIconButton(
+        svgIconPath: 'svgIconPath',
+        isHighlighted: isHighlighted,
+        onPressed: () {},
+        key: const Key('icon btn'),
+      );
+  NavBarItemBackButton getBackData() => NavBarItemBackButton(
+        onPressed: () {},
+        key: const Key('back btn'),
+      );
+
   group(
     'Check NavBarType',
     () {
@@ -28,24 +42,16 @@ void main() {
   group(
     'Check NavBarConfig',
     () {
-      final iconBtnItem = NavBarItemIconButton(
-        svgIconPath: 'svgIconPath',
-        isHighlighted: true,
-        onPressed: () {},
-        key: const Key('icon btn'),
-      );
-      final backBtnItem =
-          NavBarItemBackButton(onPressed: () {}, key: const Key('back btn'));
       final cardConfig = NavBarConfig(
         [
-          iconBtnItem,
-          backBtnItem,
+          getIconData(),
+          getIconData(isHighlighted: true),
         ],
         isWidthExpanded: true,
       );
       final hiddenConfig = NavBarConfig.hidden();
       final ignoredConfig = NavBarConfig.ignored();
-      final backConfig = NavBarConfig.backBtn(backBtnItem);
+      final backConfig = NavBarConfig.backBtn(getBackData());
 
       test(
         'GIVEN NavBarConfig THEN verify it extends Equatable',
@@ -64,6 +70,7 @@ void main() {
             cardConfig.items,
             cardConfig.isWidthExpanded,
             cardConfig.type,
+            cardConfig.showAboveKeyboard,
           ]);
         },
       );
@@ -81,17 +88,36 @@ void main() {
           test(
             'GIVEN config THEN verify items are required, the rest is optional',
             () {
-              final config = NavBarConfig([iconBtnItem]);
+              final data = getIconData();
+              final config = NavBarConfig([data]);
               expect(config.isWidthExpanded, isFalse);
               expect(config.type, NavBarType.card);
-              expect(config.items, [iconBtnItem]);
+              expect(config.items, [data]);
+              expect(config.showAboveKeyboard, isTrue);
             },
           );
           test(
             'GIVEN config with expanded width THEN verify flag is correct',
             () {
-              final config = NavBarConfig([iconBtnItem], isWidthExpanded: true);
+              final config =
+                  NavBarConfig([getIconData()], isWidthExpanded: true);
               expect(config.isWidthExpanded, isTrue);
+            },
+          );
+          test(
+            'GIVEN config with showAboveKeyboard = false width THEN verify flag is correct',
+            () {
+              final config =
+                  NavBarConfig([getIconData()], showAboveKeyboard: false);
+              expect(config.showAboveKeyboard, isFalse);
+            },
+          );
+          test(
+            'GIVEN config with showAboveKeyboard = true width THEN verify flag is correct',
+            () {
+              final config =
+                  NavBarConfig([getIconData()], showAboveKeyboard: true);
+              expect(config.showAboveKeyboard, isTrue);
             },
           );
         },
@@ -105,7 +131,8 @@ void main() {
             () {
               expect(backConfig.isWidthExpanded, isFalse);
               expect(backConfig.type, equals(NavBarType.backBtn));
-              expect(backConfig.items, equals([backBtnItem]));
+              expect(backConfig.items, equals([getBackData()]));
+              expect(backConfig.showAboveKeyboard, isFalse);
             },
           );
         },
@@ -120,6 +147,7 @@ void main() {
               expect(hiddenConfig.isWidthExpanded, isFalse);
               expect(hiddenConfig.type, equals(NavBarType.hidden));
               expect(hiddenConfig.items, isEmpty);
+              expect(hiddenConfig.showAboveKeyboard, isFalse);
             },
           );
         },
@@ -134,7 +162,57 @@ void main() {
               expect(ignoredConfig.isWidthExpanded, isFalse);
               expect(ignoredConfig.type, NavBarType.ignored);
               expect(ignoredConfig.items, isEmpty);
+              expect(ignoredConfig.showAboveKeyboard, isFalse);
             },
+          );
+        },
+      );
+    },
+  );
+  group(
+    'asserts',
+    () {
+      test(
+        'GIVEN config with no items WHEN use default constructor THEN throw assert exception',
+        () async {
+          expect(
+            () => NavBarConfig(const []),
+            throwsA(isA<AssertionError>()),
+          );
+        },
+      );
+      test(
+        'GIVEN config with 1 highlighted item WHEN use default constructor THEN will NOT throw assert exception',
+        () async {
+          expect(
+            NavBarConfig([getIconData(isHighlighted: true)]),
+            isA<NavBarConfig>(),
+          );
+        },
+      );
+      test(
+        'GIVEN config with 2 highlighted items WHEN use default constructor THEN will throw assert exception',
+        () async {
+          expect(
+            () => NavBarConfig([
+              getIconData(isHighlighted: true),
+              getIconData(isHighlighted: true),
+            ]),
+            throwsA(isA<AssertionError>()),
+          );
+        },
+      );
+      test(
+        'GIVEN config with backBtn item WHEN use default constructor THEN throw assert exception',
+        () async {
+          expect(
+            () => NavBarConfig(
+              [
+                getIconData(isHighlighted: true),
+                NavBarItemBackButton(onPressed: () {}, key: const Key('key'))
+              ],
+            ),
+            throwsA(isA<AssertionError>()),
           );
         },
       );

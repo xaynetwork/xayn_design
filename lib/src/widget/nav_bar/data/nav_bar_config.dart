@@ -17,33 +17,51 @@ class NavBarConfig extends Equatable {
   final bool isWidthExpanded;
   final NavBarType type;
 
+  /// If [true] then the height of the keyboard will be added to
+  /// the bottom padding of the [NavBar], so that it will be shown above it
+  final bool showAboveKeyboard;
+
   const NavBarConfig._(
     this.items,
     this.isWidthExpanded,
     this.type,
+    this.showAboveKeyboard,
   );
 
-  const NavBarConfig(
+  NavBarConfig(
     this.items, {
     this.isWidthExpanded = false,
-  })  : assert(items.length > 0, 'There should be at least one item'),
+    this.showAboveKeyboard = true,
+  })  : assert(
+          items.isNotEmpty,
+          'There should be at least one item',
+        ),
+        assert(
+          items.where((element) => element.isHighlighted).length <= 1,
+          'There can be maximum one highlighted item',
+        ),
+        assert(
+          items.whereType<NavBarItemBackButton>().isEmpty,
+          'BackButton item can be used only with the `.backBtn` constructor',
+        ),
         type = NavBarType.card;
 
   /// Use this constructor, if you need to hide [NavBar]
   /// when widget that use [NavBarConfig] is shown
   factory NavBarConfig.hidden() =>
-      const NavBarConfig._([], false, NavBarType.hidden);
+      const NavBarConfig._([], false, NavBarType.hidden, false);
 
   /// Use this constructor, if you need to ignore
   /// implementation of the [NavBarConfigMixin]
   /// In this case previous in the widget tree [NavBarConfigMixin] will be used
   factory NavBarConfig.ignored() =>
-      const NavBarConfig._([], false, NavBarType.ignored);
+      const NavBarConfig._([], false, NavBarType.ignored, false);
 
   NavBarConfig.backBtn(
     NavBarItemBackButton btn,
   )   : items = [btn],
         isWidthExpanded = false,
+        showAboveKeyboard = false,
         type = NavBarType.backBtn;
 
   @override
@@ -51,6 +69,7 @@ class NavBarConfig extends Equatable {
         items,
         isWidthExpanded,
         type,
+        showAboveKeyboard,
       ];
 }
 
