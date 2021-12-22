@@ -86,8 +86,18 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
   }
 
   Widget _withPadding(Widget child, [double keyboardHeight = 0]) {
+    /// Some devices might have already a bottom padding.
+    /// For instance, iPhone 11 has a bottom padding value of 34.0
+    final hasDeviceBottomPadding = MediaQuery.of(context).padding.bottom > 0;
+
+    /// If the device already has some bottom padding we should not add
+    /// any more to it
+    final bottomPadding = hasDeviceBottomPadding
+        ? keyboardHeight
+        : widget.padding.bottom + keyboardHeight;
+
     final finalPadding = widget.padding.copyWith(
-      bottom: widget.padding.bottom + keyboardHeight,
+      bottom: bottomPadding,
     );
     return SafeArea(
       child: Padding(
