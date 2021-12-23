@@ -114,6 +114,8 @@ class XSizes {
   double get navBarItemHeight => unit6;
   double get navBarSelectableHeight => unit5;
 
+  double get cardNotchSize => unit5;
+
   /// Return the number of columns to show in a grid view depending on
   /// the screen the user is experiencing (Experience) and the device and
   /// the orientation
