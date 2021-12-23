@@ -9,6 +9,9 @@ class XAnimations {
   final Duration _unit;
   const XAnimations() : _unit = const Duration(milliseconds: 200);
 
+  /// The swipe velocity which is required to trigger a "fling" gesture.
+  double get flingVelocity => 2000.0;
+
   Duration get unit => _unit;
 
   Duration get unit1_5 => _unit * 1.5;
@@ -50,4 +53,14 @@ class XAnimations {
   Duration get tooltipTimeToLive => unit10;
 
   Duration get cardTransitionDuration => unit3;
+
+  Duration get screenStateChangeDuration => _unit;
+
+  Duration get feedTransitionDuration => _unit * 4;
+
+  Duration get cardSnapBackDuration => _unit * 2.5;
+  Duration get cardOpenTransitionDuration => _unit * 5;
+  Duration get cardCloseTransitionDuration => _unit * 3;
+
+  Curve get snapBackToFeedCurve => Curves.elasticOut;
 }
