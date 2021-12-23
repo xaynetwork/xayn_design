@@ -273,9 +273,9 @@ class XStyles {
       );
 
   TextStyle? get readerModeTextStyle => appBodyText?.copyWith(
-        fontSize: 14.0,
-        height: 1.75,
-        letterSpacing: 1.1,
+        fontSize: 15.0,
+        fontWeight: FontWeight.w400,
+        height: 1.6,
       );
 
   /// Other styles
