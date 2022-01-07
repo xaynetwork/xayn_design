@@ -185,23 +185,24 @@ ThemeData _defaultTheme(Brightness brightness, {XStyles? styles}) {
   final colorScheme = brightness == Brightness.light
       ? const ColorScheme.light()
       : const ColorScheme.dark().copyWith(
-          onSurface: colors.background,
-          onBackground: colors.background,
+          onSurface: colors.newBackground,
+          onBackground: colors.newBackground,
         );
   final themeData = ThemeData(
     fontFamily: 'NotoSans',
     brightness: brightness,
     primaryColor: colors.primary,
     secondaryHeaderColor: colors.accent,
+    splashColor: colors.newSplashColor,
     colorScheme: colorScheme.copyWith(
       primary: colors.primary,
       secondary: colors.accent,
       secondaryVariant: colors.primaryAction,
     ),
     appBarTheme: AppBarTheme(color: colors.accent),
-    dialogBackgroundColor: colors.pageBackground,
+    dialogBackgroundColor: colors.newBackground,
     dividerColor: colors.divider,
-    scaffoldBackgroundColor: colors.pageBackground,
+    scaffoldBackgroundColor: colors.newBackground,
     unselectedWidgetColor: colors.iconDisabled,
   );
   if (styles != null) {

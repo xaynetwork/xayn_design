@@ -353,4 +353,39 @@ class XStyles {
           color: colors.hintTextStyle,
         ),
       );
+
+  /// right now we are in the middle of the design migration.
+  /// So far I added here some items, which I need for my tasks.
+  /// But later we will restructure all this file with proper items (names and structure)
+  //region NEW STYLES
+  TextStyle? get newSettingsSectionTitle => _baseTextTheme.bodyText1?.copyWith(
+        color: colors.newPrimaryText,
+        fontWeight: _weightBold,
+        fontSize: 14,
+        // height = 16
+        height: 1.14,
+      );
+
+  TextStyle? get newSettingsSectionText => _baseTextTheme.bodyText1?.copyWith(
+        color: colors.newPrimaryText,
+        fontWeight: _weightRegular,
+        fontSize: 14,
+        // height = 20
+        height: 1.43,
+      );
+
+  TextStyle? get newSettingsCaption => _baseTextTheme.bodyText1?.copyWith(
+        color: colors.newSecondaryText,
+        fontWeight: _weightBold,
+        fontSize: 10,
+        // height = 12
+        height: 1.2,
+      );
+
+  TextStyle? get newSettingsCaptionSelected => newSettingsCaption?.copyWith(
+        color: colors.newPrimaryTextInverse,
+      );
+
+  TextStyle? get newAppButtonText => appButtonText;
+//endregion NEW STYLES
 }
