@@ -160,4 +160,40 @@ class XColors {
       brightness == Brightness.dark ? dark : null;
 
   Brightness get brightness => _brightness;
+
+  /// right now we are in the middle of the design migration.
+  /// So far I added here some items, which I need for my tasks.
+  /// But later we will restructure all this file with proper items (names and structure)
+  //region NEW COLORS
+  static const _newPrimary = Color(0xff009278);
+
+  static const _newWhite = Color(0xffFFFFFF);
+  static const _newBlack = Color(0xff0F1A18);
+  static const _newBlack5 = Color(0xffF8F8F8);
+  static const _newBlack20 = Color(0xffCACDCD);
+  static const _newBlack60 = Color(0xff6D7372);
+  static const _newBlack80 = Color(0xff3E4645);
+  static const _newBlack95 = Color(0xff1B2524);
+
+  Color get newPrimary => _theme(bright: _newPrimary);
+
+  Color get newSplashColor => _theme(bright: _newBlack20.withOpacity(0.5));
+
+  Color get newPrimaryText => _theme(bright: _newBlack, dark: _newWhite);
+
+  Color get newPrimaryTextInverse => _theme(bright: _newWhite);
+
+  Color get newSecondaryText => _theme(bright: _newBlack60, dark: _newBlack20);
+
+  Color get newBackground => _theme(bright: _newWhite, dark: _newBlack);
+
+  Color get newIcon => _theme(bright: _newBlack, dark: _newBlack20);
+
+  Color get newIconBackground => _theme(bright: _newWhite, dark: _newBlack95);
+
+  Color get newSettingsIcon => _theme(bright: _newBlack, dark: _newWhite);
+
+  Color get newSettingsCardBackground =>
+      _theme(bright: _newBlack5, dark: _newBlack80);
+//endregion NEW COLORS
 }
