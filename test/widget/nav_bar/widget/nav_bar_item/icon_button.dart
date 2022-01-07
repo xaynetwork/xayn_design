@@ -18,15 +18,13 @@ void main() {
         key: key,
       );
 
-  // we need Scaffold here, cos inside NavBarIconButton we use InkWell,
-  // which will not work without Material widget
   Widget buildWidget([NavBarItemIconButton? item]) =>
-      Scaffold(body: NavBarIconButton(item ?? getItem()));
+      NavBarIconButton(item ?? getItem());
 
   testWidgets(
     'GIVEN widget THEN verify children widgets',
     (final WidgetTester tester) async {
-      await tester.pumpLindenApp(buildWidget());
+      await tester.pumpLindenApp(buildWidget(), withScaffold: true);
 
       expect(find.byType(SvgPicture), findsOneWidget);
       expect(find.byType(InkWell), findsOneWidget);
@@ -39,7 +37,11 @@ void main() {
     'GIVEN widget THEN verify svg icon and size',
     (final WidgetTester tester) async {
       final linden = Linden();
-      await tester.pumpLindenApp(buildWidget(), initialLinden: linden);
+      await tester.pumpLindenApp(
+        buildWidget(),
+        initialLinden: linden,
+        withScaffold: true,
+      );
 
       final finder = find.byType(SvgPicture);
       final svgWidget = (finder.first.evaluate().first.widget as SvgPicture);
@@ -62,7 +64,11 @@ void main() {
     'GIVEN widget THEN verify proper sizes',
     (final WidgetTester tester) async {
       final linden = Linden();
-      await tester.pumpLindenApp(buildWidget(), initialLinden: linden);
+      await tester.pumpLindenApp(
+        buildWidget(),
+        initialLinden: linden,
+        withScaffold: true,
+      );
 
       final finder = find.byType(SizedBox);
 
@@ -83,7 +89,7 @@ void main() {
       final item = getItem(onPressed: () {
         onPressed = !onPressed;
       });
-      await tester.pumpLindenApp(buildWidget(item));
+      await tester.pumpLindenApp(buildWidget(item), withScaffold: true);
 
       expect(onPressed, isFalse);
 

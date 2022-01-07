@@ -39,6 +39,7 @@ void main() {
           'for text action',
           (final WidgetTester tester) => verifyActionClicked(
                 tester,
+                // ignore: deprecated_member_use_from_same_package
                 (VoidCallback onPressed) => SettingsTileActionText(
                   text: 'hello',
                   onPressed: onPressed,
@@ -61,6 +62,7 @@ void main() {
         'for circle action, isActive true',
         (WidgetTester tester) => verifyActionClicked(
             tester,
+            // ignore: deprecated_member_use_from_same_package
             (VoidCallback onPressed) => SettingsTileActionCircle(
                   isActive: true,
                   svgIconPath: assetIconPathPlant,
@@ -73,6 +75,7 @@ void main() {
         'for circle action, isActive false',
         (WidgetTester tester) => verifyActionClicked(
             tester,
+            // ignore: deprecated_member_use_from_same_package
             (VoidCallback onPressed) => SettingsTileActionCircle(
                   isActive: false,
                   svgIconPath: assetIconPathPlant,
@@ -85,6 +88,7 @@ void main() {
           'for switch action, value true',
           (WidgetTester tester) => verifyActionClicked(
                 tester,
+                // ignore: deprecated_member_use_from_same_package
                 (VoidCallback onPressed) => SettingsTileActionSwitch(
                   value: true,
                   onPressed: onPressed,
@@ -95,6 +99,7 @@ void main() {
           'for switch action, value false',
           (WidgetTester tester) => verifyActionClicked(
                 tester,
+                // ignore: deprecated_member_use_from_same_package
                 (VoidCallback onPressed) => SettingsTileActionSwitch(
                   value: false,
                   onPressed: onPressed,
@@ -156,6 +161,7 @@ void main() {
           const btnText = 'btn';
           final data = SettingsTileData(
             title: title,
+            // ignore: deprecated_member_use_from_same_package
             action: SettingsTileActionText(
               text: btnText,
               onPressed: () {},
@@ -195,7 +201,7 @@ void main() {
           expect(actionFinder, findsOneWidget);
           expect(find.byType(Text), findsNWidgets(1));
           expect(find.byType(SvgPicture), findsNWidgets(1));
-          expect(find.byType(AppRaisedButton), findsNWidgets(1));
+          expect(find.byType(AppGhostButton), findsNWidgets(1));
         },
       );
       testWidgets(
@@ -203,6 +209,7 @@ void main() {
         (final WidgetTester tester) async {
           final data = SettingsTileData(
             title: title,
+            // ignore: deprecated_member_use_from_same_package
             action: SettingsTileActionCircle(
               isActive: true,
               svgIconPath: assetIconPathPlant,
@@ -227,6 +234,7 @@ void main() {
         (final WidgetTester tester) async {
           final data = SettingsTileData(
             title: title,
+            // ignore: deprecated_member_use_from_same_package
             action: SettingsTileActionSwitch(
               value: true,
               onPressed: () {},
@@ -273,7 +281,7 @@ void main() {
 
           expect(find.byType(Text), findsNWidgets(2));
           expect(find.byType(SvgPicture), findsNWidgets(2));
-          expect(find.byType(AppRaisedButton), findsOneWidget);
+          expect(find.byType(AppGhostButton), findsOneWidget);
         },
       );
     },

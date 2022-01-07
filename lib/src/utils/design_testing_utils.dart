@@ -15,11 +15,12 @@ extension XaynDesignWidgetTesterExtension on WidgetTester {
     ThemeData? theme,
     List<NavigatorObserver>? observers,
     bool withNavBarContainer = false,
+    bool withScaffold = false,
   }) {
     final child =
         withNavBarContainer ? _appWrappedWithNavBarContainer(widget) : widget;
     final withLinden = _appWrappedWithLinden(
-      child: child,
+      child: withScaffold ? Scaffold(body: child) : child,
       initialLinden: initialLinden,
       theme: theme,
       observers: observers,

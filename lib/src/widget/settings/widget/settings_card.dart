@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xayn_design/src/widget/settings/widget/settings_background.dart';
 import 'package:xayn_design/xayn_design.dart';
 
 class SettingsCard extends StatelessWidget {
@@ -11,8 +12,6 @@ class SettingsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final linden = UnterDenLinden.getLinden(context);
-
     final children = <Widget>[];
 
     final size = data.items.length;
@@ -30,17 +29,6 @@ class SettingsCard extends StatelessWidget {
       children: children,
     );
 
-    final contentPadding = EdgeInsets.fromLTRB(
-      linden.dimen.unit2,
-      linden.dimen.unit,
-      linden.dimen.unit,
-      linden.dimen.unit,
-    );
-
-    return AppCardWidget(
-      elevation: linden.dimen.elevationHigh,
-      child: column,
-      contentPadding: contentPadding,
-    );
+    return SettingsBackground(child: column);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xayn_design/src/widget/settings/widget/settings_background.dart';
 import 'package:xayn_design/xayn_design.dart';
 
 enum SettingsSelectableType {
@@ -16,6 +17,7 @@ class SettingsSelectable extends StatelessWidget {
   })  : type = SettingsSelectableType.icon,
         super(key: key);
 
+  @Deprecated('So far there is no useCases, but later it might come back')
   const SettingsSelectable.graphics({
     Key? key,
     required this.items,
@@ -23,10 +25,8 @@ class SettingsSelectable extends StatelessWidget {
         super(key: key);
 
   @override
-  Widget build(BuildContext context) => AppCardWidget(
-        child: LayoutBuilder(builder: _buildGroup),
-        contentPadding: EdgeInsets.zero,
-      );
+  Widget build(BuildContext context) =>
+      SettingsBackground(child: LayoutBuilder(builder: _buildGroup));
 
   Widget _buildGroup(BuildContext context, BoxConstraints constraints) {
     final itemConstrains =
@@ -60,15 +60,18 @@ class SettingsSelectableIconGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final linden = UnterDenLinden.getLinden(context);
-    return ToggleButtons(
-        fillColor: linden.colors.accent,
-        renderBorder: false,
-        constraints: constraints,
-        isSelected: items.map((e) => e.isSelected).toList(),
-        children: items.map((e) => SettingsSelectableIcon(item: e)).toList(),
-        onPressed: (int index) {
-          items[index].onPressed();
-        });
+    return SettingsBackground(
+      child: ToggleButtons(
+          fillColor: linden.colors.newPrimary,
+          splashColor: linden.colors.newSplashColor,
+          renderBorder: false,
+          constraints: constraints,
+          isSelected: items.map((e) => e.isSelected).toList(),
+          children: items.map((e) => SettingsSelectableIcon(item: e)).toList(),
+          onPressed: (int index) {
+            items[index].onPressed();
+          }),
+    );
   }
 }
 
@@ -87,28 +90,25 @@ class SettingsSelectableIcon extends StatelessWidget {
       item.svgIconPath,
       width: linden.dimen.iconSize,
       height: linden.dimen.iconSize,
-      color: item.isSelected ? linden.colors.accent : linden.colors.primary,
+      color: linden.colors.newSettingsIcon,
     );
 
     final withCircle = Container(
       child: Center(child: icon),
       decoration: BoxDecoration(
-        color: item.isSelected
-            ? linden.colors.iconBackgroundSelected
-            : linden.colors.iconBackground,
+        color: linden.colors.newIconBackground,
         shape: BoxShape.circle,
       ),
       width: linden.dimen.unit5,
       height: linden.dimen.unit5,
     );
 
-    final isDarkMode = linden.brightness == Brightness.dark;
     final title = Text(
       item.title,
       textAlign: TextAlign.center,
-      style: item.isSelected && !isDarkMode
-          ? linden.styles.settingsLayoutSectionTextSelected
-          : linden.styles.settingsLayoutSectionText,
+      style: item.isSelected
+          ? linden.styles.newSettingsCaptionSelected
+          : linden.styles.newSettingsCaption,
     );
 
     final column = Column(

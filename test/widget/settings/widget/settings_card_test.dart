@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:xayn_design/src/widget/settings/widget/settings_background.dart';
 import 'package:xayn_design/xayn_design.dart';
 import 'package:xayn_design/xayn_design_test.dart';
 
@@ -19,7 +20,7 @@ void main() {
 
       expect(find.byType(SettingsGroup), findsNWidgets(1));
       expect(find.byType(Divider), findsNothing);
-      expect(find.byType(AppCardWidget), findsNWidgets(1));
+      expect(find.byType(SettingsBackground), findsNWidgets(1));
     },
   );
   testWidgets(
@@ -31,7 +32,7 @@ void main() {
 
       expect(find.byType(SettingsGroup), findsNWidgets(2));
       expect(find.byType(Divider), findsOneWidget);
-      expect(find.byType(AppCardWidget), findsNWidgets(1));
+      expect(find.byType(SettingsBackground), findsNWidgets(1));
     },
   );
   testWidgets(
@@ -45,7 +46,7 @@ void main() {
 
       expect(groupFinder, findsNWidgets(3));
       expect(find.byType(Divider), findsNWidgets(2));
-      expect(find.byType(AppCardWidget), findsNWidgets(1));
+      expect(find.byType(SettingsBackground), findsNWidgets(1));
     },
   );
   testWidgets(
