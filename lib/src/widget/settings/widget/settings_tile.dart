@@ -24,7 +24,15 @@ class SettingsTile extends StatelessWidget {
       children: rowChildren,
       crossAxisAlignment: CrossAxisAlignment.start,
     );
-    return SizedBox(height: linden.dimen.unit5, child: row);
+    return SizedBox(
+        height: linden.dimen.unit7,
+        child: Padding(
+          padding: EdgeInsets.only(
+            left: linden.dimen.unit2,
+            right: linden.dimen.unit0_5,
+          ),
+          child: row,
+        ));
   }
 
   void _addIcon(Linden linden, List<Widget> rowChildren) {
@@ -34,7 +42,7 @@ class SettingsTile extends StatelessWidget {
     final iconSize = linden.dimen.unit3;
     final icon = SvgPicture.asset(
       iconPath,
-      color: linden.colors.primary,
+      color: linden.colors.newIcon,
       width: iconSize,
       height: iconSize,
     );
@@ -52,14 +60,19 @@ class SettingsTile extends StatelessWidget {
   ) {
     void addChild(Widget child) => rowChildren.add(Center(child: child));
 
-    final title = Text(data.title, style: linden.styles.appBodyText);
+    final title = Text(
+      data.title,
+      style: linden.styles.newSettingsSectionText,
+    );
 
+    // ignore: deprecated_member_use_from_same_package
     if (data.subTitle == null) {
       addChild(title);
       return;
     }
 
     final subTitle = Text(
+      // ignore: deprecated_member_use_from_same_package
       data.subTitle!,
       style: linden.styles.appThumbnailTextLight,
     );
@@ -81,16 +94,22 @@ class SettingsTile extends StatelessWidget {
     if (action == null) return;
     late final Widget child;
     switch (action.runtimeType) {
+      // ignore: deprecated_member_use_from_same_package
       case SettingsTileActionText:
+        // ignore: deprecated_member_use_from_same_package
         child = _buildActionText(action as SettingsTileActionText);
         break;
       case SettingsTileActionIcon:
-        child = _buildActionIcon(action as SettingsTileActionIcon);
+        child = _buildActionIcon(action as SettingsTileActionIcon, linden);
         break;
+      // ignore: deprecated_member_use_from_same_package
       case SettingsTileActionCircle:
+        // ignore: deprecated_member_use_from_same_package
         child = _buildActionCircle(action as SettingsTileActionCircle, linden);
         break;
+      // ignore: deprecated_member_use_from_same_package
       case SettingsTileActionSwitch:
+        // ignore: deprecated_member_use_from_same_package
         child = _buildActionSwitch(action as SettingsTileActionSwitch);
         break;
       default:
@@ -105,6 +124,7 @@ class SettingsTile extends StatelessWidget {
     rowChildren.add(withPadding);
   }
 
+  // ignore: deprecated_member_use_from_same_package
   Widget _buildActionText(SettingsTileActionText action) =>
       AppRaisedButton.text(
         onPressed: action.onPressed,
@@ -113,13 +133,18 @@ class SettingsTile extends StatelessWidget {
         minSizeEqual: true,
       );
 
-  Widget _buildActionIcon(SettingsTileActionIcon action) =>
-      AppRaisedButton.icon(
-        key: action.key,
-        svgIconPath: action.svgIconPath,
-        onPressed: action.onPressed,
+  Widget _buildActionIcon(SettingsTileActionIcon action, Linden linden) =>
+      SizedBox(
+        width: linden.dimen.iconButtonSize,
+        height: linden.dimen.iconButtonSize,
+        child: AppGhostButton.icon(
+          action.svgIconPath,
+          key: action.key,
+          onPressed: action.onPressed,
+        ),
       );
 
+  // ignore: deprecated_member_use_from_same_package
   Widget _buildActionCircle(SettingsTileActionCircle action, Linden linden) {
     final btn = AppRaisedButton.icon(
       key: action.key,
@@ -135,6 +160,7 @@ class SettingsTile extends StatelessWidget {
     );
   }
 
+  // ignore: deprecated_member_use_from_same_package
   Widget _buildActionSwitch(SettingsTileActionSwitch action) => AppSwitchWidget(
         key: action.key,
         value: action.value,

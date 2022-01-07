@@ -38,7 +38,7 @@ void main() {
     (final WidgetTester tester) async {
       final data = selected(() {});
       final widget = SettingsSelectable.icons(items: [data]);
-      await tester.pumpLindenApp(widget);
+      await tester.pumpLindenApp(widget, withScaffold: true);
 
       expect(find.byType(SettingsSelectableIconGroup), findsOneWidget);
       expect(find.byType(SettingsSelectableGraphicGroup), findsNothing);
@@ -50,8 +50,9 @@ void main() {
     'GIVEN data WHEN creating selectable widget with graphic THEN expect to see selectable graphic group widget',
     (final WidgetTester tester) async {
       final data = selected(() {});
+      // ignore: deprecated_member_use_from_same_package
       final widget = SettingsSelectable.graphics(items: [data]);
-      await tester.pumpLindenApp(widget);
+      await tester.pumpLindenApp(widget, withScaffold: true);
 
       expect(find.byType(SettingsSelectableIconGroup), findsNothing);
       expect(find.byType(SettingsSelectableGraphicGroup), findsOneWidget);
@@ -66,7 +67,8 @@ void main() {
         selected(() {}),
         unSelected(() {}),
       ];
-      await tester.pumpLindenApp(SettingsSelectable.icons(items: items));
+      await tester.pumpLindenApp(SettingsSelectable.icons(items: items),
+          withScaffold: true);
 
       final iconFinder = find.byType(SettingsSelectableIcon);
 
@@ -86,7 +88,9 @@ void main() {
         selected(() {}),
         unSelected(() {}),
       ];
-      await tester.pumpLindenApp(SettingsSelectable.graphics(items: items));
+      // ignore: deprecated_member_use_from_same_package
+      await tester.pumpLindenApp(SettingsSelectable.graphics(items: items),
+          withScaffold: true);
 
       final iconFinder = find.byType(SettingsSelectableGraphic);
 
@@ -107,7 +111,7 @@ void main() {
         onPressCalled = true;
       });
       final widget = SettingsSelectable.icons(items: [data]);
-      await tester.pumpLindenApp(widget);
+      await tester.pumpLindenApp(widget, withScaffold: true);
 
       expect(onPressCalled, isFalse);
       await tester.tap(find.byKey(selectedKey));
@@ -122,8 +126,9 @@ void main() {
       final data = selected(() {
         onPressCalled = !onPressCalled;
       });
+      // ignore: deprecated_member_use_from_same_package
       final widget = SettingsSelectable.graphics(items: [data]);
-      await tester.pumpLindenApp(widget);
+      await tester.pumpLindenApp(widget, withScaffold: true);
 
       final keyFinder = find.byKey(selectedKey);
       expect(keyFinder, findsNWidgets(2));

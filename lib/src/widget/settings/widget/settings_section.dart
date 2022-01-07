@@ -3,11 +3,12 @@ import 'package:xayn_design/xayn_design.dart';
 
 const _defaultAlignment = CrossAxisAlignment.start;
 
-/// Should be equal to [XSizes.unit4];
-const _defaultTopPadding = 32.0;
+/// Should be equal to [XSizes.unit3];
+const _defaultTopPadding = 24.0;
 
 class SettingsSection extends StatelessWidget {
   final String title;
+  @Deprecated('So far there is no useCases, but later it might come back')
   final String? subTitle;
   final List<SettingsCardData> items;
   final Widget? _child;
@@ -70,6 +71,7 @@ class SettingsSection extends StatelessWidget {
       _buildTitle(linden),
     ];
 
+    //ignore: deprecated_member_use_from_same_package
     final subTitle = _buildSubTitle(linden);
     if (subTitle != null) {
       columnChildren
@@ -101,9 +103,10 @@ class SettingsSection extends StatelessWidget {
 
   Widget _buildTitle(Linden linden) => Text(
         title,
-        style: linden.styles.appHeadlineText,
+        style: linden.styles.newSettingsSectionTitle,
       );
 
+  @Deprecated('So far there is no useCases, but later it might come back')
   Widget? _buildSubTitle(Linden linden) => subTitle == null
       ? null
       : Text(

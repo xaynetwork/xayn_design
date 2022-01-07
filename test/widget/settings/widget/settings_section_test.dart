@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:xayn_design/src/widget/settings/widget/settings_background.dart';
 import 'package:xayn_design/xayn_design.dart';
 import 'package:xayn_design/xayn_design_test.dart';
 
@@ -20,7 +21,7 @@ void main() {
       expect(find.byType(Text), findsNWidgets(2));
       expect(find.text(title), findsOneWidget);
       expect(find.text(tileTitle), findsOneWidget);
-      expect(find.byType(AppCardWidget), findsOneWidget);
+      expect(find.byType(SettingsBackground), findsOneWidget);
       expect(find.byType(SettingsGroup), findsOneWidget);
       expect(find.byType(SettingsTile), findsOneWidget);
     },
@@ -46,7 +47,7 @@ void main() {
       expect(find.text(title), findsOneWidget);
       expect(find.text(subTitle), findsOneWidget);
       expect(find.text(tileTitle), findsNWidgets(3));
-      expect(find.byType(AppCardWidget), findsNWidgets(3));
+      expect(find.byType(SettingsBackground), findsNWidgets(3));
       expect(find.byType(SettingsGroup), findsNWidgets(3));
       expect(find.byType(SettingsTile), findsNWidgets(3));
     },
@@ -69,7 +70,7 @@ void main() {
         child: SettingsSelectable.icons(items: [selectableItem]),
       );
 
-      await tester.pumpLindenApp(widget);
+      await tester.pumpLindenApp(widget, withScaffold: true);
 
       expect(find.text(title), findsOneWidget);
       expect(find.text(subTitle), findsOneWidget);

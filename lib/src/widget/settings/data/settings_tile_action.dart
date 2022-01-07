@@ -9,6 +9,7 @@ abstract class SettingsTileAction extends Equatable {
   const SettingsTileAction(this.key, this.onPressed);
 }
 
+@Deprecated('So far there is no useCases, but later it might come back')
 @immutable
 class SettingsTileActionText extends SettingsTileAction {
   final String text;
@@ -44,6 +45,7 @@ class SettingsTileActionIcon extends SettingsTileAction {
       ];
 }
 
+@Deprecated('So far there is no useCases, but later it might come back')
 class SettingsTileActionCircle extends SettingsTileAction {
   final String svgIconPath;
   final bool isActive;
@@ -64,6 +66,7 @@ class SettingsTileActionCircle extends SettingsTileAction {
       ];
 }
 
+@Deprecated('So far there is no useCases, but later it might come back')
 class SettingsTileActionSwitch extends SettingsTileAction {
   final bool value;
 

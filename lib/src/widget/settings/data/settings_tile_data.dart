@@ -8,6 +8,7 @@ class SettingsTileData extends Equatable {
   final String title;
   final SettingsTileAction? action;
   final String? svgIconPath;
+  @Deprecated('So far there is no useCases, but later it might come back')
   final String? subTitle;
 
   const SettingsTileData({
@@ -22,6 +23,7 @@ class SettingsTileData extends Equatable {
         title,
         action,
         svgIconPath,
+        // ignore: deprecated_member_use_from_same_package
         subTitle,
       ];
 }

@@ -18,13 +18,16 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   void initState() {
-    sections.addAll([
-      const _PrivacySection(),
+    // ignore: unused_local_variable
+    final ignoredSections = [
       const _AppLanguageSection(),
       const _IrrelevantContentSection(),
-      const _AppThemeSection(),
       const _HomeLayoutSection(),
       const _GridSetupSection(),
+    ];
+    sections.addAll([
+      const _AppThemeSection(),
+      const _GeneralInformation(),
       const _SpreadWordSection(),
     ]);
     super.initState();
@@ -42,14 +45,14 @@ class _SettingsPageState extends State<SettingsPage> {
       );
 }
 
-class _PrivacySection extends StatefulWidget {
-  const _PrivacySection({Key? key}) : super(key: key);
+class _GeneralInformation extends StatefulWidget {
+  const _GeneralInformation({Key? key}) : super(key: key);
 
   @override
-  _PrivacySectionState createState() => _PrivacySectionState();
+  _GeneralInformationState createState() => _GeneralInformationState();
 }
 
-class _PrivacySectionState extends State<_PrivacySection> {
+class _GeneralInformationState extends State<_GeneralInformation> {
   Linden get linden => UnterDenLinden.getLinden(context);
 
   bool blockTrackersEnable = true;
@@ -58,19 +61,19 @@ class _PrivacySectionState extends State<_PrivacySection> {
 
   @override
   Widget build(BuildContext context) => SettingsSection(
-        title: 'Privacy settings',
+        title: 'General information',
         items: [
-          _getBlockTrackers(),
-          _getBlockAds(),
-          _getCookies(),
+          _getAboutXayn(),
           _getEmptyCache(),
         ],
       );
 
+  // ignore: unused_element
   SettingsCardData _getBlockTrackers() {
     final tile = SettingsTileData(
       title: 'Block trackers',
       svgIconPath: linden.assets.icons.shield,
+      // ignore: deprecated_member_use
       action: SettingsTileActionSwitch(
           key: const Key('Block trackers'),
           value: blockTrackersEnable,
@@ -83,10 +86,12 @@ class _PrivacySectionState extends State<_PrivacySection> {
     return SettingsCardData.fromTile(tile);
   }
 
+  // ignore: unused_element
   SettingsCardData _getBlockAds() {
     final tile = SettingsTileData(
       title: 'Block ads',
       svgIconPath: linden.assets.icons.shield,
+      // ignore: deprecated_member_use
       action: SettingsTileActionSwitch(
           key: const Key('Block ads'),
           value: blockAdsEnable,
@@ -100,10 +105,12 @@ class _PrivacySectionState extends State<_PrivacySection> {
     return SettingsCardData.fromTile(tile);
   }
 
+  // ignore: unused_element
   SettingsCardData _getCookies() {
     final blockCookies = SettingsTileData(
       title: 'Block cookies',
       svgIconPath: linden.assets.icons.shield,
+      // ignore: deprecated_member_use
       action: SettingsTileActionSwitch(
           key: const Key('Block cookies'),
           value: blockCookiesEnable,
@@ -139,6 +146,20 @@ class _PrivacySectionState extends State<_PrivacySection> {
 
     return SettingsCardData.fromTile(tile);
   }
+
+  SettingsCardData _getAboutXayn() {
+    final tile = SettingsTileData(
+      title: 'About Xayn',
+      svgIconPath: linden.assets.icons.info,
+      action: SettingsTileActionIcon(
+        key: const Key('icon arrow'),
+        svgIconPath: linden.assets.icons.arrowRight,
+        onPressed: () {},
+      ),
+    );
+
+    return SettingsCardData.fromTile(tile);
+  }
 }
 
 class _AppLanguageSection extends StatefulWidget {
@@ -162,6 +183,7 @@ class _AppLanguageSectionState extends State<_AppLanguageSection> {
     final tile = SettingsTileData(
       title: 'Active: English',
       svgIconPath: linden.assets.icons.language,
+      // ignore: deprecated_member_use
       action: SettingsTileActionText(
         key: const Key('Active: English'),
         text: 'Edit',
@@ -226,6 +248,7 @@ class _IrrelevantContentSectionState extends State<_IrrelevantContentSection> {
         return SettingsTileData(
             title: topic,
             subTitle: active ? null : 'Was just deleted from this list',
+            // ignore: deprecated_member_use
             action: SettingsTileActionCircle(
                 key: Key(topic),
                 isActive: active,
@@ -322,6 +345,7 @@ class _HomeLayoutSectionState extends State<_HomeLayoutSection> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: deprecated_member_use
     final selectable = SettingsSelectable.graphics(
       items: _HomeLayout.values.map(_getItem).toList(),
     );
@@ -383,6 +407,7 @@ class _GridSetupSectionState extends State<_GridSetupSection> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: deprecated_member_use
     final selectable = SettingsSelectable.graphics(
       items: _GridSetup.values.map(_getItem).toList(),
     );

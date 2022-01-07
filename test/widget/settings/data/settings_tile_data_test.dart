@@ -9,6 +9,7 @@ void main() {
       SettingsTileData(title: title ?? 'title');
   SettingsTileData full() => SettingsTileData(
         title: 'title',
+        // ignore: deprecated_member_use_from_same_package
         action: SettingsTileActionSwitch(
             value: true, onPressed: onPressed, key: const Key('tile')),
         svgIconPath: 'svgIconPath',
