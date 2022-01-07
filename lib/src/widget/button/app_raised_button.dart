@@ -7,9 +7,9 @@ enum ButtonColor {
   tertiary,
 }
 
-const EdgeInsets defaultPadding = EdgeInsets.all(12);
-const EdgeInsets defaultPaddingIcon = EdgeInsets.zero;
-const EdgeInsets defaultPaddingTextWithIcon =
+const EdgeInsets _defaultPadding = EdgeInsets.all(12);
+const EdgeInsets _defaultPaddingIcon = EdgeInsets.zero;
+const EdgeInsets _defaultPaddingTextWithIcon =
     EdgeInsets.symmetric(horizontal: 12, vertical: 8);
 
 class AppRaisedButton extends StatefulWidget {
@@ -33,7 +33,7 @@ class AppRaisedButton extends StatefulWidget {
     required this.onPressed,
     required Widget child,
     this.color = ButtonColor.primary,
-    this.contentPadding = defaultPadding,
+    this.contentPadding = _defaultPadding,
     this.minSizeEqual = false,
   })  : _child = child,
         _text = null,
@@ -46,7 +46,7 @@ class AppRaisedButton extends StatefulWidget {
     Key? key,
     required this.onPressed,
     required String text,
-    this.contentPadding = defaultPadding,
+    this.contentPadding = _defaultPadding,
     this.color = ButtonColor.primary,
     this.minSizeEqual = false,
   })  : _text = text,
@@ -61,7 +61,7 @@ class AppRaisedButton extends StatefulWidget {
     required this.onPressed,
     required String text,
     required String svgIconPath,
-    this.contentPadding = defaultPaddingTextWithIcon,
+    this.contentPadding = _defaultPaddingTextWithIcon,
     this.color = ButtonColor.primary,
     this.minSizeEqual = false,
   })  : _text = text,
@@ -75,7 +75,7 @@ class AppRaisedButton extends StatefulWidget {
     Key? key,
     required this.onPressed,
     required String svgIconPath,
-    this.contentPadding = defaultPaddingIcon,
+    this.contentPadding = _defaultPaddingIcon,
     this.color = ButtonColor.primary,
     bool circle = false,
   })  : _text = null,

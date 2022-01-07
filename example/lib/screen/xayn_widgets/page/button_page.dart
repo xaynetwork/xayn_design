@@ -35,7 +35,7 @@ class _ButtonPageState extends State<ButtonPage> {
   Widget build(BuildContext context) {
     final children = [
       verticalSpace,
-      _buildRaisedButton(),
+      _buildButtons(),
       verticalSpace,
       const Divider(),
       _buildParams(),
@@ -44,6 +44,14 @@ class _ButtonPageState extends State<ButtonPage> {
   }
 
   void _onPressed() {}
+
+  Widget _buildButtons() => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          _buildRaisedButton(),
+          _buildGhostButton(),
+        ],
+      );
 
   Widget _buildRaisedButton() {
     if (withCustomWidget) {
@@ -76,6 +84,32 @@ class _ButtonPageState extends State<ButtonPage> {
       svgIconPath: svgIconPath,
       circle: circleIcon,
       color: color,
+    );
+  }
+
+  Widget _buildGhostButton() {
+    if (withCustomWidget) {
+      return AppGhostButton(
+        child: SvgPicture.asset(linden.assets.illustrations.brainyEnabled),
+        onPressed: clickEnabled ? _onPressed : null,
+      );
+    }
+    if (withIcon && withText) {
+      return AppGhostButton.textWithIcon(
+        onPressed: clickEnabled ? _onPressed : null,
+        text: btnText,
+        svgIconPath: svgIconPath,
+      );
+    }
+    if (withText) {
+      return AppGhostButton.text(
+        btnText,
+        onPressed: clickEnabled ? _onPressed : null,
+      );
+    }
+    return AppGhostButton.icon(
+      svgIconPath,
+      onPressed: clickEnabled ? _onPressed : null,
     );
   }
 
