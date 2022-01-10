@@ -83,6 +83,12 @@ class _Illustrations {
 }
 
 class _Graphics {
+  String get formsGreen => packagePath + 'assets/graphics/forms_green.svg';
+
+  String get formsOrange => packagePath + 'assets/graphics/forms_orange.svg';
+
+  String get formsPurple => packagePath + 'assets/graphics/forms_purple.svg';
+
   String get gridView => packagePath + 'assets/graphics/grid_view.svg';
 
   String get listView => packagePath + 'assets/graphics/list_view.svg';

@@ -66,6 +66,9 @@ Set<String> getIconAssets(Linden linden) => {
     };
 
 Set<String> getGraphicsAssets(Linden linden) => {
+      linden.assets.graphics.formsGreen,
+      linden.assets.graphics.formsOrange,
+      linden.assets.graphics.formsPurple,
       linden.assets.graphics.gridView,
       linden.assets.graphics.listView,
       linden.assets.graphics.newsOnly,
