@@ -57,6 +57,11 @@ NavBarContainer buildWidget({
 
 typedef GetConfigCallback = NavBarConfig Function();
 
+class _StatelessConfigWidget2 extends _StatelessConfigWidget {
+  const _StatelessConfigWidget2(GetConfigCallback getConfigCallback)
+      : super(getConfigCallback);
+}
+
 class _StatelessConfigWidget extends StatelessWidget with NavBarConfigMixin {
   final Widget? child;
   final GetConfigCallback getConfigCallback;
