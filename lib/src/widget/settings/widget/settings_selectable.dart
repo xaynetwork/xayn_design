@@ -62,8 +62,8 @@ class SettingsSelectableIconGroup extends StatelessWidget {
     final linden = UnterDenLinden.getLinden(context);
     return SettingsBackground(
       child: ToggleButtons(
-          fillColor: linden.colors.newPrimary,
-          splashColor: linden.colors.newSplashColor,
+          fillColor: linden.colors.primary,
+          splashColor: linden.colors.splashColor,
           renderBorder: false,
           constraints: constraints,
           isSelected: items.map((e) => e.isSelected).toList(),
@@ -90,13 +90,13 @@ class SettingsSelectableIcon extends StatelessWidget {
       item.svgIconPath,
       width: linden.dimen.iconSize,
       height: linden.dimen.iconSize,
-      color: linden.colors.newSettingsIcon,
+      color: linden.colors.settingsIcon,
     );
 
     final withCircle = Container(
       child: Center(child: icon),
       decoration: BoxDecoration(
-        color: linden.colors.newIconBackground,
+        color: linden.colors.iconBackground,
         shape: BoxShape.circle,
       ),
       width: linden.dimen.unit5,

@@ -42,7 +42,7 @@ class SettingsTile extends StatelessWidget {
     final iconSize = linden.dimen.unit3;
     final icon = SvgPicture.asset(
       iconPath,
-      color: linden.colors.newIcon,
+      color: linden.colors.icon,
       width: iconSize,
       height: iconSize,
     );

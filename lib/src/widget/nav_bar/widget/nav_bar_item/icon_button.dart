@@ -13,7 +13,7 @@ class NavBarIconButton extends StatelessWidget {
       data.svgIconPath,
       width: linden.dimen.iconSize,
       height: linden.dimen.iconSize,
-      color: linden.colors.iconNew,
+      color: linden.colors.icon,
     );
     final btn = InkWell(
       key: data.key,

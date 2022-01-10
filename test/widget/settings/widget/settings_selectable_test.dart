@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:xayn_design/src/widget/settings/settings.dart';
 import 'package:xayn_design/src/widget/settings/widget/settings_selectable.dart';
+import 'package:xayn_design/xayn_design.dart';
 import 'package:xayn_design/xayn_design_test.dart';
 
 import '../../constants.dart';
@@ -14,7 +14,7 @@ void main() {
   const unSelectedKey = Key('unSelected');
   const unSelectedTitle = 'unSelected title';
   const unSelectedSvgIconPath = assetIconPathPlant;
-
+  final linden = Linden(newColors: true);
   SettingsSelectableData selected(VoidCallback onPressed) =>
       SettingsSelectableData(
         key: selectedKey,
@@ -38,7 +38,11 @@ void main() {
     (final WidgetTester tester) async {
       final data = selected(() {});
       final widget = SettingsSelectable.icons(items: [data]);
-      await tester.pumpLindenApp(widget, withScaffold: true);
+      await tester.pumpLindenApp(
+        widget,
+        withScaffold: true,
+        initialLinden: linden,
+      );
 
       expect(find.byType(SettingsSelectableIconGroup), findsOneWidget);
       expect(find.byType(SettingsSelectableGraphicGroup), findsNothing);
@@ -52,7 +56,11 @@ void main() {
       final data = selected(() {});
       // ignore: deprecated_member_use_from_same_package
       final widget = SettingsSelectable.graphics(items: [data]);
-      await tester.pumpLindenApp(widget, withScaffold: true);
+      await tester.pumpLindenApp(
+        widget,
+        withScaffold: true,
+        initialLinden: linden,
+      );
 
       expect(find.byType(SettingsSelectableIconGroup), findsNothing);
       expect(find.byType(SettingsSelectableGraphicGroup), findsOneWidget);
@@ -67,8 +75,13 @@ void main() {
         selected(() {}),
         unSelected(() {}),
       ];
-      await tester.pumpLindenApp(SettingsSelectable.icons(items: items),
-          withScaffold: true);
+      await tester.pumpLindenApp(
+        SettingsSelectable.icons(
+          items: items,
+        ),
+        withScaffold: true,
+        initialLinden: linden,
+      );
 
       final iconFinder = find.byType(SettingsSelectableIcon);
 
@@ -88,9 +101,15 @@ void main() {
         selected(() {}),
         unSelected(() {}),
       ];
-      // ignore: deprecated_member_use_from_same_package
-      await tester.pumpLindenApp(SettingsSelectable.graphics(items: items),
-          withScaffold: true);
+
+      await tester.pumpLindenApp(
+        // ignore: deprecated_member_use_from_same_package
+        SettingsSelectable.graphics(
+          items: items,
+        ),
+        withScaffold: true,
+        initialLinden: linden,
+      );
 
       final iconFinder = find.byType(SettingsSelectableGraphic);
 
@@ -111,7 +130,11 @@ void main() {
         onPressCalled = true;
       });
       final widget = SettingsSelectable.icons(items: [data]);
-      await tester.pumpLindenApp(widget, withScaffold: true);
+      await tester.pumpLindenApp(
+        widget,
+        withScaffold: true,
+        initialLinden: linden,
+      );
 
       expect(onPressCalled, isFalse);
       await tester.tap(find.byKey(selectedKey));
@@ -128,7 +151,11 @@ void main() {
       });
       // ignore: deprecated_member_use_from_same_package
       final widget = SettingsSelectable.graphics(items: [data]);
-      await tester.pumpLindenApp(widget, withScaffold: true);
+      await tester.pumpLindenApp(
+        widget,
+        withScaffold: true,
+        initialLinden: linden,
+      );
 
       final keyFinder = find.byKey(selectedKey);
       expect(keyFinder, findsNWidgets(2));

@@ -11,9 +11,10 @@ class XStyles {
   final XColors colors;
 
   XStyles(
-    this._baseTextTheme, {
+    this._baseTextTheme,
+    this.colors, {
     Brightness? brightness,
-  }) : colors = XColors(brightness: brightness);
+  });
 
   FontWeight get _weightBold => FontWeight.w700;
 
@@ -359,7 +360,7 @@ class XStyles {
   /// But later we will restructure all this file with proper items (names and structure)
   //region NEW STYLES
   TextStyle? get newSettingsSectionTitle => _baseTextTheme.bodyText1?.copyWith(
-        color: colors.newPrimaryText,
+        color: colors.primaryText,
         fontWeight: _weightBold,
         fontSize: 14,
         // height = 16
@@ -367,7 +368,7 @@ class XStyles {
       );
 
   TextStyle? get newSettingsSectionText => _baseTextTheme.bodyText1?.copyWith(
-        color: colors.newPrimaryText,
+        color: colors.primaryText,
         fontWeight: _weightRegular,
         fontSize: 14,
         // height = 20
@@ -375,7 +376,7 @@ class XStyles {
       );
 
   TextStyle? get newSettingsCaption => _baseTextTheme.bodyText1?.copyWith(
-        color: colors.newSecondaryText,
+        color: colors.secondaryText,
         fontWeight: _weightBold,
         fontSize: 10,
         // height = 12
@@ -383,7 +384,7 @@ class XStyles {
       );
 
   TextStyle? get newSettingsCaptionSelected => newSettingsCaption?.copyWith(
-        color: colors.newPrimaryTextInverse,
+        color: colors.primaryTextInverse,
       );
 
   TextStyle? get newAppButtonText => appButtonText;
