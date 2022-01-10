@@ -7,8 +7,16 @@ import 'package:flutter/material.dart';
 class XColors {
   final Brightness _brightness;
 
-  const XColors({Brightness? brightness})
+  const XColors._({Brightness? brightness})
       : _brightness = brightness ?? Brightness.light;
+
+  factory XColors(
+    bool newScheme, {
+    Brightness? brightness,
+  }) =>
+      newScheme
+          ? NewXColors(brightness: brightness)
+          : XColors._(brightness: brightness);
 
   /// Private Colors never use directly
   // Primary colors
@@ -51,13 +59,7 @@ class XColors {
 
   Color get tooltipText => _theme(bright: _blue, dark: _white);
 
-  @Deprecated(
-      'should be replaced with `iconNew`. Be aware about the bright color change there')
-  Color get icon => _theme(bright: _black, dark: _white);
-
-  //ignore:deprecated_member_use_from_same_package
-  /// later, when [icon] color will be removed, the name will be changed to [icon]
-  Color get iconNew => _theme(bright: _blue, dark: _white);
+  Color get icon => _theme(bright: _blue, dark: _white);
 
   Color get iconDisabled => _theme(bright: _mediumGrey, dark: _darkGrey);
 
@@ -235,73 +237,160 @@ class XColors {
 
   Brightness get brightness => _brightness;
 
-  /// right now we are in the middle of the design migration.
-  /// So far I added here some items, which I need for my tasks.
-  /// But later we will restructure all this file with proper items (names and structure)
-  //region NEW COLORS
+  //region colors, needed for new scheme
+  Color get splashColor => _theme(bright: _mediumGrey.withOpacity(0.5));
 
-  // New Primary
-  static const _newPrimary = Color(0xff009278);
-  static const _newPrimary20 = Color(0xffCCE6E2);
-  static const _newPrimary40 = Color(0xff99CEC5);
-  static const _newPrimary60 = Color(0xff66B5A7);
-  static const _newPrimary80 = Color(0xff339D8A);
-  static const _newPrimary120 = Color(0xff006B58);
+  Color get settingsIcon => throw _NewSchemeException();
 
-  /// New Grey Scale
-  static const _newWhite = Color(0xffFFFFFF);
-  static const _newBlack = Color(0xff0F1A18);
-  static const _newBlack5 = Color(0xffF8F8F8);
-  static const _newBlack10 = Color(0xffE2E4E4);
-  static const _newBlack20 = Color(0xffCACDCD);
-  static const _newBlack40 = Color(0xff9BA0A0);
-  static const _newBlack60 = Color(0xff6D7372);
-  static const _newBlack80 = Color(0xff3E4645);
-  static const _newBlack95 = Color(0xff1B2524);
+  Color get settingsCardBackground => throw _NewSchemeException();
 
-  /// New Accent Pink
-  static const _newPink = Color(0xffDB1870);
-  static const _newPink20 = Color(0xffF3CDDE);
-  static const _newPink40 = Color(0xffEDA0C3);
-  static const _newPink60 = Color(0xffE772A7);
-  static const _newPink80 = Color(0xffE1458B);
-  static const _newPink120 = Color(0xffC21563);
+  Color get personalAreaCollections => throw _NewSchemeException();
 
-  /// New Accent Purple
-  static const _newPurple = Color(0xff544998);
-  static const _newPurple20 = Color(0xffDDDBEA);
-  static const _newPurple40 = Color(0xffBBB6D6);
-  static const _newPurple60 = Color(0xff9892C1);
-  static const _newPurple80 = Color(0xff766DAD);
-  static const _newPurple120 = Color(0xff463D80);
+  Color get personalAreaHomeFeed => throw _NewSchemeException();
 
-  /// New Accent Orange
-  static const _newOrange = Color(0xffF09005);
-  static const _newOrange20 = Color(0xffFCE9CD);
-  static const _newOrange40 = Color(0xffF9D39B);
-  static const _newOrange60 = Color(0xffF6BC69);
-  static const _newOrange80 = Color(0xffF3A637);
-  static const _newOrange120 = Color(0xffD68004);
+  Color get personalAreaSettings => throw _NewSchemeException();
+//endregion colors, needed for new scheme
+}
 
-  Color get newPrimary => _theme(bright: _newPrimary);
+/// right now we are in the middle of the design migration.
+/// So far I added here some items, which I need for my tasks.
+/// But later we will restructure all this file with proper items (names and structure)
+class NewXColors extends XColors {
+  const NewXColors({
+    Brightness? brightness,
+  }) : super._(brightness: brightness);
 
-  Color get newSplashColor => _theme(bright: _newBlack20.withOpacity(0.5));
+  // Primary colors
+  static const _primary = Color(0xff009278);
 
-  Color get newPrimaryText => _theme(bright: _newBlack, dark: _newWhite);
+  // ignore: unused_field
+  static const _primary20 = Color(0xffCCE6E2);
 
-  Color get newPrimaryTextInverse => _theme(bright: _newWhite);
+  // ignore: unused_field
+  static const _primary40 = Color(0xff99CEC5);
 
-  Color get newSecondaryText => _theme(bright: _newBlack60, dark: _newBlack20);
+  // ignore: unused_field
+  static const _primary60 = Color(0xff66B5A7);
 
-  Color get newBackground => _theme(bright: _newWhite, dark: _newBlack);
+  // ignore: unused_field
+  static const _primary80 = Color(0xff339D8A);
 
-  Color get newIcon => _theme(bright: _newBlack, dark: _newBlack20);
+  // ignore: unused_field
+  static const _primary120 = Color(0xff006B58);
 
-  Color get newIconBackground => _theme(bright: _newWhite, dark: _newBlack95);
+  /// Grey Scale
+  static const _white = Color(0xffFFFFFF);
+  static const _black = Color(0xff0F1A18);
+  static const _black5 = Color(0xffF8F8F8);
 
-  Color get newSettingsIcon => _theme(bright: _newBlack, dark: _newWhite);
+  // ignore: unused_field
+  static const _black10 = Color(0xffE2E4E4);
+  static const _black20 = Color(0xffCACDCD);
 
-  Color get newSettingsCardBackground =>
-      _theme(bright: _newBlack5, dark: _newBlack80);
-//endregion NEW COLORS
+  // ignore: unused_field
+  static const _black40 = Color(0xff9BA0A0);
+  static const _black60 = Color(0xff6D7372);
+  static const _black80 = Color(0xff3E4645);
+  static const _black95 = Color(0xff1B2524);
+
+  /// Accent Pink
+  // ignore: unused_field
+  static const _pink = Color(0xffDB1870);
+
+  // ignore: unused_field
+  static const _pink20 = Color(0xffF3CDDE);
+
+  // ignore: unused_field
+  static const _pink40 = Color(0xffEDA0C3);
+
+  // ignore: unused_field
+  static const _pink60 = Color(0xffE772A7);
+
+  // ignore: unused_field
+  static const _pink80 = Color(0xffE1458B);
+
+  // ignore: unused_field
+  static const _pink120 = Color(0xffC21563);
+
+  /// Accent Purple
+  // ignore: unused_field
+  static const _purple = Color(0xff544998);
+
+  // ignore: unused_field
+  static const _purple20 = Color(0xffDDDBEA);
+
+  // ignore: unused_field
+  static const _purple40 = Color(0xffBBB6D6);
+
+  // ignore: unused_field
+  static const _purple60 = Color(0xff9892C1);
+
+  // ignore: unused_field
+  static const _purple80 = Color(0xff766DAD);
+
+  // ignore: unused_field
+  static const _purple120 = Color(0xff463D80);
+
+  /// Accent Orange
+  // ignore: unused_field
+  static const _orange = Color(0xffF09005);
+
+  // ignore: unused_field
+  static const _orange20 = Color(0xffFCE9CD);
+
+  // ignore: unused_field
+  static const _orange40 = Color(0xffF9D39B);
+
+  // ignore: unused_field
+  static const _orange60 = Color(0xffF6BC69);
+
+  // ignore: unused_field
+  static const _orange80 = Color(0xffF3A637);
+
+  // ignore: unused_field
+  static const _orange120 = Color(0xffD68004);
+
+  @override
+  Color get primary => _theme(bright: _primary);
+
+  @override
+  Color get splashColor => _theme(bright: _black20.withOpacity(0.5));
+
+  @override
+  Color get primaryText => _theme(bright: _black, dark: _white);
+
+  @override
+  Color get primaryTextInverse => _theme(bright: _white);
+
+  @override
+  Color get secondaryText => _theme(bright: _black60, dark: _black20);
+
+  @override
+  Color get background => _theme(bright: _white, dark: _black);
+
+  @override
+  Color get icon => _theme(bright: _black, dark: _black20);
+
+  @override
+  Color get iconBackground => _theme(bright: _white, dark: _black95);
+
+  @override
+  Color get settingsIcon => _theme(bright: _black, dark: _white);
+
+  @override
+  Color get settingsCardBackground => _theme(bright: _black5, dark: _black80);
+
+  @override
+  Color get personalAreaCollections => _theme(bright: _orange80);
+
+  @override
+  Color get personalAreaHomeFeed => _theme(bright: _primary80);
+
+  @override
+  Color get personalAreaSettings => _theme(bright: _purple80);
+}
+
+class _NewSchemeException implements Exception {
+  @override
+  String toString() => 'This color supported only with the new color scheme';
 }

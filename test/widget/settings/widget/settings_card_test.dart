@@ -10,13 +10,16 @@ void main() {
   final groupData0 = SettingsGroupData(items: const [tile0, tile1]);
   final groupData1 = SettingsGroupData(items: const [tile1]);
   final groupData2 = SettingsGroupData(items: const [tile0]);
-
+  final linden = Linden(newColors: true);
   testWidgets(
     'GIVEN data with 1 item WHEN render widget THEN find 1 SettingsGroup widget inside',
     (final WidgetTester tester) async {
       final data = SettingsCardData([groupData0]);
 
-      await tester.pumpLindenApp(SettingsCard(data: data));
+      await tester.pumpLindenApp(
+        SettingsCard(data: data),
+        initialLinden: linden,
+      );
 
       expect(find.byType(SettingsGroup), findsNWidgets(1));
       expect(find.byType(Divider), findsNothing);
@@ -28,7 +31,10 @@ void main() {
     (final WidgetTester tester) async {
       final data = SettingsCardData([groupData0, groupData1]);
 
-      await tester.pumpLindenApp(SettingsCard(data: data));
+      await tester.pumpLindenApp(
+        SettingsCard(data: data),
+        initialLinden: linden,
+      );
 
       expect(find.byType(SettingsGroup), findsNWidgets(2));
       expect(find.byType(Divider), findsOneWidget);
@@ -40,7 +46,10 @@ void main() {
     (final WidgetTester tester) async {
       final data = SettingsCardData([groupData0, groupData1, groupData2]);
 
-      await tester.pumpLindenApp(SettingsCard(data: data));
+      await tester.pumpLindenApp(
+        SettingsCard(data: data),
+        initialLinden: linden,
+      );
 
       final groupFinder = find.byType(SettingsGroup);
 
@@ -54,7 +63,10 @@ void main() {
     (final WidgetTester tester) async {
       final data = SettingsCardData([groupData2, groupData1, groupData0]);
 
-      await tester.pumpLindenApp(SettingsCard(data: data));
+      await tester.pumpLindenApp(
+        SettingsCard(data: data),
+        initialLinden: linden,
+      );
 
       final groupFinder = find.byType(SettingsGroup);
 

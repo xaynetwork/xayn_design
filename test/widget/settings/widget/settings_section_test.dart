@@ -11,12 +11,16 @@ void main() {
   const subTitle = 'Section subTitle';
   const tileTitle = 'tileTitle';
   const tile = SettingsTileData(title: tileTitle);
+  final linden = Linden(newColors: true);
   testWidgets(
     'WHEN create section from tile and title THEN expect to see title and one card with tile',
     (final WidgetTester tester) async {
       final widget = SettingsSection.fromTile(title: title, tileData: tile);
 
-      await tester.pumpLindenApp(widget);
+      await tester.pumpLindenApp(
+        widget,
+        initialLinden: linden,
+      );
 
       expect(find.byType(Text), findsNWidgets(2));
       expect(find.text(title), findsOneWidget);
@@ -40,7 +44,10 @@ void main() {
         ],
       );
 
-      await tester.pumpLindenApp(widget);
+      await tester.pumpLindenApp(
+        widget,
+        initialLinden: linden,
+      );
 
       // 3 tiles + title + subtitle
       expect(find.byType(Text), findsNWidgets(5));
@@ -70,7 +77,11 @@ void main() {
         child: SettingsSelectable.icons(items: [selectableItem]),
       );
 
-      await tester.pumpLindenApp(widget, withScaffold: true);
+      await tester.pumpLindenApp(
+        widget,
+        withScaffold: true,
+        initialLinden: linden,
+      );
 
       expect(find.text(title), findsOneWidget);
       expect(find.text(subTitle), findsOneWidget);

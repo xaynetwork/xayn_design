@@ -17,7 +17,7 @@ class SettingsBackground extends StatelessWidget {
       child: Container(
         child: child,
         decoration: BoxDecoration(
-          color: linden.colors.newSettingsCardBackground,
+          color: linden.colors.settingsCardBackground,
           borderRadius: linden.styles.roundBorder,
         ),
       ),

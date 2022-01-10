@@ -77,7 +77,7 @@ class _NavBarEditState extends State<NavBarEdit> {
       widget.data.svgIconPath,
       width: linden.dimen.iconSize,
       height: linden.dimen.iconSize,
-      color: linden.colors.iconNew,
+      color: linden.colors.icon,
     );
     return InkWell(
       onTap: widget._focusNode.requestFocus,

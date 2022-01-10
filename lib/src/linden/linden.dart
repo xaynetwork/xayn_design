@@ -42,28 +42,39 @@ import 'xstyles.dart';
 ///
 @immutable
 class Linden {
+  final bool newColors;
+
   Linden({
     this.deviceOrientation = Orientation.portrait,
     this.notchPaddingLandscapeMode = 0,
     this.brightness = Brightness.light,
     this.animations = const XAnimations(),
+    this.newColors = false,
     XSizes? dimen,
     XStyles? styles,
     ThemeData? themeData,
     XColors? colors,
     XAssets? assets,
-  })  : assets = assets ?? XAssets(brightness: brightness),
-        colors = colors ?? XColors(brightness: brightness),
-        styles = styles ??= XStyles(
-          _defaultTheme(brightness).textTheme,
-          brightness: brightness,
-        ),
-        themeData = themeData ?? _defaultTheme(brightness, styles: styles),
-        dimen = dimen ??
-            XSizes(
-              notchPaddingLandscapeMode: notchPaddingLandscapeMode,
-              deviceOrientation: deviceOrientation,
-            );
+  }) {
+    this.assets = assets ?? XAssets(brightness: brightness);
+    this.colors = colors ?? XColors(newColors, brightness: brightness);
+    this.styles = styles ??= XStyles(
+      _defaultTheme(brightness, this.colors).textTheme,
+      this.colors,
+      brightness: brightness,
+    );
+    this.themeData = themeData ??
+        _defaultTheme(
+          brightness,
+          this.colors,
+          styles: styles,
+        );
+    this.dimen = dimen ??
+        XSizes(
+          notchPaddingLandscapeMode: notchPaddingLandscapeMode,
+          deviceOrientation: deviceOrientation,
+        );
+  }
 
   /// Passes the state of the device orientation and updates the [XSizes]
   /// instance, dimen, when altered.
@@ -87,29 +98,29 @@ class Linden {
   /// Responsible for TextStyles in the app as well as any other shared
   /// [Material] style we use in the design system.
   ///
-  final XStyles styles;
+  late final XStyles styles;
 
   /// Provides theme configuration for Linden and in case nothing is passed,
   /// the private [_defaultTheme] is used.
   ///
-  final ThemeData themeData;
+  late final ThemeData themeData;
 
   /// All the dimensions is the responsibility of dimen. It's dependent on
   /// the configuration pf XSizes class.
   ///
-  final XSizes dimen;
+  late final XSizes dimen;
 
   /// The shared colors configuration.
   ///
-  final XColors colors;
+  late final XColors colors;
 
   /// Assets' configuration.
   ///
-  final XAssets assets;
+  late final XAssets assets;
 
   /// Animations' parameters, mostly [Duration]s, configurations.
   ///
-  final XAnimations animations;
+  late final XAnimations animations;
 
   /// Creates a copy of this theme but with the given fields replaced with the new values.
   ///
@@ -136,6 +147,7 @@ class Linden {
         colors: colors ?? this.colors,
         assets: assets ?? this.assets,
         animations: animations ?? this.animations,
+        newColors: newColors,
       );
 
   /// Update all the dimension configuration of [XSizes] in [Linden]
@@ -164,51 +176,56 @@ class Linden {
   /// Update theme to light/dark mode
   ///
   Linden updateBrightness(Brightness brightness) {
+    final colors = XColors(newColors, brightness: brightness);
     final styles = XStyles(
-      _defaultTheme(brightness).textTheme,
+      _defaultTheme(brightness, colors).textTheme,
+      colors,
       brightness: brightness,
     );
     return copyWith(
       brightness: brightness,
-      colors: XColors(brightness: brightness),
+      colors: colors,
       assets: XAssets(brightness: brightness),
       styles: styles,
-      themeData: _defaultTheme(brightness, styles: styles),
+      themeData: _defaultTheme(brightness, colors, styles: styles),
     );
   }
 }
 
 /// Default private configuration of [ThemeData]
 ///
-ThemeData _defaultTheme(Brightness brightness, {XStyles? styles}) {
-  final colors = XColors(brightness: brightness);
+ThemeData _defaultTheme(
+  Brightness brightness,
+  XColors colors, {
+  XStyles? styles,
+}) {
   final colorScheme = brightness == Brightness.light
       ? const ColorScheme.light()
       : const ColorScheme.dark().copyWith(
-          onSurface: colors.newBackground,
-          onBackground: colors.newBackground,
+          onSurface: colors.background,
+          onBackground: colors.background,
         );
   final themeData = ThemeData(
     fontFamily: 'NotoSans',
     brightness: brightness,
     primaryColor: colors.primary,
     secondaryHeaderColor: colors.accent,
-    splashColor: colors.newSplashColor,
+    splashColor: colors.splashColor,
     colorScheme: colorScheme.copyWith(
       primary: colors.primary,
       secondary: colors.accent,
       secondaryVariant: colors.primaryAction,
     ),
     appBarTheme: AppBarTheme(color: colors.accent),
-    dialogBackgroundColor: colors.newBackground,
+    dialogBackgroundColor: colors.background,
     dividerColor: colors.divider,
-    scaffoldBackgroundColor: colors.newBackground,
+    scaffoldBackgroundColor: colors.background,
     unselectedWidgetColor: colors.iconDisabled,
   );
   if (styles != null) {
     return themeData.copyWith(
       inputDecorationTheme: styles.hintTextDecoration,
-      textTheme: _defaultTheme(brightness).textTheme.copyWith(
+      textTheme: _defaultTheme(brightness, colors).textTheme.copyWith(
             subtitle1: styles.appHighlightText,
             bodyText1: styles.appBodyText,
           ),
