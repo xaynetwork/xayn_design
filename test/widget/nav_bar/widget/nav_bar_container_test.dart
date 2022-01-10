@@ -416,7 +416,7 @@ void main() {
           await tester.pumpLindenApp(buildWidget(child: widget));
           final state = getState();
           state.currentNavBarConfigMixin =
-              _StatelessConfigWidget(() => _singleItemConfig);
+              _StatelessConfigWidget2(() => _backBtnConfig);
 
           await tester.resetNavBarWithDebounce(goingBack: true);
 
@@ -439,6 +439,28 @@ void main() {
 
           final state = getState();
           state.currentNavBarConfigMixin = lastMixin;
+
+          await tester.resetNavBarWithDebounce(goingBack: true);
+
+          expect(
+            state.configPair!.configMixins,
+            equals([preLastMixin]),
+          );
+        },
+      );
+      testWidgets(
+        'GIVEN widget tree with 1 config WHEN going back and and currentNavBarConfigMixin is same type but different instance THEN last config will be removed from the list',
+        (final WidgetTester tester) async {
+          final lastWidget = _StatelessConfigWidget(() => _singleItemConfig);
+          final previousWidget =
+              _StatelessConfigWidget(() => _backBtnConfig, child: lastWidget);
+          final NavBarConfigMixin preLastMixin = previousWidget;
+
+          await tester.pumpLindenApp(buildWidget(child: previousWidget));
+
+          final state = getState();
+          state.currentNavBarConfigMixin =
+              _StatelessConfigWidget(() => _singleItemConfig);
 
           await tester.resetNavBarWithDebounce(goingBack: true);
 
