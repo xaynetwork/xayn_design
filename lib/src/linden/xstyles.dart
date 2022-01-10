@@ -60,6 +60,10 @@ class XStyles {
         height: 1.54,
       );
 
+  TextStyle? get appBodyTextSecondary => appBodyText?.copyWith(
+        color: colors.secondaryText,
+      );
+
   TextStyle? get appButtonText => appBodyText?.copyWith(
         fontWeight: _weightBold,
         fontSize: 13,
