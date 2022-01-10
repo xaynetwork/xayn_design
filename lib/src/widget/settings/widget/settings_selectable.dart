@@ -17,7 +17,7 @@ class SettingsSelectable extends StatelessWidget {
   })  : type = SettingsSelectableType.icon,
         super(key: key);
 
-  @Deprecated('So far there is no useCases, but later it might come back')
+  @Deprecated('Old Style Settings, might be removed')
   const SettingsSelectable.graphics({
     Key? key,
     required this.items,

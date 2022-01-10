@@ -8,7 +8,7 @@ const _defaultTopPadding = 24.0;
 
 class SettingsSection extends StatelessWidget {
   final String title;
-  @Deprecated('So far there is no useCases, but later it might come back')
+  @Deprecated('Old Style Settings, might be removed')
   final String? subTitle;
   final List<SettingsCardData> items;
   final Widget? _child;
@@ -106,7 +106,7 @@ class SettingsSection extends StatelessWidget {
         style: linden.styles.newSettingsSectionTitle,
       );
 
-  @Deprecated('So far there is no useCases, but later it might come back')
+  @Deprecated('Old Style Settings, might be removed')
   Widget? _buildSubTitle(Linden linden) => subTitle == null
       ? null
       : Text(
