@@ -116,6 +116,8 @@ class XSizes {
 
   double get cardNotchSize => unit5;
 
+  double get sentimentBorderSize => unit0_25;
+
   /// Return the number of columns to show in a grid view depending on
   /// the screen the user is experiencing (Experience) and the device and
   /// the orientation
