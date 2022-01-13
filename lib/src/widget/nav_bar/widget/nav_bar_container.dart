@@ -24,12 +24,28 @@ class NavBarContainer extends StatefulWidget {
   /// f.e. [NavBarConfig] was changed for the screen
   static void updateNavBar(BuildContext context) {
     if (!staticCallsEnabled) return;
+    return _getTypedWidget(context).controller.updateNavBar();
+  }
+
+  /// Call this, when you need to hide the [NavBar]
+  static void hideNavBar(BuildContext context) {
+    if (!staticCallsEnabled) return;
+    return _getTypedWidget(context).controller.hideNavBar();
+  }
+
+  /// Call this, when you need to show the [NavBar]
+  static void showNavBar(BuildContext context) {
+    if (!staticCallsEnabled) return;
+    return _getTypedWidget(context).controller.showNavBar();
+  }
+
+  static InheritedNavBarContainer _getTypedWidget(BuildContext context) {
     final typedWidget =
-        context.dependOnInheritedWidgetOfExactType<InheritedNavBarContainer>();
+    context.dependOnInheritedWidgetOfExactType<InheritedNavBarContainer>();
     if (typedWidget == null) {
       throw const NavBarContainerNotFoundException();
     }
-    return typedWidget.controller.updateNavBar();
+    return typedWidget;
   }
 
   /// This method used internally (from [NavBarObserver])
@@ -42,12 +58,12 @@ class NavBarContainer extends StatefulWidget {
   /// when [true], then will ignore latest [NavBarConfig] (from screen that will be removed)
   /// and will try to apply previous [NavBarConfig] (from screen that will be shown instead)
   static void resetNavBar(
-    BuildContext context, {
-    required bool goingBack,
-  }) {
+      BuildContext context, {
+        required bool goingBack,
+      }) {
     if (!staticCallsEnabled) return;
     final typedWidget =
-        context.dependOnInheritedWidgetOfExactType<InheritedNavBarContainer>();
+    context.dependOnInheritedWidgetOfExactType<InheritedNavBarContainer>();
     if (typedWidget == null) {
       throw const NavBarContainerNotFoundException();
     }
@@ -64,6 +80,7 @@ class NavBarContainerState extends State<NavBarContainer>
     implements NavBarController {
   final resetStream = StreamController<bool?>();
   final updateStream = StreamController<bool?>();
+  final hideStream = StreamController<bool?>();
 
   ConfigPair? configPair;
   NavBarConfigMixin? currentNavBarConfigMixin;
@@ -79,6 +96,20 @@ class NavBarContainerState extends State<NavBarContainer>
       configPair ??= _getConfigPair(context, goingBack ?? false);
       _updateBar(configPair!);
     });
+
+    hideStream.stream
+        .debounceTime(updateNabBarDebounceTimeout)
+        .listen((maybeShouldHide) {
+      if (!mounted) return;
+      final shouldHide = maybeShouldHide ?? false;
+      configPair ??= _getConfigPair(context, false);
+      if (shouldHide) {
+        configPair!.updater.update(NavBarConfig.hidden());
+      } else {
+        _showBar(configPair!);
+      }
+    });
+
     super.initState();
   }
 
@@ -86,6 +117,7 @@ class NavBarContainerState extends State<NavBarContainer>
   void dispose() {
     updateStream.close();
     resetStream.close();
+    hideStream.close();
     super.dispose();
   }
 
@@ -106,6 +138,18 @@ class NavBarContainerState extends State<NavBarContainer>
     updateStream.add(null);
   }
 
+  @override
+  void hideNavBar() {
+    if (hideStream.isClosed) return;
+    hideStream.add(true);
+  }
+
+  @override
+  void showNavBar() {
+    if (hideStream.isClosed) return;
+    hideStream.add(false);
+  }
+
   void _updateBar(ConfigPair configPair) {
     for (final mixin in configPair.configMixins.reversed) {
       final config = mixin.navBarConfig;
@@ -118,10 +162,21 @@ class NavBarContainerState extends State<NavBarContainer>
     configPair.updater.update(null);
   }
 
+  void _showBar(ConfigPair configPair) {
+    for (final mixin in configPair.configMixins.reversed) {
+      final config = mixin.navBarConfig;
+      if (!config.type.isHidden) {
+        configPair.updater.update(config);
+        currentNavBarConfigMixin = mixin;
+        return;
+      }
+    }
+  }
+
   ConfigPair _getConfigPair(
-    BuildContext context,
-    bool ignoreLast,
-  ) {
+      BuildContext context,
+      bool ignoreLast,
+      ) {
     List<NavBarConfigMixin> list = [];
     ConfigUpdater? updater;
     void visitor(Element element) {
@@ -186,6 +241,12 @@ abstract class NavBarController {
   /// are called, then we need to ignore the latest [NavBarConfig],
   /// which is still part of the widget tree for some time
   void updateNavBar();
+
+  /// Used internally, to update [NavBarConfig] to [NavBarConfig.hidden]
+  void hideNavBar();
+
+  /// Used internally, to get the last non hidden config
+  void showNavBar();
 }
 
 class NavBarContainerNotFoundException implements Exception {
