@@ -12,8 +12,8 @@ class NavBarAccountScreen extends BaseNavBarScreen {
   _NavBarAccountScreenState createState() => _NavBarAccountScreenState();
 }
 
-class _NavBarAccountScreenState extends BaseNavBarScreenState<NavBarAccountScreen>
-    with NavBarConfigMixin {
+class _NavBarAccountScreenState
+    extends BaseNavBarScreenState<NavBarAccountScreen> with NavBarConfigMixin {
   @override
   String get screenTitle => 'Account screen';
 
