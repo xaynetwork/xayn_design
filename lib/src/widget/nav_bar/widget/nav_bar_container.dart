@@ -41,7 +41,7 @@ class NavBarContainer extends StatefulWidget {
 
   static InheritedNavBarContainer _getTypedWidget(BuildContext context) {
     final typedWidget =
-    context.dependOnInheritedWidgetOfExactType<InheritedNavBarContainer>();
+        context.dependOnInheritedWidgetOfExactType<InheritedNavBarContainer>();
     if (typedWidget == null) {
       throw const NavBarContainerNotFoundException();
     }
@@ -58,12 +58,12 @@ class NavBarContainer extends StatefulWidget {
   /// when [true], then will ignore latest [NavBarConfig] (from screen that will be removed)
   /// and will try to apply previous [NavBarConfig] (from screen that will be shown instead)
   static void resetNavBar(
-      BuildContext context, {
-        required bool goingBack,
-      }) {
+    BuildContext context, {
+    required bool goingBack,
+  }) {
     if (!staticCallsEnabled) return;
     final typedWidget =
-    context.dependOnInheritedWidgetOfExactType<InheritedNavBarContainer>();
+        context.dependOnInheritedWidgetOfExactType<InheritedNavBarContainer>();
     if (typedWidget == null) {
       throw const NavBarContainerNotFoundException();
     }
@@ -174,9 +174,9 @@ class NavBarContainerState extends State<NavBarContainer>
   }
 
   ConfigPair _getConfigPair(
-      BuildContext context,
-      bool ignoreLast,
-      ) {
+    BuildContext context,
+    bool ignoreLast,
+  ) {
     List<NavBarConfigMixin> list = [];
     ConfigUpdater? updater;
     void visitor(Element element) {
