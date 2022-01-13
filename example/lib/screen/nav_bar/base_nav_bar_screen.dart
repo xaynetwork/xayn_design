@@ -1,4 +1,5 @@
 import 'package:example/screen/nav_bar/nav_bar_account_screen.dart';
+import 'package:example/screen/nav_bar/nav_bar_hidden_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_home_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_ignored_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_onboarding_screen.dart';
@@ -76,6 +77,8 @@ abstract class BaseNavBarScreenState<T extends BaseNavBarScreen>
   void openOnboarding() => _push(NavBarOnboardingScreen.routeName);
 
   void openIgnored() => _push(NavBarIgnoredScreen.routeName);
+
+  void openHidden() => _push(NavBarHiddenScreen.routeName);
 
   Widget buildBtn(String title, VoidCallback onPressed) =>
       AppRaisedButton.text(onPressed: onPressed, text: title);
