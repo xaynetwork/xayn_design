@@ -80,12 +80,13 @@ class NavBarContainerState extends State<NavBarContainer>
     implements NavBarController {
   final resetStream = StreamController<bool?>();
   final updateStream = StreamController<bool?>();
-  final hideStream = StreamController<bool?>();
 
   ConfigPair? configPair;
   NavBarConfigMixin? currentNavBarConfigMixin;
 
   Linden get linden => UnterDenLinden.getLinden(context);
+
+  var isVisible = true;
 
   @override
   void initState() {
@@ -97,19 +98,6 @@ class NavBarContainerState extends State<NavBarContainer>
       _updateBar(configPair!);
     });
 
-    hideStream.stream
-        .debounceTime(updateNavBarDebounceTimeout)
-        .listen((maybeShouldHide) {
-      if (!mounted) return;
-      final shouldHide = maybeShouldHide ?? false;
-      configPair ??= _getConfigPair(context, false);
-      if (shouldHide) {
-        configPair!.updater.update(NavBarConfig.hidden());
-      } else {
-        _showBar(configPair!);
-      }
-    });
-
     super.initState();
   }
 
@@ -117,7 +105,6 @@ class NavBarContainerState extends State<NavBarContainer>
   void dispose() {
     updateStream.close();
     resetStream.close();
-    hideStream.close();
     super.dispose();
   }
 
@@ -139,38 +126,23 @@ class NavBarContainerState extends State<NavBarContainer>
   }
 
   @override
-  void hideNavBar() {
-    if (hideStream.isClosed) return;
-    hideStream.add(true);
-  }
+  void hideNavBar() => _tryToUpdateVisibility(false);
 
   @override
-  void showNavBar() {
-    if (hideStream.isClosed) return;
-    hideStream.add(false);
-  }
+  void showNavBar() => _tryToUpdateVisibility(true);
 
   void _updateBar(ConfigPair configPair) {
-    for (final mixin in configPair.configMixins.reversed) {
-      final config = mixin.navBarConfig;
-      if (!config.type.isIgnored) {
-        configPair.updater.update(config);
-        currentNavBarConfigMixin = mixin;
-        return;
+    if(isVisible) {
+      for (final mixin in configPair.configMixins.reversed) {
+        final config = mixin.navBarConfig;
+        if (!config.type.isIgnored) {
+          configPair.updater.update(config);
+          currentNavBarConfigMixin = mixin;
+          return;
+        }
       }
     }
     configPair.updater.update(null);
-  }
-
-  void _showBar(ConfigPair configPair) {
-    for (final mixin in configPair.configMixins.reversed) {
-      final config = mixin.navBarConfig;
-      if (!config.type.isHidden) {
-        configPair.updater.update(config);
-        currentNavBarConfigMixin = mixin;
-        return;
-      }
-    }
   }
 
   ConfigPair _getConfigPair(
@@ -213,6 +185,13 @@ class NavBarContainerState extends State<NavBarContainer>
       list.removeLast();
     }
     return ConfigPair(navBarState, list);
+  }
+
+  void _tryToUpdateVisibility(bool isVisible) {
+    this.isVisible = isVisible;
+    final pair = configPair;
+    if (pair == null) return;
+    _updateBar(pair);
   }
 }
 
