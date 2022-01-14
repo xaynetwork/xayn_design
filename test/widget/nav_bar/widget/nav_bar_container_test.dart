@@ -170,8 +170,10 @@ void main() {
             child: _StatelessConfigWidget(() => _backBtnConfig),
           ));
 
+          await tester.resetNavBarWithDebounce();
+
           final stateNavBar = getStateNavBar();
-          expect(stateNavBar.config, isNull);
+          expect(stateNavBar.config, isNotNull);
 
           hideNavBar();
           await tester.pumpAndSettle(updateNavBarDebounceTimeout);
@@ -187,8 +189,10 @@ void main() {
             child: _StatelessConfigWidget(() => _backBtnConfig),
           ));
 
+          await tester.resetNavBarWithDebounce();
+
           final stateNavBar = getStateNavBar();
-          expect(stateNavBar.config, isNull);
+          expect(stateNavBar.config, isNotNull);
 
           showNavBar();
           await tester.pumpAndSettle(updateNavBarDebounceTimeout);
@@ -203,9 +207,9 @@ void main() {
           await tester.pumpLindenApp(buildWidget(
             child: _StatelessConfigWidget(() => _backBtnConfig),
           ));
-
+          await tester.resetNavBarWithDebounce();
           final stateNavBar = getStateNavBar();
-          expect(stateNavBar.config, isNull);
+          expect(stateNavBar.config, isNotNull);
 
           hideNavBar();
           await tester.pumpAndSettle(updateNavBarDebounceTimeout);
@@ -624,10 +628,12 @@ void main() {
           final configWidget = _StatelessConfigWidget(() => _backBtnConfig);
           await tester.pumpLindenApp(buildWidget(child: configWidget));
 
+          await tester.resetNavBarWithDebounce();
+
           final stateNavBar = getStateNavBar();
           final state = getState();
-          expect(stateNavBar.config, isNull);
-          expect(state.configPair, isNull);
+          expect(stateNavBar.config, isNotNull);
+          expect(state.configPair, isNotNull);
 
           await tester.hideNavBarWithDebounce();
           expect(state.configPair, isNotNull);
@@ -644,10 +650,12 @@ void main() {
           final configWidget = _StatefulConfigWidget(() => _backBtnConfig);
           await tester.pumpLindenApp(buildWidget(child: configWidget));
 
+          await tester.resetNavBarWithDebounce();
+
           final stateNavBar = getStateNavBar();
           final state = getState();
-          expect(stateNavBar.config, isNull);
-          expect(state.configPair, isNull);
+          expect(stateNavBar.config, isNotNull);
+          expect(state.configPair, isNotNull);
 
           await tester.hideNavBarWithDebounce();
           expect(state.configPair, isNotNull);
@@ -664,10 +672,12 @@ void main() {
           final configWidget = _StatelessConfigWidget(() => _backBtnConfig);
           await tester.pumpLindenApp(buildWidget(child: configWidget));
 
+          await tester.resetNavBarWithDebounce();
+
           final stateNavBar = getStateNavBar();
           final state = getState();
-          expect(stateNavBar.config, isNull);
-          expect(state.configPair, isNull);
+          expect(stateNavBar.config, isNotNull);
+          expect(state.configPair, isNotNull);
 
           await tester.showNavBarWithDebounce();
           expect(state.configPair, isNotNull);
@@ -684,10 +694,12 @@ void main() {
           final configWidget = _StatefulConfigWidget(() => _backBtnConfig);
           await tester.pumpLindenApp(buildWidget(child: configWidget));
 
+          await tester.resetNavBarWithDebounce();
+
           final stateNavBar = getStateNavBar();
           final state = getState();
-          expect(stateNavBar.config, isNull);
-          expect(state.configPair, isNull);
+          expect(stateNavBar.config, isNotNull);
+          expect(state.configPair, isNotNull);
 
           await tester.showNavBarWithDebounce();
           expect(state.configPair, isNotNull);
@@ -704,10 +716,12 @@ void main() {
           final configWidget = _StatelessConfigWidget(() => _backBtnConfig);
           await tester.pumpLindenApp(buildWidget(child: configWidget));
 
+          await tester.resetNavBarWithDebounce();
+
           final stateNavBar = getStateNavBar();
           final state = getState();
-          expect(stateNavBar.config, isNull);
-          expect(state.configPair, isNull);
+          expect(stateNavBar.config, isNotNull);
+          expect(state.configPair, isNotNull);
 
           await tester.hideNavBarWithDebounce();
           await tester.showNavBarWithDebounce();
@@ -726,10 +740,12 @@ void main() {
           final configWidget = _StatefulConfigWidget(() => _backBtnConfig);
           await tester.pumpLindenApp(buildWidget(child: configWidget));
 
+          await tester.resetNavBarWithDebounce();
+
           final stateNavBar = getStateNavBar();
           final state = getState();
-          expect(stateNavBar.config, isNull);
-          expect(state.configPair, isNull);
+          expect(stateNavBar.config, isNotNull);
+          expect(state.configPair, isNotNull);
 
           await tester.hideNavBarWithDebounce();
           await tester.showNavBarWithDebounce();

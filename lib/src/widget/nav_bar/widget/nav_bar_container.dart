@@ -132,14 +132,17 @@ class NavBarContainerState extends State<NavBarContainer>
   void showNavBar() => _tryToUpdateVisibility(true);
 
   void _updateBar(ConfigPair configPair) {
-    if (isVisible) {
-      for (final mixin in configPair.configMixins.reversed) {
-        final config = mixin.navBarConfig;
-        if (!config.type.isIgnored) {
-          configPair.updater.update(config);
-          currentNavBarConfigMixin = mixin;
-          return;
-        }
+    if (!isVisible) {
+      configPair.updater.update(NavBarConfig.hidden());
+      return;
+    }
+
+    for (final mixin in configPair.configMixins.reversed) {
+      final config = mixin.navBarConfig;
+      if (!config.type.isIgnored) {
+        configPair.updater.update(config);
+        currentNavBarConfigMixin = mixin;
+        return;
       }
     }
     configPair.updater.update(null);
