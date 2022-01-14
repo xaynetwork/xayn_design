@@ -7,7 +7,7 @@ import 'package:xayn_design/src/widget/nav_bar/data/nav_bar_config.dart';
 import 'package:xayn_design/src/widget/nav_bar/widget/nav_bar.dart';
 import 'package:xayn_design/xayn_design.dart';
 
-const updateNabBarDebounceTimeout = Duration(milliseconds: 50);
+const updateNavBarDebounceTimeout = Duration(milliseconds: 50);
 
 class NavBarContainer extends StatefulWidget {
   final Widget child;
@@ -90,7 +90,7 @@ class NavBarContainerState extends State<NavBarContainer>
   @override
   void initState() {
     MergeStream([resetStream.stream, updateStream.stream])
-        .debounceTime(updateNabBarDebounceTimeout)
+        .debounceTime(updateNavBarDebounceTimeout)
         .listen((bool? goingBack) {
       if (!mounted) return;
       configPair ??= _getConfigPair(context, goingBack ?? false);
@@ -98,7 +98,7 @@ class NavBarContainerState extends State<NavBarContainer>
     });
 
     hideStream.stream
-        .debounceTime(updateNabBarDebounceTimeout)
+        .debounceTime(updateNavBarDebounceTimeout)
         .listen((maybeShouldHide) {
       if (!mounted) return;
       final shouldHide = maybeShouldHide ?? false;

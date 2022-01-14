@@ -8,6 +8,8 @@ final _backBtnConfig = NavBarConfig.backBtn(
 
 final _ignoredConfig = NavBarConfig.ignored();
 
+final _hiddenConfig = NavBarConfig.hidden();
+
 final _singleItemConfig = createConfig();
 
 BuildContext getContext() => find.byKey(keyStack).evaluate().first;
@@ -41,6 +43,12 @@ void resetNavBar({BuildContext? context, goingBack = false}) =>
 
 void updateNavBar({BuildContext? context}) =>
     NavBarContainer.updateNavBar(context ?? getContext());
+
+void hideNavBar({BuildContext? context}) =>
+    NavBarContainer.hideNavBar(context ?? getContext());
+
+void showNavBar({BuildContext? context}) =>
+    NavBarContainer.showNavBar(context ?? getContext());
 
 NavBarContainer buildWidget({
   Widget? child,
@@ -108,6 +116,16 @@ extension WidgetTesterExtension on WidgetTester {
     goingBack = false,
   }) async {
     resetNavBar(context: context, goingBack: goingBack);
-    await pumpAndSettle(updateNabBarDebounceTimeout);
+    await pumpAndSettle(updateNavBarDebounceTimeout);
+  }
+
+  Future<void> hideNavBarWithDebounce({BuildContext? context}) async {
+    hideNavBar(context: context);
+    await pumpAndSettle(updateNavBarDebounceTimeout);
+  }
+
+  Future<void> showNavBarWithDebounce({BuildContext? context}) async {
+    showNavBar(context: context);
+    await pumpAndSettle(updateNavBarDebounceTimeout);
   }
 }
