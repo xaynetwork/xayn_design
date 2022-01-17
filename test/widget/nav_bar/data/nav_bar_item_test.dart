@@ -51,6 +51,37 @@ void main() {
           ]);
         },
       );
+
+      test(
+        'GIVEN default constructor THEN verify default props',
+        () {
+          final defaultItem = NavBarItemIconButton(
+            svgIconPath: iconPath,
+            isHighlighted: isHighlighted,
+            onPressed: onPressed,
+            key: key,
+          );
+
+          expect(defaultItem.isDisabled, isDisabled);
+        },
+      );
+
+      test(
+        'GIVEN isDisabled true THEN verify correct isDisabled value',
+        () {
+          const isDisabled = true;
+
+          final item = NavBarItemIconButton(
+            svgIconPath: iconPath,
+            isHighlighted: isHighlighted,
+            isDisabled: isDisabled,
+            onPressed: onPressed,
+            key: key,
+          );
+
+          expect(item.isDisabled, isDisabled);
+        },
+      );
     },
   );
   group(
