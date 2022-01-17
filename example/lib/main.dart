@@ -1,6 +1,7 @@
 import 'package:example/screen/linden_screen.dart';
 import 'package:example/screen/main_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_account_screen.dart';
+import 'package:example/screen/nav_bar/nav_bar_hidden_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_home_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_ignored_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_onboarding_screen.dart';
@@ -104,6 +105,9 @@ class MyApp extends StatelessWidget {
         break;
       case NavBarIgnoredScreen.routeName:
         screenWidget = const NavBarIgnoredScreen();
+        break;
+      case NavBarHiddenScreen.routeName:
+        screenWidget = const NavBarHiddenScreen();
         break;
       default:
         screenWidget = null;

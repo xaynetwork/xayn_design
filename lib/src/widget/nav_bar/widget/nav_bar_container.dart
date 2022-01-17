@@ -7,7 +7,7 @@ import 'package:xayn_design/src/widget/nav_bar/data/nav_bar_config.dart';
 import 'package:xayn_design/src/widget/nav_bar/widget/nav_bar.dart';
 import 'package:xayn_design/xayn_design.dart';
 
-const updateNabBarDebounceTimeout = Duration(milliseconds: 50);
+const updateNavBarDebounceTimeout = Duration(milliseconds: 50);
 
 class NavBarContainer extends StatefulWidget {
   final Widget child;
@@ -24,12 +24,28 @@ class NavBarContainer extends StatefulWidget {
   /// f.e. [NavBarConfig] was changed for the screen
   static void updateNavBar(BuildContext context) {
     if (!staticCallsEnabled) return;
+    return _getTypedWidget(context).controller.updateNavBar();
+  }
+
+  /// Call this, when you need to hide the [NavBar]
+  static void hideNavBar(BuildContext context) {
+    if (!staticCallsEnabled) return;
+    return _getTypedWidget(context).controller.hideNavBar();
+  }
+
+  /// Call this, when you need to show the [NavBar]
+  static void showNavBar(BuildContext context) {
+    if (!staticCallsEnabled) return;
+    return _getTypedWidget(context).controller.showNavBar();
+  }
+
+  static InheritedNavBarContainer _getTypedWidget(BuildContext context) {
     final typedWidget =
         context.dependOnInheritedWidgetOfExactType<InheritedNavBarContainer>();
     if (typedWidget == null) {
       throw const NavBarContainerNotFoundException();
     }
-    return typedWidget.controller.updateNavBar();
+    return typedWidget;
   }
 
   /// This method used internally (from [NavBarObserver])
@@ -70,15 +86,18 @@ class NavBarContainerState extends State<NavBarContainer>
 
   Linden get linden => UnterDenLinden.getLinden(context);
 
+  var isVisible = true;
+
   @override
   void initState() {
     MergeStream([resetStream.stream, updateStream.stream])
-        .debounceTime(updateNabBarDebounceTimeout)
+        .debounceTime(updateNavBarDebounceTimeout)
         .listen((bool? goingBack) {
       if (!mounted) return;
       configPair ??= _getConfigPair(context, goingBack ?? false);
       _updateBar(configPair!);
     });
+
     super.initState();
   }
 
@@ -106,7 +125,18 @@ class NavBarContainerState extends State<NavBarContainer>
     updateStream.add(null);
   }
 
+  @override
+  void hideNavBar() => _tryToUpdateVisibility(false);
+
+  @override
+  void showNavBar() => _tryToUpdateVisibility(true);
+
   void _updateBar(ConfigPair configPair) {
+    if (!isVisible) {
+      configPair.updater.update(NavBarConfig.hidden());
+      return;
+    }
+
     for (final mixin in configPair.configMixins.reversed) {
       final config = mixin.navBarConfig;
       if (!config.type.isIgnored) {
@@ -159,6 +189,13 @@ class NavBarContainerState extends State<NavBarContainer>
     }
     return ConfigPair(navBarState, list);
   }
+
+  void _tryToUpdateVisibility(bool isVisible) {
+    this.isVisible = isVisible;
+    final pair = configPair;
+    if (pair == null) return;
+    _updateBar(pair);
+  }
 }
 
 class InheritedNavBarContainer extends InheritedWidget {
@@ -186,6 +223,12 @@ abstract class NavBarController {
   /// are called, then we need to ignore the latest [NavBarConfig],
   /// which is still part of the widget tree for some time
   void updateNavBar();
+
+  /// Used internally, to update [NavBarConfig] to [NavBarConfig.hidden]
+  void hideNavBar();
+
+  /// Used internally, to get the last non hidden config
+  void showNavBar();
 }
 
 class NavBarContainerNotFoundException implements Exception {

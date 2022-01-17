@@ -25,6 +25,7 @@ class _NavBarHomeScreenState extends BaseNavBarScreenState<NavBarHomeScreen>
         buildBtn('Open reader mode', openReaderMode),
         buildBtn('Open onboarding screen', openOnboarding),
         buildBtn('Open ignored screen', openIgnored),
+        buildBtn('Open hidden screen', openHidden),
       ];
 
   @override
