@@ -9,12 +9,14 @@ void main() {
     () {
       const iconPath = 'iconPath';
       const isHighlighted = true;
+      const isDisabled = false;
       const key = Key('iconBtnKey');
       void onPressed() {}
 
       final item = NavBarItemIconButton(
         svgIconPath: iconPath,
         isHighlighted: isHighlighted,
+        isDisabled: isDisabled,
         onPressed: onPressed,
         key: key,
       );
@@ -25,6 +27,7 @@ void main() {
           expect(item.svgIconPath, iconPath);
           expect(item.onPressed, onPressed);
           expect(item.isHighlighted, isHighlighted);
+          expect(item.isDisabled, isDisabled);
           expect(item.key, key);
         },
       );
@@ -43,8 +46,40 @@ void main() {
           expect(item.props, [
             key,
             isHighlighted,
+            isDisabled,
             iconPath,
           ]);
+        },
+      );
+
+      test(
+        'GIVEN default constructor THEN verify default props',
+        () {
+          final defaultItem = NavBarItemIconButton(
+            svgIconPath: iconPath,
+            isHighlighted: isHighlighted,
+            onPressed: onPressed,
+            key: key,
+          );
+
+          expect(defaultItem.isDisabled, isDisabled);
+        },
+      );
+
+      test(
+        'GIVEN isDisabled true THEN verify correct isDisabled value',
+        () {
+          const isDisabled = true;
+
+          final item = NavBarItemIconButton(
+            svgIconPath: iconPath,
+            isHighlighted: isHighlighted,
+            isDisabled: isDisabled,
+            onPressed: onPressed,
+            key: key,
+          );
+
+          expect(item.isDisabled, isDisabled);
         },
       );
     },
