@@ -5,12 +5,14 @@ abstract class NavBarItem extends Equatable {
   final bool isHighlighted;
   final bool isDisabled;
   final VoidCallback onPressed;
+  final VoidCallback? onLongPressed;
   final Key key;
 
   const NavBarItem._(
     this.isHighlighted,
     this.isDisabled,
     this.onPressed,
+    this.onLongPressed,
     this.key,
   );
 }
@@ -23,8 +25,9 @@ class NavBarItemIconButton extends NavBarItem {
     required bool isHighlighted,
     bool isDisabled = false,
     required VoidCallback onPressed,
+    VoidCallback? onLongPressed,
     required Key key,
-  }) : super._(isHighlighted, isDisabled, onPressed, key);
+  }) : super._(isHighlighted, isDisabled, onPressed, onLongPressed, key);
 
   @override
   List<Object?> get props => [
@@ -38,8 +41,9 @@ class NavBarItemIconButton extends NavBarItem {
 class NavBarItemBackButton extends NavBarItem {
   const NavBarItemBackButton({
     required VoidCallback onPressed,
+    VoidCallback? onLongPressed,
     required Key key,
-  }) : super._(false, false, onPressed, key);
+  }) : super._(false, false, onPressed, onLongPressed, key);
 
   @override
   List<Object?> get props => [
@@ -68,7 +72,7 @@ class NavBarItemEdit extends NavBarItem {
     this.initialText,
     this.hint,
     this.autofocus = true,
-  }) : super._(isHighlighted, false, () {}, key);
+  }) : super._(isHighlighted, false, () {}, () {}, key);
 
   @override
   List<Object?> get props => [

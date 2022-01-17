@@ -18,6 +18,7 @@ class NavBarIconButton extends StatelessWidget {
     final btn = InkWell(
       key: data.key,
       onTap: data.onPressed,
+      onLongPress: data.onLongPressed,
       child: Center(child: icon),
       borderRadius: BorderRadius.circular(linden.dimen.unit),
     );
