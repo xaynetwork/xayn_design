@@ -98,6 +98,14 @@ class XStyles {
         height: 1.2,
       );
 
+  TextStyle? get appCaptionText => appBodyText?.copyWith(
+        fontWeight: _weightRegular,
+        color: colors.secondaryText,
+        fontSize: 10,
+        // height = 12
+        height: 1.6,
+      );
+
   TextStyle? get settingsLayoutSectionText => appThumbnailText?.copyWith(
         color: colors.primaryText,
         height: 1.3,
