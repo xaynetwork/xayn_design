@@ -54,6 +54,7 @@ class _Logo {
 }
 
 class _Illustrations {
+  // @formatter:off
   final Brightness _brightness;
 
   const _Illustrations(this._brightness);
@@ -70,6 +71,61 @@ class _Illustrations {
 
   String get enableCamera =>
       packagePath + 'assets/illustrations/enable_camera.svg';
+
+  String get flagArgentina =>
+      '${packagePath}assets/illustrations/flag_argentina.svg';
+  String get flagAustralia =>
+      '${packagePath}assets/illustrations/flag_australia.svg';
+  String get flagAustria =>
+      '${packagePath}assets/illustrations/flag_austria.svg';
+  String get flagBelgium =>
+      '${packagePath}assets/illustrations/flag_belgium.svg';
+  String get flagBrazil => '${packagePath}assets/illustrations/flag_brazil.svg';
+  String get flagCanada => '${packagePath}assets/illustrations/flag_canada.svg';
+  String get flagChile => '${packagePath}assets/illustrations/flag_chile.svg';
+  String get flagChina => '${packagePath}assets/illustrations/flag_china.svg';
+  String get flagDenmark =>
+      '${packagePath}assets/illustrations/flag_denmark.svg';
+  String get flagFinland =>
+      '${packagePath}assets/illustrations/flag_finland.svg';
+  String get flagFrance => '${packagePath}assets/illustrations/flag_france.svg';
+  String get flagGermany =>
+      '${packagePath}assets/illustrations/flag_germany.svg';
+  String get flagHongKong =>
+      '${packagePath}assets/illustrations/flag_hong_kong.svg';
+  String get flagIndia => '${packagePath}assets/illustrations/flag_india.svg';
+  String get flagIndonesia =>
+      '${packagePath}assets/illustrations/flag_indonesia.svg';
+  String get flagIreland =>
+      '${packagePath}assets/illustrations/flag_ireland.svg';
+  String get flagItaly => '${packagePath}assets/illustrations/flag_italy.svg';
+  String get flagJapan => '${packagePath}assets/illustrations/flag_japan.svg';
+  String get flagMalaysia =>
+      '${packagePath}assets/illustrations/flag_malaysia.svg';
+  String get flagMexico => '${packagePath}assets/illustrations/flag_mexico.svg';
+  String get flagNetherlands =>
+      '${packagePath}assets/illustrations/flag_netherlands.svg';
+  String get flagNewZealand =>
+      '${packagePath}assets/illustrations/flag_new_zealand.svg';
+  String get flagNorway => '${packagePath}assets/illustrations/flag_norway.svg';
+  String get flagPhilippines =>
+      '${packagePath}assets/illustrations/flag_philippines.svg';
+  String get flagPoland => '${packagePath}assets/illustrations/flag_poland.svg';
+  String get flagRussia => '${packagePath}assets/illustrations/flag_russia.svg';
+  String get flagSouthKorea =>
+      '${packagePath}assets/illustrations/flag_south_korea.svg';
+  String get flagSouthAfrica =>
+      '${packagePath}assets/illustrations/flag_south_africa.svg';
+  String get flagSpain => '${packagePath}assets/illustrations/flag_spain.svg';
+  String get flagSweden => '${packagePath}assets/illustrations/flag_sweden.svg';
+  String get flagSwitzerland =>
+      '${packagePath}assets/illustrations/flag_switzerland.svg';
+  String get flagTaiwan => '${packagePath}assets/illustrations/flag_taiwan.svg';
+  String get flagTurkey => '${packagePath}assets/illustrations/flag_turkey.svg';
+  String get flagUK => '${packagePath}assets/illustrations/flag_uk.svg';
+  String get flagUSA => '${packagePath}assets/illustrations/flag_usa.svg';
+
+  // @formatter:on
 
   String _theme({
     required String brightAsset,

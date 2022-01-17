@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   equatable: 2.0.3
-  flutter_svg: '0.23.0+1'
+  flutter_svg: 1.0.2
   flutter_switch: 0.3.2
   provider: 6.0.1
   rxdart: 0.27.3
@@ -58,6 +58,41 @@ flutter:
     - packages/xayn_design/assets/illustrations/brainy_disabled_dark.svg
     - packages/xayn_design/assets/illustrations/brainy_enabled.svg
     - packages/xayn_design/assets/illustrations/brainy_enabled_dark.svg
+    - packages/xayn_design/assets/illustrations/flag_argentina.svg
+    - packages/xayn_design/assets/illustrations/flag_australia.svg
+    - packages/xayn_design/assets/illustrations/flag_austria.svg
+    - packages/xayn_design/assets/illustrations/flag_belgium.svg
+    - packages/xayn_design/assets/illustrations/flag_brazil.svg
+    - packages/xayn_design/assets/illustrations/flag_canada.svg
+    - packages/xayn_design/assets/illustrations/flag_chile.svg
+    - packages/xayn_design/assets/illustrations/flag_china.svg
+    - packages/xayn_design/assets/illustrations/flag_denmark.svg
+    - packages/xayn_design/assets/illustrations/flag_finland.svg
+    - packages/xayn_design/assets/illustrations/flag_france.svg
+    - packages/xayn_design/assets/illustrations/flag_germany.svg
+    - packages/xayn_design/assets/illustrations/flag_hong_kong.svg
+    - packages/xayn_design/assets/illustrations/flag_india.svg
+    - packages/xayn_design/assets/illustrations/flag_indonesia.svg
+    - packages/xayn_design/assets/illustrations/flag_ireland.svg
+    - packages/xayn_design/assets/illustrations/flag_italy.svg
+    - packages/xayn_design/assets/illustrations/flag_japan.svg
+    - packages/xayn_design/assets/illustrations/flag_malaysia.svg
+    - packages/xayn_design/assets/illustrations/flag_mexico.svg
+    - packages/xayn_design/assets/illustrations/flag_netherlands.svg
+    - packages/xayn_design/assets/illustrations/flag_new_zealand.svg
+    - packages/xayn_design/assets/illustrations/flag_norway.svg
+    - packages/xayn_design/assets/illustrations/flag_philippines.svg
+    - packages/xayn_design/assets/illustrations/flag_poland.svg
+    - packages/xayn_design/assets/illustrations/flag_russia.svg
+    - packages/xayn_design/assets/illustrations/flag_south_africa.svg
+    - packages/xayn_design/assets/illustrations/flag_south_korea.svg
+    - packages/xayn_design/assets/illustrations/flag_spain.svg
+    - packages/xayn_design/assets/illustrations/flag_sweden.svg
+    - packages/xayn_design/assets/illustrations/flag_switzerland.svg
+    - packages/xayn_design/assets/illustrations/flag_taiwan.svg
+    - packages/xayn_design/assets/illustrations/flag_turkey.svg
+    - packages/xayn_design/assets/illustrations/flag_uk.svg
+    - packages/xayn_design/assets/illustrations/flag_usa.svg
     # logo
     - packages/xayn_design/assets/logo/icon_logo.svg
     - packages/xayn_design/assets/logo/xayn_logo.svg
