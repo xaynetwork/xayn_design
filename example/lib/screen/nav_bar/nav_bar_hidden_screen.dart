@@ -20,8 +20,6 @@ class _NavBarIgnoredScreenState
   @override
   Color get screenBgColor => Colors.blue;
 
-  bool isHidden = false;
-
   @override
   List<Widget> buildExtraChildren() {
     const title = Text(
@@ -34,18 +32,14 @@ class _NavBarIgnoredScreenState
         const Text('Hide current navbar screen'),
         const SizedBox(width: 42),
         AppSwitchWidget(
-            value: isHidden,
-            onToggle: (isHidden) {
-              setState(
-                () {
-                  this.isHidden = isHidden;
-                  if (isHidden) {
-                    NavBarContainer.hideNavBar(context);
-                  } else {
-                    NavBarContainer.showNavBar(context);
-                  }
-                },
-              );
+            value: NavBarContainer.isNavBarVisible(context),
+            onToggle: (_) {
+              if (NavBarContainer.isNavBarVisible(context)) {
+                NavBarContainer.hideNavBar(context);
+              } else {
+                NavBarContainer.showNavBar(context);
+              }
+              setState(() {});
             })
       ],
     );

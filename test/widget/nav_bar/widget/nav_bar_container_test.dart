@@ -222,6 +222,30 @@ void main() {
       );
 
       testWidgets(
+        'WHEN NavBarContainer.hideNavBar then NavBarContainer.isNavBarVisible is toggled',
+        (final WidgetTester tester) async {
+          await tester.pumpLindenApp(buildWidget(
+            child: _StatelessConfigWidget(() => _backBtnConfig),
+          ));
+          await tester.resetNavBarWithDebounce();
+          final stateNavBar = getStateNavBar();
+          expect(stateNavBar.config, isNotNull);
+
+          expect(isNavBarVisible(), true);
+
+          hideNavBar();
+          await tester.pumpAndSettle(updateNavBarDebounceTimeout);
+
+          expect(isNavBarVisible(), false);
+
+          showNavBar();
+          await tester.pumpAndSettle(updateNavBarDebounceTimeout);
+
+          expect(isNavBarVisible(), true);
+        },
+      );
+
+      testWidgets(
         'WHEN NavBarContainer.updateNavBar called THEN config in NavBar changed',
         (final WidgetTester tester) async {
           await tester.pumpLindenApp(buildWidget(
