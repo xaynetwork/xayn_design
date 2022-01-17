@@ -50,6 +50,9 @@ void hideNavBar({BuildContext? context}) =>
 void showNavBar({BuildContext? context}) =>
     NavBarContainer.showNavBar(context ?? getContext());
 
+bool isNavBarVisible({BuildContext? context}) =>
+    NavBarContainer.isNavBarVisible(context ?? getContext());
+
 NavBarContainer buildWidget({
   Widget? child,
   bool withNavBar = true,

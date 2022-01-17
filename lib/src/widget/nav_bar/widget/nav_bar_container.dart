@@ -39,6 +39,12 @@ class NavBarContainer extends StatefulWidget {
     return _getTypedWidget(context).controller.showNavBar();
   }
 
+  /// Call this, when you need to know if the [NavBar] is visible
+  static bool isNavBarVisible(BuildContext context) {
+    if (!staticCallsEnabled) return false;
+    return _getTypedWidget(context).controller.isNavBarVisible();
+  }
+
   static InheritedNavBarContainer _getTypedWidget(BuildContext context) {
     final typedWidget =
         context.dependOnInheritedWidgetOfExactType<InheritedNavBarContainer>();
@@ -86,7 +92,7 @@ class NavBarContainerState extends State<NavBarContainer>
 
   Linden get linden => UnterDenLinden.getLinden(context);
 
-  var isVisible = true;
+  var _isVisible = true;
 
   @override
   void initState() {
@@ -126,13 +132,22 @@ class NavBarContainerState extends State<NavBarContainer>
   }
 
   @override
-  void hideNavBar() => _tryToUpdateVisibility(false);
+  bool isNavBarVisible() => _isVisible;
 
   @override
-  void showNavBar() => _tryToUpdateVisibility(true);
+  void hideNavBar() {
+    if (!_isVisible) return;
+    _tryToUpdateVisibility(false);
+  }
+
+  @override
+  void showNavBar() {
+    if (_isVisible) return;
+    _tryToUpdateVisibility(true);
+  }
 
   void _updateBar(ConfigPair configPair) {
-    if (!isVisible) {
+    if (!_isVisible) {
       configPair.updater.update(NavBarConfig.hidden());
       return;
     }
@@ -191,7 +206,7 @@ class NavBarContainerState extends State<NavBarContainer>
   }
 
   void _tryToUpdateVisibility(bool isVisible) {
-    this.isVisible = isVisible;
+    _isVisible = isVisible;
     final pair = configPair;
     if (pair == null) return;
     _updateBar(pair);
@@ -229,6 +244,9 @@ abstract class NavBarController {
 
   /// Used internally, to get the last non hidden config
   void showNavBar();
+
+  /// Used internally, to get if nav bar is visible
+  bool isNavBarVisible();
 }
 
 class NavBarContainerNotFoundException implements Exception {
