@@ -61,6 +61,7 @@ class _TextualNotificationState extends State<TextualNotification>
       },
       child: TooltipMessageContainer(
         linden: linden,
+        style: tooltipController.style,
         child: content,
       ),
     );

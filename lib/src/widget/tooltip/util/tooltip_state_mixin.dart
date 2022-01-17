@@ -22,7 +22,14 @@ mixin TooltipStateMixin<T extends StatefulWidget> on State<T> {
     _factoryKeys.add(key);
   }
 
-  void showTooltip(TooltipKey key, [List<dynamic>? parameters]) {
-    _tooltipController.show(key, parameters);
-  }
+  void showTooltip(
+    TooltipKey key, {
+    TooltipStyle style = TooltipStyle.normal,
+    List<dynamic>? parameters,
+  }) =>
+      _tooltipController.show(
+        key,
+        style: style,
+        parameters: parameters,
+      );
 }
