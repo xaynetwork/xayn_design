@@ -198,6 +198,8 @@ class XSizes {
 
   double get iconSize => unit3;
 
+  double get smallIconSize => unit2_5;
+
   double get iconButtonSize => unit6;
 
   double get buttonMinHeight => unit5;
@@ -223,6 +225,7 @@ class XSizes {
   final double searchBarScrollThreshold = 150.0;
 
   final double headerMaxExtent = 65.0;
+  final double bottomSheetMaxWidth = 480.0;
 
   ///graphics
   final double graphicsGridViewWidth = 149;

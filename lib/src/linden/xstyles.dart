@@ -71,6 +71,11 @@ class XStyles {
         height: 1.23,
       );
 
+  TextStyle? get bottomSheetText => appBodyText?.copyWith(
+        fontWeight: _weightBold,
+        height: 1.23,
+      );
+
   TextStyle? get appButtonTextOnboarding => appButtonText?.copyWith(
         fontSize: 18.0,
       );
@@ -341,6 +346,11 @@ class XStyles {
       BorderRadius.horizontal(left: Radius.circular(_unit));
 
   final zeroBorder = BorderRadius.zero;
+
+  final roundBorderBottomSheet = BorderRadius.only(
+    topLeft: Radius.circular(_unit1_5),
+    topRight: Radius.circular(_unit1_5),
+  );
 
   /// ButtonStyle objects
 
