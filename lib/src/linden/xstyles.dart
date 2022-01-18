@@ -265,7 +265,7 @@ class XStyles {
         fontWeight: _weightBold,
       );
 
-  TextStyle? get tooltipArrowTextStyle => appBodyText?.copyWith(
+  TextStyle? get tooltipArrowDownTextStyle => appBodyText?.copyWith(
         color: colors.brightText,
         fontSize: 18,
         fontWeight: _weightBold,

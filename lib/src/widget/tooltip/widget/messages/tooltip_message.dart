@@ -77,7 +77,7 @@ class TooltipMessageContainer extends StatelessWidget
     return Material(
       type: MaterialType.button,
       elevation: linden.dimen.elevationLow,
-      textStyle: linden.styles.tooltipArrowTextStyle,
+      textStyle: linden.styles.tooltipArrowDownTextStyle,
       borderRadius: BorderRadius.all(Radius.circular(linden.dimen.unit1_5)),
       color: linden.colors.accent,
       child: Column(

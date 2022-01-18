@@ -16,7 +16,7 @@ typedef ShowTooltipWhen = bool Function();
 
 enum TooltipStyle {
   normal,
-  arrow,
+  arrowDown,
 }
 
 class Tooltip extends StatefulWidget {
