@@ -85,8 +85,8 @@ class TooltipMessageContainer extends StatelessWidget
         children: [
           Padding(
             padding: EdgeInsets.only(
-              left: linden.dimen.unit2,
-              right: linden.dimen.unit2,
+              left: linden.dimen.unit2_5,
+              right: linden.dimen.unit2_5,
               top: linden.dimen.unit,
               bottom: linden.dimen.unit1_5,
             ),
