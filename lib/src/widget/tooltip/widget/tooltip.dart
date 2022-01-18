@@ -255,9 +255,10 @@ class _TooltipState extends State<Tooltip>
         );
 
     final linden = this.linden;
-    final defaultStyleOffset = tooltipController.style == TooltipStyle.normal
-        ? linden.dimen.unit4
-        : linden.dimen.unit2_5;
+    final defaultStyleOffset =
+        tooltipController.activeStyle == TooltipStyle.normal
+            ? linden.dimen.unit4
+            : linden.dimen.unit2_5;
     final verticalOffset = widget.verticalOffset ?? defaultStyleOffset;
     // We create this widget outside of the overlay entry's builder to prevent
     // updated values from happening to leak into the overlay when the overlay
