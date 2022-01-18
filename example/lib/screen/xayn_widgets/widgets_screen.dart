@@ -1,3 +1,4 @@
+import 'package:example/screen/xayn_widgets/page/bottom_sheet_page.dart';
 import 'package:example/screen/xayn_widgets/page/button_page.dart';
 import 'package:example/screen/xayn_widgets/page/card_page.dart';
 import 'package:example/screen/xayn_widgets/page/dots_indicator_page.dart';
@@ -28,6 +29,7 @@ class _WidgetsScreenState extends State<WidgetsScreen>
     'Button': const ButtonPage(),
     'Card': const CardPage(),
     'Settings': const SettingsPage(),
+    'Bottom Sheet': const BottomSheetPage(),
   };
 
   late final TabController _tabController;
