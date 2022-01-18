@@ -14,6 +14,11 @@ typedef MessageFactory = Map<TooltipKey, TooltipParams>;
 typedef OnController = void Function(TooltipController);
 typedef ShowTooltipWhen = bool Function();
 
+enum TooltipStyle {
+  normal,
+  arrowDown,
+}
+
 class Tooltip extends StatefulWidget {
   final TooltipController? controller;
   final ContextProvider? contextProvider;
@@ -193,7 +198,6 @@ class _TooltipPositionDelegate extends SingleChildLayoutDelegate {
 class _TooltipState extends State<Tooltip>
     with SingleTickerProviderStateMixin, UnterDenLindenMixin {
   late double height;
-  late double verticalOffset;
   late AnimationController animationController;
   late final TooltipController tooltipController;
   _OverlayKeyEntry? overlayKey;
@@ -204,7 +208,6 @@ class _TooltipState extends State<Tooltip>
     assert(Overlay.of(context, debugRequiredFor: widget) != null);
 
     height = widget.height ?? _getDefaultTooltipHeight();
-    verticalOffset = widget.verticalOffset ?? linden.dimen.unit4;
 
     return ChangeNotifierProvider<TooltipController>.value(
       value: tooltipController,
@@ -250,7 +253,13 @@ class _TooltipState extends State<Tooltip>
           targetContext.size!.center(Offset.zero),
           ancestor: overlayState.context.findRenderObject(),
         );
+
     final linden = this.linden;
+    final defaultStyleOffset =
+        tooltipController.activeStyle == TooltipStyle.normal
+            ? linden.dimen.unit4
+            : linden.dimen.unit2_5;
+    final verticalOffset = widget.verticalOffset ?? defaultStyleOffset;
     // We create this widget outside of the overlay entry's builder to prevent
     // updated values from happening to leak into the overlay when the overlay
     // rebuilds.
