@@ -27,4 +27,10 @@ mixin TooltipStatelessMixin on StatelessWidget {
       parameters: parameters,
     );
   }
+
+  void hideTooltip(BuildContext context) {
+    final _tooltipController =
+        Provider.of<TooltipController>(context, listen: false);
+    _tooltipController.hide();
+  }
 }

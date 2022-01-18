@@ -32,4 +32,6 @@ mixin TooltipStateMixin<T extends StatefulWidget> on State<T> {
         style: style,
         parameters: parameters,
       );
+
+  void hideTooltip() => _tooltipController.hide();
 }
