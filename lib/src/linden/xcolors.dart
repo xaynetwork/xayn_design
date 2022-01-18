@@ -219,6 +219,12 @@ class XColors {
 
   Color get dotsIndicatorBorderColor => _white;
 
+  Color get bottomSheetBackgroundColor =>
+      _theme(bright: _white, dark: _black29);
+
+  Color get bottomSheetBarrierColor =>
+      _theme(bright: _white, dark: _black).withOpacity(0.8);
+
   /// Color helper constants
   final alpha50 = 0x7f;
 
