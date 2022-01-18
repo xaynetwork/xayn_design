@@ -11,6 +11,7 @@ class TooltipController extends ChangeNotifier {
   /// The key should is tied to a handler which returns an implementation of [TooltipMessage].
   TooltipKey? get activeKey => _activeKey;
 
+  // The style to be used when presenting tooltip.
   TooltipStyle get style => _style;
 
   /// A List of optional parameters which can be passed to the [TooltipMessage]
@@ -31,6 +32,7 @@ class TooltipController extends ChangeNotifier {
   }
 
   /// Displays a tooltip for the requested [key].
+  /// Use [style] to change visual appearance of a tooltip.
   /// Use [parameters] to provide optional information, which can be used
   /// when creating a corresponding [TooltipMessage].
   void show(

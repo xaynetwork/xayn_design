@@ -94,6 +94,9 @@ class TooltipMessageContainer extends StatelessWidget
           ),
           Stack(
             children: [
+              // Workaroud to eliminate hairline border when using fill painiting style.
+              // Drawing two shapes one with fill style and the other with stroke style
+              // on top of each other, fixes the small gap beween tooltip and bottom arrow.
               ...PaintingStyle.values.map(
                 (value) => CustomPaint(
                   painter: _Triangle(linden, value),
@@ -125,9 +128,14 @@ class _Triangle extends CustomPainter {
 
     final path = Path();
 
-    path.lineTo(-10, 0);
-    path.lineTo(0, 10);
-    path.lineTo(10, 0);
+    path.lineTo(-linden.dimen.unit, 0);
+    path.conicTo(
+      0,
+      linden.dimen.unit1_5,
+      linden.dimen.unit,
+      0,
+      linden.dimen.unit,
+    );
     path.lineTo(0, 0);
     canvas.drawPath(path, paint);
   }
