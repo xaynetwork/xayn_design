@@ -255,6 +255,8 @@ class XColors {
   Color get personalAreaHomeFeed => throw _NewSchemeException();
 
   Color get personalAreaSettings => throw _NewSchemeException();
+
+  Color get collectionsScreenCard => throw _NewSchemeException();
 //endregion colors, needed for new scheme
 }
 
@@ -356,6 +358,10 @@ class NewXColors extends XColors {
   // ignore: unused_field
   static const _orange120 = Color(0xffD68004);
 
+  // Light purple
+  // ignore: unused_field
+  static const _lightPurple = Color(0xCC816aDD);
+
   @override
   Color get primary => _theme(bright: _primary);
 
@@ -394,6 +400,9 @@ class NewXColors extends XColors {
 
   @override
   Color get personalAreaSettings => _theme(bright: _purple80);
+
+  @override
+  Color get collectionsScreenCard => _theme(bright: _lightPurple);
 }
 
 class _NewSchemeException implements Exception {

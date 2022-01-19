@@ -9,6 +9,7 @@ const EdgeInsets _defaultPaddingTextWithIcon =
 
 class AppGhostButton extends StatelessWidget {
   final VoidCallback? onPressed;
+  final VoidCallback? onLongPressed;
   final Widget? _child;
   final String? _text;
   final String? _svgIconPath;
@@ -19,6 +20,7 @@ class AppGhostButton extends StatelessWidget {
   const AppGhostButton({
     required Widget child,
     required this.onPressed,
+    this.onLongPressed,
     this.contentPadding = _defaultContentPadding,
     this.borderRadius = _defaultBorderRadius,
     this.backgroundColor,
@@ -31,6 +33,7 @@ class AppGhostButton extends StatelessWidget {
   const AppGhostButton.text(
     String text, {
     required this.onPressed,
+    this.onLongPressed,
     this.contentPadding = _defaultContentPadding,
     this.borderRadius = _defaultBorderRadius,
     this.backgroundColor,
@@ -43,6 +46,7 @@ class AppGhostButton extends StatelessWidget {
   const AppGhostButton.icon(
     String svgIconPath, {
     required this.onPressed,
+    this.onLongPressed,
     this.contentPadding = _defaultPaddingIcon,
     this.borderRadius = _defaultBorderRadius,
     this.backgroundColor,
@@ -56,6 +60,7 @@ class AppGhostButton extends StatelessWidget {
     required String text,
     required String svgIconPath,
     required this.onPressed,
+    this.onLongPressed,
     this.contentPadding = _defaultPaddingTextWithIcon,
     this.borderRadius = _defaultBorderRadius,
     this.backgroundColor,
@@ -79,6 +84,7 @@ class AppGhostButton extends StatelessWidget {
       child: TextButton(
         style: style,
         onPressed: onPressed,
+        onLongPress: onLongPressed,
         child: _buildChild(linden),
       ),
     );
