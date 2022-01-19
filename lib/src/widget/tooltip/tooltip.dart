@@ -3,6 +3,7 @@ export 'data/tooltip_message_key.dart';
 export 'data/tooltip_options.dart';
 export 'data/tooltip_params.dart';
 export 'widget/application_tooltip_provider.dart';
+export 'widget/messages/customized_textual_notification.dart';
 export 'widget/messages/textual_notification.dart';
 export 'widget/messages/tooltip_message.dart';
 export 'widget/tooltip.dart';
