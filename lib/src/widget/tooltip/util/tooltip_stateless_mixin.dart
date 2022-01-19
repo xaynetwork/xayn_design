@@ -15,11 +15,22 @@ mixin TooltipStatelessMixin on StatelessWidget {
 
   void showTooltip(
     BuildContext context,
-    TooltipKey key, [
+    TooltipKey key, {
+    TooltipStyle style = TooltipStyle.normal,
     List<dynamic>? parameters,
-  ]) {
+  }) {
     final _tooltipController =
         Provider.of<TooltipController>(context, listen: false);
-    _tooltipController.show(key, parameters);
+    _tooltipController.show(
+      key,
+      style: style,
+      parameters: parameters,
+    );
+  }
+
+  void hideTooltip(BuildContext context) {
+    final _tooltipController =
+        Provider.of<TooltipController>(context, listen: false);
+    _tooltipController.hide();
   }
 }

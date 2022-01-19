@@ -265,6 +265,12 @@ class XStyles {
         fontWeight: _weightBold,
       );
 
+  TextStyle? get tooltipArrowDownTextStyle => appBodyText?.copyWith(
+        color: colors.brightText,
+        fontSize: 18,
+        fontWeight: _weightBold,
+      );
+
   TextStyle? get betaTagTextStyle => appBodyText?.copyWith(
         fontSize: 8,
         fontWeight: _weightBold,
