@@ -22,8 +22,9 @@ Future showAppBottomSheet(
       borderRadius: linden.styles.roundBorderBottomSheet,
     ),
     backgroundColor: linden.colors.bottomSheetBackgroundColor,
-    barrierColor:
-        showBarrierColor ? linden.colors.bottomSheetBarrierColor : null,
+    barrierColor: showBarrierColor
+        ? linden.colors.bottomSheetBarrierColor
+        : linden.colors.transparent,
     builder: builder,
   );
 }
