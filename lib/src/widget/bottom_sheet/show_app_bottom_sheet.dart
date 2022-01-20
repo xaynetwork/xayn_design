@@ -21,6 +21,7 @@ Future showAppBottomSheet(
   return showMaterialModalBottomSheet(
     context: context,
     enableDrag: false,
+    elevation: linden.dimen.elevationHigh,
     shape: RoundedRectangleBorder(
       borderRadius: linden.styles.roundBorderBottomSheet,
     ),
