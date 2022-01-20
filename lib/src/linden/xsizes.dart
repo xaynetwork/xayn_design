@@ -42,7 +42,7 @@ class XSizes {
   final double unit6 = _unit * 6;
   final double unit7 = _unit * 7;
   final double unit8 = _unit * 8;
-  final double unit8_25 = _unit * 8.28;
+  final double unit8_25 = _unit * 8.25;
   final double unit9 = _unit * 9;
   final double unit10 = _unit * 10;
   final double unit11 = _unit * 11;
