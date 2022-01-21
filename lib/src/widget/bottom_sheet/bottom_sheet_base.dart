@@ -48,14 +48,6 @@ class _BottomSheetBaseState extends State<BottomSheetBase>
       child: constrainedChild,
     );
 
-    final bottomSheet = WillPopScope(
-      onWillPop: () async {
-        onCloseBottomSheet(context);
-        return true;
-      },
-      child: avoidKeyboardChild,
-    );
-
-    return bottomSheet;
+    return avoidKeyboardChild;
   }
 }
