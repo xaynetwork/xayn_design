@@ -35,41 +35,4 @@ void main() {
       expect(action.tapArea, SettingsTileActionTapArea.content);
     },
   );
-
-  test(
-    'GIVEN settings tile action text WHEN tap area called THEN return trailing',
-    () {
-      final action = SettingsTileActionText(
-        key: const Key('tile'),
-        onPressed: onPressed,
-        text: 'text',
-      );
-      expect(action.tapArea, SettingsTileActionTapArea.trailing);
-    },
-  );
-
-  test(
-    'GIVEN settings tile action circle WHEN tap area called THEN return trailing',
-    () {
-      final action = SettingsTileActionCircle(
-        key: const Key('tile'),
-        onPressed: onPressed,
-        isActive: true,
-        svgIconPath: 'svgIconPath',
-      );
-      expect(action.tapArea, SettingsTileActionTapArea.trailing);
-    },
-  );
-
-  test(
-    'GIVEN settings tile action switch WHEN tap area called THEN return trailing',
-    () {
-      final action = SettingsTileActionSwitch(
-        key: const Key('tile'),
-        onPressed: onPressed,
-        value: true,
-      );
-      expect(action.tapArea, SettingsTileActionTapArea.trailing);
-    },
-  );
 }
