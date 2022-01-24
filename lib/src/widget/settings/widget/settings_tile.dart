@@ -146,17 +146,6 @@ class SettingsTile extends StatelessWidget {
         minSizeEqual: true,
       );
 
-  // Widget _buildActionIcon(SettingsTileActionIcon action, Linden linden) =>
-  //     SizedBox(
-  //       width: linden.dimen.iconButtonSize,
-  //       height: linden.dimen.iconButtonSize,
-  //       child: AppGhostButton.icon(
-  //         action.svgIconPath,
-  //         key: action.key,
-  //         onPressed: action.onPressed,
-  //       ),
-  //     );
-
   Widget _buildActionIcon(SettingsTileActionIcon action, Linden linden) =>
       SizedBox(
         width: linden.dimen.iconButtonSize,
