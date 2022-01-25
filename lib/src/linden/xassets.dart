@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../utils/safe_platform.dart';
 
 /// All the assets' strings should be preceded by [packagePath]
@@ -144,6 +145,9 @@ class _Graphics {
   String get formsOrange => packagePath + 'assets/graphics/forms_orange.svg';
 
   String get formsPurple => packagePath + 'assets/graphics/forms_purple.svg';
+
+  String get formsEmptyCollection =>
+      packagePath + 'assets/graphics/forms_empty_collection.svg';
 
   String get gridView => packagePath + 'assets/graphics/grid_view.svg';
 
