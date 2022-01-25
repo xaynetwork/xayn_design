@@ -23,4 +23,16 @@ void main() {
       expect(full() == full(), isTrue);
     },
   );
+
+  test(
+    'GIVEN settings tile action icon WHEN tap area called THEN return content',
+    () {
+      final action = SettingsTileActionIcon(
+        key: const Key('tile'),
+        onPressed: onPressed,
+        svgIconPath: 'svgIconPath',
+      );
+      expect(action.tapArea, SettingsTileActionTapArea.content);
+    },
+  );
 }

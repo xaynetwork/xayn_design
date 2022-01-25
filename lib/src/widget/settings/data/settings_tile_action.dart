@@ -1,6 +1,22 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+enum SettingsTileActionTapArea {
+  content,
+  trailing,
+}
+
+extension SettingsTileActionExtension on SettingsTileAction {
+  SettingsTileActionTapArea get tapArea {
+    switch (runtimeType) {
+      case SettingsTileActionIcon:
+        return SettingsTileActionTapArea.content;
+      default:
+        return SettingsTileActionTapArea.trailing;
+    }
+  }
+}
+
 @immutable
 abstract class SettingsTileAction extends Equatable {
   final Key key;

@@ -24,15 +24,28 @@ class SettingsTile extends StatelessWidget {
       children: rowChildren,
       crossAxisAlignment: CrossAxisAlignment.start,
     );
-    return SizedBox(
-        height: linden.dimen.unit7,
-        child: Padding(
-          padding: EdgeInsets.only(
-            left: linden.dimen.unit2,
-            right: linden.dimen.unit0_5,
-          ),
-          child: row,
-        ));
+
+    final content = SizedBox(
+      height: linden.dimen.unit7,
+      child: Padding(
+        padding: EdgeInsets.only(
+          left: linden.dimen.unit2,
+          right: linden.dimen.unit0_5,
+        ),
+        child: row,
+      ),
+    );
+
+    final embedInButton =
+        data.action?.tapArea == SettingsTileActionTapArea.content;
+    return embedInButton
+        ? AppGhostButton(
+            key: data.action?.key,
+            onPressed: data.action?.onPressed,
+            contentPadding: EdgeInsets.zero,
+            child: content,
+          )
+        : content;
   }
 
   void _addIcon(Linden linden, List<Widget> rowChildren) {
@@ -137,10 +150,12 @@ class SettingsTile extends StatelessWidget {
       SizedBox(
         width: linden.dimen.iconButtonSize,
         height: linden.dimen.iconButtonSize,
-        child: AppGhostButton.icon(
+        child: SvgPicture.asset(
           action.svgIconPath,
-          key: action.key,
-          onPressed: action.onPressed,
+          fit: BoxFit.none,
+          width: linden.dimen.iconSize,
+          height: linden.dimen.iconSize,
+          color: linden.colors.icon,
         ),
       );
 
