@@ -40,6 +40,7 @@ flutter:
     - packages/xayn_design/assets/graphics/forms_green.svg
     - packages/xayn_design/assets/graphics/forms_orange.svg
     - packages/xayn_design/assets/graphics/forms_purple.svg
+    - packages/xayn_design/assets/graphics/forms_empty_collection.svg
     - packages/xayn_design/assets/graphics/grid_view.svg
     - packages/xayn_design/assets/graphics/list_view.svg
     - packages/xayn_design/assets/graphics/news_only.svg

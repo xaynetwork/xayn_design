@@ -358,10 +358,6 @@ class NewXColors extends XColors {
   // ignore: unused_field
   static const _orange120 = Color(0xffD68004);
 
-  // Light purple
-  // ignore: unused_field
-  static const _lightPurple = Color(0xCC816aDD);
-
   @override
   Color get primary => _theme(bright: _primary);
 
@@ -402,7 +398,7 @@ class NewXColors extends XColors {
   Color get personalAreaSettings => _theme(bright: _purple80);
 
   @override
-  Color get collectionsScreenCard => _theme(bright: _lightPurple);
+  Color get collectionsScreenCard => _theme(bright: _pink60);
 }
 
 class _NewSchemeException implements Exception {
