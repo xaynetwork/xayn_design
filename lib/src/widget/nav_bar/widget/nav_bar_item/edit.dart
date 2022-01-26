@@ -92,6 +92,7 @@ class _NavBarEditState extends State<NavBarEdit> {
         controller: controller,
         style: linden.styles.textInputTextSmall,
         textInputAction: TextInputAction.search,
+        keyboardAppearance: linden.colors.brightness,
         maxLines: 1,
         onChanged: widget.data.onTextChanged,
         onSubmitted: widget.data.onSearchPressed,
