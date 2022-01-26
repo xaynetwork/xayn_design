@@ -8,10 +8,12 @@ class BottomSheetBase extends StatefulWidget {
     Key? key,
     required this.body,
     this.padding,
+    this.onSystemPop,
   }) : super(key: key);
 
   final Widget body;
   final EdgeInsets? padding;
+  final VoidCallback? onSystemPop;
 
   @override
   _BottomSheetBaseState createState() => _BottomSheetBaseState();
@@ -48,6 +50,14 @@ class _BottomSheetBaseState extends State<BottomSheetBase>
       child: constrainedChild,
     );
 
-    return avoidKeyboardChild;
+    return WillPopScope(
+      onWillPop: () async {
+        if (widget.onSystemPop != null) {
+          widget.onSystemPop!();
+        }
+        return true;
+      },
+      child: avoidKeyboardChild,
+    );
   }
 }
