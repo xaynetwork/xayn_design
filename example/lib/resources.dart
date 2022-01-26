@@ -69,6 +69,7 @@ Set<String> getGraphicsAssets(Linden linden) => {
       linden.assets.graphics.formsGreen,
       linden.assets.graphics.formsOrange,
       linden.assets.graphics.formsPurple,
+      linden.assets.graphics.formsEmptyCollection,
       linden.assets.graphics.gridView,
       linden.assets.graphics.listView,
       linden.assets.graphics.newsOnly,
@@ -79,7 +80,6 @@ Set<String> getGraphicsAssets(Linden linden) => {
 Set<String> getIllustrationsAssets(Linden linden) => {
       linden.assets.illustrations.brainyDisabled,
       linden.assets.illustrations.brainyEnabled,
-
       linden.assets.illustrations.flagArgentina,
       linden.assets.illustrations.flagAustralia,
       linden.assets.illustrations.flagAustria,
