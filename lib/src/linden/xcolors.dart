@@ -150,7 +150,7 @@ class XColors {
 
   Color get swipeBackgroundMoveBookmark => _theme(bright: _purple);
 
-  Color get swipeBackgroundEdit => _theme(bright: _purple);
+  Color get swipeBackgroundEdit => _theme(bright: _blue);
 
   Color get swipeBackgroundShare => _theme(bright: _white);
 
