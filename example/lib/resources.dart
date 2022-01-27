@@ -37,6 +37,7 @@ Set<String> getIconAssets(Linden linden) => {
       linden.assets.icons.menu,
       linden.assets.icons.moon,
       linden.assets.icons.moonAndSun,
+      linden.assets.icons.move,
       linden.assets.icons.neutral,
       linden.assets.icons.newTab,
       linden.assets.icons.news,
