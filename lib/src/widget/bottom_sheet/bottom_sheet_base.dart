@@ -47,7 +47,9 @@ class _BottomSheetBaseState extends State<BottomSheetBase>
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom,
       ),
-      child: constrainedChild,
+      child: SafeArea(
+        child: constrainedChild,
+      ),
     );
 
     return WillPopScope(
