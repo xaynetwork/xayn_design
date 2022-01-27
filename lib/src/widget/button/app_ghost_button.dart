@@ -4,8 +4,10 @@ import 'package:xayn_design/xayn_design.dart';
 const EdgeInsets _defaultContentPadding = EdgeInsets.all(12);
 const _defaultBorderRadius = BorderRadius.all(Radius.circular(8));
 const EdgeInsets _defaultPaddingIcon = EdgeInsets.zero;
-const EdgeInsets _defaultPaddingTextWithIcon =
-    EdgeInsets.symmetric(horizontal: 12, vertical: 8);
+const EdgeInsets _defaultPaddingTextWithIcon = EdgeInsets.symmetric(
+  horizontal: 12,
+  vertical: 8,
+);
 
 class AppGhostButton extends StatelessWidget {
   final VoidCallback? onPressed;
@@ -16,6 +18,8 @@ class AppGhostButton extends StatelessWidget {
   final EdgeInsets contentPadding;
   final BorderRadiusGeometry borderRadius;
   final Color? backgroundColor;
+  final Color? iconColor;
+  final Size? iconSize;
 
   const AppGhostButton({
     required Widget child,
@@ -24,6 +28,8 @@ class AppGhostButton extends StatelessWidget {
     this.contentPadding = _defaultContentPadding,
     this.borderRadius = _defaultBorderRadius,
     this.backgroundColor,
+    this.iconColor,
+    this.iconSize,
     Key? key,
   })  : _child = child,
         _text = null,
@@ -41,6 +47,8 @@ class AppGhostButton extends StatelessWidget {
   })  : _child = null,
         _text = text,
         _svgIconPath = null,
+        iconColor = null,
+        iconSize = null,
         super(key: key);
 
   const AppGhostButton.icon(
@@ -50,6 +58,8 @@ class AppGhostButton extends StatelessWidget {
     this.contentPadding = _defaultPaddingIcon,
     this.borderRadius = _defaultBorderRadius,
     this.backgroundColor,
+    this.iconColor,
+    this.iconSize,
     Key? key,
   })  : _child = null,
         _text = null,
@@ -64,6 +74,8 @@ class AppGhostButton extends StatelessWidget {
     this.contentPadding = _defaultPaddingTextWithIcon,
     this.borderRadius = _defaultBorderRadius,
     this.backgroundColor,
+    this.iconColor,
+    this.iconSize,
     Key? key,
   })  : _child = null,
         _text = text,
@@ -121,9 +133,9 @@ class AppGhostButton extends StatelessWidget {
       ? null
       : SvgPicture.asset(
           _svgIconPath!,
-          width: linden.dimen.iconSize,
-          height: linden.dimen.iconSize,
-          color: linden.colors.icon,
+          width: iconSize?.width ?? linden.dimen.iconSize,
+          height: iconSize?.height ?? linden.dimen.iconSize,
+          color: iconColor ?? linden.colors.icon,
         );
 
   Widget? _buildText(Linden linden) => _text == null
