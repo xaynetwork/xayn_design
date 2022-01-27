@@ -136,6 +136,7 @@ flutter:
     - packages/xayn_design/assets/icons/minus.svg
     - packages/xayn_design/assets/icons/moon.svg
     - packages/xayn_design/assets/icons/moon_and_sun.svg
+    - packages/xayn_design/assets/icons/move.svg
     - packages/xayn_design/assets/icons/neutral.svg
     - packages/xayn_design/assets/icons/new_tab.svg
     - packages/xayn_design/assets/icons/news.svg
