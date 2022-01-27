@@ -48,6 +48,7 @@ class _BottomSheetBaseState extends State<BottomSheetBase>
         bottom: MediaQuery.of(context).viewInsets.bottom,
       ),
       child: SafeArea(
+        top: false,
         child: constrainedChild,
       ),
     );
