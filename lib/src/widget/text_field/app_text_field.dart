@@ -92,17 +92,15 @@ class AppTextField extends StatelessWidget {
     );
     const iconMaxWidth = 48.0;
     const iconMaxHeight = 38.0;
+    final horizontalContentPadding = linden.dimen.adaptiveUnit(small: 1, normal: 1.5);
     return InputDecoration(
       filled: true,
       fillColor: linden.colors.searchInputFill,
       isDense: true,
       contentPadding: EdgeInsets.symmetric(
-        horizontal: linden.dimen.adaptiveUnit(small: 1, normal: 1.5),
         vertical: linden.dimen.adaptiveUnit(small: 1, normal: 1),
       ),
-      errorStyle: linden.dimen.isSmallScreen
-          ? linden.styles.textInputErrorSmall
-          : linden.styles.textInputError,
+      errorStyle: linden.styles.textInputError,
       hintText: hintText,
       hintStyle: hintTextStyle,
       errorText: errorText,
@@ -111,11 +109,15 @@ class AppTextField extends StatelessWidget {
       focusedBorder: border,
       errorBorder: border,
       focusedErrorBorder: border,
-      suffixIconConstraints: const BoxConstraints.expand(
-        width: iconMaxWidth,
-        height: iconMaxHeight,
-      ),
-      suffixIcon: suffixIcon,
+      suffixIconConstraints: suffixIcon != null
+          ? const BoxConstraints.expand(
+              width: iconMaxWidth,
+              height: iconMaxHeight,
+            )
+          : BoxConstraints.tightFor(
+              width: horizontalContentPadding,
+            ),
+      suffixIcon: suffixIcon ?? Container(),
       prefixIconConstraints: prefixIcon != null
           ? BoxConstraints(
               minWidth: linden.dimen.unit1_5,
@@ -123,8 +125,10 @@ class AppTextField extends StatelessWidget {
               maxWidth: iconMaxWidth,
               maxHeight: iconMaxHeight,
             )
-          : null,
-      prefixIcon: prefixIcon,
+          : BoxConstraints.tightFor(
+              width: horizontalContentPadding,
+            ),
+      prefixIcon: prefixIcon ?? Container(),
     );
   }
 }
