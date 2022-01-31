@@ -92,7 +92,8 @@ class AppTextField extends StatelessWidget {
     );
     const iconMaxWidth = 48.0;
     const iconMaxHeight = 38.0;
-    final horizontalContentPadding = linden.dimen.adaptiveUnit(small: 1, normal: 1.5);
+    final horizontalContentPadding =
+        linden.dimen.adaptiveUnit(small: 1, normal: 1.5);
     return InputDecoration(
       filled: true,
       fillColor: linden.colors.searchInputFill,
