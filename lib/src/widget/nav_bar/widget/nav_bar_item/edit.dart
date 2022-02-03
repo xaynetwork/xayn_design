@@ -66,9 +66,12 @@ class _NavBarEditState extends State<NavBarEdit> {
         borderRadius: BorderRadius.circular(linden.dimen.unit),
       ),
     );
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: linden.dimen.unit0_25),
-      child: container,
+    return Material(
+      color: Colors.transparent,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: linden.dimen.unit0_25),
+        child: container,
+      ),
     );
   }
 

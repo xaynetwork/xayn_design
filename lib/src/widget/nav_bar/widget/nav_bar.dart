@@ -63,11 +63,16 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
       children: items,
     );
 
-    final card = AppCardWidget(
-      contentPadding: EdgeInsets.symmetric(horizontal: linden.dimen.unit),
+    // AppCardWidget can't be used becasue it uses Material widget
+    // with MaterialType.card, which doesn't allow to customise shadows.
+    final card = Container(
+      padding: EdgeInsets.symmetric(horizontal: linden.dimen.unit),
       child: row,
-      borderRadius: BorderRadius.all(Radius.circular(linden.dimen.unit1_5)),
-      cardBackground: linden.colors.background,
+      decoration: BoxDecoration(
+        color: linden.colors.background,
+        borderRadius: BorderRadius.circular(linden.dimen.unit1_5),
+        boxShadow: [linden.styles.cardShadow],
+      ),
     );
 
     final sized = _withFixedHeight(card);

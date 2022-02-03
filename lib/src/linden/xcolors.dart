@@ -108,6 +108,9 @@ class XColors {
   Color get shadowTransparent =>
       _theme(bright: _black.withAlpha(65), dark: _black.withAlpha(0));
 
+  Color get shadowTransparentLigher =>
+      _theme(bright: _black.withAlpha(24), dark: _black.withAlpha(0));
+
   Color get shadowTransparentDarker =>
       _theme(bright: _black.withAlpha(100), dark: _black.withAlpha(0));
 
