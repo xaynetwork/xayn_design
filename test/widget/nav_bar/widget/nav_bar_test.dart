@@ -150,7 +150,6 @@ void main() {
 
         await tester.pumpAndSettle();
 
-        expect(find.byType(AppCardWidget), findsOneWidget);
         expect(find.byType(Row), findsNWidgets(3));
         expect(find.byType(SafeArea), findsOneWidget);
         expect(find.byType(HighlightLine), findsNothing);
