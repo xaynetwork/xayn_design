@@ -37,6 +37,12 @@ class _Lottie {
         brightness: brightness,
       );
 
+  String splashScreenJson(Brightness brightness) => _theme(
+        brightAsset: 'assets/lottie/splash_screen.json',
+        darkAsset: 'assets/lottie/splash_screen_dark.json',
+        brightness: brightness,
+      );
+
   String _theme({
     required String brightAsset,
     String? darkAsset,
