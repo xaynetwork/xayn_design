@@ -174,8 +174,8 @@ class XStyles {
 
   BoxShadow get cardShadow => BoxShadow(
         color: colors.shadowTransparentLigher,
-        blurRadius: 10,
-        spreadRadius: 4,
+        blurRadius: _dimen.unit1_25,
+        spreadRadius: _dimen.unit0_5,
       );
 
   BoxShadow get suggestionContainerShadow => BoxShadow(

@@ -16,8 +16,9 @@ class NavBarIconButton extends StatelessWidget {
       color: data.isDisabled ? linden.colors.iconDisabled : linden.colors.icon,
     );
     final btn = Material(
-      color: Colors.transparent,
+      color: linden.colors.transparent,
       child: InkWell(
+        splashColor: linden.colors.splashColor,
         key: data.key,
         onTap: data.onPressed,
         onLongPress: data.onLongPressed,
