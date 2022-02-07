@@ -17,6 +17,7 @@ Set<String> getIconAssets(Linden linden) => {
       linden.assets.icons.confetti,
       linden.assets.icons.cross,
       linden.assets.icons.devices,
+      linden.assets.icons.diamond,
       linden.assets.icons.download,
       linden.assets.icons.edit,
       linden.assets.icons.filters,
