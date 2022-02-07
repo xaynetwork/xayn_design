@@ -48,6 +48,7 @@ Set<String> getIconAssets(Linden linden) => {
       linden.assets.icons.plant,
       linden.assets.icons.play,
       linden.assets.icons.plus,
+      linden.assets.icons.premiumDecoration,
       linden.assets.icons.qrCode,
       linden.assets.icons.qrScan,
       linden.assets.icons.readerMode,

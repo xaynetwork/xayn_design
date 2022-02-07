@@ -306,6 +306,9 @@ class _Icons {
 
   String get plus => _theme(brightAsset: 'assets/icons/plus.svg');
 
+  String get premiumDecoration =>
+      _theme(brightAsset: 'assets/icons/premium_decoration.svg');
+
   String get qrCode => _theme(brightAsset: 'assets/icons/qr_code.svg');
 
   String get qrScan => _theme(brightAsset: 'assets/icons/qr_scanner.svg');
