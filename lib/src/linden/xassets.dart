@@ -238,6 +238,8 @@ class _Icons {
 
   String get devices => _theme(brightAsset: 'assets/icons/devices.svg');
 
+  String get diamond => _theme(brightAsset: 'assets/icons/diamond.svg');
+
   String get download => _theme(brightAsset: 'assets/icons/download.svg');
 
   String get edit => _theme(brightAsset: 'assets/icons/edit.svg');
