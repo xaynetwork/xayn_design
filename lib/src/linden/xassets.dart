@@ -238,6 +238,8 @@ class _Icons {
 
   String get devices => _theme(brightAsset: 'assets/icons/devices.svg');
 
+  String get diamond => _theme(brightAsset: 'assets/icons/diamond.svg');
+
   String get download => _theme(brightAsset: 'assets/icons/download.svg');
 
   String get edit => _theme(brightAsset: 'assets/icons/edit.svg');
@@ -303,6 +305,9 @@ class _Icons {
   String get play => _theme(brightAsset: 'assets/icons/play.svg');
 
   String get plus => _theme(brightAsset: 'assets/icons/plus.svg');
+
+  String get premiumDecoration =>
+      _theme(brightAsset: 'assets/icons/premium_decoration.svg');
 
   String get qrCode => _theme(brightAsset: 'assets/icons/qr_code.svg');
 
