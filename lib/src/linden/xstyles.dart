@@ -172,6 +172,12 @@ class XStyles {
         fontSize: 14.0,
       );
 
+  BoxShadow get cardShadow => BoxShadow(
+        color: colors.shadowTransparentLigher,
+        blurRadius: _dimen.unit1_25,
+        spreadRadius: _dimen.unit0_5,
+      );
+
   BoxShadow get suggestionContainerShadow => BoxShadow(
         color: colors.searchSuggetsionShadow,
         blurRadius: 4,

@@ -108,6 +108,9 @@ class XColors {
   Color get shadowTransparent =>
       _theme(bright: _black.withAlpha(65), dark: _black.withAlpha(0));
 
+  Color get shadowTransparentLigher =>
+      _theme(bright: _black.withAlpha(24), dark: _transparent);
+
   Color get shadowTransparentDarker =>
       _theme(bright: _black.withAlpha(100), dark: _black.withAlpha(0));
 
@@ -399,6 +402,10 @@ class NewXColors extends XColors {
 
   @override
   Color get collectionsScreenCard => _theme(bright: _pink60);
+
+  @override
+  Color get shadowTransparentLigher =>
+      _theme(bright: _black10, dark: transparent);
 }
 
 class _NewSchemeException implements Exception {

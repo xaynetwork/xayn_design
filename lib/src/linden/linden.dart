@@ -219,7 +219,7 @@ ThemeData _defaultTheme(
     appBarTheme: AppBarTheme(color: colors.accent),
     dialogBackgroundColor: colors.background,
     dividerColor: colors.divider,
-    scaffoldBackgroundColor: colors.background,
+    scaffoldBackgroundColor: colors.pageBackground,
     unselectedWidgetColor: colors.iconDisabled,
   );
   if (styles != null) {

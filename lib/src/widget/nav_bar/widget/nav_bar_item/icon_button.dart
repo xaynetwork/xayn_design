@@ -15,12 +15,16 @@ class NavBarIconButton extends StatelessWidget {
       height: linden.dimen.iconSize,
       color: data.isDisabled ? linden.colors.iconDisabled : linden.colors.icon,
     );
-    final btn = InkWell(
-      key: data.key,
-      onTap: data.onPressed,
-      onLongPress: data.onLongPressed,
-      child: Center(child: icon),
-      borderRadius: BorderRadius.circular(linden.dimen.unit),
+    final btn = Material(
+      color: linden.colors.transparent,
+      child: InkWell(
+        splashColor: linden.colors.splashColor,
+        key: data.key,
+        onTap: data.onPressed,
+        onLongPress: data.onLongPressed,
+        child: Center(child: icon),
+        borderRadius: BorderRadius.circular(linden.dimen.unit),
+      ),
     );
 
     return SizedBox(

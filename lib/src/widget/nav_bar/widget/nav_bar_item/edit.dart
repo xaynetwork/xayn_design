@@ -66,9 +66,12 @@ class _NavBarEditState extends State<NavBarEdit> {
         borderRadius: BorderRadius.circular(linden.dimen.unit),
       ),
     );
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: linden.dimen.unit0_25),
-      child: container,
+    return Material(
+      color: linden.colors.transparent,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: linden.dimen.unit0_25),
+        child: container,
+      ),
     );
   }
 
@@ -80,6 +83,7 @@ class _NavBarEditState extends State<NavBarEdit> {
       color: linden.colors.icon,
     );
     return InkWell(
+      splashColor: linden.colors.splashColor,
       onTap: widget._focusNode.requestFocus,
       child: Center(child: icon),
       borderRadius: BorderRadius.circular(linden.dimen.unit),
