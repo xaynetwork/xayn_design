@@ -7,7 +7,7 @@ const _defaultAlignment = CrossAxisAlignment.start;
 const _defaultTopPadding = 24.0;
 
 class SettingsSection extends StatelessWidget {
-  final String title;
+  final String? title;
   @Deprecated('Old Style Settings, might be removed')
   final String? subTitle;
   final List<SettingsCardData> items;
@@ -23,8 +23,8 @@ class SettingsSection extends StatelessWidget {
 
   const SettingsSection({
     Key? key,
-    required this.title,
     required this.items,
+    this.title,
     this.subTitle,
     this.crossAxisAlignment = _defaultAlignment,
     this.topPadding = _defaultTopPadding,
@@ -68,7 +68,7 @@ class SettingsSection extends StatelessWidget {
 
     final columnChildren = <Widget>[
       SizedBox(height: topPadding),
-      _buildTitle(linden),
+      if (title != null) _buildTitle(title: title!, linden: linden),
     ];
 
     //ignore: deprecated_member_use_from_same_package
@@ -101,7 +101,7 @@ class SettingsSection extends StatelessWidget {
     );
   }
 
-  Widget _buildTitle(Linden linden) => Text(
+  Widget _buildTitle({required String title, required Linden linden}) => Text(
         title,
         style: linden.styles.newSettingsSectionTitle,
       );
