@@ -9,14 +9,17 @@ class SettingsCardData extends Equatable {
 
   const SettingsCardData(this.items) : assert(items.length > 0);
 
-  factory SettingsCardData.fromTile(SettingsTileData tile) => SettingsCardData([
-        SettingsGroupData(items: [tile])
-      ]);
+  factory SettingsCardData.fromTile(SettingsTileData tile) =>
+      SettingsCardData.fromTiles([tile]);
 
-  factory SettingsCardData.fromTiles(List<SettingsTileData> tiles) =>
-      SettingsCardData(
-        tiles.map((tile) => SettingsGroupData(items: [tile])).toList(),
-      );
+  factory SettingsCardData.fromTiles(Iterable<SettingsTileData> tiles) {
+    _buildGroupData(SettingsTileData tileData) =>
+        SettingsGroupData(items: [tileData]);
+
+    return SettingsCardData(
+      [for (final tile in tiles) _buildGroupData(tile)],
+    );
+  }
 
   @override
   List<Object?> get props => [items];

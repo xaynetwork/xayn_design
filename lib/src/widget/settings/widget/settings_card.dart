@@ -12,16 +12,14 @@ class SettingsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final children = <Widget>[];
-
     final size = data.items.length;
-    for (int i = 0; i < size; i++) {
-      children.add(SettingsGroup(data: data.items[i]));
-      if (i < size - 1) {
-        // we want to add widget after every item except the last one
-        children.add(const Divider());
-      }
-    }
+    final children = List.generate(
+      size,
+      (i) => [
+        SettingsGroup(data: data.items[i]),
+        if (i < size - 1) const Divider(),
+      ],
+    ).expand((it) => it).toList(growable: false);
 
     final column = Column(
       mainAxisSize: MainAxisSize.min,
