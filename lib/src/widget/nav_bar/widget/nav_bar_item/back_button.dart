@@ -12,6 +12,7 @@ class NavBarBackButton extends StatelessWidget {
     final fab = FloatingActionButton.large(
       key: data.key,
       backgroundColor: linden.colors.primaryAction,
+      elevation: 0,
       onPressed: data.onPressed,
       child: SvgPicture.asset(
         linden.assets.icons.arrowLeft,
