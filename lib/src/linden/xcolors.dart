@@ -402,10 +402,6 @@ class NewXColors extends XColors {
 
   @override
   Color get collectionsScreenCard => _theme(bright: _pink60);
-
-  @override
-  Color get shadowTransparentLigher =>
-      _theme(bright: _black10, dark: transparent);
 }
 
 class _NewSchemeException implements Exception {
