@@ -351,6 +351,20 @@ class _Icons {
 
   String get video => _theme(brightAsset: 'assets/icons/video.svg');
 
+  String get text => _theme(brightAsset: 'assets/icons/text.svg');
+
+  String get textLargeFont =>
+      _theme(brightAsset: 'assets/icons/text_large_font.svg');
+
+  String get textMediumFont =>
+      _theme(brightAsset: 'assets/icons/text_medium_font.svg');
+
+  String get textSmallFont =>
+      _theme(brightAsset: 'assets/icons/text_small_font.svg');
+
+  String get textSansSerif =>
+      _theme(brightAsset: 'assets/icons/text_sans_serif.svg');
+
   String _theme({
     required String brightAsset,
     String? darkAsset,
