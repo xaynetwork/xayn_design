@@ -25,6 +25,9 @@ class XColors {
   static const _trueBlack = Color(0xff000000);
   static const _black29 = Color(0xff292929);
   static const _black33 = Color(0xff333333);
+  static const _black10 = Color(0xffE2E4E4);
+  static const _black20 = Color(0xffCACDCD);
+  static const _darkGreen = Color(0xff00856D);
   static const _green = Color(0xff22A186);
 
   // Secondary Colors
@@ -36,6 +39,7 @@ class XColors {
   static const _purple = Color(0xff524897);
   static const _orange = Color(0xffF29100);
   static const _white = Color(0xffffffff);
+  static const _beige = Color(0xfff8f0e3);
 
   /// This is the only non semantic public color, for convenience
   static const _transparent = Color(0x00000000);
@@ -227,6 +231,18 @@ class XColors {
 
   Color get bottomSheetBarrierColor =>
       _theme(bright: _white, dark: _black).withOpacity(0.8);
+
+  Color get selectedItemBackgroundColor => _theme(bright: _darkGreen);
+
+  Color get readerModeBeigeBackgroundColor => _theme(bright: _beige);
+
+  Color get readerModeWhiteBackgroundColor => _theme(bright: _white);
+
+  Color get readerModeBlackBackgroundColor => _theme(bright: _black29);
+
+  Color get menuDividerColor => _theme(bright: _black10, dark: _black33);
+
+  Color get chipBorderColor => _theme(bright: _black20);
 
   /// Color helper constants
   final alpha50 = 0x7f;
