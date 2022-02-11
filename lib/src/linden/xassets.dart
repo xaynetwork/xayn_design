@@ -365,6 +365,8 @@ class _Icons {
   String get textSansSerif =>
       _theme(brightAsset: 'assets/icons/text_sans_serif.svg');
 
+  String get textSerif => _theme(brightAsset: 'assets/icons/text_serif.svg');
+
   String _theme({
     required String brightAsset,
     String? darkAsset,
