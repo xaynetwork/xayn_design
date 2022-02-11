@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'overlay_widget_builder.dart';
+
 mixin OverlayStateMixin<T extends StatefulWidget> on State<T> {
   OverlayEntry? _overlayEntry;
 
@@ -22,11 +24,11 @@ mixin OverlayStateMixin<T extends StatefulWidget> on State<T> {
     _overlayEntry = null;
   }
 
-  void toggleOverlay(Positioned positionedChild) =>
-      isOverlayShown ? removeOverlay() : insertOverlay(positionedChild);
+  void toggleOverlay(OverlayWidgetBuilder builder) =>
+      isOverlayShown ? removeOverlay() : insertOverlay(builder);
 
-  void insertOverlay(Positioned child) {
-    _overlayEntry = OverlayEntry(builder: (context) => child);
+  void insertOverlay(OverlayWidgetBuilder builder) {
+    _overlayEntry = OverlayEntry(builder: builder);
     Overlay.of(context)?.insert(_overlayEntry!);
   }
 }
