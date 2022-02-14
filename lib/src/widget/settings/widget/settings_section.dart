@@ -101,7 +101,11 @@ class SettingsSection extends StatelessWidget {
     );
   }
 
-  Widget _buildTitle({required String title, required Linden linden}) => Text(
+  Widget _buildTitle({
+    required String title,
+    required Linden linden,
+  }) =>
+      Text(
         title,
         style: linden.styles.newSettingsSectionTitle,
       );

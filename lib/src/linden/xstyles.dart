@@ -73,7 +73,7 @@ class XStyles {
 
   TextStyle? get appLinkText => appBodyText?.copyWith(
         fontSize: 10,
-        fontWeight: FontWeight.w700,
+        fontWeight: _weightBold,
         decoration: TextDecoration.underline,
         color: colors.secondaryText,
       );
@@ -323,18 +323,18 @@ class XStyles {
 
   TextStyle? get readerModeTextStyle => appBodyText?.copyWith(
         fontSize: 15.0,
-        fontWeight: FontWeight.w400,
+        fontWeight: _weightRegular,
         height: 1.6,
       );
 
   TextStyle? get subscriptionModalTitle => appBodyText?.copyWith(
         fontSize: 18.0,
-        fontWeight: FontWeight.w400,
+        fontWeight: _weightRegular,
       );
 
   TextStyle? get subscriptionModalPrice => appBodyText?.copyWith(
         fontSize: 28.0,
-        fontWeight: FontWeight.w700,
+        fontWeight: _weightBold,
       );
 
   TextStyle? get subscriptionModalPricingDetailsError => appBodyText?.copyWith(
@@ -344,7 +344,7 @@ class XStyles {
 
   TextStyle? get subscriptionModalFooter => appBodyText?.copyWith(
         fontSize: 10.0,
-        fontWeight: FontWeight.w400,
+        fontWeight: _weightRegular,
         color: colors.secondaryText,
       );
 
