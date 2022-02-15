@@ -62,7 +62,7 @@ class AppTextField extends StatelessWidget {
       maxLines: 1,
       style: enabled
           ? textFieldStyle
-          : textFieldStyle?.copyWith(
+          : textFieldStyle.copyWith(
               color: linden.colors.searchInputTextDisabled),
       textInputAction: textInputAction,
       textAlignVertical: TextAlignVertical.center,
