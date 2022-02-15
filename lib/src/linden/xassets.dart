@@ -362,8 +362,7 @@ class _Icons {
   String get textSmallFont =>
       _theme(brightAsset: 'assets/icons/text_small_font.svg');
 
-  String get textSansSerif =>
-      _theme(brightAsset: 'assets/icons/text_sans_serif.svg');
+  String get textSans => _theme(brightAsset: 'assets/icons/text_sans.svg');
 
   String get textSerif => _theme(brightAsset: 'assets/icons/text_serif.svg');
 
