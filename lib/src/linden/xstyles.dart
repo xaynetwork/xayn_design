@@ -403,6 +403,14 @@ class XStyles {
         color: colors.secondaryText,
       );
 
+  TextStyle get readerModeLargeTextStyle => readerModeTextStyle.copyWith(
+        fontSize: 18,
+      );
+
+  TextStyle get readerModeSmallTextStyle => readerModeTextStyle.copyWith(
+        fontSize: 13,
+      );
+
   /// Other styles
 
   /// Borders generic

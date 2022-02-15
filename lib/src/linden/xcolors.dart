@@ -244,6 +244,10 @@ class XColors {
 
   Color get chipBorderColor => _theme(bright: _black20);
 
+  Color get readerModeTextDarkColor => _theme(bright: _black);
+
+  Color get readerModeTextWhiteColor => _theme(bright: _white);
+
   /// Color helper constants
   final alpha50 = 0x7f;
 
