@@ -40,6 +40,8 @@ class XColors {
   static const _orange = Color(0xffF29100);
   static const _white = Color(0xffffffff);
   static const _beige = Color(0xfff8f0e3);
+  static const _pink20 = Color(0xffF3CDDE);
+  static const _pinkNew = Color(0xffDB1870);
 
   /// This is the only non semantic public color, for convenience
   static const _transparent = Color(0x00000000);
@@ -247,6 +249,10 @@ class XColors {
   Color get readerModeTextDarkColor => _theme(bright: _black);
 
   Color get readerModeTextWhiteColor => _theme(bright: _white);
+
+  Color get readerModeSettingsErrorBackgroundColor => _theme(bright: _pink20);
+
+  Color get readerModeSettingsErrorTextColor => _theme(bright: _pinkNew);
 
   /// Color helper constants
   final alpha50 = 0x7f;
