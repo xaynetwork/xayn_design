@@ -70,18 +70,18 @@ class _NavBarReaderModeScreenState
       onPressed: () {},
       key: keyShare,
     );
+
     final menu = NavBarItemIconButton(
       svgIconPath: linden.assets.icons.menu,
       isHighlighted: false,
       onPressed: () => toggleOverlay(
-        (_) => Positioned(
+        (_) => AppMenu(
           bottom: MediaQuery.of(context).viewInsets.bottom +
-              MediaQuery.of(context).padding.bottom +
               linden.dimen.bottomBarDockedHeight +
-              linden.dimen.unit,
+              linden.dimen.unit4_25,
           right: linden.dimen.unit2,
-          width: linden.dimen.unit10,
-          child: _buildMenu(),
+          width: linden.dimen.unit15,
+          children: getMenuList,
         ),
       ),
       key: keyShare,
@@ -96,29 +96,15 @@ class _NavBarReaderModeScreenState
     ], isWidthExpanded: true);
   }
 
-  Widget _buildMenu() => ClipRRect(
-        borderRadius: linden.styles.roundBorder,
-        child: ColoredBox(
-          color: linden.colors.cardBackground,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: EdgeInsets.all(linden.dimen.unit),
-                child: Text(
-                  'Item 1',
-                  style: linden.styles.appSmallHeadlineText,
-                ),
-              ),
-              const Divider(),
-              Padding(
-                padding: EdgeInsets.all(linden.dimen.unit),
-                child: Text(
-                  'Item 2',
-                  style: linden.styles.appSmallHeadlineText,
-                ),
-              ),
-            ],
+  List<Widget> get getMenuList => List.generate(
+        3,
+        (index) => Padding(
+          padding: EdgeInsets.all(linden.dimen.unit),
+          child: Center(
+            child: Text(
+              'Item $index',
+              style: linden.styles.appSmallHeadlineText,
+            ),
           ),
         ),
       );
