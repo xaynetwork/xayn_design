@@ -19,6 +19,7 @@ export 'src/widget/button/app_ghost_button.dart';
 export 'src/widget/button/app_raised_button.dart';
 export 'src/widget/card/app_card.dart';
 export 'src/widget/dots_indicator/dots_indicator.dart';
+export 'src/widget/menu/app_menu.dart';
 export 'src/widget/nav_bar/nav_bar.dart';
 export 'src/widget/overlay/overlay.dart';
 export 'src/widget/settings/settings.dart';
