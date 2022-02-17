@@ -411,6 +411,13 @@ class XStyles {
         fontSize: 13,
       );
 
+  TextStyle get readerModeSettingsErrorTextStyle => appBodyText.copyWith(
+        fontSize: 10,
+        height: 1.14,
+        color: colors.readerModeSettingsErrorTextColor,
+        fontWeight: _weightBold,
+      );
+
   /// Other styles
 
   /// Borders generic
@@ -473,6 +480,11 @@ class XStyles {
   final roundBorderBottomSheet = BorderRadius.only(
     topLeft: Radius.circular(_unit1_5),
     topRight: Radius.circular(_unit1_5),
+  );
+
+  final readerModeSettingsErrorBorder = BorderRadius.only(
+    topRight: BorderRadius.circular(_unit).topRight,
+    topLeft: BorderRadius.circular(_unit).topLeft,
   );
 
   /// ButtonStyle objects
