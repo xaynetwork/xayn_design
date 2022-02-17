@@ -1,3 +1,3 @@
 import 'package:flutter/widgets.dart';
 
-typedef OverlayWidgetBuilder = Positioned Function(BuildContext context);
+typedef OverlayWidgetBuilder = Widget Function(BuildContext context);
