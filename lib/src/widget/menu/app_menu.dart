@@ -4,11 +4,14 @@ import 'package:xayn_design/src/widget/unter_den_linden/unter_den_linden.dart';
 
 const _kDividerThickness = 1.0;
 
+/// [AppMenu] is a positioned container, ofter used with overlay mixins to
+/// display a list of Widget [children] with a divider between them
+///
 class AppMenu extends StatelessWidget {
   const AppMenu({
     Key? key,
     required this.children,
-    this.errorStr,
+    this.errorMessage,
     this.physics = const NeverScrollableScrollPhysics(),
     this.onClose,
     this.isSticky = false,
@@ -31,7 +34,7 @@ class AppMenu extends StatelessWidget {
         super(key: key);
 
   final List<Widget> children;
-  final String? errorStr;
+  final String? errorMessage;
   final ScrollPhysics? physics;
   final VoidCallback? onClose;
 
@@ -68,11 +71,11 @@ class AppMenu extends StatelessWidget {
       borderRadius: linden.styles.roundBorder,
       clipBehavior: Clip.antiAlias,
       color: linden.colors.background,
-      child: errorStr == null
+      child: errorMessage == null
           ? childrenSeparatedList
           : _buildWithError(
               childrenSeparatedList,
-              errorStr!,
+              errorMessage!,
               linden,
             ),
     );
