@@ -79,7 +79,7 @@ class _NavBarReaderModeScreenState
           bottom: MediaQuery.of(context).viewInsets.bottom +
               linden.dimen.bottomBarDockedHeight +
               linden.dimen.unit4_25,
-          right: linden.dimen.unit2,
+          end: linden.dimen.unit2,
           width: linden.dimen.unit15,
           children: getMenuList,
         ),

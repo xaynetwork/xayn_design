@@ -13,15 +13,16 @@ class AppMenu extends StatelessWidget {
     this.onClose,
     this.isSticky = false,
     this.permitRoutePop = true,
-    this.left,
+    this.start,
     this.top,
-    this.right,
+    this.end,
     this.bottom,
     this.width,
     this.height,
+    this.textDirection = TextDirection.ltr,
   })  : assert(
-          left == null || right == null || width == null,
-          'AppMenu needs to have horizontal constraints: left or right or width',
+          start == null || end == null || width == null,
+          'AppMenu needs to have horizontal constraints: start or end or width',
         ),
         assert(
           top == null || bottom == null || height == null,
@@ -34,12 +35,13 @@ class AppMenu extends StatelessWidget {
   final ScrollPhysics? physics;
   final VoidCallback? onClose;
 
-  final double? left;
+  final double? start;
   final double? top;
-  final double? right;
+  final double? end;
   final double? bottom;
   final double? width;
   final double? height;
+  final TextDirection textDirection;
 
   /// when true, the menu doesn't close when user clicks outside
   final bool isSticky;
@@ -68,18 +70,19 @@ class AppMenu extends StatelessWidget {
       color: linden.colors.background,
       child: errorStr == null
           ? childrenSeparatedList
-          : buildWithError(
+          : _buildWithError(
               childrenSeparatedList,
               errorStr!,
               linden,
             ),
     );
 
-    final positionedMenu = Positioned(
+    final positionedMenu = Positioned.directional(
       child: menu,
-      left: left,
+      textDirection: textDirection,
+      start: start,
       top: top,
-      right: right,
+      end: end,
       bottom: bottom,
       width: width,
       height: height,
@@ -113,7 +116,7 @@ class AppMenu extends StatelessWidget {
         thickness: _kDividerThickness,
       );
 
-  Widget buildWithError(Widget child, String errorString, Linden linden) {
+  Widget _buildWithError(Widget child, String errorString, Linden linden) {
     final errorText = Center(
       child: Text(
         errorString,
