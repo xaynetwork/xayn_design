@@ -21,7 +21,7 @@ class XColors {
   /// Private Colors never use directly
   // Primary colors
   static const _blue = Color(0xff233564);
-  static const _black = Color(0xff131313);
+  static const _black = Color(0xff0F1A18);
   static const _trueBlack = Color(0xff000000);
   static const _black29 = Color(0xff292929);
   static const _black33 = Color(0xff333333);
@@ -239,7 +239,9 @@ class XColors {
 
   Color get readerModeWhiteBackgroundColor => _theme(bright: _white);
 
-  Color get readerModeBlackBackgroundColor => _theme(bright: _black29);
+  Color get readerModeDarkBackgroundColor => _theme(bright: _black);
+
+  Color get readerModeBlackBackgroundColor => _theme(bright: _trueBlack);
 
   Color get menuDividerColor => _theme(bright: _black10, dark: _black33);
 
