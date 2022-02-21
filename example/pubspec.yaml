@@ -11,7 +11,7 @@ dependencies:
     sdk: flutter
   xayn_design:
     path: ../../xayn_design
-  provider: 6.0.1
+  provider: 6.0.2
 
 dev_dependencies:
   flutter_lints: ^1.0.0

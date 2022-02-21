@@ -50,8 +50,8 @@ class _TooltipPageState extends State<TooltipPage> with TooltipStateMixin {
   }
 
   Widget _buildAnchorWidget(Linden linden) => TooltipContextProvider(
-      child: Text('This is tooltip anchor widget',
-          style: linden.styles.appBodyText));
+      child:
+          Text('This is tooltip anchor widget', style: linden.styles.mStyle));
 
   Widget _buildSimpleTooltipBtn() => _buildButton('Show simple tooltip', () {
         showTooltip(TooltipKeys.simple);

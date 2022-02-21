@@ -115,6 +115,6 @@ class SettingsSection extends StatelessWidget {
       ? null
       : Text(
           subTitle!,
-          style: linden.styles.appBodyText,
+          style: linden.styles.mStyle,
         );
 }

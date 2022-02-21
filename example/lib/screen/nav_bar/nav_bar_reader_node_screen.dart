@@ -103,7 +103,7 @@ class _NavBarReaderModeScreenState
           child: Center(
             child: Text(
               'Item $index',
-              style: linden.styles.appSmallHeadlineText,
+              style: linden.styles.mBoldStyle,
             ),
           ),
         ),

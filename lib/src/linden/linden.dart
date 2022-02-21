@@ -224,8 +224,8 @@ ThemeData _defaultTheme(
     return themeData.copyWith(
       inputDecorationTheme: styles.hintTextDecoration,
       textTheme: _defaultTheme(brightness, colors).textTheme.copyWith(
-            subtitle1: styles.appHighlightText,
-            bodyText1: styles.appBodyText,
+            subtitle1: styles.lStyle,
+            bodyText1: styles.mStyle,
           ),
     );
   }

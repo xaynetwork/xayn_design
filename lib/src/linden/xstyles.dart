@@ -123,21 +123,16 @@ class XStyles {
       );
 
   /// Defined by design
-  TextStyle get appScreenHeadline => xlBoldStyle;
-
-  TextStyle get appHeadlineText => lBoldStyle;
-
-  TextStyle get appSmallHeadlineText => mBoldStyle;
-
-  TextStyle get appHighlightText => lStyle;
-
-  TextStyle get appBodyText => mStyle;
 
   TextStyle get appBodyTextSecondary => mStyle.copyWith(
         color: colors.secondaryText,
       );
 
   TextStyle get appButtonText => mBoldStyle;
+
+  TextStyle get appButtonTextInverse => mBoldStyle.copyWith(
+        color: colors.primaryTextInverse,
+      );
 
   TextStyle get appLinkText => sBoldStyle.copyWith(
         decoration: TextDecoration.underline,
@@ -225,34 +220,29 @@ class XStyles {
 
   /// Domain specific styles, like dialogs, etc
 
-  TextStyle get searchInfoIncludingTerm => appBodyText.copyWith(
-        fontWeight: _weightBold,
-      );
+  TextStyle get searchInfoIncludingTerm => mBoldStyle;
 
-  TextStyle get searchInfoExplicitTerm => appBodyText.copyWith(
+  TextStyle get searchInfoExplicitTerm => mStyle.copyWith(
         color: colors.primaryAction,
       );
 
-  TextStyle get dialogTitleText => appHighlightText;
+  TextStyle get dialogTitleText => lStyle;
 
   TextStyle get dialogTitleSmall => dialogTitleText.copyWith(
         fontSize: 16,
       );
 
-  TextStyle get dialogErrorBody => appBodyText.copyWith(
+  TextStyle get dialogErrorBody => mStyle.copyWith(
         fontStyle: FontStyle.italic,
-        color: colors.primaryText,
       );
 
-  TextStyle get dialogBody => appBodyText.copyWith(
-        color: colors.primaryText,
-      );
+  TextStyle get dialogBody => mStyle;
 
   TextStyle get dialogBodySmall => dialogBody.copyWith(
         fontSize: 10,
       );
 
-  TextStyle get versionText => appHighlightText.copyWith(
+  TextStyle get versionText => lStyle.copyWith(
         color: colors.secondaryText,
       );
 
@@ -260,27 +250,25 @@ class XStyles {
         color: colors.tertiaryText,
       );
 
-  TextStyle get onboardingTitle => appBodyText.copyWith(
+  TextStyle get onboardingTitle => mStyle.copyWith(
         color: colors.primaryText,
         fontSize: 40,
         fontWeight: _weightBold,
       );
 
-  TextStyle get snackBarBrightText => appHighlightText.copyWith(
+  TextStyle get snackBarBrightText => lStyle.copyWith(
         color: colors.brightText,
       );
 
-  TextStyle get placeholderText => appHighlightText.copyWith(
+  TextStyle get placeholderText => lStyle.copyWith(
         color: colors.tertiaryText,
       );
 
-  TextStyle get placeholderTextSmall => appBodyText.copyWith(
+  TextStyle get placeholderTextSmall => mStyle.copyWith(
         color: colors.tertiaryText,
       );
 
-  TextStyle get historyButtonText => appBodyText.copyWith(
-        color: colors.primaryText,
-      );
+  TextStyle get historyButtonText => mStyle;
 
   /// text styles that are independent of the dark mode
 
@@ -298,26 +286,26 @@ class XStyles {
         color: colors.brightText,
       );
 
-  TextStyle get appBodyTextBright => appBodyText.copyWith(
+  TextStyle get appBodyTextBright => mStyle.copyWith(
         color: colors.brightText,
       );
 
-  TextStyle get webViewBottomMenuTitleText => appBodyText.copyWith(
+  TextStyle get webViewBottomMenuTitleText => mStyle.copyWith(
         fontWeight: _weightBold,
         height: 1,
       );
 
-  TextStyle get webViewBottomMenuUrlText => appBodyText.copyWith(
+  TextStyle get webViewBottomMenuUrlText => mStyle.copyWith(
         height: 1,
       );
 
-  TextStyle get tooltipText => appBodyText.copyWith(
+  TextStyle get tooltipText => mStyle.copyWith(
         color: colors.tooltipText,
         fontSize: 13,
         fontWeight: _weightBold,
       );
 
-  TextStyle get tooltipTextStyle => appBodyText.copyWith(
+  TextStyle get tooltipTextStyle => mStyle.copyWith(
         color: colors.tooltipText,
         fontSize: 13,
         // height = 16
@@ -329,46 +317,46 @@ class XStyles {
         color: colors.primaryAction,
       );
 
-  TextStyle get tooltipArrowDownTextStyle => appBodyText.copyWith(
+  TextStyle get tooltipArrowDownTextStyle => mStyle.copyWith(
         color: colors.brightText,
         fontSize: 18,
         fontWeight: _weightBold,
       );
 
-  TextStyle get betaTagTextStyle => appBodyText.copyWith(
+  TextStyle get betaTagTextStyle => mStyle.copyWith(
         fontSize: 8,
         fontWeight: _weightBold,
       );
 
-  TextStyle get snippetTextStyle => appBodyText.copyWith(
+  TextStyle get snippetTextStyle => mStyle.copyWith(
         fontWeight: FontWeight.w500,
         color: colors.snippetTextColor,
         fontSize: 16,
         height: 2,
       );
 
-  TextStyle get readerModeTextStyle => appBodyText.copyWith(
+  TextStyle get readerModeTextStyle => mStyle.copyWith(
         fontSize: 15.0,
         fontWeight: _weightRegular,
         height: 1.6,
       );
 
-  TextStyle get subscriptionModalTitle => appBodyText.copyWith(
+  TextStyle get subscriptionModalTitle => mStyle.copyWith(
         fontSize: 18.0,
         fontWeight: _weightRegular,
       );
 
-  TextStyle get subscriptionModalPrice => appBodyText.copyWith(
+  TextStyle get subscriptionModalPrice => mStyle.copyWith(
         fontSize: 28.0,
         fontWeight: _weightBold,
       );
 
-  TextStyle get subscriptionModalPricingDetailsError => appBodyText.copyWith(
+  TextStyle get subscriptionModalPricingDetailsError => mStyle.copyWith(
         fontSize: 13.0,
         color: colors.inputErrorText,
       );
 
-  TextStyle get subscriptionModalFooter => appBodyText.copyWith(
+  TextStyle get subscriptionModalFooter => mStyle.copyWith(
         fontSize: 10.0,
         fontWeight: _weightRegular,
         color: colors.secondaryText,
@@ -382,11 +370,8 @@ class XStyles {
         fontSize: 13,
       );
 
-  TextStyle get readerModeSettingsErrorTextStyle => appBodyText.copyWith(
-        fontSize: 10,
-        height: 1.14,
+  TextStyle get readerModeSettingsErrorTextStyle => sBoldStyle.copyWith(
         color: colors.readerModeSettingsErrorTextColor,
-        fontWeight: _weightBold,
       );
 
   /// Other styles
