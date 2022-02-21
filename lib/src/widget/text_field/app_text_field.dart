@@ -39,9 +39,7 @@ class AppTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     final linden = UnterDenLinden.getLinden(context);
 
-    final textFieldStyle = linden.dimen.isSmallScreen
-        ? linden.styles.textInputTextSmall
-        : linden.styles.textInputText;
+    final textFieldStyle = linden.styles.textInputText;
 
     final textFieldDecoration = decoration(
       linden: linden,

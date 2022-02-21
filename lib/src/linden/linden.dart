@@ -59,7 +59,6 @@ class Linden {
     this.assets = assets ?? XAssets(brightness: brightness);
     this.colors = colors ?? XColors(newColors, brightness: brightness);
     this.styles = styles ??= XStyles(
-      _defaultTheme(brightness, this.colors).textTheme,
       this.colors,
       brightness: brightness,
     );
@@ -178,7 +177,6 @@ class Linden {
   Linden updateBrightness(Brightness brightness) {
     final colors = XColors(newColors, brightness: brightness);
     final styles = XStyles(
-      _defaultTheme(brightness, colors).textTheme,
       colors,
       brightness: brightness,
     );

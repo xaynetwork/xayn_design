@@ -94,7 +94,7 @@ class _NavBarEditState extends State<NavBarEdit> {
         key: widget.data.key,
         focusNode: widget._focusNode,
         controller: controller,
-        style: linden.styles.textInputTextSmall,
+        style: linden.styles.textInputText,
         textInputAction: TextInputAction.search,
         keyboardAppearance: linden.colors.brightness,
         maxLines: 1,
@@ -102,7 +102,7 @@ class _NavBarEditState extends State<NavBarEdit> {
         onSubmitted: widget.data.onSearchPressed,
         decoration: InputDecoration.collapsed(
           hintText: widget.data.hint,
-          hintStyle: linden.styles.textInputHintSmall,
+          hintStyle: linden.styles.textInputHint,
         ),
       );
 }

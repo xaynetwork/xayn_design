@@ -11,11 +11,9 @@ const _kNotoSansFontFamily = 'NotoSans';
 /// Accessed through [Linden].
 @immutable
 class XStyles {
-  final TextTheme _baseTextTheme;
   final XColors colors;
 
   XStyles(
-    this._baseTextTheme,
     this.colors, {
     Brightness? brightness,
   });
@@ -24,192 +22,167 @@ class XStyles {
 
   FontWeight get _weightRegular => FontWeight.w400;
 
-  /// Defined by design
-  TextStyle get appScreenHeadline =>
-      _baseTextTheme.headline1?.copyWith(
+  /// New styles
+  TextStyle get xxlBoldStyle => TextStyle(
+        fontFamily: _kNotoSansFontFamily,
         color: colors.primaryText,
+        fontSize: 28,
+        // height = 40
+        height: 1.43,
         fontWeight: _weightBold,
-        fontSize: 24.0,
+      );
+
+  TextStyle get xlBoldStyle => TextStyle(
+        fontFamily: _kNotoSansFontFamily,
+        color: colors.primaryText,
+        fontSize: 24,
         // height = 32
         height: 1.33,
-      ) ??
-      TextStyle(
+        fontWeight: _weightBold,
+      );
+
+  TextStyle get lBoldStyle => TextStyle(
         fontFamily: _kNotoSansFontFamily,
         color: colors.primaryText,
-        fontWeight: _weightBold,
-        fontSize: 24.0,
-        // height = 32
+        fontSize: 18,
+        // height = 24
         height: 1.33,
+        fontWeight: _weightBold,
       );
 
-  TextStyle get appHeadlineText =>
-      _baseTextTheme.headline1?.copyWith(
-        color: colors.primaryText,
-        fontWeight: _weightBold,
-        fontSize: 17.0,
-        // height = 24
-        height: 1.41,
-      ) ??
-      TextStyle(
+  TextStyle get lStyle => TextStyle(
         fontFamily: _kNotoSansFontFamily,
         color: colors.primaryText,
-        fontWeight: _weightBold,
-        fontSize: 17.0,
+        fontSize: 18,
         // height = 24
-        height: 1.41,
+        height: 1.33,
+        fontWeight: _weightRegular,
       );
 
-  TextStyle get appSmallHeadlineText =>
-      _baseTextTheme.headline1?.copyWith(
-        color: colors.primaryText,
-        fontWeight: _weightBold,
-        fontSize: 15,
-        height: 1.3,
-      ) ??
-      TextStyle(
+  TextStyle get mBoldStyle => TextStyle(
         fontFamily: _kNotoSansFontFamily,
         color: colors.primaryText,
-        fontWeight: _weightBold,
-        fontSize: 15,
-        height: 1.3,
-      );
-
-  TextStyle get appHighlightText =>
-      _baseTextTheme.headline1?.copyWith(
-        color: colors.primaryText,
-        fontWeight: _weightRegular,
-        fontSize: 17.0,
-        // height = 24
-        height: 1.41,
-      ) ??
-      TextStyle(
-        fontFamily: _kNotoSansFontFamily,
-        color: colors.primaryText,
-        fontWeight: _weightRegular,
-        fontSize: 17.0,
-        // height = 24
-        height: 1.41,
-      );
-
-  TextStyle get appBodyText =>
-      _baseTextTheme.bodyText1?.copyWith(
-        color: colors.primaryText,
-        fontWeight: _weightRegular,
-        fontSize: 13.0,
+        fontSize: 14,
         // height = 20
-        height: 1.54,
-      ) ??
-      TextStyle(
+        height: 1.43,
+        fontWeight: _weightBold,
+      );
+
+  TextStyle get mStyle => TextStyle(
         fontFamily: _kNotoSansFontFamily,
         color: colors.primaryText,
-        fontWeight: _weightRegular,
-        fontSize: 13.0,
+        fontSize: 14,
         // height = 20
-        height: 1.54,
+        height: 1.43,
+        fontWeight: _weightRegular,
       );
 
-  TextStyle get appBodyTextSecondary => appBodyText.copyWith(
-        color: colors.secondaryText,
-      );
-
-  TextStyle get appButtonText => appBodyText.copyWith(
-        fontWeight: _weightBold,
-        fontSize: 13,
+  TextStyle get sBoldStyle => TextStyle(
+        fontFamily: _kNotoSansFontFamily,
+        color: colors.primaryText,
+        fontSize: 10,
         // height = 16
-        height: 1.23,
-      );
-
-  TextStyle get appLinkText => appBodyText.copyWith(
-        fontSize: 10,
-        fontWeight: _weightBold,
-        decoration: TextDecoration.underline,
-        color: colors.secondaryText,
-      );
-
-  TextStyle get bottomSheetText => appBodyText.copyWith(
-        fontWeight: _weightBold,
-        height: 1.23,
-      );
-
-  TextStyle get appButtonTextOnboarding => appButtonText.copyWith(
-        fontSize: 18.0,
-      );
-
-  TextStyle get appButtonTextOnboardingInverse =>
-      appButtonTextOnboarding.copyWith(
-        color: colors.primaryTextInverse,
-      );
-
-  TextStyle get appButtonTextInverse => appButtonText.copyWith(
-        color: colors.primaryTextInverse,
-      );
-
-  TextStyle get appSecondaryButtonText => appBodyText.copyWith(
-        fontWeight: _weightBold,
-        color: colors.secondaryActionText,
-        height: 1,
-      );
-
-  TextStyle get appThumbnailText => appBodyText.copyWith(
-        fontWeight: _weightBold,
-        color: colors.secondaryText,
-        fontSize: 10,
-        // height = 12
-        height: 1.2,
-      );
-
-  TextStyle get appCaptionText => appBodyText.copyWith(
-        fontWeight: _weightRegular,
-        color: colors.secondaryText,
-        fontSize: 10,
-        // height = 12
         height: 1.6,
+        fontWeight: _weightBold,
       );
 
-  TextStyle get settingsLayoutSectionText => appThumbnailText.copyWith(
+  TextStyle get sStyle => TextStyle(
+        fontFamily: _kNotoSansFontFamily,
         color: colors.primaryText,
-        height: 1.3,
+        fontSize: 10,
+        // height = 16
+        height: 1.6,
+        fontWeight: _weightRegular,
       );
 
-  TextStyle get settingsLayoutSectionTextSelected =>
-      settingsLayoutSectionText.copyWith(
+  TextStyle get lHighDensityStyle => TextStyle(
+        fontFamily: _kNotoSansFontFamily,
+        color: colors.primaryText,
+        fontSize: 16,
+        // height = 28
+        height: 1.75,
+        fontWeight: _weightRegular,
+      );
+
+  TextStyle get mHighDensityStyle => TextStyle(
+        fontFamily: _kNotoSansFontFamily,
+        color: colors.primaryText,
+        fontSize: 14,
+        // height = 24
+        height: 1.71,
+        fontWeight: _weightRegular,
+      );
+
+  TextStyle get sHighDensityStyle => TextStyle(
+        fontFamily: _kNotoSansFontFamily,
+        color: colors.primaryText,
+        fontSize: 12,
+        // height = 20
+        height: 1.67,
+        fontWeight: _weightRegular,
+      );
+
+  /// Defined by design
+  TextStyle get appScreenHeadline => xlBoldStyle;
+
+  TextStyle get appHeadlineText => lBoldStyle;
+
+  TextStyle get appSmallHeadlineText => mBoldStyle;
+
+  TextStyle get appHighlightText => lStyle;
+
+  TextStyle get appBodyText => mStyle;
+
+  TextStyle get appBodyTextSecondary => mStyle.copyWith(
+        color: colors.secondaryText,
+      );
+
+  TextStyle get appButtonText => mBoldStyle;
+
+  TextStyle get appLinkText => sBoldStyle.copyWith(
+        decoration: TextDecoration.underline,
+        color: colors.secondaryText,
+      );
+
+  TextStyle get bottomSheetText => mBoldStyle;
+
+  TextStyle get appSecondaryButtonText => mBoldStyle.copyWith(
+        color: colors.secondaryActionText,
+      );
+
+  TextStyle get appThumbnailText => sBoldStyle.copyWith(
+        color: colors.secondaryText,
+      );
+
+  TextStyle get appCaptionText => sStyle.copyWith(
+        color: colors.secondaryText,
+      );
+
+  TextStyle get settingsLayoutSectionText => sBoldStyle;
+
+  TextStyle get settingsLayoutSectionTextSelected => sBoldStyle.copyWith(
         color: colors.primaryTextInverse,
       );
 
-  TextStyle get appThumbnailTextDisabled => appBodyText.copyWith(
-        fontWeight: _weightBold,
-        height: 1,
-        fontSize: 10,
-        color: colors.tertiaryText,
+  TextStyle get appThumbnailTextLight => sStyle.copyWith(
+        color: colors.secondaryText,
       );
 
-  TextStyle get appThumbnailTextLight => appThumbnailText.copyWith(
-        fontWeight: _weightRegular,
-      );
-
-  TextStyle get linkText => appBodyText.copyWith(
-        color: colors.primaryAction,
-        decoration: TextDecoration.underline,
-      );
-
-  TextStyle get textInputText => appBodyText.copyWith(
-        fontSize: 15.0,
-        fontWeight: _weightRegular,
+  TextStyle get textInputText => mStyle.copyWith(
         color: colors.searchInputText,
       );
 
-  TextStyle get textInputTextSmall =>
-      textInputText.copyWith(fontSize: 13.0, height: 1.75);
+  TextStyle get textInputHint => mStyle.copyWith(
+        color: colors.hintTextStyle,
+      );
 
-  TextStyle get textInputHintSmall =>
-      textInputTextSmall.copyWith(color: colors.hintTextStyle);
-
-  TextStyle get textInputError => appBodyText.copyWith(
-        fontSize: 13.0,
+  TextStyle get textInputError => mStyle.copyWith(
         color: colors.inputErrorText,
       );
 
-  TextStyle get textInputErrorSmall => textInputError.copyWith(fontSize: 10.0);
+  TextStyle get textInputErrorSmall => sStyle.copyWith(
+        color: colors.inputErrorText,
+      );
 
   TextStyle get notoSerifFontText => const TextStyle(
         fontFamily: _kNotoSerifFontFamily,
@@ -221,9 +194,7 @@ class XStyles {
 
   /// Autosuggestion
 
-  TextStyle get chipText => appBodyText.copyWith(
-        height: 1.2,
-      );
+  TextStyle get chipText => mStyle;
 
   TextStyle get chipTextBright => appBodyTextBright.copyWith(
         height: 1.2,
@@ -508,55 +479,14 @@ class XStyles {
   /// So far I added here some items, which I need for my tasks.
   /// But later we will restructure all this file with proper items (names and structure)
   //region NEW STYLES
-  TextStyle get newSettingsSectionTitle =>
-      _baseTextTheme.bodyText1?.copyWith(
-        color: colors.primaryText,
-        fontWeight: _weightBold,
-        fontSize: 14,
-        // height = 16
-        height: 1.14,
-      ) ??
-      TextStyle(
-        fontFamily: _kNotoSansFontFamily,
-        color: colors.primaryText,
-        fontWeight: _weightBold,
-        fontSize: 14,
-        // height = 16
-        height: 1.14,
+  TextStyle get newSettingsSectionTitle => mBoldStyle;
+
+  TextStyle get newSettingsSectionText => mStyle.copyWith(
+        color: colors.secondaryText,
       );
 
-  TextStyle get newSettingsSectionText =>
-      _baseTextTheme.bodyText1?.copyWith(
-        color: colors.primaryText,
-        fontWeight: _weightRegular,
-        fontSize: 14,
-        // height = 20
-        height: 1.43,
-      ) ??
-      TextStyle(
-        fontFamily: _kNotoSansFontFamily,
-        color: colors.primaryText,
-        fontWeight: _weightRegular,
-        fontSize: 14,
-        // height = 20
-        height: 1.43,
-      );
-
-  TextStyle get newSettingsCaption =>
-      _baseTextTheme.bodyText1?.copyWith(
+  TextStyle get newSettingsCaption => sBoldStyle.copyWith(
         color: colors.secondaryText,
-        fontWeight: _weightBold,
-        fontSize: 10,
-        // height = 12
-        height: 1.2,
-      ) ??
-      TextStyle(
-        fontFamily: _kNotoSansFontFamily,
-        color: colors.secondaryText,
-        fontWeight: _weightBold,
-        fontSize: 10,
-        // height = 12
-        height: 1.2,
       );
 
   TextStyle get newSettingsCaptionSelected => newSettingsCaption.copyWith(
