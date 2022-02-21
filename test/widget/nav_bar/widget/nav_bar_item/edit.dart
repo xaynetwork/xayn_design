@@ -167,14 +167,14 @@ void main() {
 
       expect(textField.key, equals(key));
       expect(textField.focusNode, equals(focusNode));
-      expect(textField.style, equals(linden.styles.textInputTextSmall));
+      expect(textField.style, equals(linden.styles.textInputHint));
       expect(textField.textInputAction, equals(TextInputAction.search));
       expect(textField.maxLines, equals(1));
       expect(textField.onSubmitted, equals(onSearchPressed));
       expect(textField.onChanged, equals(onTextChanged));
       expect(textField.decoration?.hintText, equals(hint));
-      expect(textField.decoration?.hintStyle,
-          equals(linden.styles.textInputHintSmall));
+      expect(
+          textField.decoration?.hintStyle, equals(linden.styles.textInputHint));
     },
   );
 

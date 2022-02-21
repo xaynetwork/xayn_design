@@ -124,45 +124,6 @@ class XStyles {
 
   /// Defined by design
 
-  TextStyle get appBodyTextSecondary => mStyle.copyWith(
-        color: colors.secondaryText,
-      );
-
-  TextStyle get appButtonText => mBoldStyle;
-
-  TextStyle get appButtonTextInverse => mBoldStyle.copyWith(
-        color: colors.primaryTextInverse,
-      );
-
-  TextStyle get appLinkText => sBoldStyle.copyWith(
-        decoration: TextDecoration.underline,
-        color: colors.secondaryText,
-      );
-
-  TextStyle get bottomSheetText => mBoldStyle;
-
-  TextStyle get appSecondaryButtonText => mBoldStyle.copyWith(
-        color: colors.secondaryActionText,
-      );
-
-  TextStyle get appThumbnailText => sBoldStyle.copyWith(
-        color: colors.secondaryText,
-      );
-
-  TextStyle get appCaptionText => sStyle.copyWith(
-        color: colors.secondaryText,
-      );
-
-  TextStyle get settingsLayoutSectionText => sBoldStyle;
-
-  TextStyle get settingsLayoutSectionTextSelected => sBoldStyle.copyWith(
-        color: colors.primaryTextInverse,
-      );
-
-  TextStyle get appThumbnailTextLight => sStyle.copyWith(
-        color: colors.secondaryText,
-      );
-
   TextStyle get textInputText => mStyle.copyWith(
         color: colors.searchInputText,
       );
@@ -246,10 +207,6 @@ class XStyles {
         color: colors.secondaryText,
       );
 
-  TextStyle get cardSubtitleText => appThumbnailText.copyWith(
-        color: colors.tertiaryText,
-      );
-
   TextStyle get onboardingTitle => mStyle.copyWith(
         color: colors.primaryText,
         fontSize: 40,
@@ -272,17 +229,12 @@ class XStyles {
 
   /// text styles that are independent of the dark mode
 
-  /// Bright text - used for text within colored boxes like the pixel info in image view
-  TextStyle get infoTextBright => appThumbnailTextLight.copyWith(
-        color: colors.brightText,
-      );
-
-  TextStyle get smallButtonTextBright => appButtonText.copyWith(
+  TextStyle get smallButtonTextBright => mBoldStyle.copyWith(
         color: colors.brightText,
         fontSize: 10,
       );
 
-  TextStyle get buttonTextBright => appButtonText.copyWith(
+  TextStyle get buttonTextBright => mBoldStyle.copyWith(
         color: colors.brightText,
       );
 
@@ -478,6 +430,5 @@ class XStyles {
         color: colors.primaryTextInverse,
       );
 
-  TextStyle get newAppButtonText => appButtonText;
 //endregion NEW STYLES
 }

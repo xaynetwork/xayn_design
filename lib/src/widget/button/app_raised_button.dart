@@ -104,12 +104,8 @@ class _AppRaisedButtonState extends State<AppRaisedButton> {
 
   TextStyle get textStyle => widget.color.fold(
         onPrimary: () => linden.styles.buttonTextBright,
-        onSecondary: () => linden.styles.appButtonText.copyWith(
-          fontSize: 12,
-        ),
-        onTertiary: () => linden.styles.appButtonText.copyWith(
-          fontSize: 12,
-        ),
+        onSecondary: () => linden.styles.mBoldStyle,
+        onTertiary: () => linden.styles.mBoldStyle,
       );
 
   Size get minSize => Size(

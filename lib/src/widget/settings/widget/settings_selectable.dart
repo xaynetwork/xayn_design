@@ -185,7 +185,7 @@ class SettingsSelectableGraphic extends StatelessWidget {
     final title = Text(
       item.title,
       textAlign: TextAlign.center,
-      style: linden.styles.settingsLayoutSectionText,
+      style: linden.styles.sBoldStyle,
     );
     final children = <Widget>[
       radioBtn,
