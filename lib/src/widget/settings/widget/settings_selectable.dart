@@ -106,9 +106,11 @@ class SettingsSelectableIcon extends StatelessWidget {
     final title = Text(
       item.title,
       textAlign: TextAlign.center,
-      style: item.isSelected
-          ? linden.styles.newSettingsCaptionSelected
-          : linden.styles.newSettingsCaption,
+      style: linden.styles.sBoldStyle.copyWith(
+        color: item.isSelected
+            ? linden.colors.primaryTextInverse
+            : linden.colors.secondaryText,
+      ),
     );
 
     final column = Column(

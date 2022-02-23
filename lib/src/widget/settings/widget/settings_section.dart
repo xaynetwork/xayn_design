@@ -107,7 +107,7 @@ class SettingsSection extends StatelessWidget {
   }) =>
       Text(
         title,
-        style: linden.styles.newSettingsSectionTitle,
+        style: linden.styles.mBoldStyle,
       );
 
   @Deprecated('Old Style Settings, might be removed')

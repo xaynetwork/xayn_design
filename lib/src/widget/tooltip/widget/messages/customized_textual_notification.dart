@@ -41,7 +41,7 @@ class _TextualNotificationState extends State<CustomizedTextualNotification>
   String? get highlightText => widget.highlightText;
 
   TextStyle? get labelTextStyle =>
-      widget.labelTextStyle ?? linden.styles.tooltipTextStyle;
+      widget.labelTextStyle ?? linden.styles.tooltipText;
 
   TextStyle? get highlightTextStyle =>
       widget.highlightTextStyle ?? linden.styles.tooltipHighlightTextStyle;

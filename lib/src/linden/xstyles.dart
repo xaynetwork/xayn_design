@@ -23,7 +23,7 @@ class XStyles {
   FontWeight get _weightRegular => FontWeight.w400;
 
   /// New styles
-  TextStyle get xxlBoldStyle => TextStyle(
+  TextStyle get xxxlBoldStyle => TextStyle(
         fontFamily: _kNotoSansFontFamily,
         color: colors.primaryText,
         fontSize: 28,
@@ -148,18 +148,7 @@ class XStyles {
         fontFamily: _kNotoSansFontFamily,
       );
 
-  /// Autosuggestion
-
-  TextStyle get chipText => mStyle;
-
-  TextStyle get chipTextBright => appBodyTextBright.copyWith(
-        height: 1.2,
-      );
-
-  TextStyle get marketButtonStyle => TextStyle(
-        color: colors.primaryTextInverse,
-        fontSize: 14.0,
-      );
+  /// Shadows
 
   BoxShadow get cardShadow => BoxShadow(
         color: colors.shadowTransparentLigher,
@@ -189,9 +178,7 @@ class XStyles {
 
   TextStyle get dialogTitleText => lStyle;
 
-  TextStyle get dialogTitleSmall => dialogTitleText.copyWith(
-        fontSize: 16,
-      );
+  TextStyle get dialogTitleSmall => mStyle;
 
   TextStyle get dialogErrorBody => mStyle.copyWith(
         fontStyle: FontStyle.italic,
@@ -199,18 +186,10 @@ class XStyles {
 
   TextStyle get dialogBody => mStyle;
 
-  TextStyle get dialogBodySmall => dialogBody.copyWith(
-        fontSize: 10,
-      );
+  TextStyle get dialogBodySmall => sStyle;
 
   TextStyle get versionText => lStyle.copyWith(
         color: colors.secondaryText,
-      );
-
-  TextStyle get onboardingTitle => mStyle.copyWith(
-        color: colors.primaryText,
-        fontSize: 40,
-        fontWeight: _weightBold,
       );
 
   TextStyle get snackBarBrightText => lStyle.copyWith(
@@ -229,9 +208,8 @@ class XStyles {
 
   /// text styles that are independent of the dark mode
 
-  TextStyle get smallButtonTextBright => mBoldStyle.copyWith(
+  TextStyle get smallButtonTextBright => sBoldStyle.copyWith(
         color: colors.brightText,
-        fontSize: 10,
       );
 
   TextStyle get buttonTextBright => mBoldStyle.copyWith(
@@ -242,84 +220,20 @@ class XStyles {
         color: colors.brightText,
       );
 
-  TextStyle get webViewBottomMenuTitleText => mStyle.copyWith(
-        fontWeight: _weightBold,
-        height: 1,
-      );
-
-  TextStyle get webViewBottomMenuUrlText => mStyle.copyWith(
-        height: 1,
-      );
-
-  TextStyle get tooltipText => mStyle.copyWith(
+  TextStyle get tooltipText => mBoldStyle.copyWith(
         color: colors.tooltipText,
-        fontSize: 13,
-        fontWeight: _weightBold,
       );
 
-  TextStyle get tooltipTextStyle => mStyle.copyWith(
-        color: colors.tooltipText,
-        fontSize: 13,
-        // height = 16
-        height: 1.14,
-        fontWeight: _weightBold,
-      );
-
-  TextStyle get tooltipHighlightTextStyle => tooltipTextStyle.copyWith(
+  TextStyle get tooltipHighlightTextStyle => tooltipText.copyWith(
         color: colors.primaryAction,
       );
 
-  TextStyle get tooltipArrowDownTextStyle => mStyle.copyWith(
+  TextStyle get tooltipArrowDownTextStyle => lBoldStyle.copyWith(
         color: colors.brightText,
-        fontSize: 18,
-        fontWeight: _weightBold,
-      );
-
-  TextStyle get betaTagTextStyle => mStyle.copyWith(
-        fontSize: 8,
-        fontWeight: _weightBold,
-      );
-
-  TextStyle get snippetTextStyle => mStyle.copyWith(
-        fontWeight: FontWeight.w500,
-        color: colors.snippetTextColor,
-        fontSize: 16,
-        height: 2,
-      );
-
-  TextStyle get readerModeTextStyle => mStyle.copyWith(
-        fontSize: 15.0,
-        fontWeight: _weightRegular,
-        height: 1.6,
-      );
-
-  TextStyle get subscriptionModalTitle => mStyle.copyWith(
-        fontSize: 18.0,
-        fontWeight: _weightRegular,
-      );
-
-  TextStyle get subscriptionModalPrice => mStyle.copyWith(
-        fontSize: 28.0,
-        fontWeight: _weightBold,
       );
 
   TextStyle get subscriptionModalPricingDetailsError => mStyle.copyWith(
-        fontSize: 13.0,
         color: colors.inputErrorText,
-      );
-
-  TextStyle get subscriptionModalFooter => mStyle.copyWith(
-        fontSize: 10.0,
-        fontWeight: _weightRegular,
-        color: colors.secondaryText,
-      );
-
-  TextStyle get readerModeLargeTextStyle => readerModeTextStyle.copyWith(
-        fontSize: 18,
-      );
-
-  TextStyle get readerModeSmallTextStyle => readerModeTextStyle.copyWith(
-        fontSize: 13,
       );
 
   TextStyle get readerModeSettingsErrorTextStyle => sBoldStyle.copyWith(
@@ -411,24 +325,4 @@ class XStyles {
           color: colors.hintTextStyle,
         ),
       );
-
-  /// right now we are in the middle of the design migration.
-  /// So far I added here some items, which I need for my tasks.
-  /// But later we will restructure all this file with proper items (names and structure)
-  //region NEW STYLES
-  TextStyle get newSettingsSectionTitle => mBoldStyle;
-
-  TextStyle get newSettingsSectionText => mStyle.copyWith(
-        color: colors.secondaryText,
-      );
-
-  TextStyle get newSettingsCaption => sBoldStyle.copyWith(
-        color: colors.secondaryText,
-      );
-
-  TextStyle get newSettingsCaptionSelected => newSettingsCaption.copyWith(
-        color: colors.primaryTextInverse,
-      );
-
-//endregion NEW STYLES
 }

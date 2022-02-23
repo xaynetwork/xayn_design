@@ -75,7 +75,7 @@ class SettingsTile extends StatelessWidget {
 
     final title = Text(
       data.title,
-      style: linden.styles.newSettingsSectionText,
+      style: linden.styles.mStyle,
     );
 
     // ignore: deprecated_member_use_from_same_package
