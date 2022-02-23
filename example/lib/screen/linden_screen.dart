@@ -52,7 +52,7 @@ class _LindenScreenState extends State<LindenScreen> {
       );
 
   Padding _buildHeadline(String str) => Padding(
-        child: Text(str, style: linden.styles.appScreenHeadline),
+        child: Text(str, style: linden.styles.xlBoldStyle),
         padding: EdgeInsets.only(bottom: linden.dimen.unit2),
       );
 

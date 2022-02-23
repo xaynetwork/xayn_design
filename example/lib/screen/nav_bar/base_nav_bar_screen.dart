@@ -52,7 +52,7 @@ abstract class BaseNavBarScreenState<T extends BaseNavBarScreen>
           const SizedBox(height: 42),
           Text(
             'This is $screenTitle',
-            style: UnterDenLinden.getLinden(context).styles.appScreenHeadline,
+            style: UnterDenLinden.getLinden(context).styles.xlBoldStyle,
           ),
           const SizedBox(height: 42),
           ...buildExtraChildren(),

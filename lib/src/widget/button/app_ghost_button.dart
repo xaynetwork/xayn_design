@@ -142,6 +142,6 @@ class AppGhostButton extends StatelessWidget {
       ? null
       : Text(
           _text!,
-          style: linden.styles.newAppButtonText,
+          style: linden.styles.mBoldStyle,
         );
 }

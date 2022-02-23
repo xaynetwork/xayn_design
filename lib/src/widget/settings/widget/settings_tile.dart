@@ -75,7 +75,7 @@ class SettingsTile extends StatelessWidget {
 
     final title = Text(
       data.title,
-      style: linden.styles.newSettingsSectionText,
+      style: linden.styles.mStyle,
     );
 
     // ignore: deprecated_member_use_from_same_package
@@ -87,7 +87,9 @@ class SettingsTile extends StatelessWidget {
     final subTitle = Text(
       // ignore: deprecated_member_use_from_same_package
       data.subTitle!,
-      style: linden.styles.appThumbnailTextLight,
+      style: linden.styles.sStyle.copyWith(
+        color: linden.colors.secondaryText,
+      ),
     );
 
     final column = Column(

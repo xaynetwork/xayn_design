@@ -42,7 +42,7 @@ class SettingsGroup extends StatelessWidget {
 
     final padding = Padding(
       padding: EdgeInsets.symmetric(vertical: linden.dimen.unit),
-      child: Text(title, style: linden.styles.settingsLayoutSectionText),
+      child: Text(title, style: linden.styles.sBoldStyle),
     );
     children.add(padding);
   }

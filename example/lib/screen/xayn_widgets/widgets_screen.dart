@@ -59,7 +59,9 @@ class _WidgetsScreenState extends State<WidgetsScreen>
 
   TabBar _buildTabBar() => TabBar(
         controller: _tabController,
-        labelStyle: linden.styles.appButtonTextInverse,
+        labelStyle: linden.styles.mBoldStyle.copyWith(
+          color: linden.colors.primaryTextInverse,
+        ),
         indicatorColor: linden.colors.primary,
         isScrollable: true,
         tabs: tabs.keys.toList().map((e) => Tab(child: Text(e))).toList(),
