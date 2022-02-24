@@ -14,7 +14,7 @@ void main() {
   const unSelectedKey = Key('unSelected');
   const unSelectedTitle = 'unSelected title';
   const unSelectedSvgIconPath = assetIconPathPlant;
-  final linden = Linden(newColors: true);
+  final linden = Linden();
   SettingsSelectableData selected(VoidCallback onPressed) =>
       SettingsSelectableData(
         key: selectedKey,

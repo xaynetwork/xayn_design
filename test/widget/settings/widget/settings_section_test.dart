@@ -11,7 +11,7 @@ void main() {
   const subTitle = 'Section subTitle';
   const tileTitle = 'tileTitle';
   const tile = SettingsTileData(title: tileTitle);
-  final linden = Linden(newColors: true);
+  final linden = Linden();
   testWidgets(
     'WHEN create section from tile and title THEN expect to see title and one card with tile',
     (final WidgetTester tester) async {

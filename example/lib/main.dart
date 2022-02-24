@@ -19,7 +19,7 @@ import 'package:xayn_design/xayn_design.dart';
 void main() {
   final unterDenLinden = UnterDenLinden(
     child: MyApp(),
-    initialLinden: Linden(newColors: true),
+    initialLinden: Linden(),
     onLindenUpdated: (final Linden newLinden) {
       //ignore: avoid_print
       print('Yay, linden was updated');

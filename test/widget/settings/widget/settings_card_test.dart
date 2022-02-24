@@ -10,7 +10,7 @@ void main() {
   final groupData0 = SettingsGroupData(items: const [tile0, tile1]);
   final groupData1 = SettingsGroupData(items: const [tile1]);
   final groupData2 = SettingsGroupData(items: const [tile0]);
-  final linden = Linden(newColors: true);
+  final linden = Linden();
   testWidgets(
     'GIVEN data with 1 item WHEN render widget THEN find 1 SettingsGroup widget inside',
     (final WidgetTester tester) async {
