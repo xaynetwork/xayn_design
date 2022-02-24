@@ -42,14 +42,11 @@ import 'xstyles.dart';
 ///
 @immutable
 class Linden {
-  final bool newColors;
-
   Linden({
     this.deviceOrientation = Orientation.portrait,
     this.notchPaddingLandscapeMode = 0,
     this.brightness = Brightness.light,
     this.animations = const XAnimations(),
-    this.newColors = false,
     XSizes? dimen,
     XStyles? styles,
     ThemeData? themeData,
@@ -57,7 +54,7 @@ class Linden {
     XAssets? assets,
   }) {
     this.assets = assets ?? XAssets(brightness: brightness);
-    this.colors = colors ?? XColors(newColors, brightness: brightness);
+    this.colors = colors ?? XColors(brightness: brightness);
     this.styles = styles ??= XStyles(
       this.colors,
       brightness: brightness,
@@ -146,7 +143,6 @@ class Linden {
         colors: colors ?? this.colors,
         assets: assets ?? this.assets,
         animations: animations ?? this.animations,
-        newColors: newColors,
       );
 
   /// Update all the dimension configuration of [XSizes] in [Linden]
@@ -175,7 +171,7 @@ class Linden {
   /// Update theme to light/dark mode
   ///
   Linden updateBrightness(Brightness brightness) {
-    final colors = XColors(newColors, brightness: brightness);
+    final colors = XColors(brightness: brightness);
     final styles = XStyles(
       colors,
       brightness: brightness,
