@@ -15,8 +15,6 @@ class XColors {
   }) =>
       XColors._(brightness: brightness);
 
-  /// New colors
-
   static const _XaynAccentColor _green = _XaynAccentColor(
     _greenPrimaryValue,
     <int, Color>{
@@ -84,20 +82,8 @@ class XColors {
   static const int _greyPrimaryValue = 0xFF9BA0A0;
 
   /// Private Colors never use directly
-  // Primary colors
-  static const _blue = Color(0xff233564);
   static const _black = Color(0xff0F1A18);
   static const _trueBlack = Color(0xff000000);
-  static const _black29 = Color(0xff292929);
-  static const _black33 = Color(0xff333333);
-  static const _black10 = Color(0xffE2E4E4);
-  static const _black20 = Color(0xffCACDCD);
-
-  // Secondary Colors
-  static const _lightGreen = Color(0xff79cec0);
-  static const _lightGrey = Color(0xfff0f0f0);
-  static const _mediumGrey = Color(0xffc4c4c4);
-  static const _darkGrey = Color(0xff787878);
   static const _white = Color(0xffffffff);
   static const _beige = Color(0xfff8f0e3);
 
@@ -119,13 +105,13 @@ class XColors {
 
   Color get secondaryText => _theme(bright: _grey.shade60, dark: _grey.shade20);
 
-  Color get tertiaryText => _theme(bright: _mediumGrey);
+  Color get tertiaryText => _theme(bright: _grey);
 
-  Color get tooltipText => _theme(bright: _blue, dark: _white);
+  Color get tooltipText => _theme(bright: _black, dark: _white);
 
   Color get icon => _theme(bright: _black, dark: _grey.shade20);
 
-  Color get iconDisabled => _theme(bright: _mediumGrey, dark: _darkGrey);
+  Color get iconDisabled => _theme(bright: _grey, dark: _grey.shade60);
 
   Color get iconSelected => _theme(bright: _green);
 
@@ -135,13 +121,11 @@ class XColors {
 
   Color get iconBackgroundSelected => _theme(bright: _white, dark: _white);
 
-  Color get secondaryIcon => _theme(bright: _blue);
-
   Color get primaryTextInverse => _theme(bright: _white, dark: _black);
 
-  Color get pageBackground => _theme(bright: _white, dark: _black29);
+  Color get pageBackground => _theme(bright: _white, dark: _grey.shade95);
 
-  Color get cardBackground => _theme(bright: _white, dark: _black33);
+  Color get cardBackground => _theme(bright: _white, dark: _grey.shade80);
 
   Color get background => _theme(bright: _white, dark: _black);
 
@@ -149,7 +133,7 @@ class XColors {
 
   Color get tooltipBackground => _theme(bright: _white, dark: _black);
 
-  Color get hintTextStyle => _theme(bright: _darkGrey, dark: _mediumGrey);
+  Color get hintTextStyle => _theme(bright: _grey.shade60, dark: _grey);
 
   Color get imageBackground => _theme(bright: _white);
 
@@ -159,15 +143,15 @@ class XColors {
 
   Color get imagePreviewBackground => _theme(bright: _trueBlack);
 
-  Color get secondaryActionText => _theme(bright: _mediumGrey);
+  Color get secondaryActionText => _theme(bright: _grey);
 
-  Color get divider => _theme(bright: _mediumGrey);
+  Color get divider => _theme(bright: _grey);
 
-  Color get shadow => _theme(bright: _darkGrey);
+  Color get shadow => _theme(bright: _grey.shade60);
 
   Color get searchSuggetsionShadow => _theme(bright: _black.withAlpha(20));
 
-  Color get searchSuggestion => _theme(bright: _lightGreen);
+  Color get searchSuggestion => _theme(bright: _green.shade60);
 
   Color get shadowTransparent =>
       _theme(bright: _black.withAlpha(65), dark: _black.withAlpha(0));
@@ -180,36 +164,37 @@ class XColors {
 
   Color get transparent => _transparent;
 
-  Color get searchInputFill => _theme(bright: _lightGrey, dark: _black33);
+  Color get searchInputFill =>
+      _theme(bright: _grey.shade10, dark: _grey.shade80);
 
-  Color get searchInputText => _theme(bright: _black, dark: _lightGrey);
+  Color get searchInputText => _theme(bright: _black, dark: _grey.shade10);
 
   Color get searchInputTextDisabled =>
-      _theme(bright: _mediumGrey, dark: _darkGrey);
+      _theme(bright: _grey, dark: _grey.shade60);
 
-  Color get searchPuller => _theme(bright: _mediumGrey);
+  Color get searchPuller => _theme(bright: _grey);
 
-  Color get searchResultSkeletonBase => _theme(bright: _mediumGrey);
+  Color get searchResultSkeletonBase => _theme(bright: _grey);
 
-  Color get searchResultSkeletonHighlight => _theme(bright: _lightGrey);
+  Color get searchResultSkeletonHighlight => _theme(bright: _grey.shade10);
 
-  Color get cardTitle => _theme(bright: _black, dark: _lightGrey);
+  Color get cardTitle => _theme(bright: _black, dark: _grey.shade10);
 
-  Color get cardCaption => _theme(bright: _mediumGrey);
+  Color get cardCaption => _theme(bright: _grey);
 
   Color get cardBorderHighlight => _theme(bright: _green);
 
-  Color get imagePlaceholderBackground => _theme(bright: _mediumGrey);
+  Color get imagePlaceholderBackground => _theme(bright: _grey);
 
   Color get swipeBackgroundRelevant => _theme(bright: _green);
 
-  Color get swipeBackgroundNeutral => _theme(bright: _mediumGrey);
+  Color get swipeBackgroundNeutral => _theme(bright: _grey);
 
   Color get swipeBackgroundBookmark => _theme(bright: _purple);
 
   Color get swipeBackgroundMoveBookmark => _theme(bright: _purple);
 
-  Color get swipeBackgroundEdit => _theme(bright: _blue);
+  Color get swipeBackgroundEdit => _theme(bright: _purple);
 
   Color get swipeBackgroundShare => _theme(bright: _white);
 
@@ -222,9 +207,7 @@ class XColors {
   Color get searchInputBarShadowBackground =>
       _theme(bright: primary.withAlpha(10));
 
-  Color get snackbarBackground => _theme(bright: _blue.withAlpha(227));
-
-  Color get placeholderIcon => _theme(bright: _mediumGrey);
+  Color get placeholderIcon => _theme(bright: _grey);
 
   Color get autosuggestionMarketChange => _theme(bright: _purple);
 
@@ -247,9 +230,9 @@ class XColors {
 
   Color get onboardingTagBackground => _white;
 
-  Color get onboardingSearchInputFill => _lightGrey;
+  Color get onboardingSearchInputFill => _grey.shade10;
 
-  Color get checkboxUnchecked => _lightGrey;
+  Color get checkboxUnchecked => _grey.shade10;
 
   Color get checkboxChecked => _green;
 
@@ -259,8 +242,6 @@ class XColors {
 
   Color get brightIcon => _white;
 
-  Color get darkIcon => _blue;
-
   Color get primaryAction => _pink;
 
   Color get inputErrorText => _pink;
@@ -269,7 +250,7 @@ class XColors {
 
   Color get speedDialButtonSelected => _pink;
 
-  Color get speedDialButtonUnSelected => _lightGrey;
+  Color get speedDialButtonUnSelected => _grey.shade10;
 
   Color get qrCodeBackground => _white;
 
@@ -287,7 +268,7 @@ class XColors {
   Color get dotsIndicatorBorderColor => _white;
 
   Color get bottomSheetBackgroundColor =>
-      _theme(bright: _white, dark: _black29);
+      _theme(bright: _white, dark: _grey.shade95);
 
   Color get bottomSheetBarrierColor =>
       _theme(bright: _white, dark: _black).withOpacity(0.8);
@@ -302,9 +283,10 @@ class XColors {
 
   Color get readerModeBlackBackgroundColor => _theme(bright: _trueBlack);
 
-  Color get menuDividerColor => _theme(bright: _black10, dark: _black33);
+  Color get menuDividerColor =>
+      _theme(bright: _grey.shade10, dark: _grey.shade80);
 
-  Color get chipBorderColor => _theme(bright: _black20);
+  Color get chipBorderColor => _theme(bright: _grey.shade20);
 
   Color get readerModeTextDarkColor => _theme(bright: _black);
 
