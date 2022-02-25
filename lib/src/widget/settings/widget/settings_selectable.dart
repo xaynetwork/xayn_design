@@ -108,7 +108,7 @@ class SettingsSelectableIcon extends StatelessWidget {
       textAlign: TextAlign.center,
       style: linden.styles.sBoldStyle.copyWith(
         color: item.isSelected
-            ? linden.colors.primaryTextInverse
+            ? linden.colors.brightText
             : linden.colors.secondaryText,
       ),
     );
