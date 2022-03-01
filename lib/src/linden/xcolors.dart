@@ -217,6 +217,11 @@ class XColors {
 
   Color? get logo => _themeDarkModeColorOrNull(dark: _white);
 
+  Color get bottomSheetCancelBackgroundColor => _theme(
+        bright: _grey.shade5,
+        dark: _grey.shade80,
+      );
+
   /// Colors that are independent of the dark mode
   Color get onboardingBackground => _white;
 
@@ -342,10 +347,15 @@ class _XaynAccentColor extends ColorSwatch<int> {
       : super(primary, swatch);
 
   Color get shade20 => this[20]!;
+
   Color get shade40 => this[40]!;
+
   Color get shade60 => this[60]!;
+
   Color get shade80 => this[80]!;
+
   Color get shade100 => this[100]!;
+
   Color get shade120 => this[120]!;
 }
 
@@ -354,11 +364,18 @@ class _XaynGreyScale extends ColorSwatch<int> {
       : super(primary, swatch);
 
   Color get shade5 => this[5]!;
+
   Color get shade10 => this[10]!;
+
   Color get shade20 => this[20]!;
+
   Color get shade30 => this[30]!;
+
   Color get shade40 => this[40]!;
+
   Color get shade60 => this[60]!;
+
   Color get shade80 => this[80]!;
+
   Color get shade95 => this[95]!;
 }
