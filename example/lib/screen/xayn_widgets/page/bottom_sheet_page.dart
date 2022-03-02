@@ -28,6 +28,7 @@ class _BottomSheetPageState extends State<BottomSheetPage> {
         children: [
           _buildShowSheetButton(),
           _buildScrollableSheetButton(),
+          _buildShowMultipleSheetButton(),
         ],
       );
 
@@ -37,6 +38,22 @@ class _BottomSheetPageState extends State<BottomSheetPage> {
           context,
           builder: (_) => const ShortBottomSheet(),
         ),
+      );
+
+  Widget _buildShowMultipleSheetButton() => AppRaisedButton.text(
+        text: 'Show one bottom sheet while multiple are called',
+        onPressed: () {
+          showAppBottomSheet(
+            context,
+            builder: (_) => const ShortBottomSheet(),
+            allowStacking: false,
+          );
+          showAppBottomSheet(
+            context,
+            builder: (_) => const ShortBottomSheet(),
+            allowStacking: false,
+          );
+        },
       );
 
   Widget _buildScrollableSheetButton() => AppRaisedButton.text(

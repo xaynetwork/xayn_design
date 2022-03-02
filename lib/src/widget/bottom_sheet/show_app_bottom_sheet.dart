@@ -10,8 +10,16 @@ Future showAppBottomSheet(
   BuildContext context, {
   required _BottomSheetBuilder builder,
   bool showBarrierColor = true,
+
+  ///Showing multiple sheets on top of each other
+  bool allowStacking = true,
 }) {
   final linden = UnterDenLinden.getLinden(context);
+
+  if (!allowStacking) {
+    final navigator = Navigator.of(context, rootNavigator: true);
+    if (navigator.isBottomSheetDisplayed()) return Future.value();
+  }
 
   return showMaterialModalBottomSheet(
     context: context,
@@ -27,4 +35,15 @@ Future showAppBottomSheet(
         : linden.colors.transparent,
     builder: builder,
   );
+}
+
+extension on NavigatorState {
+  bool isBottomSheetDisplayed() {
+    late bool isDisplayed;
+    popUntil((route) {
+      isDisplayed = route.isCurrent && route is ModalBottomSheetRoute;
+      return true;
+    });
+    return isDisplayed;
+  }
 }
