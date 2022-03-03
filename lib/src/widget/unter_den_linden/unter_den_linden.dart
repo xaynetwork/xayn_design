@@ -48,13 +48,28 @@ class _UnterDenLindenState extends State<UnterDenLinden>
   /// Change [Brightness] of the current app.
   /// If [Brightness] was changed - triggers rebuild of the whole app
   void changeBrightness(Brightness brightness) {
-    if (brightness == _linden.brightness) return;
+    /// update status bar brightness before checking [brightness == _linden.brightness]
+    /// for the case when the user toggles the plateform's theme when the app is closed
+    ///
+    _updateStatusBarBrightness(brightness);
 
-    final style = SystemUiOverlayStyle(statusBarBrightness: brightness);
-    SystemChrome.setSystemUIOverlayStyle(style);
+    if (brightness == _linden.brightness) return;
 
     final newLinden = _linden.updateBrightness(brightness);
     _updateLinden(newLinden);
+  }
+
+  void _updateStatusBarBrightness(Brightness brightness) {
+    final inverseBrightness =
+        brightness == Brightness.light ? Brightness.dark : Brightness.light;
+
+    final style = SystemUiOverlayStyle(
+      statusBarBrightness: brightness,
+      statusBarIconBrightness: inverseBrightness,
+    );
+
+    /// It only updates the style if it doesn't match the latest style
+    SystemChrome.setSystemUIOverlayStyle(style);
   }
 
   @override
