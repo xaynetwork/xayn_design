@@ -125,6 +125,8 @@ class XColors {
 
   Color get pageBackground => _theme(bright: _white, dark: _grey.shade95);
 
+  Color get homePageBackground => _theme(bright: _white, dark: _grey.shade80);
+
   Color get cardBackground => _theme(bright: _white, dark: _grey.shade80);
 
   Color get background => _theme(bright: _white, dark: _black);
@@ -254,7 +256,7 @@ class XColors {
 
   Color get qrCodeBackground => _white;
 
-  Color get swipeCardBackground => _black;
+  Color get swipeCardBackground => _grey.shade95;
 
   Color get snippetBackground => _white;
 
@@ -271,7 +273,7 @@ class XColors {
       _theme(bright: _white, dark: _grey.shade95);
 
   Color get bottomSheetBarrierColor =>
-      _theme(bright: _white, dark: _black).withOpacity(0.8);
+      _theme(bright: _white, dark: _grey.shade80).withOpacity(0.8);
 
   Color get selectedItemBackgroundColor => _theme(bright: _green.shade120);
 
@@ -279,7 +281,7 @@ class XColors {
 
   Color get readerModeWhiteBackgroundColor => _theme(bright: _white);
 
-  Color get readerModeDarkBackgroundColor => _theme(bright: _black);
+  Color get readerModeDarkBackgroundColor => _theme(bright: _grey.shade95);
 
   Color get readerModeBlackBackgroundColor => _theme(bright: _trueBlack);
 
