@@ -256,7 +256,9 @@ class XColors {
 
   Color get qrCodeBackground => _white;
 
-  Color get swipeCardBackground => _grey.shade95;
+  Color get swipeCardBackgroundDefault => _black;
+
+  Color get swipeCardBackgroundHome => _grey.shade95;
 
   Color get snippetBackground => _white;
 
