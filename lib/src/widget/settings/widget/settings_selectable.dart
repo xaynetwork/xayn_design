@@ -60,6 +60,9 @@ class SettingsSelectableIconGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final linden = UnterDenLinden.getLinden(context);
+    final itemWidth =
+        (MediaQuery.of(context).size.width - 2 * linden.dimen.unit3) /
+            items.length;
     return SettingsBackground(
       child: ToggleButtons(
           fillColor: linden.colors.primary,
@@ -67,7 +70,16 @@ class SettingsSelectableIconGroup extends StatelessWidget {
           renderBorder: false,
           constraints: constraints,
           isSelected: items.map((e) => e.isSelected).toList(),
-          children: items.map((e) => SettingsSelectableIcon(item: e)).toList(),
+          children: items
+              .map(
+                (e) => SizedBox(
+                  width: itemWidth,
+                  child: SettingsSelectableIcon(
+                    item: e,
+                  ),
+                ),
+              )
+              .toList(),
           onPressed: (int index) {
             items[index].onPressed();
           }),
@@ -106,6 +118,8 @@ class SettingsSelectableIcon extends StatelessWidget {
     final title = Text(
       item.title,
       textAlign: TextAlign.center,
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
       style: linden.styles.sBoldStyle.copyWith(
         color: item.isSelected
             ? linden.colors.brightText
@@ -121,9 +135,11 @@ class SettingsSelectableIcon extends StatelessWidget {
       ],
       mainAxisSize: MainAxisSize.min,
     );
+
     return Padding(
       key: item.key,
-      padding: EdgeInsets.symmetric(vertical: linden.dimen.unit2),
+      padding: EdgeInsets.symmetric(
+          vertical: linden.dimen.unit2, horizontal: linden.dimen.unit2),
       child: column,
     );
   }
