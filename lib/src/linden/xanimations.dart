@@ -18,6 +18,8 @@ class XAnimations {
 
   Duration get unit2 => _unit * 2;
 
+  Duration get unit2_5 => _unit * 2.5;
+
   Duration get unit3 => _unit * 3;
 
   Duration get unit5 => _unit * 5;
