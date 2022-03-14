@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
@@ -86,6 +87,7 @@ class NavBarContainerState extends State<NavBarContainer>
     implements NavBarController {
   final resetStream = StreamController<bool?>();
   final updateStream = StreamController<bool?>();
+  late final StreamSubscription<bool?> _streamSubscription;
 
   ConfigPair? configPair;
   NavBarConfigMixin? currentNavBarConfigMixin;
@@ -96,9 +98,15 @@ class NavBarContainerState extends State<NavBarContainer>
 
   @override
   void initState() {
-    MergeStream([resetStream.stream, updateStream.stream])
-        .debounceTime(updateNavBarDebounceTimeout)
-        .listen((bool? goingBack) {
+    final isInTest = Platform.environment.containsKey('FLUTTER_TEST');
+    Stream<bool?> stream =
+        MergeStream([resetStream.stream, updateStream.stream]);
+
+    if (isInTest) {
+      stream = stream.debounceTime(updateNavBarDebounceTimeout);
+    }
+
+    _streamSubscription = stream.listen((goingBack) {
       if (!mounted) return;
       configPair ??= _getConfigPair(context, goingBack ?? false);
       _updateBar(configPair!);
@@ -111,6 +119,7 @@ class NavBarContainerState extends State<NavBarContainer>
   void dispose() {
     updateStream.close();
     resetStream.close();
+    _streamSubscription.cancel();
     super.dispose();
   }
 
