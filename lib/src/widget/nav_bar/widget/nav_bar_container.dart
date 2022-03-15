@@ -99,12 +99,9 @@ class NavBarContainerState extends State<NavBarContainer>
   @override
   void initState() {
     final isInTest = Platform.environment.containsKey('FLUTTER_TEST');
-    Stream<bool?> stream =
-        MergeStream([resetStream.stream, updateStream.stream]);
-
-    if (!isInTest) {
-      stream = stream.debounceTime(updateNavBarDebounceTimeout);
-    }
+    final timeout = isInTest ? const Duration() : updateNavBarDebounceTimeout;
+    final stream = MergeStream([resetStream.stream, updateStream.stream])
+        .debounceTime(timeout);
 
     _streamSubscription = stream.listen((goingBack) {
       if (!mounted) return;
