@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:xayn_design/src/widget/nav_bar/data/nav_bar_config.dart';
+import 'package:xayn_design/src/widget/nav_bar/data/nav_bar_config_id.dart';
 import 'package:xayn_design/src/widget/nav_bar/data/nav_bar_item.dart';
 
 void main() {
@@ -18,6 +19,8 @@ void main() {
         onPressed: () {},
         key: const Key('back btn'),
       );
+
+  const defaultId = NavBarConfigId('default');
 
   group(
     'Check NavBarType',
@@ -43,6 +46,7 @@ void main() {
     'Check NavBarConfig',
     () {
       final cardConfig = NavBarConfig(
+        defaultId,
         [
           getIconData(),
           getIconData(isHighlighted: true),
@@ -53,6 +57,16 @@ void main() {
       final ignoredConfig = NavBarConfig.ignored();
       final backConfig = NavBarConfig.backBtn(getBackData());
 
+      test(
+        'GIVEN 2 different id to NavBarConfig WHEN compare them THEN return false',
+        () {
+          final a = NavBarConfig(const NavBarConfigId('a'), [getIconData()]);
+          final b = NavBarConfig(const NavBarConfigId('b'), [getIconData()]);
+          final b2 = NavBarConfig(const NavBarConfigId('b'), [getIconData()]);
+          expect(a == b, isFalse);
+          expect(b == b2, isTrue);
+        },
+      );
       test(
         'GIVEN NavBarConfig THEN verify it extends Equatable',
         () {
@@ -67,6 +81,7 @@ void main() {
         'GIVEN config THEN props are correct',
         () {
           expect(cardConfig.props, [
+            cardConfig.id,
             cardConfig.items,
             cardConfig.isWidthExpanded,
             cardConfig.type,
@@ -89,7 +104,8 @@ void main() {
             'GIVEN config THEN verify items are required, the rest is optional',
             () {
               final data = getIconData();
-              final config = NavBarConfig([data]);
+              final config = NavBarConfig(defaultId, [data]);
+              expect(config.id, equals(defaultId));
               expect(config.isWidthExpanded, isFalse);
               expect(config.type, NavBarType.card);
               expect(config.items, [data]);
@@ -99,24 +115,33 @@ void main() {
           test(
             'GIVEN config with expanded width THEN verify flag is correct',
             () {
-              final config =
-                  NavBarConfig([getIconData()], isWidthExpanded: true);
+              final config = NavBarConfig(
+                defaultId,
+                [getIconData()],
+                isWidthExpanded: true,
+              );
               expect(config.isWidthExpanded, isTrue);
             },
           );
           test(
             'GIVEN config with showAboveKeyboard = false width THEN verify flag is correct',
             () {
-              final config =
-                  NavBarConfig([getIconData()], showAboveKeyboard: false);
+              final config = NavBarConfig(
+                defaultId,
+                [getIconData()],
+                showAboveKeyboard: false,
+              );
               expect(config.showAboveKeyboard, isFalse);
             },
           );
           test(
             'GIVEN config with showAboveKeyboard = true width THEN verify flag is correct',
             () {
-              final config =
-                  NavBarConfig([getIconData()], showAboveKeyboard: true);
+              final config = NavBarConfig(
+                defaultId,
+                [getIconData()],
+                showAboveKeyboard: true,
+              );
               expect(config.showAboveKeyboard, isTrue);
             },
           );
@@ -129,6 +154,7 @@ void main() {
           test(
             'GIVEN back config THEN verify items size == 1, type is back and width is false',
             () {
+              expect(backConfig.id, equals(idBackBtn));
               expect(backConfig.isWidthExpanded, isFalse);
               expect(backConfig.type, equals(NavBarType.backBtn));
               expect(backConfig.items, equals([getBackData()]));
@@ -144,6 +170,7 @@ void main() {
           test(
             'GIVEN hidden config THEN verify items size == 0, type is hidden and width is false',
             () {
+              expect(hiddenConfig.id, equals(idHidden));
               expect(hiddenConfig.isWidthExpanded, isFalse);
               expect(hiddenConfig.type, equals(NavBarType.hidden));
               expect(hiddenConfig.items, isEmpty);
@@ -159,6 +186,7 @@ void main() {
           test(
             'GIVEN ignored config THEN verify items size == 0, type is ignored and width is false',
             () {
+              expect(ignoredConfig.id, equals(idIgnored));
               expect(ignoredConfig.isWidthExpanded, isFalse);
               expect(ignoredConfig.type, NavBarType.ignored);
               expect(ignoredConfig.items, isEmpty);
@@ -176,7 +204,7 @@ void main() {
         'GIVEN config with no items WHEN use default constructor THEN throw assert exception',
         () async {
           expect(
-            () => NavBarConfig(const []),
+            () => NavBarConfig(defaultId, const []),
             throwsA(isA<AssertionError>()),
           );
         },
@@ -185,7 +213,7 @@ void main() {
         'GIVEN config with 1 highlighted item WHEN use default constructor THEN will NOT throw assert exception',
         () async {
           expect(
-            NavBarConfig([getIconData(isHighlighted: true)]),
+            NavBarConfig(defaultId, [getIconData(isHighlighted: true)]),
             isA<NavBarConfig>(),
           );
         },
@@ -194,7 +222,7 @@ void main() {
         'GIVEN config with 2 highlighted items WHEN use default constructor THEN will throw assert exception',
         () async {
           expect(
-            () => NavBarConfig([
+            () => NavBarConfig(defaultId, [
               getIconData(isHighlighted: true),
               getIconData(isHighlighted: true),
             ]),
@@ -207,6 +235,7 @@ void main() {
         () async {
           expect(
             () => NavBarConfig(
+              defaultId,
               [
                 getIconData(isHighlighted: true),
                 NavBarItemBackButton(onPressed: () {}, key: const Key('key'))

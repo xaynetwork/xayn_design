@@ -22,6 +22,7 @@ void main() {
     );
   }
 
+  const defaultId = NavBarConfigId('default');
   final backBtn = NavBarItemBackButton(
     onPressed: () {},
     key: const Key('backBtn'),
@@ -56,7 +57,11 @@ void main() {
     testWidgets(
       'GIVEN config with isWidthExpanded=false WHEN updating config in widget THEN row size=min and mainAxisAlignment=start',
       (final WidgetTester tester) async {
-        final config = NavBarConfig([getEditItem()], isWidthExpanded: false);
+        final config = NavBarConfig(
+          defaultId,
+          [getEditItem()],
+          isWidthExpanded: false,
+        );
         await tester.pumpLindenApp(buildWidget());
         getState().update(config);
         await tester.pumpAndSettle();
@@ -70,7 +75,11 @@ void main() {
     testWidgets(
       'GIVEN config with isWidthExpanded=true WHEN updating config in widget THEN row size=max and mainAxisAlignment=spaceBetween',
       (final WidgetTester tester) async {
-        final config = NavBarConfig([getEditItem()], isWidthExpanded: true);
+        final config = NavBarConfig(
+          defaultId,
+          [getEditItem()],
+          isWidthExpanded: true,
+        );
         await tester.pumpLindenApp(buildWidget());
         getState().update(config);
         await tester.pumpAndSettle();
@@ -140,7 +149,7 @@ void main() {
       (final WidgetTester tester) async {
         await tester.pumpLindenApp(buildWidget());
         final state = getState();
-        final config = NavBarConfig([
+        final config = NavBarConfig(defaultId, [
           getIconBtnItem(),
           getEditItem(),
           getEditItem(),
@@ -168,7 +177,7 @@ void main() {
       (final WidgetTester tester) async {
         await tester.pumpLindenApp(buildWidget());
         final state = getState();
-        final config = NavBarConfig([
+        final config = NavBarConfig(defaultId, [
           getIconBtnItem(isHighlighted: true),
           getEditItem(),
         ]);
@@ -188,6 +197,7 @@ void main() {
         await tester.pumpLindenApp(buildWidget());
         final state = getState();
         final config = NavBarConfig(
+          defaultId,
           [getIconBtnItem()],
           showAboveKeyboard: false,
         );
@@ -211,6 +221,7 @@ void main() {
         await tester.pumpLindenApp(mediaQuery);
         final state = getState();
         final config = NavBarConfig(
+          defaultId,
           [getIconBtnItem()],
           showAboveKeyboard: true,
         );
@@ -230,7 +241,7 @@ void main() {
       (final WidgetTester tester) async {
         await tester.pumpLindenApp(buildWidget());
         final state = getState();
-        final config = NavBarConfig([
+        final config = NavBarConfig(defaultId, [
           getIconBtnItem(),
         ]);
         state.update(config);
@@ -247,7 +258,7 @@ void main() {
         const customPadding = EdgeInsets.fromLTRB(1, 2, 3, 4);
         await tester.pumpLindenApp(buildWidget(padding: customPadding));
         final state = getState();
-        final config = NavBarConfig([
+        final config = NavBarConfig(defaultId, [
           getIconBtnItem(),
         ]);
         state.update(config);
@@ -283,7 +294,10 @@ void main() {
           await tester.pumpLindenApp(buildWidget());
 
           final state = getState();
-          state.update(NavBarConfig([getIconBtnItem(isHighlighted: true)]));
+          state.update(NavBarConfig(
+            defaultId,
+            [getIconBtnItem(isHighlighted: true)],
+          ));
         },
       );
 
@@ -293,7 +307,10 @@ void main() {
           await tester.pumpLindenApp(buildWidget());
 
           final state = getState();
-          state.update(NavBarConfig([getIconBtnItem(isHighlighted: false)]));
+          state.update(NavBarConfig(
+            defaultId,
+            [getIconBtnItem(isHighlighted: false)],
+          ));
         },
       );
 
@@ -302,7 +319,7 @@ void main() {
         (final WidgetTester tester) async {
           await tester.pumpLindenApp(buildWidget());
 
-          final config = NavBarConfig([
+          final config = NavBarConfig(defaultId, [
             getIconBtnItem(isHighlighted: true),
             getIconBtnItem(isHighlighted: false),
           ]);

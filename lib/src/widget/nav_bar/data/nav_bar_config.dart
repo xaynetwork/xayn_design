@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:xayn_design/src/widget/nav_bar/nav_bar.dart';
 
 enum NavBarType {
@@ -8,7 +9,19 @@ enum NavBarType {
   ignored,
 }
 
+@visibleForTesting
+const idHidden = NavBarConfigId('hidden');
+
+@visibleForTesting
+const idIgnored = NavBarConfigId('ignored');
+
+@visibleForTesting
+const idBackBtn = NavBarConfigId('backBtn');
+
 class NavBarConfig extends Equatable {
+  /// Helps to compare configs with each other.
+  final NavBarConfigId id;
+
   /// List of items, that will be shown inside [NavBar]
   final List<NavBarItem> items;
 
@@ -22,6 +35,7 @@ class NavBarConfig extends Equatable {
   final bool showAboveKeyboard;
 
   const NavBarConfig._(
+    this.id,
     this.items,
     this.isWidthExpanded,
     this.type,
@@ -29,6 +43,7 @@ class NavBarConfig extends Equatable {
   );
 
   NavBarConfig(
+    this.id,
     this.items, {
     this.isWidthExpanded = false,
     this.showAboveKeyboard = true,
@@ -49,23 +64,25 @@ class NavBarConfig extends Equatable {
   /// Use this constructor, if you need to hide [NavBar]
   /// when widget that use [NavBarConfig] is shown
   factory NavBarConfig.hidden() =>
-      const NavBarConfig._([], false, NavBarType.hidden, false);
+      const NavBarConfig._(idHidden, [], false, NavBarType.hidden, false);
 
   /// Use this constructor, if you need to ignore
   /// implementation of the [NavBarConfigMixin]
   /// In this case previous in the widget tree [NavBarConfigMixin] will be used
   factory NavBarConfig.ignored() =>
-      const NavBarConfig._([], false, NavBarType.ignored, false);
+      const NavBarConfig._(idIgnored, [], false, NavBarType.ignored, false);
 
   NavBarConfig.backBtn(
     NavBarItemBackButton btn,
-  )   : items = [btn],
+  )   : id = idBackBtn,
+        items = [btn],
         isWidthExpanded = false,
         showAboveKeyboard = false,
         type = NavBarType.backBtn;
 
   @override
   List<Object?> get props => [
+        id,
         items,
         isWidthExpanded,
         type,
