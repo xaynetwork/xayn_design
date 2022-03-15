@@ -263,7 +263,7 @@ class XColors {
 
   Color get swipeCardBackgroundDefault => _black;
 
-  Color get swipeCardBackgroundHome => _grey.shade95;
+  Color get swipeCardBackgroundHome => _black;
 
   Color get snippetBackground => _white;
 
