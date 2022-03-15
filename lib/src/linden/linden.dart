@@ -208,6 +208,7 @@ ThemeData _defaultTheme(
     colorScheme: colorScheme.copyWith(
       primary: colors.primary,
       secondary: colors.accent,
+      //ignore: deprecated_member_use
       secondaryVariant: colors.primaryAction,
     ),
     appBarTheme: AppBarTheme(color: colors.accent),
