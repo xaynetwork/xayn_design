@@ -29,6 +29,8 @@ abstract class BaseNavBarScreen extends StatefulWidget {
 
 abstract class BaseNavBarScreenState<T extends BaseNavBarScreen>
     extends State<T> with NavBarConfigMixin {
+  late final navBarId = NavBarConfigId(runtimeType.toString());
+
   Linden get linden => UnterDenLinden.getLinden(context);
 
   String get screenTitle;

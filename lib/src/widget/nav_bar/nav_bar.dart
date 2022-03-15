@@ -1,3 +1,4 @@
+export 'package:xayn_design/src/widget/nav_bar/data/nav_bar_config_id.dart';
 export 'package:xayn_design/src/widget/nav_bar/data/nav_bar_config.dart'
     show NavBarConfig;
 export 'package:xayn_design/src/widget/nav_bar/data/nav_bar_item.dart';

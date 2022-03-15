@@ -29,7 +29,7 @@ class _NavBarHomeScreenState extends BaseNavBarScreenState<NavBarHomeScreen>
       ];
 
   @override
-  NavBarConfig get navBarConfig => NavBarConfig([
+  NavBarConfig get navBarConfig => NavBarConfig(navBarId, [
         itemHome(isCurrent: true),
         itemSearch(),
         itemAccount(),

@@ -41,7 +41,7 @@ class _NavBarSearchScreenState extends BaseNavBarScreenState<NavBarSearchScreen>
       hint: Random().nextBool() ? null : 'Hint (random)',
     );
 
-    return NavBarConfig([
+    return NavBarConfig(navBarId, [
       itemHome(),
       search,
       itemAccount(),
