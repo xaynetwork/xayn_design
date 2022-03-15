@@ -87,7 +87,7 @@ class _NavBarReaderModeScreenState
       key: keyShare,
     );
 
-    return NavBarConfig([
+    return NavBarConfig(navBarId, [
       goBack,
       like,
       dislike,

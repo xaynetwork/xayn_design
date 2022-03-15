@@ -26,7 +26,7 @@ class _NavBarAccountScreenState
       ];
 
   @override
-  NavBarConfig get navBarConfig => NavBarConfig([
+  NavBarConfig get navBarConfig => NavBarConfig(navBarId, [
         itemHome(),
         itemSearch(),
         itemAccount(isCurrent: true),
