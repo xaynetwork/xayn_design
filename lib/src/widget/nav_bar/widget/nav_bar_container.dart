@@ -205,7 +205,8 @@ class NavBarContainerState extends State<NavBarContainer>
 
     if (ignoreLast &&
         list.isNotEmpty &&
-        list.last.runtimeType == currentNavBarConfigMixin.runtimeType) {
+        list.last.navBarConfig.id ==
+            currentNavBarConfigMixin?.navBarConfig.id) {
       list.removeLast();
     }
     return ConfigPair(navBarState, list);

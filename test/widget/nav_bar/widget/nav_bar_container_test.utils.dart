@@ -2,6 +2,8 @@ part of 'nav_bar_container_test.dart';
 
 const keyStack = Key('keyStack');
 
+const defaultId = NavBarConfigId('default');
+
 final _backBtnConfig = NavBarConfig.backBtn(
   NavBarItemBackButton(onPressed: () {}, key: const Key('back btn')),
 );
@@ -35,7 +37,7 @@ NavBarConfig createConfig({int numberOfItems = 1}) {
     );
     items.add(item);
   }
-  return NavBarConfig(items);
+  return NavBarConfig(defaultId, items);
 }
 
 void resetNavBar({BuildContext? context, goingBack = false}) =>
