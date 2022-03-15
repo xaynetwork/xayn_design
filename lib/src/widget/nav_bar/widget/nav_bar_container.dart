@@ -102,7 +102,7 @@ class NavBarContainerState extends State<NavBarContainer>
     Stream<bool?> stream =
         MergeStream([resetStream.stream, updateStream.stream]);
 
-    if (isInTest) {
+    if (!isInTest) {
       stream = stream.debounceTime(updateNavBarDebounceTimeout);
     }
 
