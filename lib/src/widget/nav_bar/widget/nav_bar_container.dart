@@ -12,11 +12,13 @@ const updateNavBarDebounceTimeout = Duration(milliseconds: 50);
 
 class NavBarContainer extends StatefulWidget {
   final Widget child;
+  final GlobalKey globalKey;
 
-  const NavBarContainer({
-    Key? key,
+  NavBarContainer({
+    GlobalKey? key,
     required this.child,
-  }) : super(key: key);
+  })  : globalKey = key ?? GlobalKey(),
+        super(key: key);
 
   @override
   NavBarContainerState createState() => NavBarContainerState();
@@ -38,6 +40,12 @@ class NavBarContainer extends StatefulWidget {
   static void showNavBar(BuildContext context) {
     if (!staticCallsEnabled) return;
     return _getTypedWidget(context).controller.showNavBar();
+  }
+
+  /// Call this, when you need the position of the [NavBar]
+  static Offset? getNavBarPosition(BuildContext context) {
+    if (!staticCallsEnabled) return null;
+    return _getTypedWidget(context).controller.getNavBarPosition();
   }
 
   /// Call this, when you need to know if the [NavBar] is visible
@@ -121,8 +129,11 @@ class NavBarContainerState extends State<NavBarContainer>
   }
 
   @override
-  Widget build(BuildContext context) =>
-      InheritedNavBarContainer(controller: this, child: widget.child);
+  Widget build(BuildContext context) => InheritedNavBarContainer(
+        key: widget.globalKey,
+        controller: this,
+        child: widget.child,
+      );
 
   @override
   void resetNavBar(bool goingBack) {
@@ -150,6 +161,15 @@ class NavBarContainerState extends State<NavBarContainer>
   void showNavBar() {
     if (_isVisible) return;
     _tryToUpdateVisibility(true);
+  }
+
+  @override
+  Offset? getNavBarPosition() {
+    final currentContext = widget.globalKey.currentContext;
+    if (currentContext == null) return null;
+    final renderBox = currentContext.findRenderObject() as RenderBox;
+    final offset = renderBox.globalToLocal(Offset.zero);
+    return offset;
   }
 
   void _updateBar(ConfigPair configPair) {
@@ -254,6 +274,8 @@ abstract class NavBarController {
 
   /// Used internally, to get if nav bar is visible
   bool isNavBarVisible();
+
+  Offset? getNavBarPosition();
 }
 
 class NavBarContainerNotFoundException implements Exception {
