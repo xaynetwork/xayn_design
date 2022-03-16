@@ -62,7 +62,7 @@ class XAnimations {
 
   Duration get cardSnapBackDuration => _unit * 2.5;
   Duration get cardOpenTransitionDuration => _unit * 5;
-  Duration get cardCloseTransitionDuration => _unit * 3;
+  Duration get cardCloseTransitionDuration => _unit;
 
   Curve get snapBackToFeedCurve => Curves.elasticOut;
 }
