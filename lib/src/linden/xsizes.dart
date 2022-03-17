@@ -120,7 +120,7 @@ class XSizes {
   double get navBarItemHeight => unit6;
   double get navBarSelectableHeight => unit5;
 
-  double get collectionItemBottomSheetHeight => unit5;
+  double get collectionItemBottomSheetHeight => unit6;
 
   double get cardNotchSize => unit8_25;
 
