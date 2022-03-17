@@ -20,6 +20,8 @@ class AppGhostButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? iconColor;
   final Size? iconSize;
+  final bool isWithIconOnly;
+  final bool isWithText;
 
   const AppGhostButton({
     required Widget child,
@@ -34,6 +36,8 @@ class AppGhostButton extends StatelessWidget {
   })  : _child = child,
         _text = null,
         _svgIconPath = null,
+        isWithIconOnly = false,
+        isWithText = false,
         super(key: key);
 
   const AppGhostButton.text(
@@ -49,6 +53,8 @@ class AppGhostButton extends StatelessWidget {
         _svgIconPath = null,
         iconColor = null,
         iconSize = null,
+        isWithIconOnly = false,
+        isWithText = true,
         super(key: key);
 
   const AppGhostButton.icon(
@@ -64,6 +70,8 @@ class AppGhostButton extends StatelessWidget {
   })  : _child = null,
         _text = null,
         _svgIconPath = svgIconPath,
+        isWithIconOnly = true,
+        isWithText = false,
         super(key: key);
 
   const AppGhostButton.textWithIcon({
@@ -80,6 +88,8 @@ class AppGhostButton extends StatelessWidget {
   })  : _child = null,
         _text = text,
         _svgIconPath = svgIconPath,
+        isWithIconOnly = false,
+        isWithText = true,
         super(key: key);
 
   @override
@@ -93,13 +103,40 @@ class AppGhostButton extends StatelessWidget {
     );
     return Opacity(
       opacity: onPressed == null ? linden.dimen.disabledOpacity : 1,
-      child: TextButton(
-        style: style,
-        onPressed: onPressed,
-        onLongPress: onLongPressed,
-        child: _buildChild(linden),
-      ),
+      child: _buildTextButton(linden: linden, style: style),
     );
+  }
+
+  Widget _buildTextButton({
+    required Linden linden,
+    required ButtonStyle style,
+  }) {
+    final textButton = TextButton(
+      style: style,
+      onPressed: onPressed,
+      onLongPress: onLongPressed,
+      child: _buildChild(linden),
+    );
+
+    /// If the button contains only an icon
+    /// set the size to 48x48
+    if (isWithIconOnly) {
+      return SizedBox(
+        height: linden.dimen.unit6,
+        width: linden.dimen.unit6,
+        child: textButton,
+      );
+    }
+
+    /// If the button contains text
+    /// set at least the height to 48
+    if (isWithText) {
+      return SizedBox(
+        height: linden.dimen.unit6,
+        child: textButton,
+      );
+    }
+    return textButton;
   }
 
   Widget _buildChild(Linden linden) {
