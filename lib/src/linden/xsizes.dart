@@ -119,8 +119,13 @@ class XSizes {
   double get navBarHeight => unit8;
   double get navBarItemHeight => unit6;
   double get navBarSelectableHeight => unit5;
+  double get navBarBottomPadding => unit3;
+
+  double get readerModeBottomPadding =>
+      navBarHeight + navBarBottomPadding + unit5;
 
   double get collectionItemBottomSheetHeight => unit6;
+  double get bottomSheetItemTrailingIconHeight => unit5;
 
   double get cardNotchSize => unit8_25;
 
