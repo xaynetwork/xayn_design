@@ -122,8 +122,8 @@ class AppGhostButton extends StatelessWidget {
     /// set the size to 48x48
     if (isWithIconOnly) {
       return SizedBox(
-        height: linden.dimen.unit6,
-        width: linden.dimen.unit6,
+        height: linden.dimen.iconButtonSize,
+        width: linden.dimen.iconButtonSize,
         child: textButton,
       );
     }
@@ -132,7 +132,7 @@ class AppGhostButton extends StatelessWidget {
     /// set at least the height to 48
     if (isWithText) {
       return SizedBox(
-        height: linden.dimen.unit6,
+        height: linden.dimen.iconButtonSize,
         child: textButton,
       );
     }
