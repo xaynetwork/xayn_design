@@ -19,6 +19,9 @@ class NavBarBackButton extends StatelessWidget {
         color: linden.colors.iconInverse,
       ),
       heroTag: null,
+      focusElevation: 0,
+      highlightElevation: 0,
+      hoverElevation: 0,
     );
     final sized = SizedBox(
       height: linden.dimen.buttonMinHeight,
