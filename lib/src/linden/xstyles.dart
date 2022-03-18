@@ -23,7 +23,7 @@ class XStyles {
   FontWeight get _weightRegular => FontWeight.w400;
 
   /// New styles
-  TextStyle get xxxlBoldStyle => TextStyle(
+  TextStyle get xxlBoldStyle => TextStyle(
         fontFamily: _kNotoSansFontFamily,
         color: colors.primaryText,
         fontSize: 28,
