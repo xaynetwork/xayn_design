@@ -6,14 +6,14 @@ typedef _NavBarUpdater = Function(BuildContext context);
 class NavBarEdit extends StatefulWidget {
   final NavBarItemEdit data;
   final _NavBarUpdater _updateNavBar;
-  final FocusNode _focusNode;
+  final FocusNode? _focusNode;
 
   NavBarEdit(
     this.data, {
     @visibleForTesting _NavBarUpdater? updater,
     @visibleForTesting FocusNode? focusNode,
   })  : _updateNavBar = updater ?? NavBarContainer.updateNavBar,
-        _focusNode = focusNode ?? FocusNode(),
+        _focusNode = focusNode,
         super(key: null);
 
   @override
@@ -22,27 +22,37 @@ class NavBarEdit extends StatefulWidget {
 
 class _NavBarEditState extends State<NavBarEdit> {
   late final TextEditingController controller;
+  late final FocusNode _focusNode;
   bool _didAutoFocus = false;
 
   Linden get linden => UnterDenLinden.getLinden(context);
 
   @override
   void initState() {
+    _focusNode = widget._focusNode ?? FocusNode();
+
     controller = TextEditingController(
       text: widget.data.initialText,
     );
 
-    widget._focusNode.addListener(() {
-      widget._updateNavBar(context);
-    });
+    _focusNode.addListener(_onFocusNodeEvent);
 
     super.initState();
   }
 
   @override
   void dispose() {
+    final wasFocusNodeCreatedLocally = widget._focusNode == null;
+
     controller.dispose();
-    widget._focusNode.dispose();
+
+    // the listener is always added in this class, so always remove it
+    _focusNode.removeListener(_onFocusNodeEvent);
+
+    // dispose when it was created in this Widget's State,
+    // otherwise, let the object that passed it in dispose instead...
+    if (wasFocusNodeCreatedLocally) _focusNode.dispose();
+
     super.dispose();
   }
 
@@ -59,7 +69,7 @@ class _NavBarEditState extends State<NavBarEdit> {
     if (!_didAutoFocus && widget.data.autofocus) {
       _didAutoFocus = true;
 
-      widget._focusNode.requestFocus();
+      _focusNode.requestFocus();
     }
 
     final container = Container(
@@ -80,6 +90,8 @@ class _NavBarEditState extends State<NavBarEdit> {
     );
   }
 
+  void _onFocusNodeEvent() => widget._updateNavBar(context);
+
   Widget _buildIcon() {
     final icon = SvgPicture.asset(
       widget.data.svgIconPath,
@@ -89,7 +101,7 @@ class _NavBarEditState extends State<NavBarEdit> {
     );
     return InkWell(
       splashColor: linden.colors.splashColor,
-      onTap: widget._focusNode.requestFocus,
+      onTap: _focusNode.requestFocus,
       child: Center(child: icon),
       borderRadius: BorderRadius.circular(linden.dimen.unit),
     );
@@ -98,7 +110,7 @@ class _NavBarEditState extends State<NavBarEdit> {
   /// Use TextFormField because it should resolve: https://github.com/flutter/flutter/issues/98505
   Widget _buildEditText() => TextFormField(
         key: widget.data.key,
-        focusNode: widget._focusNode,
+        focusNode: _focusNode,
         controller: controller,
         style: linden.styles.textInputText,
         textInputAction: TextInputAction.search,
