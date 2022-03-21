@@ -8,7 +8,7 @@ class NavBarEdit extends StatefulWidget {
   final _NavBarUpdater _updateNavBar;
   final FocusNode? _focusNode;
 
-  NavBarEdit(
+  const NavBarEdit(
     this.data, {
     @visibleForTesting _NavBarUpdater? updater,
     @visibleForTesting FocusNode? focusNode,
