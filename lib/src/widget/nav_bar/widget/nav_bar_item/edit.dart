@@ -22,27 +22,27 @@ class NavBarEdit extends StatefulWidget {
 
 class _NavBarEditState extends State<NavBarEdit> {
   late final TextEditingController controller;
+  bool _didAutoFocus = false;
 
   Linden get linden => UnterDenLinden.getLinden(context);
 
   @override
   void initState() {
-    controller = TextEditingController(text: widget.data.initialText);
-    if (widget.data.autofocus) {
-      WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-        widget._focusNode.requestFocus();
-      });
-    }
+    controller = TextEditingController(
+      text: widget.data.initialText,
+    );
 
     widget._focusNode.addListener(() {
       widget._updateNavBar(context);
     });
+
     super.initState();
   }
 
   @override
   void dispose() {
     controller.dispose();
+    widget._focusNode.dispose();
     super.dispose();
   }
 
@@ -55,7 +55,12 @@ class _NavBarEditState extends State<NavBarEdit> {
         Expanded(child: _buildEditText()),
       ],
     );
-    // return row;
+
+    if (!_didAutoFocus && widget.data.autofocus) {
+      _didAutoFocus = true;
+
+      widget._focusNode.requestFocus();
+    }
 
     final container = Container(
       height: linden.dimen.navBarSelectableHeight,
@@ -90,7 +95,8 @@ class _NavBarEditState extends State<NavBarEdit> {
     );
   }
 
-  Widget _buildEditText() => TextField(
+  /// Use TextFormField because it should resolve: https://github.com/flutter/flutter/issues/98505
+  Widget _buildEditText() => TextFormField(
         key: widget.data.key,
         focusNode: widget._focusNode,
         controller: controller,
@@ -99,7 +105,7 @@ class _NavBarEditState extends State<NavBarEdit> {
         keyboardAppearance: linden.colors.brightness,
         maxLines: 1,
         onChanged: widget.data.onTextChanged,
-        onSubmitted: widget.data.onSearchPressed,
+        onFieldSubmitted: widget.data.onSearchPressed,
         decoration: InputDecoration.collapsed(
           hintText: widget.data.hint,
           hintStyle: linden.styles.textInputHint,
