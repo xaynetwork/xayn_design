@@ -107,6 +107,8 @@ class XColors {
 
   Color get tertiaryText => _theme(bright: _grey);
 
+  Color get quaternaryText => _theme(bright: _white);
+
   Color get tooltipText => _theme(bright: _black, dark: _white);
 
   Color get icon => _theme(bright: _black, dark: _grey.shade20);

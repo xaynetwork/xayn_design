@@ -19,6 +19,7 @@ class AppGhostButton extends StatelessWidget {
   final BorderRadiusGeometry borderRadius;
   final Color? backgroundColor;
   final Color? iconColor;
+  final Color? textColor;
   final Size? iconSize;
   final bool isWithIconOnly;
   final bool isWithText;
@@ -32,6 +33,7 @@ class AppGhostButton extends StatelessWidget {
     this.backgroundColor,
     this.iconColor,
     this.iconSize,
+    this.textColor,
     Key? key,
   })  : _child = child,
         _text = null,
@@ -47,6 +49,7 @@ class AppGhostButton extends StatelessWidget {
     this.contentPadding = _defaultContentPadding,
     this.borderRadius = _defaultBorderRadius,
     this.backgroundColor,
+    this.textColor,
     Key? key,
   })  : _child = null,
         _text = text,
@@ -70,6 +73,7 @@ class AppGhostButton extends StatelessWidget {
   })  : _child = null,
         _text = null,
         _svgIconPath = svgIconPath,
+        textColor = null,
         isWithIconOnly = true,
         isWithText = false,
         super(key: key);
@@ -84,6 +88,7 @@ class AppGhostButton extends StatelessWidget {
     this.backgroundColor,
     this.iconColor,
     this.iconSize,
+    this.textColor,
     Key? key,
   })  : _child = null,
         _text = text,
@@ -179,6 +184,12 @@ class AppGhostButton extends StatelessWidget {
       ? null
       : Text(
           _text!,
-          style: linden.styles.mBoldStyle,
+          style: _getTextStyle(linden),
+        );
+
+  TextStyle _getTextStyle(Linden linden) => textColor == null
+      ? linden.styles.mBoldStyle
+      : linden.styles.mBoldStyle.copyWith(
+          color: textColor,
         );
 }
