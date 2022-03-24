@@ -29,6 +29,7 @@ class _BottomSheetBaseState extends State<BottomSheetBase>
       padding: widget.padding ??
           EdgeInsets.symmetric(
             horizontal: linden.dimen.unit3,
+            vertical: linden.dimen.unit3,
           ),
       child: widget.body,
     );
