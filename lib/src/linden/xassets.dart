@@ -249,6 +249,8 @@ class _Icons {
   String get filtersIconRound =>
       _theme(brightAsset: 'assets/icons/filters_round.svg');
 
+  String get fontSize => _theme(brightAsset: 'assets/icons/font_size.svg');
+
   String get gear => _theme(brightAsset: 'assets/icons/gear.svg');
 
   String get globe => _theme(brightAsset: 'assets/icons/globe.svg');
