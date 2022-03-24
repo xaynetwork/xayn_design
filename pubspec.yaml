@@ -125,6 +125,7 @@ flutter:
     - packages/xayn_design/assets/icons/edit.svg
     - packages/xayn_design/assets/icons/filters.svg
     - packages/xayn_design/assets/icons/filters_round.svg
+    - packages/xayn_design/assets/icons/font_size.svg
     - packages/xayn_design/assets/icons/gear.svg
     - packages/xayn_design/assets/icons/globe.svg
     - packages/xayn_design/assets/icons/heart.svg
