@@ -84,8 +84,8 @@ class AppTextField extends StatelessWidget {
     final border = OutlineInputBorder(
       borderRadius: linden.styles.roundBorder,
       borderSide: BorderSide(
-        width: 0,
-        color: linden.colors.transparent,
+        width: linden.dimen.inputTextFieldBorderWidth,
+        color: linden.colors.inputTextFieldBorderColor,
       ),
     );
     const iconMaxWidth = 48.0;
@@ -94,10 +94,10 @@ class AppTextField extends StatelessWidget {
         linden.dimen.adaptiveUnit(small: 1, normal: 1.5);
     return InputDecoration(
       filled: true,
-      fillColor: linden.colors.searchInputFill,
+      fillColor: linden.colors.transparent,
       isDense: true,
       contentPadding: EdgeInsets.symmetric(
-        vertical: linden.dimen.adaptiveUnit(small: 1, normal: 1),
+        vertical: linden.dimen.adaptiveUnit(small: 1, normal: 1.5),
       ),
       errorStyle: linden.styles.textInputError,
       hintText: hintText,
