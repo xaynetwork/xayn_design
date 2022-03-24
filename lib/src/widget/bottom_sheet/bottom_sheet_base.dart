@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xayn_design/src/linden/linden.dart';
 import 'package:xayn_design/src/widget/unter_den_linden/unter_den_linden.dart';
 
 import 'bottom_sheet_body_mixin.dart';
@@ -26,11 +27,7 @@ class _BottomSheetBaseState extends State<BottomSheetBase>
     final linden = UnterDenLinden.getLinden(context);
 
     final paddedBody = Padding(
-      padding: widget.padding ??
-          EdgeInsets.symmetric(
-            horizontal: linden.dimen.unit3,
-            vertical: linden.dimen.unit3,
-          ),
+      padding: widget.padding ?? _buildWithDefaultPadding(linden),
       child: widget.body,
     );
 
@@ -62,6 +59,16 @@ class _BottomSheetBaseState extends State<BottomSheetBase>
         return true;
       },
       child: avoidKeyboardChild,
+    );
+  }
+
+  EdgeInsets _buildWithDefaultPadding(Linden linden) {
+    final deviceBottomPadding = linden.dimen.deviceScreenPadding.bottom;
+    return EdgeInsets.only(
+      top: linden.dimen.unit2,
+      left: linden.dimen.unit3,
+      right: linden.dimen.unit3,
+      bottom: deviceBottomPadding == 0 ? linden.dimen.unit3 : 0.0,
     );
   }
 }
