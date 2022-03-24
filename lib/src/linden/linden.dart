@@ -45,6 +45,7 @@ class Linden {
   Linden({
     this.deviceOrientation = Orientation.portrait,
     this.notchPaddingLandscapeMode = 0,
+    this.screenPadding = EdgeInsets.zero,
     this.brightness = Brightness.light,
     this.animations = const XAnimations(),
     XSizes? dimen,
@@ -69,6 +70,7 @@ class Linden {
         XSizes(
           notchPaddingLandscapeMode: notchPaddingLandscapeMode,
           deviceOrientation: deviceOrientation,
+          screenPadding: screenPadding,
         );
   }
 
@@ -84,6 +86,9 @@ class Linden {
   /// It updates the [XSizes] instance, dimen, when altered.
   ///
   final double notchPaddingLandscapeMode;
+
+  /// The padding that the screen might have due to a notch or something similar
+  final EdgeInsets screenPadding;
 
   /// Responsible for switching theme from light to dark and vise versa.
   ///
@@ -124,6 +129,7 @@ class Linden {
     Size? screenSize,
     Orientation? deviceOrientation,
     double? notchPaddingLandscapeMode,
+    EdgeInsets? screenPadding,
     Brightness? brightness,
     XStyles? styles,
     ThemeData? themeData,
@@ -136,6 +142,7 @@ class Linden {
         deviceOrientation: deviceOrientation ?? this.deviceOrientation,
         notchPaddingLandscapeMode:
             notchPaddingLandscapeMode ?? this.notchPaddingLandscapeMode,
+        screenPadding: screenPadding ?? this.screenPadding,
         brightness: brightness ?? this.brightness,
         styles: styles ?? this.styles,
         themeData: themeData ?? this.themeData,
@@ -151,17 +158,21 @@ class Linden {
     required Size screenSize,
     required Orientation deviceOrientation,
     double notchPaddingLandscapeMode = 0.0,
+    EdgeInsets screenPadding = EdgeInsets.zero,
   }) {
     if (screenSize != dimen.screenSize ||
         deviceOrientation != this.deviceOrientation ||
-        notchPaddingLandscapeMode != this.notchPaddingLandscapeMode) {
+        notchPaddingLandscapeMode != this.notchPaddingLandscapeMode ||
+        screenPadding != this.screenPadding) {
       return copyWith(
         deviceOrientation: deviceOrientation,
         notchPaddingLandscapeMode: notchPaddingLandscapeMode,
+        screenPadding: screenPadding,
         dimen: XSizes(
           screenSize: screenSize,
           deviceOrientation: deviceOrientation,
           notchPaddingLandscapeMode: notchPaddingLandscapeMode,
+          screenPadding: screenPadding,
         ),
       );
     }
