@@ -77,8 +77,12 @@ class _NavBarEditState extends State<NavBarEdit> {
       padding: EdgeInsets.symmetric(horizontal: linden.dimen.unit1_5),
       child: row,
       decoration: BoxDecoration(
-        color: linden.colors.searchInputFill,
+        color: linden.colors.transparent,
         borderRadius: BorderRadius.circular(linden.dimen.unit),
+        border: Border.all(
+          width: linden.dimen.inputTextFieldBorderWidth,
+          color: linden.colors.inputTextFieldBorderColor,
+        ),
       ),
     );
     return Material(

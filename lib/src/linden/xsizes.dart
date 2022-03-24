@@ -121,6 +121,8 @@ class XSizes {
   double get navBarSelectableHeight => unit5;
   double get navBarBottomPadding => unit3;
 
+  double get inputTextFieldBorderWidth => 1.5;
+
   double get readerModeBottomPadding =>
       navBarHeight + navBarBottomPadding + unit5;
 
