@@ -157,6 +157,9 @@ class XColors {
 
   Color get searchSuggestion => _theme(bright: _green.shade60);
 
+  Color get inputTextFieldBorderColor =>
+      _theme(bright: _grey.shade20, dark: _grey.shade80);
+
   Color get shadowTransparent =>
       _theme(bright: _black.withAlpha(65), dark: _black.withAlpha(0));
 
