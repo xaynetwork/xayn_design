@@ -113,10 +113,18 @@ class _UnterDenLindenState extends State<UnterDenLinden>
     ///If there is no notch the padding value is 0.0
     final notchPaddingLandscapeMode = mediaQueryData.padding.right;
 
+    final screenPadding = EdgeInsets.fromLTRB(
+      mediaQueryData.padding.left,
+      mediaQueryData.padding.top,
+      mediaQueryData.padding.right,
+      mediaQueryData.padding.bottom,
+    );
+
     final newLinden = _linden.updateScreenInfo(
       screenSize: mediaQueryData.size,
       deviceOrientation: mediaQueryData.orientation,
       notchPaddingLandscapeMode: notchPaddingLandscapeMode,
+      screenPadding: screenPadding,
     );
     _updateLinden(newLinden);
   }

@@ -18,13 +18,16 @@ class XSizes {
     Size? screenSize,
     Orientation? deviceOrientation,
     double notchPaddingLandscapeMode = 0.0,
+    EdgeInsets screenPadding = EdgeInsets.zero,
   })  : _screenSize = screenSize ?? const Size(800, 600),
         _deviceOrientation = deviceOrientation ?? Orientation.portrait,
-        _notchPaddingLandscapeMode = notchPaddingLandscapeMode;
+        _notchPaddingLandscapeMode = notchPaddingLandscapeMode,
+        _screenPadding = screenPadding;
 
   final double _notchPaddingLandscapeMode;
   final Size _screenSize;
   final Orientation _deviceOrientation;
+  final EdgeInsets _screenPadding;
 
   static const _unit = 8.0;
   final double unit = _unit;
@@ -107,6 +110,8 @@ class XSizes {
 
   /// Return 0.0 if there is no notch
   double get deviceLandscapeModeNotchPadding => _notchPaddingLandscapeMode;
+
+  EdgeInsets get deviceScreenPadding => _screenPadding;
 
   bool get isTabletPortraitMode =>
       isTablet && _deviceOrientation == Orientation.portrait;
