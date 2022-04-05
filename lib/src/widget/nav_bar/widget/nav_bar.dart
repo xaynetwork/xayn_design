@@ -145,10 +145,16 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
       child: stack,
     );
 
+    var key = data.key;
+    final withSemantics = Semantics(
+      label: key is ValueKey ? key.value : key.toString(),
+      child: withPadding,
+    );
+
     if (data is NavBarItemEdit) {
-      return Expanded(child: withPadding);
+      return Expanded(child: withSemantics);
     }
-    return withPadding;
+    return withSemantics;
   }
 }
 
