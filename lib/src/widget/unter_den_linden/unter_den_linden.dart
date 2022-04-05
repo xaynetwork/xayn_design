@@ -44,6 +44,8 @@ class UnterDenLinden extends StatefulWidget {
 class _UnterDenLindenState extends State<UnterDenLinden>
     with WidgetsBindingObserver {
   late Linden _linden;
+  bool screenPaddingUpdatedAfterKeyboardIsShown = false;
+  EdgeInsets _screenPadding = EdgeInsets.zero;
 
   /// Change [Brightness] of the current app.
   /// If [Brightness] was changed - triggers rebuild of the whole app
@@ -113,10 +115,13 @@ class _UnterDenLindenState extends State<UnterDenLinden>
     ///If there is no notch the padding value is 0.0
     final notchPaddingLandscapeMode = mediaQueryData.padding.right;
 
+    _setScreenPadding(mediaQueryData);
+
     final newLinden = _linden.updateScreenInfo(
       screenSize: mediaQueryData.size,
       deviceOrientation: mediaQueryData.orientation,
       notchPaddingLandscapeMode: notchPaddingLandscapeMode,
+      screenPadding: _screenPadding,
     );
     _updateLinden(newLinden);
   }
@@ -127,6 +132,23 @@ class _UnterDenLindenState extends State<UnterDenLinden>
     setState(() {
       _linden = linden;
     });
+  }
+
+  void _setScreenPadding(MediaQueryData mediaQueryData) {
+    if (mediaQueryData.viewInsets.bottom == 0) {
+      _screenPadding = EdgeInsets.fromLTRB(
+        mediaQueryData.padding.left,
+        mediaQueryData.padding.top,
+        mediaQueryData.padding.right,
+        mediaQueryData.padding.bottom,
+      );
+      screenPaddingUpdatedAfterKeyboardIsShown = false;
+    } else {
+      if (!screenPaddingUpdatedAfterKeyboardIsShown) {
+        _screenPadding = EdgeInsets.zero;
+        screenPaddingUpdatedAfterKeyboardIsShown = true;
+      }
+    }
   }
 }
 
