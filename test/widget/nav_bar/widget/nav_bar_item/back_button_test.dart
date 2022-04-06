@@ -20,10 +20,10 @@ void main() {
       await tester.pumpLindenApp(buildWidget());
 
       expect(find.byType(SvgPicture), findsOneWidget);
-      expect(find.byType(FloatingActionButton), findsOneWidget);
-      expect(find.byType(SizedBox), findsOneWidget);
-      // one default in MaterialApp and one in NavBarBackButton
-      expect(find.byType(Padding), findsNWidgets(2));
+      expect(find.byType(Material), findsOneWidget);
+      expect(find.byType(InkWell), findsOneWidget);
+      expect(find.byType(SizedBox), findsNWidgets(2));
+      expect(find.byType(Padding), findsOneWidget);
     },
   );
   testWidgets(
