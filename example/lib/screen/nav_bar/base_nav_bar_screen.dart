@@ -94,14 +94,18 @@ abstract class BaseNavBarScreenState<T extends BaseNavBarScreen>
       );
 
   NavBarItem itemHome({bool isCurrent = false}) => NavBarItemIconButton(
-        svgIconPath: linden.assets.icons.home,
+        svgIconPath: isCurrent
+            ? linden.assets.icons.homeActive
+            : linden.assets.icons.home,
         isHighlighted: isCurrent,
         onPressed: isCurrent ? () {} : replaceHome,
         key: keyHome,
       );
 
   NavBarItem itemAccount({bool isCurrent = false}) => NavBarItemIconButton(
-        svgIconPath: linden.assets.icons.person,
+        svgIconPath: isCurrent
+            ? linden.assets.icons.personActive
+            : linden.assets.icons.person,
         isHighlighted: isCurrent,
         onPressed: isCurrent ? () {} : replaceAccount,
         key: keyPerson,
