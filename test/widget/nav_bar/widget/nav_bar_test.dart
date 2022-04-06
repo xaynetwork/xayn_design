@@ -139,7 +139,6 @@ void main() {
         expect(find.byType(Row), findsOneWidget);
         expect(find.byType(NavBarBackButton), findsOneWidget);
         expect(find.byType(AppCardWidget), findsNothing);
-        expect(find.byType(HighlightLine), findsNothing);
         expect(find.byType(FutureBuilder), findsNothing);
       },
     );
@@ -161,7 +160,6 @@ void main() {
 
         expect(find.byType(Row), findsNWidgets(3));
         expect(find.byType(SafeArea), findsOneWidget);
-        expect(find.byType(HighlightLine), findsNothing);
 
         final rowWithItems = find.byType(Row).evaluate().first.widget as Row;
         expect(find.byType(NavBarIconButton), findsNWidgets(2));
@@ -184,8 +182,6 @@ void main() {
         state.update(config);
 
         await tester.pumpAndSettle();
-
-        expect(find.byType(HighlightLine), findsOneWidget);
       },
     );
   });
