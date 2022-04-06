@@ -70,7 +70,7 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
       child: row,
       decoration: BoxDecoration(
         color: linden.colors.background,
-        borderRadius: BorderRadius.circular(linden.dimen.unit3),
+        borderRadius: linden.styles.roundBorderCard,
         boxShadow: [linden.styles.cardShadow],
       ),
     );
