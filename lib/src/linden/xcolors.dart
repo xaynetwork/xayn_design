@@ -314,9 +314,12 @@ class XColors {
   /// Color helper constants
   final alpha50 = 0x7f;
 
-  Color getNavBarIconColor(bool isHighlighted) => isHighlighted
-      ? _theme(bright: _green.shade100, dark: _green.shade80)
-      : _theme(bright: _grey.shade80, dark: _grey.shade10);
+  Color getNavBarIconColor({
+    bool isActive = false,
+  }) =>
+      isActive
+          ? _theme(bright: _green.shade100, dark: _green.shade80)
+          : _theme(bright: _grey.shade80, dark: _grey.shade10);
 
   Color _theme({
     required Color bright,

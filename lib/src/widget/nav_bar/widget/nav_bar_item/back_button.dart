@@ -13,7 +13,7 @@ class NavBarBackButton extends StatelessWidget {
       linden.assets.icons.arrowLeft,
       height: linden.dimen.iconSize,
       width: linden.dimen.iconSize,
-      color: linden.colors.getNavBarIconColor(false),
+      color: linden.colors.getNavBarIconColor(),
     );
     final btn = Material(
       child: InkWell(
