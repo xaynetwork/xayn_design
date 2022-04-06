@@ -25,7 +25,7 @@ class _NavBarSearchScreenState extends BaseNavBarScreenState<NavBarSearchScreen>
   @override
   NavBarConfig get navBarConfig {
     final search = NavBarItemEdit(
-      svgIconPath: linden.assets.icons.search,
+      svgIconPath: linden.assets.icons.searchActive,
       isHighlighted: true,
       onSearchPressed: (final String text) {
         //ignore: avoid_print
