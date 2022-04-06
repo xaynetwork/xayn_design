@@ -139,8 +139,8 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
     final isLast = config!.items.last == data;
     final withPadding = Padding(
       padding: EdgeInsets.only(
-        left: isFirst ? 0 : linden.dimen.unit0_5,
-        right: isLast ? 0 : linden.dimen.unit0_5,
+        left: isFirst ? 0 : linden.dimen.unit0_25,
+        right: isLast ? 0 : linden.dimen.unit0_25,
       ),
       child: stack,
     );
