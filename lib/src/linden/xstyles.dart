@@ -258,6 +258,7 @@ class XStyles {
   final roundBorder0_5 = BorderRadius.circular(_unit0_5);
   final roundBorder1_5 = BorderRadius.all(Radius.circular(_unit1_5));
   final roundBorder2_5 = BorderRadius.all(Radius.circular(_unit2_5));
+  final roundBorderCard = BorderRadius.all(Radius.circular(_dimen.cardRadius));
 
   /// Borders specific
 
@@ -300,8 +301,8 @@ class XStyles {
   final zeroBorder = BorderRadius.zero;
 
   final roundBorderBottomSheet = BorderRadius.only(
-    topLeft: Radius.circular(_unit1_5),
-    topRight: Radius.circular(_unit1_5),
+    topLeft: Radius.circular(_dimen.cardRadius),
+    topRight: Radius.circular(_dimen.cardRadius),
   );
 
   final readerModeSettingsErrorBorder = BorderRadius.only(

@@ -122,8 +122,11 @@ class XSizes {
   Size get screenSize => _screenSize;
 
   double get navBarHeight => unit8;
+
   double get navBarItemHeight => unit6;
+
   double get navBarSelectableHeight => unit5;
+
   double get navBarBottomPadding => unit3;
 
   double get inputTextFieldBorderWidth => 1.5;
@@ -132,9 +135,12 @@ class XSizes {
       navBarHeight + navBarBottomPadding + unit5;
 
   double get collectionItemBottomSheetHeight => unit6;
+
   double get bottomSheetItemTrailingIconHeight => unit5;
 
   double get cardNotchSize => unit8_25;
+
+  double get cardRadius => unit3;
 
   double get sentimentBorderSize => unit0_25;
 
