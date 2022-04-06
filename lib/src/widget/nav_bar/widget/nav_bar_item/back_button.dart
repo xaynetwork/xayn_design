@@ -9,30 +9,45 @@ class NavBarBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final linden = UnterDenLinden.getLinden(context);
-    final fab = FloatingActionButton.large(
-      key: data.key,
-      backgroundColor: linden.colors.primaryAction,
-      elevation: 0,
-      onPressed: data.onPressed,
-      child: SvgPicture.asset(
-        linden.assets.icons.arrowLeft,
-        color: linden.colors.iconInverse,
+    final icon = SvgPicture.asset(
+      linden.assets.icons.arrowLeft,
+      height: linden.dimen.iconSize,
+      width: linden.dimen.iconSize,
+      color: linden.colors.getNavBarIconColor(false),
+    );
+    final btn = Material(
+      child: InkWell(
+        key: data.key,
+        child: Center(child: icon),
+        splashColor: linden.colors.splashColor,
+        onTap: data.onPressed,
       ),
-      heroTag: null,
-      focusElevation: 0,
-      highlightElevation: 0,
-      hoverElevation: 0,
+    );
+
+    final radius = BorderRadius.circular(linden.dimen.unit6);
+    final clipped = ClipRRect(
+      child: btn,
+      borderRadius: radius,
     );
     final sized = SizedBox(
       height: linden.dimen.buttonMinHeight,
       width: linden.dimen.buttonMinHeight,
-      child: fab,
+      child: clipped,
     );
+    final container = Container(
+      child: sized,
+      decoration: BoxDecoration(
+        color: linden.colors.background,
+        borderRadius: radius,
+        boxShadow: [linden.styles.cardShadow],
+      ),
+    );
+
     return Padding(
       // should be 20*20 in the end of the day
       // 20 = 16 (default from nav_bar) + linden.dimen.unit0_5
       padding: EdgeInsets.all(linden.dimen.unit0_5),
-      child: sized,
+      child: container,
     );
   }
 }
