@@ -101,7 +101,7 @@ class _NavBarEditState extends State<NavBarEdit> {
       widget.data.svgIconPath,
       width: linden.dimen.iconSize,
       height: linden.dimen.iconSize,
-      color: linden.colors.getNavBarIconColor(true),
+      color: linden.colors.getNavBarIconColor(isActive: true),
     );
     return InkWell(
       splashColor: linden.colors.splashColor,
