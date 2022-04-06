@@ -13,7 +13,7 @@ class NavBarIconButton extends StatelessWidget {
       data.svgIconPath,
       width: linden.dimen.iconSize,
       height: linden.dimen.iconSize,
-      color: data.isDisabled ? linden.colors.iconDisabled : linden.colors.icon,
+      color: linden.colors.getNavBarIconColor(data.isHighlighted),
     );
     final btn = Material(
       color: linden.colors.transparent,
