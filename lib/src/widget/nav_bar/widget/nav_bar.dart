@@ -128,13 +128,6 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
         throw Exception('Unknown instance of $NavBarItem: ${data.runtimeType}');
     }
 
-    final stack = Stack(
-      children: [
-        Center(child: child),
-        data.isHighlighted ? const HighlightLine() : const Center(),
-      ],
-    );
-
     final isFirst = config!.items.first == data;
     final isLast = config!.items.last == data;
     final withPadding = Padding(
@@ -142,35 +135,12 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
         left: isFirst ? 0 : linden.dimen.unit0_25,
         right: isLast ? 0 : linden.dimen.unit0_25,
       ),
-      child: stack,
+      child: Center(child: child),
     );
 
     if (data is NavBarItemEdit) {
       return Expanded(child: withPadding);
     }
     return withPadding;
-  }
-}
-
-class HighlightLine extends StatelessWidget {
-  const HighlightLine() : super(key: null);
-
-  @override
-  Widget build(BuildContext context) {
-    final linden = UnterDenLinden.getLinden(context);
-    final line = Container(
-      height: linden.dimen.bottomBarHighlightHigh,
-      width: double.maxFinite,
-      decoration: BoxDecoration(
-        borderRadius: linden.styles.roundBorderLargeTopSide,
-        color: linden.colors.accent,
-      ),
-    );
-    return Positioned(
-      bottom: 0,
-      left: 0,
-      right: 0,
-      child: line,
-    );
   }
 }
