@@ -260,6 +260,8 @@ class _Icons {
   /// AppBottomNavigationBar
   String get home => _theme(brightAsset: 'assets/icons/home.svg');
 
+  String get homeActive => _theme(brightAsset: 'assets/icons/home_active.svg');
+
   String get image => _theme(brightAsset: 'assets/icons/image.svg');
 
   String get info => _theme(brightAsset: 'assets/icons/info.svg');
@@ -300,6 +302,9 @@ class _Icons {
 
   String get person => _theme(brightAsset: 'assets/icons/person.svg');
 
+  String get personActive =>
+      _theme(brightAsset: 'assets/icons/person_active.svg');
+
   String get phone => _theme(brightAsset: 'assets/icons/phone.svg');
 
   String get plant => _theme(brightAsset: 'assets/icons/plant.svg');
@@ -322,6 +327,9 @@ class _Icons {
   String get rocket => _theme(brightAsset: 'assets/icons/rocket.svg');
 
   String get search => _theme(brightAsset: 'assets/icons/search.svg');
+
+  String get searchActive =>
+      _theme(brightAsset: 'assets/icons/search_active.svg');
 
   String get share => _platformDepended(
         iOSAsset: 'assets/icons/share_ios.svg',
