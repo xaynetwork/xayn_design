@@ -39,17 +39,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final linden = UnterDenLinden.getLinden(context);
     final materialApp = MaterialApp(
       title: 'Flutter Demo',
-      theme: UnterDenLinden.getLinden(context).themeData,
+      theme: linden.themeData,
       onGenerateRoute: createCupertinoPageRoute,
       navigatorObservers: [NavBarObserver()],
     );
 
+    final padding = EdgeInsets.symmetric(
+      horizontal: linden.dimen.navBarSidePadding,
+      vertical: linden.dimen.navBarBottomPadding,
+    );
     final stack = Stack(
       children: [
         materialApp,
-        const Positioned.fill(top: null, child: NavBar()),
+        Positioned.fill(top: null, child: NavBar(padding: padding)),
       ],
     );
 
