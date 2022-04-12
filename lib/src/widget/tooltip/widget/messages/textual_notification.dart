@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:xayn_design/src/widget/unter_den_linden/unter_den_linden_mixin.dart';
 import 'package:xayn_design/xayn_design.dart';
 
 const Duration kTimeToLive = Duration(seconds: 3);
@@ -20,11 +19,11 @@ class TextualNotification extends TooltipMessage {
   }) : super(key: key, timeToLive: kTimeToLive);
 
   @override
-  State<StatefulWidget> createState() => _TextualNotificationState();
+  TooltipMessageState createState() => _TextualNotificationState();
 }
 
-class _TextualNotificationState extends State<TextualNotification>
-    with TooltipControllerProviderMixin, UnterDenLindenMixin {
+class _TextualNotificationState
+    extends TooltipMessageState<TextualNotification> {
   @override
   Widget build(BuildContext context) {
     final icon = widget.icon;
@@ -33,7 +32,7 @@ class _TextualNotificationState extends State<TextualNotification>
       mainAxisSize: MainAxisSize.min,
       children: [
         if (icon != null) ...[
-          SvgPicture.asset(
+          buildIcon(
             icon,
             color: linden.colors.primary,
           ),
@@ -41,13 +40,7 @@ class _TextualNotificationState extends State<TextualNotification>
             width: linden.dimen.unit,
           )
         ],
-        if (tooltipController.activeKey != null)
-          Flexible(
-            child: Text(
-              tooltipController.keyToLabel(tooltipController.activeKey!),
-              textAlign: TextAlign.center,
-            ),
-          ),
+        if (tooltipController.activeKey != null) Flexible(child: buildText()),
       ],
     );
 
@@ -59,11 +52,7 @@ class _TextualNotificationState extends State<TextualNotification>
 
         tooltipController.hide();
       },
-      child: TooltipMessageContainer(
-        linden: linden,
-        style: tooltipController.activeStyle,
-        child: content,
-      ),
+      child: buildTooltipContainer(content),
     );
   }
 }
