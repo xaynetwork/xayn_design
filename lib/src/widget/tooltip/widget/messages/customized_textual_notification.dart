@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:xayn_design/src/utils/text_utils.dart';
-import 'package:xayn_design/src/widget/unter_den_linden/unter_den_linden_mixin.dart';
 import 'package:xayn_design/xayn_design.dart';
 
 const Duration _kTimeToLive = Duration(seconds: 3);
@@ -33,11 +32,11 @@ class CustomizedTextualNotification extends TooltipMessage {
   }) : super(key: key, timeToLive: _kTimeToLive);
 
   @override
-  State<StatefulWidget> createState() => _TextualNotificationState();
+  TooltipMessageState createState() => _TextualNotificationState();
 }
 
-class _TextualNotificationState extends State<CustomizedTextualNotification>
-    with TooltipControllerProviderMixin, UnterDenLindenMixin {
+class _TextualNotificationState
+    extends TooltipMessageState<CustomizedTextualNotification> {
   String? get highlightText => widget.highlightText;
 
   TextStyle? get labelTextStyle =>
@@ -85,21 +84,13 @@ class _TextualNotificationState extends State<CustomizedTextualNotification>
 
         tooltipController.hide();
       },
-      child: TooltipMessageContainer(
-        linden: linden,
-        style: tooltipController.activeStyle,
-        child: content,
-      ),
+      child: buildTooltipContainer(content),
     );
   }
 
   Widget _getText(String text) {
     if (highlightText == null) {
-      return Text(
-        text,
-        textAlign: TextAlign.center,
-        style: labelTextStyle,
-      );
+      return buildText(style: labelTextStyle);
     }
 
     return getHighlightedText(
