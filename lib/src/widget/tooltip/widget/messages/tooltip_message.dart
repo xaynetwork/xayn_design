@@ -3,12 +3,43 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:xayn_design/src/widget/unter_den_linden/unter_den_linden_mixin.dart';
 import 'package:xayn_design/xayn_design.dart';
 
 abstract class TooltipMessage extends StatefulWidget {
   final Duration timeToLive;
 
   const TooltipMessage({Key? key, required this.timeToLive}) : super(key: key);
+
+  @override
+  TooltipMessageState createState();
+}
+
+abstract class TooltipMessageState<T extends TooltipMessage> extends State<T>
+    with TooltipControllerProviderMixin, UnterDenLindenMixin {
+  SvgPicture buildIcon(
+    String svgIconPath, {
+    Color? color,
+  }) =>
+      SvgPicture.asset(
+        svgIconPath,
+        color: color ?? linden.colors.primary,
+      );
+
+  Text buildText({TextStyle? style}) => Text(
+        tooltipController.keyToLabel(tooltipController.activeKey!),
+        maxLines: 2,
+        textAlign: TextAlign.center,
+        overflow: TextOverflow.ellipsis,
+        style: style,
+      );
+
+  TooltipMessageContainer buildTooltipContainer(Widget child) =>
+      TooltipMessageContainer(
+        linden: linden,
+        style: tooltipController.activeStyle,
+        child: child,
+      );
 }
 
 mixin TooltipControllerProviderMixin<T extends TooltipMessage> on State<T> {
@@ -56,7 +87,7 @@ class TooltipMessageContainer extends StatelessWidget
   Widget _buildNormalStyleWithChild(Widget? child) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: linden.dimen.unit2,
+        horizontal: linden.dimen.navBarSidePadding,
       ),
       child: Material(
         type: MaterialType.button,
