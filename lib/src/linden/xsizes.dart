@@ -144,6 +144,8 @@ class XSizes {
 
   double get sentimentBorderSize => unit0_25;
 
+  double get connectionErrorWidgetHeight => unit4;
+
   /// Return the number of columns to show in a grid view depending on
   /// the screen the user is experiencing (Experience) and the device and
   /// the orientation

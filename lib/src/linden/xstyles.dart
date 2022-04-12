@@ -240,6 +240,9 @@ class XStyles {
         color: colors.readerModeSettingsErrorTextColor,
       );
 
+  TextStyle get connectionErrorMessageTextStyle =>
+      sBoldStyle.copyWith(color: colors.connectionErrorText);
+
   /// Other styles
 
   /// Borders generic

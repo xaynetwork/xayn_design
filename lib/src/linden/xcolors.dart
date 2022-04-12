@@ -228,6 +228,10 @@ class XColors {
       );
 
   /// Colors that are independent of the dark mode
+  Color get connectionErrorBackground => _pink.shade20;
+
+  Color get connectionErrorText => _pink.shade100;
+
   Color get onboardingBackground => _white;
 
   Color get onboardingTutorialBackground => _black.withOpacity(0.85);
