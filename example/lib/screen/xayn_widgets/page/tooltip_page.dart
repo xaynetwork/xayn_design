@@ -26,6 +26,8 @@ class _TooltipPageState extends State<TooltipPage> with TooltipStateMixin {
       children: [
         _buildSimpleTooltipBtn(),
         _buildTooltipWithIcon(),
+        _buildTooltipWith2LinesText(),
+        _buildTooltipWithLongText(),
         const SizedBox(height: 30),
         _buildAnchorWidget(linden),
       ],
@@ -59,6 +61,16 @@ class _TooltipPageState extends State<TooltipPage> with TooltipStateMixin {
 
   Widget _buildTooltipWithIcon() => _buildButton('Show tooltip with Icon', () {
         showTooltip(TooltipKeys.withIcon);
+      });
+
+  Widget _buildTooltipWith2LinesText() =>
+      _buildButton('Show 2 lines tooltip', () {
+        showTooltip(TooltipKeys.twoLines);
+      });
+
+  Widget _buildTooltipWithLongText() =>
+      _buildButton('Show long text tooltip', () {
+        showTooltip(TooltipKeys.longText);
       });
 
   Widget _buildButton(String text, VoidCallback onPressed) => Center(
