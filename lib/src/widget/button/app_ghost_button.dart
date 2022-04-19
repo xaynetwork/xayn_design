@@ -23,6 +23,7 @@ class AppGhostButton extends StatelessWidget {
   final Size? iconSize;
   final bool isWithIconOnly;
   final bool isWithText;
+  final String? semanticsLabel;
 
   const AppGhostButton({
     required Widget child,
@@ -34,6 +35,7 @@ class AppGhostButton extends StatelessWidget {
     this.iconColor,
     this.iconSize,
     this.textColor,
+    this.semanticsLabel,
     Key? key,
   })  : _child = child,
         _text = null,
@@ -50,6 +52,7 @@ class AppGhostButton extends StatelessWidget {
     this.borderRadius = _defaultBorderRadius,
     this.backgroundColor,
     this.textColor,
+    this.semanticsLabel,
     Key? key,
   })  : _child = null,
         _text = text,
@@ -69,6 +72,7 @@ class AppGhostButton extends StatelessWidget {
     this.backgroundColor,
     this.iconColor,
     this.iconSize,
+    this.semanticsLabel,
     Key? key,
   })  : _child = null,
         _text = null,
@@ -89,6 +93,7 @@ class AppGhostButton extends StatelessWidget {
     this.iconColor,
     this.iconSize,
     this.textColor,
+    this.semanticsLabel,
     Key? key,
   })  : _child = null,
         _text = text,
@@ -141,7 +146,12 @@ class AppGhostButton extends StatelessWidget {
         child: textButton,
       );
     }
-    return textButton;
+
+    return Semantics(
+      child: textButton,
+      button: true,
+      label: semanticsLabel,
+    );
   }
 
   Widget _buildChild(Linden linden) {
