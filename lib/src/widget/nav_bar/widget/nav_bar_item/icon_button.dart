@@ -15,7 +15,7 @@ class NavBarIconButton extends StatelessWidget {
       height: linden.dimen.iconSize,
       color: linden.colors.getNavBarIconColor(isActive: data.isHighlighted),
     );
-    final btn = Material(
+    Widget btn = Material(
       color: linden.colors.transparent,
       child: InkWell(
         splashColor: linden.colors.splashColor,
@@ -26,6 +26,14 @@ class NavBarIconButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(linden.dimen.unit),
       ),
     );
+
+    if (data.semanticsLabel != null) {
+      btn = Semantics(
+        child: btn,
+        button: true,
+        label: data.semanticsLabel,
+      );
+    }
 
     return SizedBox(
       width: linden.dimen.navBarItemHeight,

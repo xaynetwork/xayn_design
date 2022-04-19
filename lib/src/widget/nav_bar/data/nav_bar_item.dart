@@ -7,6 +7,7 @@ abstract class NavBarItem extends Equatable {
   final VoidCallback onPressed;
   final VoidCallback? onLongPressed;
   final Key key;
+  final String? semanticsLabel;
 
   const NavBarItem._(
     this.isHighlighted,
@@ -14,6 +15,7 @@ abstract class NavBarItem extends Equatable {
     this.onPressed,
     this.onLongPressed,
     this.key,
+    this.semanticsLabel,
   );
 }
 
@@ -27,7 +29,15 @@ class NavBarItemIconButton extends NavBarItem {
     required VoidCallback onPressed,
     VoidCallback? onLongPressed,
     required Key key,
-  }) : super._(isHighlighted, isDisabled, onPressed, onLongPressed, key);
+    String? semanticsLabel,
+  }) : super._(
+          isHighlighted,
+          isDisabled,
+          onPressed,
+          onLongPressed,
+          key,
+          semanticsLabel,
+        );
 
   @override
   List<Object?> get props => [
@@ -35,6 +45,7 @@ class NavBarItemIconButton extends NavBarItem {
         isHighlighted,
         isDisabled,
         svgIconPath,
+        semanticsLabel,
       ];
 }
 
@@ -43,12 +54,21 @@ class NavBarItemBackButton extends NavBarItem {
     required VoidCallback onPressed,
     VoidCallback? onLongPressed,
     required Key key,
-  }) : super._(false, false, onPressed, onLongPressed, key);
+    String? semanticsLabel,
+  }) : super._(
+          false,
+          false,
+          onPressed,
+          onLongPressed,
+          key,
+          semanticsLabel,
+        );
 
   @override
   List<Object?> get props => [
         key,
         isHighlighted,
+        semanticsLabel,
       ];
 }
 
@@ -72,7 +92,15 @@ class NavBarItemEdit extends NavBarItem {
     this.initialText,
     this.hint,
     this.autofocus = true,
-  }) : super._(isHighlighted, false, () {}, () {}, key);
+    String? semanticsLabel,
+  }) : super._(
+          isHighlighted,
+          false,
+          () {},
+          () {},
+          key,
+          semanticsLabel,
+        );
 
   @override
   List<Object?> get props => [
@@ -82,5 +110,6 @@ class NavBarItemEdit extends NavBarItem {
         initialText,
         hint,
         autofocus,
+        semanticsLabel,
       ];
 }
