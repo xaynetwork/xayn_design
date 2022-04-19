@@ -8,6 +8,7 @@ void main() {
     'icon button',
     () {
       const iconPath = 'iconPath';
+      const semanticsLabel = 'semanticsLabel';
       const isHighlighted = true;
       const isDisabled = false;
       const key = Key('iconBtnKey');
@@ -18,6 +19,7 @@ void main() {
         isHighlighted: isHighlighted,
         isDisabled: isDisabled,
         onPressed: onPressed,
+        semanticsLabel: semanticsLabel,
         key: key,
       );
 
@@ -29,6 +31,7 @@ void main() {
           expect(item.isHighlighted, isHighlighted);
           expect(item.isDisabled, isDisabled);
           expect(item.key, key);
+          expect(item.semanticsLabel, semanticsLabel);
         },
       );
 
@@ -48,6 +51,7 @@ void main() {
             isHighlighted,
             isDisabled,
             iconPath,
+            semanticsLabel,
           ]);
         },
       );
@@ -57,6 +61,7 @@ void main() {
         () {
           final defaultItem = NavBarItemIconButton(
             svgIconPath: iconPath,
+            semanticsLabel: semanticsLabel,
             isHighlighted: isHighlighted,
             onPressed: onPressed,
             key: key,
@@ -73,6 +78,7 @@ void main() {
 
           final item = NavBarItemIconButton(
             svgIconPath: iconPath,
+            semanticsLabel: semanticsLabel,
             isHighlighted: isHighlighted,
             isDisabled: isDisabled,
             onPressed: onPressed,
@@ -88,10 +94,12 @@ void main() {
     'back button',
     () {
       const key = Key('backBtnKey');
+      const semanticsLabel = 'semanticsLabel';
       void onPressed() {}
 
       final item = NavBarItemBackButton(
         onPressed: onPressed,
+        semanticsLabel: semanticsLabel,
         key: key,
       );
 
@@ -117,6 +125,7 @@ void main() {
           expect(item.props, [
             key,
             false,
+            semanticsLabel,
           ]);
         },
       );
@@ -125,6 +134,7 @@ void main() {
   group(
     'edit',
     () {
+      const semanticsLabel = 'semanticsLabel';
       const iconPath = 'iconPath';
       const initialText = 'initial text';
       const hint = 'hint';
@@ -143,6 +153,7 @@ void main() {
         initialText: initialText,
         hint: hint,
         autofocus: autofocus,
+        semanticsLabel: semanticsLabel,
       );
 
       test(
@@ -155,6 +166,7 @@ void main() {
           expect(fullItem.initialText, initialText);
           expect(fullItem.hint, hint);
           expect(fullItem.key, key);
+          expect(fullItem.semanticsLabel, semanticsLabel);
         },
       );
 
@@ -176,6 +188,7 @@ void main() {
             initialText,
             hint,
             autofocus,
+            semanticsLabel,
           ]);
         },
       );
@@ -187,6 +200,7 @@ void main() {
             svgIconPath: iconPath,
             isHighlighted: isHighlighted,
             onSearchPressed: onSearchPressed,
+            semanticsLabel: semanticsLabel,
             key: key,
           );
 
@@ -197,6 +211,7 @@ void main() {
             null,
             null,
             true,
+            semanticsLabel,
           ]);
         },
       );
