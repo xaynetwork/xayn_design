@@ -10,6 +10,7 @@ Future showAppBottomSheet(
   BuildContext context, {
   required _BottomSheetBuilder builder,
   bool showBarrierColor = true,
+  bool isDismissible = true,
 
   ///Showing multiple sheets on top of each other
   bool allowStacking = true,
@@ -25,6 +26,7 @@ Future showAppBottomSheet(
     context: context,
     enableDrag: false,
     useRootNavigator: true,
+    isDismissible: isDismissible,
     elevation: linden.dimen.elevationHigh,
     shape: RoundedRectangleBorder(
       borderRadius: linden.styles.roundBorderBottomSheet,
