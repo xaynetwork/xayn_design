@@ -28,6 +28,7 @@ class XAssets {
 
 class _Lottie {
   final Brightness _brightness;
+  final _Contextual contextual = const _Contextual();
 
   const _Lottie(this._brightness);
 
@@ -68,6 +69,34 @@ class _Lottie {
     final asset = isDark ? (darkAsset ?? brightAsset) : brightAsset;
     return packagePath + asset;
   }
+}
+
+class _Contextual {
+  final String deleteCollection =
+      packagePath + 'assets/lottie/contextual/delete_collection.json';
+
+  final String emptyCollection =
+      packagePath + 'assets/lottie/contextual/empty_collection.json';
+
+  final String emptySources =
+      packagePath + 'assets/lottie/contextual/empty_sources.json';
+
+  final String error = packagePath + 'assets/lottie/contextual/error.json';
+
+  final String noIMage = packagePath + 'assets/lottie/contextual/no_image.json';
+
+  final String paymentPending =
+      packagePath + 'assets/lottie/contextual/payment_pending.json';
+
+  final String premium = packagePath + 'assets/lottie/contextual/premium.json';
+
+  final String sourceFilter =
+      packagePath + 'assets/lottie/contextual/source_filter.json';
+
+  final String subscriptionActive =
+      packagePath + 'assets/lottie/contextual/subscription_active.json';
+
+  const _Contextual();
 }
 
 class _Logo {
