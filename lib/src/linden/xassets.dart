@@ -83,7 +83,7 @@ class _Contextual {
 
   final String error = packagePath + 'assets/lottie/contextual/error.json';
 
-  final String noIMage = packagePath + 'assets/lottie/contextual/no_image.json';
+  final String noImage = packagePath + 'assets/lottie/contextual/no_image.json';
 
   final String paymentPending =
       packagePath + 'assets/lottie/contextual/payment_pending.json';
