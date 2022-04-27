@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xayn_design/src/linden/linden.dart';
+import 'package:xayn_design/src/widget/tooltip/tooltip.dart';
 import 'package:xayn_design/src/widget/unter_den_linden/unter_den_linden.dart';
 
 import 'bottom_sheet_body_mixin.dart';
@@ -10,11 +11,13 @@ class BottomSheetBase extends StatefulWidget {
     required this.body,
     this.padding,
     this.onSystemPop,
+    this.withApplicationTooltipProvider = true,
   }) : super(key: key);
 
   final Widget body;
   final EdgeInsets? padding;
   final VoidCallback? onSystemPop;
+  final bool withApplicationTooltipProvider;
 
   @override
   _BottomSheetBaseState createState() => _BottomSheetBaseState();
@@ -41,7 +44,7 @@ class _BottomSheetBaseState extends State<BottomSheetBase>
       ),
     );
 
-    final avoidKeyboardChild = Padding(
+    Widget avoidKeyboardChild = Padding(
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom,
       ),
@@ -50,6 +53,12 @@ class _BottomSheetBaseState extends State<BottomSheetBase>
         child: constrainedChild,
       ),
     );
+
+    if (widget.withApplicationTooltipProvider) {
+      avoidKeyboardChild = ApplicationTooltipProvider(
+        child: avoidKeyboardChild,
+      );
+    }
 
     return WillPopScope(
       onWillPop: () async {
