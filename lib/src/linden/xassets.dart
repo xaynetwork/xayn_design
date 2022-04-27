@@ -78,6 +78,7 @@ class _Contextual {
       deleteCollection = _path + 'delete_collection.json',
       emptyCollectionA = _path + 'empty_collection_1.json',
       emptyCollectionB = _path + 'empty_collection_2.json',
+      emptySearch = _path + 'empty_search.json',
       emptySources = _path + 'empty_sources.json',
       error = _path + 'error.json',
       noImage = _path + 'no_image.json',
