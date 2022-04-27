@@ -8,8 +8,15 @@ import 'package:xayn_design/xayn_design.dart';
 
 abstract class TooltipMessage extends StatefulWidget {
   final Duration timeToLive;
+  final String label;
+  final TooltipStyle style;
 
-  const TooltipMessage({Key? key, required this.timeToLive}) : super(key: key);
+  const TooltipMessage({
+    Key? key,
+    required this.timeToLive,
+    required this.label,
+    required this.style,
+  }) : super(key: key);
 
   @override
   TooltipMessageState createState();
@@ -27,7 +34,7 @@ abstract class TooltipMessageState<T extends TooltipMessage> extends State<T>
       );
 
   Text buildText({TextStyle? style}) => Text(
-        tooltipController.keyToLabel(tooltipController.activeKey!),
+        widget.label,
         maxLines: 2,
         textAlign: TextAlign.center,
         overflow: TextOverflow.ellipsis,
@@ -37,7 +44,7 @@ abstract class TooltipMessageState<T extends TooltipMessage> extends State<T>
   TooltipMessageContainer buildTooltipContainer(Widget child) =>
       TooltipMessageContainer(
         linden: linden,
-        style: tooltipController.activeStyle,
+        style: widget.style,
         child: child,
       );
 }

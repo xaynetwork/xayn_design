@@ -1,4 +1,4 @@
-import 'package:example/utils/tooltip_keys.dart';
+import 'package:example/utils/tooltip_messages.dart';
 import 'package:flutter/material.dart';
 import 'package:xayn_design/xayn_design.dart';
 
@@ -11,14 +11,6 @@ class TooltipPage extends StatefulWidget {
 
 class _TooltipPageState extends State<TooltipPage> with TooltipStateMixin {
   Linden get linden => UnterDenLinden.getLinden(context);
-
-  @override
-  void initState() {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      _registerDynamicTooltips(linden);
-    });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,42 +27,26 @@ class _TooltipPageState extends State<TooltipPage> with TooltipStateMixin {
     );
   }
 
-  void _registerDynamicTooltips(Linden linden) {
-    registerTooltip(
-      key: TooltipKeys.withIcon,
-      params: TooltipParams(
-        label: 'Undo action',
-        builder: (_) => TextualNotification(
-          icon: linden.assets.icons.undo,
-          onTap: (parameters) {
-            //ignore: avoid_print
-            print('undo action clicked');
-          },
-        ),
-      ),
-    );
-  }
-
   Widget _buildAnchorWidget(Linden linden) => TooltipContextProvider(
       child:
           Text('This is tooltip anchor widget', style: linden.styles.mStyle));
 
   Widget _buildSimpleTooltipBtn() => _buildButton('Show simple tooltip', () {
-        showTooltip(TooltipKeys.simple);
+        showTooltip(TooltipMessages.simple());
       });
 
   Widget _buildTooltipWithIcon() => _buildButton('Show tooltip with Icon', () {
-        showTooltip(TooltipKeys.withIcon);
+        showTooltip(TooltipMessages.withIcon(context));
       });
 
   Widget _buildTooltipWith2LinesText() =>
       _buildButton('Show 2 lines tooltip', () {
-        showTooltip(TooltipKeys.twoLines);
+        showTooltip(TooltipMessages.twoLines());
       });
 
   Widget _buildTooltipWithLongText() =>
       _buildButton('Show long text tooltip', () {
-        showTooltip(TooltipKeys.longText);
+        showTooltip(TooltipMessages.longText(context));
       });
 
   Widget _buildButton(String text, VoidCallback onPressed) => Center(

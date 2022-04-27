@@ -3,20 +3,20 @@ import 'package:xayn_design/xayn_design.dart';
 
 const Duration kTimeToLive = Duration(seconds: 3);
 
-typedef ParameterCallback = void Function(List<dynamic>? parameters);
-
 class TextualNotification extends TooltipMessage {
   final double? width, height;
   final String? icon;
-  final ParameterCallback? onTap;
+  final VoidCallback? onTap;
 
   const TextualNotification({
     Key? key,
+    required String label,
+    TooltipStyle style = TooltipStyle.normal,
     this.width,
     this.height,
     this.icon,
     this.onTap,
-  }) : super(key: key, timeToLive: kTimeToLive);
+  }) : super(key: key, timeToLive: kTimeToLive, label: label, style: style);
 
   @override
   TooltipMessageState createState() => _TextualNotificationState();
@@ -40,14 +40,15 @@ class _TextualNotificationState
             width: linden.dimen.unit,
           )
         ],
-        if (tooltipController.activeKey != null) Flexible(child: buildText()),
+        Flexible(child: buildText()),
       ],
     );
 
     return GestureDetector(
       onTap: () {
-        if (widget.onTap != null) {
-          widget.onTap!(tooltipController.activeParameters);
+        final tap = widget.onTap;
+        if (tap != null) {
+          tap();
         }
 
         tooltipController.hide();

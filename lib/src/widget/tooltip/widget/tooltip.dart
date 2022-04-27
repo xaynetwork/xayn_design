@@ -10,7 +10,6 @@ const Duration kFadeOutDuration = Duration(milliseconds: 75);
 
 typedef ContextProvider = BuildContext? Function();
 
-typedef MessageFactory = Map<TooltipKey, TooltipParams>;
 typedef OnController = void Function(TooltipController);
 typedef ShowTooltipWhen = bool Function();
 
@@ -22,7 +21,6 @@ enum TooltipStyle {
 class Tooltip extends StatefulWidget {
   final TooltipController? controller;
   final ContextProvider? contextProvider;
-  final MessageFactory messageFactory;
   final double? height;
   final double? verticalOffset;
   final Widget? child;
@@ -35,7 +33,6 @@ class Tooltip extends StatefulWidget {
   /// for rendering.
   const Tooltip({
     Key? key,
-    required this.messageFactory,
     this.height,
     this.verticalOffset,
     this.child,
@@ -51,7 +48,6 @@ class Tooltip extends StatefulWidget {
   /// target.
   Tooltip.contextDeferred({
     Key? key,
-    required this.messageFactory,
     this.contextProvider,
     this.height,
     this.verticalOffset,
@@ -68,18 +64,17 @@ class Tooltip extends StatefulWidget {
 }
 
 class _OverlayKeyEntry {
-  final TooltipKey key;
+  final TooltipData data;
   final OverlayEntry entry;
 
-  const _OverlayKeyEntry({required this.key, required this.entry});
+  const _OverlayKeyEntry({required this.data, required this.entry});
 
   void remove() => entry.remove();
 }
 
 class _TooltipOverlay extends StatelessWidget {
-  final MessageFactory messageFactory;
   final Linden linden;
-  final TooltipKey tooltipKey;
+  final TooltipData tooltipData;
   final double height;
   final Animation<double> animation;
   final Offset offset;
@@ -88,9 +83,8 @@ class _TooltipOverlay extends StatelessWidget {
 
   const _TooltipOverlay({
     Key? key,
-    required this.messageFactory,
     required this.linden,
-    required this.tooltipKey,
+    required this.tooltipData,
     required this.height,
     required this.animation,
     required this.offset,
@@ -100,18 +94,6 @@ class _TooltipOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!messageFactory.containsKey(tooltipKey)) {
-      throw FlutterError.fromParts(<DiagnosticsNode>[
-        ErrorSummary('$tooltipKey has no matching builder.'),
-        ErrorDescription(
-          'The messageFactory of this Tooltip Widget is missing a requested Key '
-          'Could not detect a Key of value $tooltipKey in the messageFactory. Did you forget to add an entry?\n\nThese keys exist:\n\n${messageFactory.keys.map((it) => it.value).join('\n')}',
-        ),
-      ]);
-    }
-
-    final params = messageFactory[tooltipKey]!;
-
     return Positioned.fill(
       child: CustomSingleChildLayout(
         delegate: _TooltipPositionDelegate(
@@ -127,7 +109,7 @@ class _TooltipOverlay extends StatelessWidget {
             child: Center(
               widthFactor: 1.0,
               heightFactor: 1.0,
-              child: params.builder(context),
+              child: tooltipData.build(context),
             ),
           ),
         ),
@@ -241,13 +223,12 @@ class _TooltipState extends State<Tooltip>
   }
 
   void _createNewEntry() {
-    final tooltipKey = tooltipController.activeKey!;
+    final tooltipData = tooltipController.activeTooltipData!;
     final overlayState = Overlay.of(context, debugRequiredFor: widget)!;
     final contextProvider = widget.contextProvider ?? () => context;
     final targetContext = contextProvider() ?? context;
     final box = targetContext.findRenderObject()! as RenderBox;
-    final messageFactory = Map.of(widget.messageFactory)
-      ..addAll(tooltipController.customFactory);
+
     //ignore: prefer_function_declarations_over_variables
     final calculateCurrentOffset = () => box.localToGlobal(
           targetContext.size!.center(Offset.zero),
@@ -255,10 +236,9 @@ class _TooltipState extends State<Tooltip>
         );
 
     final linden = this.linden;
-    final defaultStyleOffset =
-        tooltipController.activeStyle == TooltipStyle.normal
-            ? linden.dimen.unit4
-            : linden.dimen.unit2_5;
+    final defaultStyleOffset = tooltipData.style == TooltipStyle.normal
+        ? linden.dimen.unit4
+        : linden.dimen.unit2_5;
     final verticalOffset = widget.verticalOffset ?? defaultStyleOffset;
     // We create this widget outside of the overlay entry's builder to prevent
     // updated values from happening to leak into the overlay when the overlay
@@ -271,8 +251,7 @@ class _TooltipState extends State<Tooltip>
         initialValue: calculateCurrentOffset(),
         builder: (context, Offset? offset) => _TooltipOverlay(
           linden: linden,
-          messageFactory: messageFactory,
-          tooltipKey: tooltipKey,
+          tooltipData: tooltipData,
           height: height,
           animation: CurvedAnimation(
             parent: animationController,
@@ -286,7 +265,7 @@ class _TooltipState extends State<Tooltip>
     );
 
     overlayKey = _OverlayKeyEntry(
-      key: tooltipController.activeKey!,
+      data: tooltipController.activeTooltipData!,
       entry: OverlayEntry(
         builder: (context) => ChangeNotifierProvider.value(
           value: tooltipController,
@@ -348,16 +327,13 @@ class _TooltipState extends State<Tooltip>
   void _initController() {
     tooltipController = widget.controller ?? TooltipController();
 
-    widget.messageFactory.forEach(
-        (key, params) => tooltipController.register(key: key, params: params));
-
     tooltipController.addListener(_onTooltipControllerNotification);
   }
 
   void _onTooltipControllerNotification() {
     final checkCondition = widget.showTooltipWhen ?? () => true;
 
-    if (tooltipController.activeKey != null && checkCondition()) {
+    if (tooltipController.activeTooltipData != null && checkCondition()) {
       _showTooltip();
     } else {
       _hideTooltip(immediately: false);
@@ -371,7 +347,7 @@ class _TooltipState extends State<Tooltip>
 
   bool _showTooltip() {
     if (overlayKey != null) {
-      if (overlayKey!.key == tooltipController.activeKey) {
+      if (overlayKey!.data == tooltipController.activeTooltipData) {
         animationController.forward();
 
         return false; // Already visible.

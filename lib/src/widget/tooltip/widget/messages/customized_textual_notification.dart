@@ -4,8 +4,6 @@ import 'package:xayn_design/xayn_design.dart';
 
 const Duration _kTimeToLive = Duration(seconds: 3);
 
-typedef _ParameterCallback = void Function(List<dynamic>? parameters);
-
 enum IconPosition { start, end }
 
 class CustomizedTextualNotification extends TooltipMessage {
@@ -16,7 +14,7 @@ class CustomizedTextualNotification extends TooltipMessage {
   final TextStyle? labelTextStyle;
   final TextStyle? highlightTextStyle;
   final IconPosition iconPosition;
-  final _ParameterCallback? onTap;
+  final VoidCallback? onTap;
 
   const CustomizedTextualNotification({
     Key? key,
@@ -29,7 +27,14 @@ class CustomizedTextualNotification extends TooltipMessage {
     this.highlightText,
     this.highlightTextStyle,
     this.onTap,
-  }) : super(key: key, timeToLive: _kTimeToLive);
+    required String label,
+    TooltipStyle style = TooltipStyle.normal,
+  }) : super(
+          key: key,
+          timeToLive: _kTimeToLive,
+          style: style,
+          label: label,
+        );
 
   @override
   TooltipMessageState createState() => _TextualNotificationState();
@@ -49,11 +54,12 @@ class _TextualNotificationState
 
   @override
   Widget build(BuildContext context) {
+    final tooltipData = tooltipController.activeTooltipData;
     final iconWithText = [
-      if (tooltipController.activeKey != null)
+      if (tooltipData != null)
         Flexible(
           child: _getText(
-            tooltipController.keyToLabel(tooltipController.activeKey!),
+            widget.label,
           ),
         ),
       if (icon != null) ...[
@@ -78,8 +84,9 @@ class _TextualNotificationState
 
     return GestureDetector(
       onTap: () {
-        if (widget.onTap != null) {
-          widget.onTap!(tooltipController.activeParameters);
+        var tap = widget.onTap;
+        if (tap != null) {
+          tap();
         }
 
         tooltipController.hide();

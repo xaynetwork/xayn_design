@@ -25,5 +25,6 @@ export 'src/widget/overlay/overlay.dart';
 export 'src/widget/settings/settings.dart';
 export 'src/widget/switch/app_switch.dart';
 export 'src/widget/text_field/app_text_field.dart';
+export 'src/widget/tooltip/data/tooltip_data.dart';
 export 'src/widget/tooltip/tooltip.dart';
 export 'src/widget/unter_den_linden/unter_den_linden.dart';

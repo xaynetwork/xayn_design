@@ -9,7 +9,6 @@ import 'package:example/screen/nav_bar/nav_bar_reader_node_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_search_screen.dart';
 import 'package:example/screen/nav_bar/nav_bar_settings_screen.dart';
 import 'package:example/screen/xayn_widgets/widgets_screen.dart';
-import 'package:example/utils/tooltip_keys.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -123,7 +122,6 @@ class MyApp extends StatelessWidget {
     }
     return CupertinoPageRoute(
       builder: (_) => ApplicationTooltipProvider(
-        messageFactory: TooltipMessageProvider.of(),
         child: screenWidget!,
       ),
       settings: routeSettings,

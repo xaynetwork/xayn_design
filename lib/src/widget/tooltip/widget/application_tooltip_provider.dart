@@ -8,10 +8,7 @@ import 'package:xayn_design/xayn_design.dart';
 /// [Tooltip.contextProvider] to dynamically assign the current [BuildContext],
 /// which will be used for laying out the actual [Tooltip].
 class ApplicationTooltipProvider extends SingleChildStatefulWidget {
-  final MessageFactory messageFactory;
-
   const ApplicationTooltipProvider({
-    required this.messageFactory,
     required Widget child,
     Key? key,
   }) : super(key: key, child: child);
@@ -25,7 +22,6 @@ class _ApplicationTooltipProviderState
   @override
   Widget buildWithChild(BuildContext context, Widget? child) {
     return Tooltip.contextDeferred(
-      messageFactory: widget.messageFactory,
       preferBelow: false,
       contextProvider: () {
         final controller =
