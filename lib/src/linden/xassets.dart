@@ -43,6 +43,22 @@ class _Lottie {
         brightness: brightness,
       );
 
+  String get bookmarkClick => _theme(
+        brightAsset: 'assets/lottie/bookmark_click.json',
+      );
+
+  String get feedSwipeHorizontal => _theme(
+        brightAsset: 'assets/lottie/feed_swipe_horizontal.json',
+      );
+
+  String get feedSwipeVertical => _theme(
+        brightAsset: 'assets/lottie/feed_swipe_vertical.json',
+      );
+
+  String get manageCollection => _theme(
+        brightAsset: 'assets/lottie/mange_collection.json',
+      );
+
   String _theme({
     required String brightAsset,
     String? darkAsset,
