@@ -72,29 +72,20 @@ class _Lottie {
 }
 
 class _Contextual {
-  final String deleteCollection =
-      packagePath + 'assets/lottie/contextual/delete_collection.json';
+  static const String _path = packagePath + 'assets/lottie/contextual/';
 
-  final String emptyCollection =
-      packagePath + 'assets/lottie/contextual/empty_collection.json';
-
-  final String emptySources =
-      packagePath + 'assets/lottie/contextual/empty_sources.json';
-
-  final String error = packagePath + 'assets/lottie/contextual/error.json';
-
-  final String noImage = packagePath + 'assets/lottie/contextual/no_image.json';
-
-  final String paymentPending =
-      packagePath + 'assets/lottie/contextual/payment_pending.json';
-
-  final String premium = packagePath + 'assets/lottie/contextual/premium.json';
-
-  final String sourceFilter =
-      packagePath + 'assets/lottie/contextual/source_filter.json';
-
-  final String subscriptionActive =
-      packagePath + 'assets/lottie/contextual/subscription_active.json';
+  final String createCollection = _path + 'create_collection.json',
+      deleteCollection = _path + 'delete_collection.json',
+      emptyCollectionA = _path + 'empty_collection_1.json',
+      emptyCollectionB = _path + 'empty_collection_2.json',
+      emptySources = _path + 'empty_sources.json',
+      error = _path + 'error.json',
+      noImage = _path + 'no_image.json',
+      paymentFailed = _path + 'payment_failed.json',
+      paymentPending = _path + 'payment_pending.json',
+      premium = _path + 'premium.json',
+      sourceFilter = _path + 'source_filter.json',
+      subscriptionActive = _path + 'subscription_active.json';
 
   const _Contextual();
 }
