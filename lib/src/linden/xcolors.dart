@@ -123,6 +123,11 @@ class XColors {
 
   Color get iconBackgroundSelected => _theme(bright: _white, dark: _white);
 
+  Color get secondaryIcon => _theme(bright: _black, dark: _white);
+
+  Color get imagePlaceholderBox =>
+      _theme(bright: _grey.shade10, dark: _grey.shade80);
+
   Color get primaryTextInverse => _theme(bright: _white, dark: _black);
 
   Color get pageBackground => _theme(bright: _white, dark: _grey.shade95);
