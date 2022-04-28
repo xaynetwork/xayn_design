@@ -132,6 +132,7 @@ flutter:
     - packages/xayn_design/assets/icons/home.svg
     - packages/xayn_design/assets/icons/home_active.svg
     - packages/xayn_design/assets/icons/image.svg
+    - packages/xayn_design/assets/icons/no_image.svg
     - packages/xayn_design/assets/icons/info.svg
     - packages/xayn_design/assets/icons/language.svg
     - packages/xayn_design/assets/icons/legal.svg

@@ -301,6 +301,8 @@ class _Icons {
 
   String get image => _theme(brightAsset: 'assets/icons/image.svg');
 
+  String get noImage => _theme(brightAsset: 'assets/icons/no_image.svg');
+
   String get info => _theme(brightAsset: 'assets/icons/info.svg');
 
   String get language => _theme(brightAsset: 'assets/icons/language.svg');
