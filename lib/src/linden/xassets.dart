@@ -76,8 +76,7 @@ class _Contextual {
 
   final String createCollection = _path + 'create_collection.json',
       deleteCollection = _path + 'delete_collection.json',
-      emptyCollectionA = _path + 'empty_collection_1.json',
-      emptyCollectionB = _path + 'empty_collection_2.json',
+      emptyCollection = _path + 'empty_collection.json',
       emptySearch = _path + 'empty_search.json',
       emptySources = _path + 'empty_sources.json',
       error = _path + 'error.json',
