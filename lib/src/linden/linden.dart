@@ -46,6 +46,7 @@ class Linden {
     this.deviceOrientation = Orientation.portrait,
     this.notchPaddingLandscapeMode = 0,
     this.screenPadding = EdgeInsets.zero,
+    this.viewInsets = EdgeInsets.zero,
     this.brightness = Brightness.light,
     this.animations = const XAnimations(),
     XSizes? dimen,
@@ -71,6 +72,7 @@ class Linden {
           notchPaddingLandscapeMode: notchPaddingLandscapeMode,
           deviceOrientation: deviceOrientation,
           screenPadding: screenPadding,
+          viewInsets: viewInsets,
         );
   }
 
@@ -89,6 +91,7 @@ class Linden {
 
   /// The padding that the screen might have due to a notch or something similar
   final EdgeInsets screenPadding;
+  final EdgeInsets viewInsets;
 
   /// Responsible for switching theme from light to dark and vise versa.
   ///
@@ -130,6 +133,7 @@ class Linden {
     Orientation? deviceOrientation,
     double? notchPaddingLandscapeMode,
     EdgeInsets? screenPadding,
+    EdgeInsets? viewInsets,
     Brightness? brightness,
     XStyles? styles,
     ThemeData? themeData,
@@ -143,6 +147,7 @@ class Linden {
         notchPaddingLandscapeMode:
             notchPaddingLandscapeMode ?? this.notchPaddingLandscapeMode,
         screenPadding: screenPadding ?? this.screenPadding,
+        viewInsets: viewInsets ?? this.viewInsets,
         brightness: brightness ?? this.brightness,
         styles: styles ?? this.styles,
         themeData: themeData ?? this.themeData,
@@ -157,8 +162,9 @@ class Linden {
   Linden updateScreenInfo({
     required Size screenSize,
     required Orientation deviceOrientation,
-    double notchPaddingLandscapeMode = 0.0,
-    EdgeInsets screenPadding = EdgeInsets.zero,
+    required double notchPaddingLandscapeMode,
+    required EdgeInsets screenPadding,
+    required EdgeInsets viewInsets,
   }) {
     if (screenSize != dimen.screenSize ||
         deviceOrientation != this.deviceOrientation ||
@@ -173,6 +179,7 @@ class Linden {
           deviceOrientation: deviceOrientation,
           notchPaddingLandscapeMode: notchPaddingLandscapeMode,
           screenPadding: screenPadding,
+          viewInsets: viewInsets,
         ),
       );
     }

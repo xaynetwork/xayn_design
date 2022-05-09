@@ -44,6 +44,7 @@ class UnterDenLinden extends StatefulWidget {
 class _UnterDenLindenState extends State<UnterDenLinden>
     with WidgetsBindingObserver {
   late Linden _linden;
+  bool initialScreenDataSet = false;
 
   /// Change [Brightness] of the current app.
   /// If [Brightness] was changed - triggers rebuild of the whole app
@@ -93,7 +94,10 @@ class _UnterDenLindenState extends State<UnterDenLinden>
 
   @override
   Widget build(BuildContext context) {
-    _updateScreenData();
+    if (!initialScreenDataSet) {
+      _updateScreenData();
+      initialScreenDataSet = true;
+    }
 
     return _LindenUpdater(
       data: this,
@@ -117,6 +121,8 @@ class _UnterDenLindenState extends State<UnterDenLinden>
       screenSize: mediaQueryData.size,
       deviceOrientation: mediaQueryData.orientation,
       notchPaddingLandscapeMode: notchPaddingLandscapeMode,
+      screenPadding: mediaQueryData.padding,
+      viewInsets: mediaQueryData.viewInsets,
     );
     _updateLinden(newLinden);
   }
@@ -124,9 +130,7 @@ class _UnterDenLindenState extends State<UnterDenLinden>
   void _updateLinden(Linden linden) {
     if (linden == _linden) return;
     widget.onLindenUpdated?.call(linden);
-    setState(() {
-      _linden = linden;
-    });
+    _linden = linden;
   }
 }
 
