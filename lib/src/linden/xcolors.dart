@@ -362,10 +362,10 @@ class XColors {
   Color get collectionsScreenCard => _pink.shade60;
 
   // bkg colors for the no-image cards
-  Color get noImage1 => const Color.fromARGB(0xff, 240, 144, 6);
-  Color get noImage2 => const Color.fromARGB(0xff, 84, 73, 152);
-  Color get noImage3 => const Color.fromARGB(0xff, 0, 146, 120);
-  Color get noImage4 => const Color.fromARGB(0xff, 219, 24, 112);
+  Color get noImageBackgroundOrange => const Color.fromARGB(0xff, 240, 144, 6);
+  Color get noImageBackgroundPurple => const Color.fromARGB(0xff, 84, 73, 152);
+  Color get noImageBackgroundGreen => const Color.fromARGB(0xff, 0, 146, 120);
+  Color get noImageBackgroundPink => const Color.fromARGB(0xff, 219, 24, 112);
 
 //endregion colors, needed for new scheme
 }
