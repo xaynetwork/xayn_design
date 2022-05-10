@@ -39,8 +39,33 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
     );
 
     setState(() {
+      customIconSize = 0;
       this.config = config;
     });
+  }
+
+  double get itemSidePadding => linden.dimen.unit0_25;
+
+  late final double defaultIconSize = linden.dimen.navBarItemHeight;
+  double customIconSize = 0;
+
+  bool get useCustomIconSize => customIconSize < defaultIconSize;
+
+  double get navBarSidePadding => linden.dimen.unit;
+
+  void _updateCustomIconSize(double maxPossibleWidth, int itemsCount) {
+    if (customIconSize > 0) return;
+    final totalPaddings =
+        ((itemSidePadding * itemsCount) - itemSidePadding - itemSidePadding) +
+            itemsCount * itemSidePadding +
+
+            // side padding inside the bar
+            navBarSidePadding * 2 +
+
+            // padding from left and right
+            widget.padding.left +
+            widget.padding.right;
+    customIconSize = (maxPossibleWidth - totalPaddings) / itemsCount;
   }
 
   @override
@@ -48,39 +73,41 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
     final config = this.config;
     if (config == null || config.type.isHidden) return const Center();
 
-    final items = config.items.map(_buildItem).toList(growable: false);
+    return LayoutBuilder(builder: (_, constrain) {
+      _updateCustomIconSize(constrain.maxWidth, config.items.length);
+      final items = config.items.map(_buildItem).toList(growable: false);
+      if (config.type == NavBarType.backBtn) {
+        return _withPadding(_withFixedHeight(Row(children: [items.first])));
+      }
 
-    if (config.type == NavBarType.backBtn) {
-      return _withPadding(_withFixedHeight(Row(children: [items.first])));
-    }
+      final row = Row(
+        mainAxisSize:
+            config.isWidthExpanded ? MainAxisSize.max : MainAxisSize.min,
+        mainAxisAlignment: config.isWidthExpanded
+            ? MainAxisAlignment.spaceBetween
+            : MainAxisAlignment.start,
+        children: items,
+      );
 
-    final row = Row(
-      mainAxisSize:
-          config.isWidthExpanded ? MainAxisSize.max : MainAxisSize.min,
-      mainAxisAlignment: config.isWidthExpanded
-          ? MainAxisAlignment.spaceBetween
-          : MainAxisAlignment.start,
-      children: items,
-    );
+      // AppCardWidget can't be used becasue it uses Material widget
+      // with MaterialType.card, which doesn't allow to customise shadows.
+      final card = Container(
+        padding: EdgeInsets.symmetric(horizontal: navBarSidePadding),
+        child: row,
+        decoration: BoxDecoration(
+          color: linden.colors.background,
+          borderRadius: linden.styles.roundBorderCard,
+          boxShadow: [linden.styles.cardShadow],
+        ),
+      );
 
-    // AppCardWidget can't be used becasue it uses Material widget
-    // with MaterialType.card, which doesn't allow to customise shadows.
-    final card = Container(
-      padding: EdgeInsets.symmetric(horizontal: linden.dimen.unit),
-      child: row,
-      decoration: BoxDecoration(
-        color: linden.colors.background,
-        borderRadius: linden.styles.roundBorderCard,
-        boxShadow: [linden.styles.cardShadow],
-      ),
-    );
+      final sized = _withFixedHeight(card);
 
-    final sized = _withFixedHeight(card);
-
-    return config.showAboveKeyboard
-        // `MediaQuery.of(context).viewInsets.bottom` represents the height of the keyboard
-        ? _withPadding(sized, MediaQuery.of(context).viewInsets.bottom)
-        : _withPadding(sized);
+      return config.showAboveKeyboard
+          // `MediaQuery.of(context).viewInsets.bottom` represents the height of the keyboard
+          ? _withPadding(sized, MediaQuery.of(context).viewInsets.bottom)
+          : _withPadding(sized);
+    });
   }
 
   Widget _withFixedHeight(Widget card) {
@@ -132,8 +159,8 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
     final isLast = config!.items.last == data;
     final withPadding = Padding(
       padding: EdgeInsets.only(
-        left: isFirst ? 0 : linden.dimen.unit0_25,
-        right: isLast ? 0 : linden.dimen.unit0_25,
+        left: isFirst ? 0 : itemSidePadding,
+        right: isLast ? 0 : itemSidePadding,
       ),
       child: Center(child: child),
     );
@@ -141,6 +168,12 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
     if (data is NavBarItemEdit) {
       return Expanded(child: withPadding);
     }
-    return withPadding;
+    return !useCustomIconSize
+        ? withPadding
+        : Center(
+            child: SizedBox.square(
+            child: withPadding,
+            dimension: customIconSize,
+          ));
   }
 }
