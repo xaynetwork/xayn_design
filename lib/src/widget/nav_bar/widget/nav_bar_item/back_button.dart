@@ -15,7 +15,7 @@ class NavBarBackButton extends StatelessWidget {
       width: linden.dimen.iconSize,
       color: linden.colors.getNavBarIconColor(),
     );
-    final btn = Material(
+    Widget btn = Material(
       child: InkWell(
         key: data.key,
         child: Center(child: icon),
@@ -23,6 +23,14 @@ class NavBarBackButton extends StatelessWidget {
         onTap: data.onPressed,
       ),
     );
+
+    if (data.semanticsLabel != null) {
+      btn = Semantics(
+        child: btn,
+        button: true,
+        label: data.semanticsLabel,
+      );
+    }
 
     final radius = BorderRadius.circular(linden.dimen.unit6);
     final clipped = ClipRRect(
