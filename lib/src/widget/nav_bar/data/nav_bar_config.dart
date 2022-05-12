@@ -73,9 +73,9 @@ class NavBarConfig extends Equatable {
       const NavBarConfig._(idIgnored, [], false, NavBarType.ignored, false);
 
   NavBarConfig.backBtn(
-    NavBarItemBackButton btn,
-  )   : id = idBackBtn,
-        items = [btn],
+    NavBarItemBackButton btn, {
+    this.id = idBackBtn,
+  })  : items = [btn],
         isWidthExpanded = false,
         showAboveKeyboard = false,
         type = NavBarType.backBtn;

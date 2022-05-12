@@ -160,19 +160,6 @@ void main() {
     },
   );
 
-  testWidgets(
-    'todo',
-    (final WidgetTester tester) async {
-      await tester.pumpLindenApp(buildWidget(
-        child: _StatelessConfigWidget(() => _backBtnConfig),
-      ));
-      final state = getState();
-
-      // Simulate going back
-      state.updateStream.sink.add(true);
-    },
-  );
-
   group(
     'config changed in the NavBar',
     () {
@@ -561,58 +548,6 @@ void main() {
           expect(
             state.configPair!.configMixins,
             equals([preLastMixin]),
-          );
-        },
-      );
-      testWidgets(
-        'GIVEN widget tree with 1 config WHEN going back and currentNavBarConfigMixin has same key but different items THEN last config will not be removed from the list',
-        (final WidgetTester tester) async {
-          final buttonBackConfig1 = NavBarConfig.backBtn(
-            NavBarItemBackButton(
-              onPressed: () {},
-              key: const Key('back btn 1'),
-            ),
-          );
-          final buttonBackConfig2 = NavBarConfig.backBtn(
-            NavBarItemBackButton(
-              onPressed: () {},
-              key: const Key('back btn 2'),
-            ),
-          );
-
-          final differentWidget =
-              _StatelessConfigWidget(() => buttonBackConfig2);
-          final currentWidget = _StatelessConfigWidget(() => buttonBackConfig1);
-
-          await tester.pumpLindenApp(buildWidget(child: currentWidget));
-
-          final state = getState();
-          state.currentNavBarConfigMixin = differentWidget;
-
-          await tester.resetNavBarWithDebounce(goingBack: true);
-
-          expect(
-            state.configPair!.configMixins,
-            equals([currentWidget]),
-          );
-        },
-      );
-      testWidgets(
-        'GIVEN widget tree with 1 config WHEN going back and currentNavBarConfigMixin has same key and items THEN last config will be removed from the list',
-        (final WidgetTester tester) async {
-          final differentWidget = _StatelessConfigWidget(() => _backBtnConfig);
-          final currentWidget = _StatelessConfigWidget(() => _backBtnConfig);
-
-          await tester.pumpLindenApp(buildWidget(child: currentWidget));
-
-          final state = getState();
-          state.currentNavBarConfigMixin = differentWidget;
-
-          await tester.resetNavBarWithDebounce(goingBack: true);
-
-          expect(
-            state.configPair!.configMixins,
-            isEmpty,
           );
         },
       );
