@@ -15,9 +15,6 @@ const idHidden = NavBarConfigId('hidden');
 @visibleForTesting
 const idIgnored = NavBarConfigId('ignored');
 
-@visibleForTesting
-const idBackBtn = NavBarConfigId('backBtn');
-
 class NavBarConfig extends Equatable {
   /// Helps to compare configs with each other.
   final NavBarConfigId id;
@@ -73,9 +70,9 @@ class NavBarConfig extends Equatable {
       const NavBarConfig._(idIgnored, [], false, NavBarType.ignored, false);
 
   NavBarConfig.backBtn(
-    NavBarItemBackButton btn, {
-    this.id = idBackBtn,
-  })  : items = [btn],
+    this.id,
+    NavBarItemBackButton btn,
+  )   : items = [btn],
         isWidthExpanded = false,
         showAboveKeyboard = false,
         type = NavBarType.backBtn;
