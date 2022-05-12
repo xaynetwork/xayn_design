@@ -99,6 +99,7 @@ class _StatefulConfigWidget extends StatefulWidget {
   const _StatefulConfigWidget(
     this.getConfigCallback, {
     Key? key,
+    // ignore: unused_element
     this.child,
   }) : super(key: key);
 

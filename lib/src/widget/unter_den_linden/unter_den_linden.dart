@@ -74,14 +74,14 @@ class _UnterDenLindenState extends State<UnterDenLinden>
 
   @override
   void initState() {
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     _linden = widget.initialLinden;
     super.initState();
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
@@ -105,7 +105,7 @@ class _UnterDenLindenState extends State<UnterDenLinden>
   /// or when screen params changed (rotation, resize, etc)
   void _updateScreenData() {
     final mediaQueryData =
-        MediaQueryData.fromWindow(WidgetsBinding.instance!.window);
+        MediaQueryData.fromWindow(WidgetsBinding.instance.window);
 
     ///When in landscape mode, regardless the orientation (left or right)
     ///if there is a notch both padding.right and padding.left return

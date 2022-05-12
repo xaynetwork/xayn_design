@@ -4,8 +4,8 @@ version: 0.0.1
 homepage: https://github.com/xaynetwork/xayn_design
 
 environment:
-  sdk: '>=2.14.0 <3.0.0'
-  flutter: '>=1.17.0'
+  sdk: '>=2.17.0 <3.0.0'
+  flutter: '>=3.0.0'
 
 dependencies:
   flutter:
@@ -15,7 +15,7 @@ dependencies:
   flutter_switch: 0.3.2
   provider: 6.0.2
   rxdart: 0.27.3
-  modal_bottom_sheet: ^2.0.0
+  modal_bottom_sheet: 2.0.1
 
 dev_dependencies:
   flutter_test:
