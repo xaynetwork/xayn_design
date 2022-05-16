@@ -72,7 +72,7 @@ class _BottomSheetBaseState extends State<BottomSheetBase>
   }
 
   EdgeInsets _buildWithDefaultPadding(Linden linden) {
-    final deviceBottomPadding = linden.dimen.deviceScreenPadding.bottom;
+    final deviceBottomPadding = MediaQuery.of(context).padding.bottom;
     return EdgeInsets.only(
       top: linden.dimen.unit2,
       left: linden.dimen.unit3,
