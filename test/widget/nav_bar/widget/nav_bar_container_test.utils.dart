@@ -4,7 +4,10 @@ const keyStack = Key('keyStack');
 
 const defaultId = NavBarConfigId('default');
 
+const backBtnId = NavBarConfigId('backBtn');
+
 final _backBtnConfig = NavBarConfig.backBtn(
+  backBtnId,
   NavBarItemBackButton(onPressed: () {}, key: const Key('back btn')),
 );
 

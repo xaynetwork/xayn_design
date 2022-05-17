@@ -21,7 +21,7 @@ void main() {
       );
 
   const defaultId = NavBarConfigId('default');
-
+  const backBtnId = NavBarConfigId('backBtn');
   group(
     'Check NavBarType',
     () {
@@ -55,7 +55,7 @@ void main() {
       );
       final hiddenConfig = NavBarConfig.hidden();
       final ignoredConfig = NavBarConfig.ignored();
-      final backConfig = NavBarConfig.backBtn(getBackData());
+      final backConfig = NavBarConfig.backBtn(backBtnId, getBackData());
 
       test(
         'GIVEN 2 different id to NavBarConfig WHEN compare them THEN return false',
@@ -154,7 +154,7 @@ void main() {
           test(
             'GIVEN back config THEN verify items size == 1, type is back and width is false',
             () {
-              expect(backConfig.id, equals(idBackBtn));
+              expect(backConfig.id, equals(backBtnId));
               expect(backConfig.isWidthExpanded, isFalse);
               expect(backConfig.type, equals(NavBarType.backBtn));
               expect(backConfig.items, equals([getBackData()]));

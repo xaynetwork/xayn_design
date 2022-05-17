@@ -23,6 +23,8 @@ void main() {
   }
 
   const defaultId = NavBarConfigId('default');
+  const backBtnId = NavBarConfigId('backBtn');
+
   final backBtn = NavBarItemBackButton(
     onPressed: () {},
     key: const Key('backBtn'),
@@ -131,7 +133,7 @@ void main() {
         await tester.pumpLindenApp(buildWidget());
 
         final state = getState();
-        state.update(NavBarConfig.backBtn(backBtn));
+        state.update(NavBarConfig.backBtn(backBtnId, backBtn));
 
         await tester.pumpAndSettle();
 
@@ -330,7 +332,7 @@ void main() {
           await tester.pumpLindenApp(buildWidget());
           final state = getState();
 
-          state.update(NavBarConfig.backBtn(backBtn));
+          state.update(NavBarConfig.backBtn(backBtnId, backBtn));
           expect(state.config, isNotNull);
           state.update(null);
           expect(state.config, isNull);

@@ -29,6 +29,9 @@ class _NavBarSettingsScreenState
       key: back,
     );
 
-    return NavBarConfig.backBtn(item);
+    return NavBarConfig.backBtn(
+      const NavBarConfigId('backBtnId'),
+      item,
+    );
   }
 }

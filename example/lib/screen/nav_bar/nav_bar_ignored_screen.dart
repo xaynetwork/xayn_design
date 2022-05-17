@@ -55,10 +55,12 @@ class _NavBarIgnoredScreenState
   @override
   NavBarConfig get navBarConfig => isIgnored
       ? NavBarConfig.ignored()
-      : NavBarConfig.backBtn(NavBarItemBackButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          key: back,
-        ));
+      : NavBarConfig.backBtn(
+          const NavBarConfigId('backBtnId'),
+          NavBarItemBackButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            key: back,
+          ));
 }
