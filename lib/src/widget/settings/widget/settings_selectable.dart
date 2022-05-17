@@ -106,13 +106,13 @@ class SettingsSelectableIcon extends StatelessWidget {
     );
 
     final withCircle = Container(
-      child: Center(child: icon),
       decoration: BoxDecoration(
         color: linden.colors.iconBackground,
         shape: BoxShape.circle,
       ),
       width: linden.dimen.unit5,
       height: linden.dimen.unit5,
+      child: Center(child: icon),
     );
 
     final title = Text(
@@ -128,12 +128,12 @@ class SettingsSelectableIcon extends StatelessWidget {
     );
 
     final column = Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         withCircle,
         SizedBox(height: linden.dimen.unit1_5),
         title,
       ],
-      mainAxisSize: MainAxisSize.min,
     );
 
     return Padding(

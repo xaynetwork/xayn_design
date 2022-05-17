@@ -4,14 +4,14 @@ import 'package:xayn_design/xayn_design.dart';
 
 mixin TooltipStatelessMixin on StatelessWidget {
   void showTooltip(BuildContext context, TooltipData data) {
-    final _tooltipController =
+    final tooltipController =
         Provider.of<TooltipController>(context, listen: false);
-    _tooltipController.show(data);
+    tooltipController.show(data);
   }
 
   void hideTooltip(BuildContext context) {
-    final _tooltipController =
+    final tooltipController =
         Provider.of<TooltipController>(context, listen: false);
-    _tooltipController.hide();
+    tooltipController.hide();
   }
 }

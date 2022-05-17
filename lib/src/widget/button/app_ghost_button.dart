@@ -148,9 +148,9 @@ class AppGhostButton extends StatelessWidget {
     }
 
     return Semantics(
-      child: textButton,
       button: true,
       label: semanticsLabel,
+      child: textButton,
     );
   }
 
@@ -176,8 +176,8 @@ class AppGhostButton extends StatelessWidget {
       text!,
     ];
     return Row(
-      children: children,
       mainAxisSize: MainAxisSize.min,
+      children: children,
     );
   }
 

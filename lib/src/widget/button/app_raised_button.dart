@@ -127,11 +127,11 @@ class _AppRaisedButtonState extends State<AppRaisedButton> {
 
     final btn = ElevatedButton(
       style: btnStyle,
+      onPressed: widget.onPressed,
       child: DefaultTextStyle(
         style: textStyle,
         child: _buildChild(),
       ),
-      onPressed: widget.onPressed,
     );
 
     return ButtonTheme(
@@ -164,8 +164,8 @@ class _AppRaisedButtonState extends State<AppRaisedButton> {
       text!,
     ];
     return Row(
-      children: children,
       mainAxisSize: MainAxisSize.min,
+      children: children,
     );
   }
 

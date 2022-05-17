@@ -15,22 +15,22 @@ class XAssets {
   const XAssets({Brightness? brightness})
       : _brightness = brightness ?? Brightness.light;
 
-  _Lottie get lottie => _Lottie(_brightness);
+  Lottie get lottie => Lottie(_brightness);
 
-  _Icons get icons => _Icons(_brightness);
+  Icons get icons => Icons(_brightness);
 
-  _Illustrations get illustrations => _Illustrations(_brightness);
+  Illustrations get illustrations => Illustrations(_brightness);
 
-  _Graphics get graphics => _Graphics();
+  Graphics get graphics => Graphics();
 
-  _Logo get logo => _Logo();
+  Logo get logo => Logo();
 }
 
-class _Lottie {
+class Lottie {
   final Brightness _brightness;
-  final _Contextual contextual = const _Contextual();
+  final Contextual contextual = const Contextual();
 
-  const _Lottie(this._brightness);
+  const Lottie(this._brightness);
 
   String brainyJson(Brightness brightness) => _theme(
         brightAsset: 'assets/lottie/brainy.json',
@@ -75,39 +75,39 @@ class _Lottie {
   }
 }
 
-class _Contextual {
-  static const String _path = packagePath + 'assets/lottie/contextual/';
+class Contextual {
+  static const String _path = '${packagePath}assets/lottie/contextual/';
 
-  final String createCollection = _path + 'create_collection.json',
-      deleteCollection = _path + 'delete_collection.json',
-      emptyCollection = _path + 'empty_collection.json',
-      emptySearch = _path + 'empty_search.json',
-      emptySources = _path + 'empty_sources.json',
-      error = _path + 'error.json',
-      noImageA = _path + 'no_image_1.json',
-      noImageB = _path + 'no_image_2.json',
-      noImageC = _path + 'no_image_3.json',
-      noImageD = _path + 'no_image_4.json',
-      paymentFailed = _path + 'payment_failed.json',
-      paymentPending = _path + 'payment_pending.json',
-      premium = _path + 'premium.json',
-      sourceFilter = _path + 'source_filter.json',
-      subscriptionActive = _path + 'subscription_active.json';
+  final String createCollection = '${_path}create_collection.json',
+      deleteCollection = '${_path}delete_collection.json',
+      emptyCollection = '${_path}empty_collection.json',
+      emptySearch = '${_path}empty_search.json',
+      emptySources = '${_path}empty_sources.json',
+      error = '${_path}error.json',
+      noImageA = '${_path}no_image_1.json',
+      noImageB = '${_path}no_image_2.json',
+      noImageC = '${_path}no_image_3.json',
+      noImageD = '${_path}no_image_4.json',
+      paymentFailed = '${_path}payment_failed.json',
+      paymentPending = '${_path}payment_pending.json',
+      premium = '${_path}premium.json',
+      sourceFilter = '${_path}source_filter.json',
+      subscriptionActive = '${_path}subscription_active.json';
 
-  const _Contextual();
+  const Contextual();
 }
 
-class _Logo {
-  String get xayn => packagePath + 'assets/logo/xayn_logo.svg';
+class Logo {
+  String get xayn => '${packagePath}assets/logo/xayn_logo.svg';
 
-  String get xaynIcon => packagePath + 'assets/logo/icon_logo.svg';
+  String get xaynIcon => '${packagePath}assets/logo/icon_logo.svg';
 }
 
-class _Illustrations {
+class Illustrations {
   // @formatter:off
   final Brightness _brightness;
 
-  const _Illustrations(this._brightness);
+  const Illustrations(this._brightness);
 
   String get brainyEnabled => _theme(
         brightAsset: 'assets/illustrations/brainy_enabled.svg',
@@ -120,7 +120,7 @@ class _Illustrations {
       );
 
   String get enableCamera =>
-      packagePath + 'assets/illustrations/enable_camera.svg';
+      '${packagePath}assets/illustrations/enable_camera.svg';
 
   String get flagArgentina =>
       '${packagePath}assets/illustrations/flag_argentina.svg';
@@ -222,31 +222,31 @@ class _Illustrations {
   }
 }
 
-class _Graphics {
-  String get formsGreen => packagePath + 'assets/graphics/forms_green.svg';
+class Graphics {
+  String get formsGreen => '${packagePath}assets/graphics/forms_green.svg';
 
-  String get formsOrange => packagePath + 'assets/graphics/forms_orange.svg';
+  String get formsOrange => '${packagePath}assets/graphics/forms_orange.svg';
 
-  String get formsPurple => packagePath + 'assets/graphics/forms_purple.svg';
+  String get formsPurple => '${packagePath}assets/graphics/forms_purple.svg';
 
   String get formsEmptyCollection =>
-      packagePath + 'assets/graphics/forms_empty_collection.svg';
+      '${packagePath}assets/graphics/forms_empty_collection.svg';
 
-  String get gridView => packagePath + 'assets/graphics/grid_view.svg';
+  String get gridView => '${packagePath}assets/graphics/grid_view.svg';
 
-  String get listView => packagePath + 'assets/graphics/list_view.svg';
+  String get listView => '${packagePath}assets/graphics/list_view.svg';
 
-  String get newsOnly => packagePath + 'assets/graphics/news_only.svg';
+  String get newsOnly => '${packagePath}assets/graphics/news_only.svg';
 
-  String get searchNews => packagePath + 'assets/graphics/search_news.svg';
+  String get searchNews => '${packagePath}assets/graphics/search_news.svg';
 
-  String get searchOnly => packagePath + 'assets/graphics/search_only.svg';
+  String get searchOnly => '${packagePath}assets/graphics/search_only.svg';
 }
 
-class _Icons {
+class Icons {
   final Brightness _brightness;
 
-  const _Icons(this._brightness);
+  const Icons(this._brightness);
 
   String get alert => _theme(brightAsset: 'assets/icons/alert.svg');
 

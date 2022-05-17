@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:xayn_design/xayn_design.dart';
 
-typedef _NavBarUpdater = Function(BuildContext context);
+typedef NavBarUpdater = Function(BuildContext context);
 
 class NavBarEdit extends StatefulWidget {
   final NavBarItemEdit data;
-  final _NavBarUpdater _updateNavBar;
+  final NavBarUpdater _updateNavBar;
   final FocusNode? _focusNode;
 
   const NavBarEdit(
     this.data, {
-    @visibleForTesting _NavBarUpdater? updater,
+    @visibleForTesting NavBarUpdater? updater,
     @visibleForTesting FocusNode? focusNode,
   })  : _updateNavBar = updater ?? NavBarContainer.updateNavBar,
         _focusNode = focusNode,
@@ -75,7 +75,6 @@ class _NavBarEditState extends State<NavBarEdit> {
     final container = Container(
       height: linden.dimen.navBarSelectableHeight,
       padding: EdgeInsets.symmetric(horizontal: linden.dimen.unit1_5),
-      child: row,
       decoration: BoxDecoration(
         color: linden.colors.transparent,
         borderRadius: BorderRadius.circular(linden.dimen.unit),
@@ -84,6 +83,7 @@ class _NavBarEditState extends State<NavBarEdit> {
           color: linden.colors.inputTextFieldBorderColor,
         ),
       ),
+      child: row,
     );
     return Material(
       color: linden.colors.transparent,
@@ -106,8 +106,8 @@ class _NavBarEditState extends State<NavBarEdit> {
     return InkWell(
       splashColor: linden.colors.splashColor,
       onTap: _focusNode.requestFocus,
-      child: Center(child: icon),
       borderRadius: BorderRadius.circular(linden.dimen.unit),
+      child: Center(child: icon),
     );
   }
 

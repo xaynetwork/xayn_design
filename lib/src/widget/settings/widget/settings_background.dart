@@ -14,14 +14,14 @@ class SettingsBackground extends StatelessWidget {
     final linden = UnterDenLinden.getLinden(context);
 
     return ClipRRect(
+      borderRadius: linden.styles.roundBorder,
       child: Container(
-        child: child,
         decoration: BoxDecoration(
           color: linden.colors.settingsCardBackground,
           borderRadius: linden.styles.roundBorder,
         ),
+        child: child,
       ),
-      borderRadius: linden.styles.roundBorder,
     );
   }
 }
