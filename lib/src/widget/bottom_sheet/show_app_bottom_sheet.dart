@@ -4,11 +4,11 @@ import 'package:xayn_design/src/widget/unter_den_linden/unter_den_linden.dart';
 
 import 'bottom_sheet_base.dart';
 
-typedef _BottomSheetBuilder = BottomSheetBase Function(BuildContext context);
+typedef BottomSheetBuilder = BottomSheetBase Function(BuildContext context);
 
 Future showAppBottomSheet(
   BuildContext context, {
-  required _BottomSheetBuilder builder,
+  required BottomSheetBuilder builder,
   bool showBarrierColor = true,
   bool isDismissible = true,
 

@@ -20,7 +20,7 @@ class BottomSheetBase extends StatefulWidget {
   final bool withApplicationTooltipProvider;
 
   @override
-  _BottomSheetBaseState createState() => _BottomSheetBaseState();
+  State<BottomSheetBase> createState() => _BottomSheetBaseState();
 }
 
 class _BottomSheetBaseState extends State<BottomSheetBase>

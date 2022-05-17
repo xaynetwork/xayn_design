@@ -93,12 +93,12 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
       // with MaterialType.card, which doesn't allow to customise shadows.
       final card = Container(
         padding: EdgeInsets.symmetric(horizontal: navBarSidePadding),
-        child: row,
         decoration: BoxDecoration(
           color: linden.colors.background,
           borderRadius: linden.styles.roundBorderCard,
           boxShadow: [linden.styles.cardShadow],
         ),
+        child: row,
       );
 
       final sized = _withFixedHeight(card);
@@ -112,8 +112,8 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
 
   Widget _withFixedHeight(Widget card) {
     return SizedBox(
-      child: Center(child: card),
       height: linden.dimen.navBarHeight,
+      child: Center(child: card),
     );
   }
 
@@ -172,8 +172,8 @@ class NavBarState extends State<NavBar> implements ConfigUpdater {
         ? withPadding
         : Center(
             child: SizedBox.square(
-            child: withPadding,
             dimension: customIconSize,
+            child: withPadding,
           ));
   }
 }

@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_test:
+    sdk: flutter
   xayn_design:
     path: ../../xayn_design
   provider: 6.0.2

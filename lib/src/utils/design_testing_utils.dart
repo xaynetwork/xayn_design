@@ -41,12 +41,12 @@ Widget _appWrappedWithLinden({
 }) {
   final linden = initialLinden ?? Linden();
   return UnterDenLinden(
+    initialLinden: linden,
     child: MaterialApp(
       theme: theme ?? linden.themeData,
       home: child,
       navigatorObservers: observers ?? [],
     ),
-    initialLinden: linden,
   );
 }
 

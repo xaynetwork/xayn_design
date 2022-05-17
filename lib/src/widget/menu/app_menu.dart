@@ -81,7 +81,6 @@ class AppMenu extends StatelessWidget {
     );
 
     final positionedMenu = Positioned.directional(
-      child: menu,
       textDirection: textDirection,
       start: start,
       top: top,
@@ -89,6 +88,7 @@ class AppMenu extends StatelessWidget {
       bottom: bottom,
       width: width,
       height: height,
+      child: menu,
     );
 
     if (onClose == null) return positionedMenu;

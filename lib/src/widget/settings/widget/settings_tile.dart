@@ -20,8 +20,8 @@ class SettingsTile extends StatelessWidget {
     _addAction(linden, rowChildren);
 
     final row = Row(
-      children: rowChildren,
       crossAxisAlignment: CrossAxisAlignment.center,
+      children: rowChildren,
     );
 
     final content = Container(

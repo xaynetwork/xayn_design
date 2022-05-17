@@ -14,7 +14,7 @@ class UnterDenLinden extends StatefulWidget {
   final Linden initialLinden;
 
   /// Add this callback if you would like to be notified when [Linden] changed
-  /// inside [_UnterDenLindenState]
+  /// inside [UnterDenLindenState]
   final OnLindenUpdated? onLindenUpdated;
 
   const UnterDenLinden({
@@ -25,13 +25,13 @@ class UnterDenLinden extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _UnterDenLindenState createState() => _UnterDenLindenState();
+  State<UnterDenLinden> createState() => UnterDenLindenState();
 
-  /// Allows to achieve all public methods in[_UnterDenLindenState]
+  /// Allows to achieve all public methods in[UnterDenLindenState]
   ///
   /// The only one public method is [changeBrightness],
   /// which should be called when user would like manually change [Brightness]
-  static _UnterDenLindenState of(BuildContext context) =>
+  static UnterDenLindenState of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<_LindenUpdater>()!.data;
 
   /// Return current instance of the [Linden].
@@ -41,7 +41,7 @@ class UnterDenLinden extends StatefulWidget {
   static Linden getLinden(BuildContext context) => of(context)._linden;
 }
 
-class _UnterDenLindenState extends State<UnterDenLinden>
+class UnterDenLindenState extends State<UnterDenLinden>
     with WidgetsBindingObserver {
   late Linden _linden;
 
@@ -131,7 +131,7 @@ class _UnterDenLindenState extends State<UnterDenLinden>
 }
 
 class _LindenUpdater extends InheritedWidget {
-  final _UnterDenLindenState data;
+  final UnterDenLindenState data;
 
   const _LindenUpdater({
     Key? key,

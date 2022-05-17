@@ -60,7 +60,7 @@ class Tooltip extends StatefulWidget {
         super(key: key);
 
   @override
-  _TooltipState createState() => _TooltipState();
+  State<Tooltip> createState() => _TooltipState();
 }
 
 class _OverlayKeyEntry {

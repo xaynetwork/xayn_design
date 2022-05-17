@@ -22,16 +22,16 @@ class NavBarIconButton extends StatelessWidget {
         key: data.key,
         onTap: data.onPressed,
         onLongPress: data.onLongPressed,
-        child: Center(child: icon),
         borderRadius: BorderRadius.circular(linden.dimen.unit),
+        child: Center(child: icon),
       ),
     );
 
     if (data.semanticsLabel != null) {
       btn = Semantics(
-        child: btn,
         button: true,
         label: data.semanticsLabel,
+        child: btn,
       );
     }
 
@@ -40,9 +40,9 @@ class NavBarIconButton extends StatelessWidget {
       height: linden.dimen.navBarItemHeight,
       child: Center(
         child: SizedBox(
-          child: btn,
           height: linden.dimen.navBarSelectableHeight,
           width: linden.dimen.navBarSelectableHeight,
+          child: btn,
         ),
       ),
     );
