@@ -60,6 +60,10 @@ class _Lottie {
         brightAsset: 'assets/lottie/mange_collection.json',
       );
 
+  String get survey => _theme(
+        brightAsset: 'assets/lottie/survey.json',
+      );
+
   String _theme({
     required String brightAsset,
     String? darkAsset,
