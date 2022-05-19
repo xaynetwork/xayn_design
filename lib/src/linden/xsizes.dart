@@ -257,6 +257,8 @@ class XSizes {
   final double headerMaxExtent = 65.0;
   final double bottomSheetMaxWidth = 480.0;
 
+  final double bottomSheetAnimationSize = _unit * 27;
+
   ///graphics
   final double graphicsGridViewWidth = 149;
   final double graphicsNewsFeedLayoutWidth = 57;
