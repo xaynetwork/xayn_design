@@ -17,16 +17,15 @@ class SettingsTile extends StatelessWidget {
 
     _addIcon(linden, rowChildren);
     _addText(linden, rowChildren);
-    rowChildren.add(const Spacer());
     _addAction(linden, rowChildren);
 
     final row = Row(
       children: rowChildren,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
     );
 
-    final content = SizedBox(
-      height: linden.dimen.unit7,
+    final content = Container(
+      constraints: BoxConstraints(minHeight: linden.dimen.unit7),
       child: Padding(
         padding: EdgeInsets.only(
           left: linden.dimen.unit2,
@@ -71,11 +70,18 @@ class SettingsTile extends StatelessWidget {
     Linden linden,
     List<Widget> rowChildren,
   ) {
-    void addChild(Widget child) => rowChildren.add(Center(child: child));
+    void addChild(Widget child) => rowChildren.add(child);
 
-    final title = Text(
-      data.title,
-      style: linden.styles.mStyle,
+    final title = Expanded(
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: linden.dimen.unit),
+        child: Text(
+          data.title,
+          style: linden.styles.mStyle,
+          maxLines: 3,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
     );
 
     // ignore: deprecated_member_use_from_same_package
