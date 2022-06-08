@@ -142,6 +142,9 @@ class Illustrations {
 
   String get flagChina => '${packagePath}assets/illustrations/flag_china.svg';
 
+  String get flagColombia =>
+      '${packagePath}assets/illustrations/flag_colombia.svg';
+
   String get flagDenmark =>
       '${packagePath}assets/illustrations/flag_denmark.svg';
 
@@ -181,6 +184,8 @@ class Illustrations {
 
   String get flagNorway => '${packagePath}assets/illustrations/flag_norway.svg';
 
+  String get flagPeru => '${packagePath}assets/illustrations/flag_peru.svg';
+
   String get flagPhilippines =>
       '${packagePath}assets/illustrations/flag_philippines.svg';
 
@@ -206,6 +211,9 @@ class Illustrations {
   String get flagTurkey => '${packagePath}assets/illustrations/flag_turkey.svg';
 
   String get flagUK => '${packagePath}assets/illustrations/flag_uk.svg';
+
+  String get flagUkraine =>
+      '${packagePath}assets/illustrations/flag_ukraine.svg';
 
   String get flagUSA => '${packagePath}assets/illustrations/flag_usa.svg';
 
