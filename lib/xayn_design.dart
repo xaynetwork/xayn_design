@@ -24,6 +24,7 @@ export 'src/widget/nav_bar/nav_bar.dart';
 export 'src/widget/overlay/overlay.dart';
 export 'src/widget/settings/settings.dart';
 export 'src/widget/switch/app_switch.dart';
+export 'src/widget/tab_bar/app_tab_bar.dart';
 export 'src/widget/text_field/app_text_field.dart';
 export 'src/widget/tooltip/data/tooltip_data.dart';
 export 'src/widget/tooltip/tooltip.dart';
