@@ -23,9 +23,9 @@ class AppTabBar extends StatelessWidget {
         ),
       ),
       indicatorColor: linden.colors.selectedItemBackgroundColor,
-      labelStyle: linden.styles.mBoldStyle,
+      labelStyle: linden.styles.mBoldStyle.copyWith(fontSize: 12),
       labelColor: linden.colors.primaryText,
-      unselectedLabelStyle: linden.styles.mStyle,
+      unselectedLabelStyle: linden.styles.mStyle.copyWith(fontSize: 12),
       unselectedLabelColor: linden.colors.secondaryText,
       tabs: tabs,
     );
