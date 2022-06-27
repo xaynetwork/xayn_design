@@ -75,7 +75,7 @@ class _NavBarReaderModeScreenState
       svgIconPath: linden.assets.icons.menu,
       isHighlighted: false,
       onPressed: () => toggleOverlay(
-        (_) => AppMenu(
+        (_) => AppMenu.separatedList(
           bottom: MediaQuery.of(context).viewInsets.bottom +
               linden.dimen.bottomBarDockedHeight +
               linden.dimen.unit4_25,
@@ -87,13 +87,16 @@ class _NavBarReaderModeScreenState
       key: keyShare,
     );
 
-    return NavBarConfig(navBarId, [
-      goBack,
-      like,
-      dislike,
-      share,
-      menu,
-    ], isWidthExpanded: true);
+    return NavBarConfig(
+        navBarId,
+        [
+          goBack,
+          like,
+          dislike,
+          share,
+          menu,
+        ],
+        isWidthExpanded: true);
   }
 
   List<Widget> get getMenuList => List.generate(

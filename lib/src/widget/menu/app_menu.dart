@@ -4,15 +4,14 @@ import 'package:xayn_design/src/widget/unter_den_linden/unter_den_linden.dart';
 
 const _kDividerThickness = 1.0;
 
-/// [AppMenu] is a positioned container, ofter used with overlay mixins to
-/// display a list of Widget [children] with a divider between them
+/// [AppMenu] is a positioned container, often used with overlay mixins to
+/// display some content in it
 ///
 class AppMenu extends StatelessWidget {
-  const AppMenu({
+  const AppMenu.separatedList({
     Key? key,
     required this.children,
     this.errorMessage,
-    this.physics = const NeverScrollableScrollPhysics(),
     this.onClose,
     this.isSticky = false,
     this.permitRoutePop = true,
@@ -23,6 +22,8 @@ class AppMenu extends StatelessWidget {
     this.width,
     this.height,
     this.textDirection = TextDirection.ltr,
+    this.physics = const NeverScrollableScrollPhysics(),
+    this.borderRadius,
   })  : assert(
           start == null || end == null || width == null,
           'AppMenu needs to have horizontal constraints: start or end or width',
@@ -31,12 +32,41 @@ class AppMenu extends StatelessWidget {
           top == null || bottom == null || height == null,
           'AppMenu needs to have vertical constraints: top or bottom or height',
         ),
+        child = null,
         super(key: key);
 
-  final List<Widget> children;
+  const AppMenu.single({
+    Key? key,
+    required this.child,
+    this.errorMessage,
+    this.onClose,
+    this.isSticky = false,
+    this.permitRoutePop = true,
+    this.start,
+    this.top,
+    this.end,
+    this.bottom,
+    this.width,
+    this.height,
+    this.textDirection = TextDirection.ltr,
+    this.borderRadius,
+  })  : assert(
+          start == null || end == null || width == null,
+          'AppMenu needs to have horizontal constraints: start or end or width',
+        ),
+        assert(
+          top == null || bottom == null || height == null,
+          'AppMenu needs to have vertical constraints: top or bottom or height',
+        ),
+        children = null,
+        physics = null,
+        super(key: key);
+
+  final Widget? child;
+  final List<Widget>? children;
   final String? errorMessage;
-  final ScrollPhysics? physics;
   final VoidCallback? onClose;
+  final ScrollPhysics? physics;
 
   final double? start;
   final double? top;
@@ -44,6 +74,8 @@ class AppMenu extends StatelessWidget {
   final double? bottom;
   final double? width;
   final double? height;
+  final BorderRadiusGeometry? borderRadius;
+
   final TextDirection textDirection;
 
   /// when true, the menu doesn't close when user clicks outside
@@ -56,28 +88,25 @@ class AppMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     final linden = UnterDenLinden.getLinden(context);
 
-    final childrenSeparatedList = ListView.separated(
-      physics: physics,
-      shrinkWrap: true,
-      padding: EdgeInsets.symmetric(vertical: linden.dimen.unit3),
-      itemBuilder: (_, i) => children.elementAt(i),
-      separatorBuilder: (_, __) => _buildDivider(linden),
-      itemCount: children.length,
-    );
+    final menuChild = child ??
+        ListView.separated(
+          physics: physics,
+          shrinkWrap: true,
+          padding: EdgeInsets.symmetric(vertical: linden.dimen.unit3),
+          itemBuilder: (_, i) => children!.elementAt(i),
+          separatorBuilder: (_, __) => _buildDivider(linden),
+          itemCount: children!.length,
+        );
 
     final menu = Material(
       elevation: linden.dimen.unit5,
       shadowColor: linden.colors.shadowTransparent,
-      borderRadius: linden.styles.roundBorder,
+      borderRadius: borderRadius ?? linden.styles.roundBorder,
       clipBehavior: Clip.antiAlias,
       color: linden.colors.background,
       child: errorMessage == null
-          ? childrenSeparatedList
-          : _buildWithError(
-              childrenSeparatedList,
-              errorMessage!,
-              linden,
-            ),
+          ? menuChild
+          : _buildWithError(menuChild, errorMessage!, linden),
     );
 
     final positionedMenu = Positioned.directional(

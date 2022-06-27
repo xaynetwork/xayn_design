@@ -257,10 +257,14 @@ class XStyles {
   static double get _unit2 => _dimen.unit2;
 
   static double get _unit2_5 => _dimen.unit2_5;
+
+  static double get _unit3 => _dimen.unit3;
+
   final roundBorder = BorderRadius.circular(_unit);
   final roundBorder0_5 = BorderRadius.circular(_unit0_5);
   final roundBorder1_5 = BorderRadius.all(Radius.circular(_unit1_5));
   final roundBorder2_5 = BorderRadius.all(Radius.circular(_unit2_5));
+  final roundBorder3 = BorderRadius.all(Radius.circular(_unit3));
   final roundBorderCard = BorderRadius.all(Radius.circular(_dimen.cardRadius));
 
   /// Borders specific
