@@ -117,6 +117,7 @@ flutter:
     - packages/xayn_design/assets/icons/book.svg
     - packages/xayn_design/assets/icons/bookmark.svg
     - packages/xayn_design/assets/icons/bookmark_active.svg
+    - packages/xayn_design/assets/icons/block.svg
     - packages/xayn_design/assets/icons/bug.svg
     - packages/xayn_design/assets/icons/carousel.svg
     - packages/xayn_design/assets/icons/check.svg
@@ -148,6 +149,7 @@ flutter:
     - packages/xayn_design/assets/icons/minus.svg
     - packages/xayn_design/assets/icons/moon.svg
     - packages/xayn_design/assets/icons/moon_and_sun.svg
+    - packages/xayn_design/assets/icons/more.svg
     - packages/xayn_design/assets/icons/move.svg
     - packages/xayn_design/assets/icons/neutral.svg
     - packages/xayn_design/assets/icons/new_tab.svg
