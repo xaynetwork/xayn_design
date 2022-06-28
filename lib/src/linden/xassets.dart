@@ -277,6 +277,8 @@ class Icons {
   String get bookmarkActive =>
       _theme(brightAsset: 'assets/icons/bookmark_active.svg');
 
+  String get block => _theme(brightAsset: 'assets/icons/block.svg');
+
   String get bug => _theme(brightAsset: 'assets/icons/bug.svg');
 
   String get carousel => _theme(brightAsset: 'assets/icons/carousel.svg');
@@ -343,6 +345,8 @@ class Icons {
   String get moon => _theme(brightAsset: 'assets/icons/moon.svg');
 
   String get moonAndSun => _theme(brightAsset: 'assets/icons/moon_and_sun.svg');
+
+  String get more => _theme(brightAsset: 'assets/icons/more.svg');
 
   String get move => _theme(brightAsset: 'assets/icons/move.svg');
 
