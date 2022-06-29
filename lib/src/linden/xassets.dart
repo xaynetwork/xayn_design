@@ -83,6 +83,8 @@ class Contextual {
       emptyCollection = '${_path}empty_collection.json',
       emptySearch = '${_path}empty_search.json',
       emptySources = '${_path}empty_sources.json',
+      emptySourcesLookup = '${_path}empty_sources_lookup.json',
+      emptySourcesMgmt = '${_path}empty_sources_mgmt.json',
       error = '${_path}error.json',
       noImageA = '${_path}no_image_1.json',
       noImageB = '${_path}no_image_2.json',
