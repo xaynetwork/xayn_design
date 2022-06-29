@@ -25,6 +25,7 @@ class AppTabBar extends StatelessWidget {
       indicatorColor: linden.colors.selectedItemBackgroundColor,
       labelStyle: linden.styles.mBoldStyle,
       labelColor: linden.colors.primaryText,
+      isScrollable: true,
       unselectedLabelStyle: linden.styles.mStyle,
       unselectedLabelColor: linden.colors.secondaryText,
       tabs: tabs,
