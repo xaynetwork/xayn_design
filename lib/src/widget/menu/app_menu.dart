@@ -12,7 +12,9 @@ class AppMenu extends StatelessWidget {
     Key? key,
     required this.children,
     this.errorMessage,
-    this.onClose,
+    this.onTapOutside,
+    this.onDragOutside,
+    this.onPop,
     this.isSticky = false,
     this.permitRoutePop = true,
     this.start,
@@ -39,7 +41,9 @@ class AppMenu extends StatelessWidget {
     Key? key,
     required this.child,
     this.errorMessage,
-    this.onClose,
+    this.onTapOutside,
+    this.onDragOutside,
+    this.onPop,
     this.isSticky = false,
     this.permitRoutePop = true,
     this.start,
@@ -65,7 +69,9 @@ class AppMenu extends StatelessWidget {
   final Widget? child;
   final List<Widget>? children;
   final String? errorMessage;
-  final VoidCallback? onClose;
+  final VoidCallback? onTapOutside;
+  final VoidCallback? onDragOutside;
+  final VoidCallback? onPop;
   final ScrollPhysics? physics;
 
   final double? start;
@@ -120,13 +126,21 @@ class AppMenu extends StatelessWidget {
       child: menu,
     );
 
-    if (onClose == null) return positionedMenu;
+    if (onTapOutside == null && onDragOutside == null && onPop == null) {
+      return positionedMenu;
+    }
 
     final dismissibleMenu = Stack(
       children: [
         Positioned.fill(
           child: GestureDetector(
-            onTap: onClose,
+            /// Needed because if the child is scrollable
+            /// then the drag is not detected
+            behavior: onDragOutside == null
+                ? HitTestBehavior.translucent
+                : HitTestBehavior.opaque,
+            onTap: onTapOutside,
+            onPanUpdate: (_) => onDragOutside?.call(),
           ),
         ),
         positionedMenu,
@@ -135,7 +149,7 @@ class AppMenu extends StatelessWidget {
 
     return WillPopScope(
       onWillPop: () async {
-        onClose!();
+        onPop?.call();
         return permitRoutePop;
       },
       child: isSticky ? positionedMenu : dismissibleMenu,
