@@ -24,11 +24,13 @@ mixin OverlayStateMixin<T extends StatefulWidget> on State<T> {
     _overlayEntry = null;
   }
 
-  void toggleOverlay(OverlayWidgetBuilder builder) =>
-      isOverlayShown ? removeOverlay() : insertOverlay(builder);
+  void toggleOverlay(
+          {required OverlayWidgetBuilder builder,
+          bool useRootOverlay = false}) =>
+      isOverlayShown ? removeOverlay() : insertOverlay(builder, useRootOverlay);
 
-  void insertOverlay(OverlayWidgetBuilder builder) {
+  void insertOverlay(OverlayWidgetBuilder builder, bool useRootOverlay) {
     _overlayEntry = OverlayEntry(builder: builder);
-    Overlay.of(context)?.insert(_overlayEntry!);
+    Overlay.of(context, rootOverlay: useRootOverlay)?.insert(_overlayEntry!);
   }
 }

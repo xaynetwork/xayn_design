@@ -75,7 +75,7 @@ class _NavBarReaderModeScreenState
       svgIconPath: linden.assets.icons.menu,
       isHighlighted: false,
       onPressed: () => toggleOverlay(
-        (_) => AppMenu.separatedList(
+        builder: (_) => AppMenu.separatedList(
           bottom: MediaQuery.of(context).viewInsets.bottom +
               linden.dimen.bottomBarDockedHeight +
               linden.dimen.unit4_25,
