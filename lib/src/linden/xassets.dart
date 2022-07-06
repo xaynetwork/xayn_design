@@ -279,6 +279,8 @@ class Icons {
 
   String get block => _theme(brightAsset: 'assets/icons/block.svg');
 
+  String get brainy => _theme(brightAsset: 'assets/icons/brainy.svg');
+
   String get bug => _theme(brightAsset: 'assets/icons/bug.svg');
 
   String get carousel => _theme(brightAsset: 'assets/icons/carousel.svg');

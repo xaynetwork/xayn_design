@@ -11,6 +11,7 @@ Set<String> getIconAssets(Linden linden) => {
       linden.assets.icons.bookmark,
       linden.assets.icons.bookmarkActive,
       linden.assets.icons.block,
+      linden.assets.icons.brainy,
       linden.assets.icons.bug,
       linden.assets.icons.carousel,
       linden.assets.icons.check,
