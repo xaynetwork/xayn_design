@@ -118,6 +118,7 @@ flutter:
     - packages/xayn_design/assets/icons/bookmark.svg
     - packages/xayn_design/assets/icons/bookmark_active.svg
     - packages/xayn_design/assets/icons/block.svg
+    - packages/xayn_design/assets/icons/brainy.svg
     - packages/xayn_design/assets/icons/bug.svg
     - packages/xayn_design/assets/icons/carousel.svg
     - packages/xayn_design/assets/icons/check.svg
