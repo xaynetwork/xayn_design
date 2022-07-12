@@ -19,6 +19,7 @@ class AppTextField extends StatelessWidget {
     this.autocorrect = true,
     this.readOnly = false,
     this.enabled = true,
+    this.semantics,
   }) : super(key: key);
 
   final TextEditingController? controller;
@@ -31,6 +32,7 @@ class AppTextField extends StatelessWidget {
   final bool autocorrect;
   final bool readOnly;
   final bool enabled;
+  final String? semantics;
   final void Function()? onTap;
   final void Function(String)? onChanged;
   final void Function(String)? onSubmitted;
@@ -79,6 +81,7 @@ class AppTextField extends StatelessWidget {
     Widget? prefixIcon,
     String? hintText,
     TextStyle? hintTextStyle,
+    String? semantics,
     required Linden linden,
   }) {
     final border = OutlineInputBorder(
@@ -128,6 +131,7 @@ class AppTextField extends StatelessWidget {
               width: horizontalContentPadding,
             ),
       prefixIcon: prefixIcon ?? Container(),
+      semanticCounterText: semantics,
     );
   }
 }
