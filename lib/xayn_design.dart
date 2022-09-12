@@ -13,6 +13,7 @@ export 'src/linden/xcolors.dart' show XColors;
 export 'src/linden/xsizes.dart' show XSizes, Experiences;
 export 'src/linden/xstyles.dart' show XStyles;
 export 'src/utils/safe_platform.dart' show SafePlatform;
+export 'src/utils/text_utils.dart';
 export 'src/widget/bottom_sheet/bottom_sheet.dart';
 export 'src/widget/build_observer.dart';
 export 'src/widget/button/app_ghost_button.dart';

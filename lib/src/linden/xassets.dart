@@ -64,6 +64,14 @@ class Lottie {
         brightAsset: 'assets/lottie/survey.json',
       );
 
+  String get countrySelection => _theme(
+        brightAsset: 'assets/lottie/country_selection.json',
+      );
+
+  String get sourceSelection => _theme(
+        brightAsset: 'assets/lottie/source_selection.json',
+      );
+
   String _theme({
     required String brightAsset,
     String? darkAsset,
