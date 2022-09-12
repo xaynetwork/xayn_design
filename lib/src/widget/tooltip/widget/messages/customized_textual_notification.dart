@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:xayn_design/src/utils/text_utils.dart';
 import 'package:xayn_design/xayn_design.dart';
 
 const Duration _kTimeToLive = Duration(seconds: 3);

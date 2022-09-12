@@ -5,6 +5,7 @@ Text getHighlightedText({
   required String highlight,
   TextStyle? highlightTextStyle,
   TextStyle? labelTextStyle,
+  TextAlign? textAlign,
 }) {
   final spans = <TextSpan>[];
   var start = 0;
@@ -39,7 +40,10 @@ Text getHighlightedText({
     highlightText(indexOfHighlight);
   } while (true);
 
-  return Text.rich(TextSpan(children: spans));
+  return Text.rich(
+    TextSpan(children: spans),
+    textAlign: textAlign,
+  );
 }
 
 TextSpan _highlightSpan(String content, TextStyle? highlightedTextStyle) =>
