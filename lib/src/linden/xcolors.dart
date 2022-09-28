@@ -361,6 +361,12 @@ class XColors {
 
   Color get collectionsScreenCard => _pink.shade60;
 
+  Color get addedTopicsBackgroundColor => _green.shade20;
+
+  Color get addedTopicsBorderColor => _green.shade60;
+
+  Color get suggestedTopicsBackgroundColor => _grey.shade5;
+
   // bkg colors for the no-image cards
   Color get noImageBackgroundOrange => const Color.fromARGB(0xff, 240, 144, 6);
   Color get noImageBackgroundPurple => const Color.fromARGB(0xff, 84, 73, 152);
