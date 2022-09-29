@@ -148,6 +148,10 @@ class XStyles {
         fontFamily: _kNotoSansFontFamily,
       );
 
+  TextStyle get topicChipTextStyle => mStyle.copyWith(
+        color: colors.topicChipTextColor,
+      );
+
   /// Shadows
 
   BoxShadow get cardShadow => BoxShadow(
