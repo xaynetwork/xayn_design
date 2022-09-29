@@ -103,7 +103,9 @@ class _AppRaisedButtonState extends State<AppRaisedButton> {
       );
 
   TextStyle get textStyle => widget.color.fold(
-        onPrimary: () => linden.styles.buttonTextBright,
+        onPrimary: () => widget.onPressed == null
+            ? linden.styles.mBoldStyle
+            : linden.styles.buttonTextBright,
         onSecondary: () => linden.styles.mBoldStyle,
         onTertiary: () => linden.styles.mBoldStyle,
       );
