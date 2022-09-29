@@ -283,6 +283,8 @@ class XColors {
 
   Color get snippetTextColor => _black;
 
+  Color get topicChipTextColor => _black;
+
   /// Dots indicator
   Color get dotsIndicatorColor => _transparent;
 
