@@ -140,6 +140,10 @@ class XColors {
 
   Color get videoBackground => _theme(bright: _black);
 
+  Color get inLineCardDarkBackground => _theme(bright: _black);
+
+  Color get inLineCardLightBackground => _theme(bright: _white);
+
   Color get tooltipBackground => _theme(bright: _white, dark: _black);
 
   Color get hintTextStyle => _theme(bright: _grey.shade60, dark: _grey);
@@ -313,6 +317,8 @@ class XColors {
 
   Color get chipBorderColor => _theme(bright: _grey.shade20);
 
+  Color get underlinedSubtitleTextColor => _theme(bright: _grey.shade20);
+
   Color get readerModeTextDarkColor => _theme(bright: _black);
 
   Color get readerModeTextWhiteColor => _theme(bright: _white);
@@ -321,6 +327,9 @@ class XColors {
       _theme(bright: _pink.shade20);
 
   Color get readerModeSettingsErrorTextColor => _theme(bright: _pink);
+
+  Color get tooltipHighlightText =>
+      _theme(bright: _green.shade100, dark: _green.shade80);
 
   /// Color helper constants
   final alpha50 = 0x7f;
