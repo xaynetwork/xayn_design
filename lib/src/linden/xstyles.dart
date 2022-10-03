@@ -232,6 +232,10 @@ class XStyles {
         color: colors.primaryAction,
       );
 
+  TextStyle get tooltipHighlightMainTextStyle => tooltipText.copyWith(
+        color: colors.tooltipHighlightText,
+      );
+
   TextStyle get tooltipArrowDownTextStyle => lBoldStyle.copyWith(
         color: colors.brightText,
       );
@@ -246,6 +250,11 @@ class XStyles {
 
   TextStyle get connectionErrorMessageTextStyle =>
       sBoldStyle.copyWith(color: colors.connectionErrorText);
+
+  TextStyle get underlinedCTATextStyle => sBoldStyle.copyWith(
+        color: colors.underlinedSubtitleTextColor,
+        decoration: TextDecoration.underline,
+      );
 
   /// Other styles
 
