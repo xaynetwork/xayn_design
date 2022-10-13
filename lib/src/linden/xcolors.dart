@@ -86,6 +86,7 @@ class XColors {
   static const _trueBlack = Color(0xff000000);
   static const _white = Color(0xffffffff);
   static const _beige = Color(0xfff8f0e3);
+  static const _softGrey = Color(0xfff8f8f8);
 
   /// This is the only non semantic public color, for convenience
   static const _transparent = Color(0x00000000);
@@ -132,7 +133,8 @@ class XColors {
 
   Color get pageBackground => _theme(bright: _white, dark: _grey.shade95);
 
-  Color get homePageBackground => _theme(bright: _white, dark: _grey.shade80);
+  Color get homePageBackground =>
+      _theme(bright: _softGrey, dark: _grey.shade80);
 
   Color get cardBackground => _theme(bright: _white, dark: _grey.shade80);
 
