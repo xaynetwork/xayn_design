@@ -136,7 +136,7 @@ class XColors {
   Color get homePageBackground =>
       _theme(bright: _softGrey, dark: _grey.shade80);
 
-  Color get cardBackground => _theme(bright: _white, dark: _grey.shade80);
+  Color get cardBackground => _theme(bright: _white, dark: _grey.shade95);
 
   Color get background => _theme(bright: _white, dark: _black);
 
